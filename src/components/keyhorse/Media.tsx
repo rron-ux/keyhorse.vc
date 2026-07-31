@@ -38,8 +38,46 @@ export default function Media() {
               <PostCard key={p.t} p={p} i={i} />
             ))}
           </div>
+
+          <div className="recsec" id="record">
+            <div className="rechead">
+              <h2>Every round in Kentucky</h2>
+              <span className="livemark">
+                <i className="dot" />
+                Live · Updated weekly
+              </span>
+            </div>
+            <div className="feed">
+              {FEED.map(([dt, co, sec, city, amt, stage, ours], i) => (
+                <div
+                  className="fr"
+                  key={i}
+                  style={{ ["--fc" as string]: colorFor(String(co)) }}
+                  onClick={() => openSlide(<CompanySlide i={i} />)}
+                >
+                  <div className="dt">{dt}</div>
+                  <div className="co">
+                    {co}
+                    <small>{city}, Kentucky</small>
+                  </div>
+                  <div className="sec">{sec}</div>
+                  <div className="amt">{amt}</div>
+                  <div className="tag">
+                    <span className={`tagpill${ours ? "" : " off"}`}>
+                      {ours ? "Keyhorse participated" : stage}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="feednote">
+              Every disclosed round in the Commonwealth, whether or not we
+              participated.
+            </p>
+          </div>
         </Rv>
       </div>
+
 
       <div className="band band--tint">
         <Rv>
