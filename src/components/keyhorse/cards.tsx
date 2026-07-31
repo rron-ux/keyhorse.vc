@@ -26,7 +26,7 @@ export function PCell({ n, ty }: { n: string; ty: string }) {
 }
 
 export function CompanySlide({ i }: { i: number }) {
-  const [n, s, l, x] = COS[i % COS.length];
+  const [n, s, l, x] = COS[i % COS.length]!;
   return (
     <>
       <Box seed={`kh-co${i}`} w={900} h={560} cap="Company image" />
@@ -62,7 +62,7 @@ export function CompanySlide({ i }: { i: number }) {
 }
 
 export function PersonSlide({ i }: { i: number }) {
-  const [n, r, f] = TEAM[i];
+  const [n, r, f] = TEAM[i]!;
   return (
     <div className="bd" style={{ paddingTop: 44 }}>
       <h3>{n}</h3>
