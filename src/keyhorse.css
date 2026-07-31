@@ -496,3 +496,24 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
   .step,.res{grid-template-columns:1fr;gap:6px}
   .nav{height:auto;padding:12px 0;flex-wrap:wrap}
 }
+
+/* ---- Companies logo wall ---- */
+.lwcount{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);margin:18px 0 22px}
+.lwall{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:1000px){.lwall{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.lwall{grid-template-columns:repeat(2,1fr)}}
+.lwc{position:relative;display:block;width:100%;aspect-ratio:4/3;background:#fff;border:1px solid #E2E3E4;padding:0;overflow:hidden;cursor:pointer;text-align:center;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.lwc:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(34,34,34,.12);border-color:var(--lw-hover-border,var(--cyan))}
+.lwc-st{position:absolute;top:9px;right:10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#909599;letter-spacing:.04em}
+.lwc-st.ex{color:#00A8E1}
+.lwc-mark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:22px 16px;transition:transform .25s ease}
+.lwc:hover .lwc-mark{transform:translateY(-13px) scale(1.04)}
+.lwc-mark img{width:46px;height:46px;object-fit:contain}
+.lwc-word{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:19px;line-height:1.2;letter-spacing:-.032em;color:#5A5F64}
+.lwc.dark .lwc-word{color:#fff}
+.lwc-rev{position:absolute;left:0;right:0;bottom:0;padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;opacity:0;transition:opacity .25s ease}
+.lwc:hover .lwc-rev{opacity:1}
+.lwc-rev .nm{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:-.02em;color:#222}
+.lwc.dark .lwc-rev .nm{color:#F5F5F4}
+.lwc-rev .in{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#909599}
+.lwc-rev .vs{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#00A8E1;margin-top:3px}
