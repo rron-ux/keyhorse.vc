@@ -57,8 +57,7 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
 .band--ink .btn.g{background:none;border-color:#4A4A4A;color:#F5F5F4}
 
 .page{display:none}
-.page.on{display:block;animation:pagein .45s cubic-bezier(.22,.61,.36,1)}
-@keyframes pagein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.page.on{display:block}
 
 /* ── HERO with crossfading photography ── */
 .hero{background:var(--coal);color:#F5F5F4;--cyan-tx:var(--cyan);position:relative;overflow:hidden;
@@ -114,11 +113,7 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
 .msn{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,5vw,80px);align-items:start}
 .msn .big{font-family:var(--d);font-weight:600;font-size:clamp(28px,3.5vw,50px);
   letter-spacing:-.038em;line-height:1.12}
-.msn .big span{display:block;opacity:0;transform:translateY(16px);
-  transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
-.rv.in .msn .big span{opacity:1;transform:none}
-.rv.in .msn .big span:nth-child(2){transition-delay:.12s}
-.rv.in .msn .big span:nth-child(3){transition-delay:.24s}
+.msn .big span{display:block}
 .msn .big em{color:var(--cyan-tx);font-family:var(--d);font-style:normal}
 .audq{font-family:var(--d);font-size:11px;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;color:var(--faint);margin-bottom:18px}
@@ -149,8 +144,7 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
   background:var(--cyan);transform:scaleY(0);transition:transform .35s}
 .rrow .rn{font-family:var(--d);font-weight:600;font-size:clamp(23px,2.9vw,40px);
   letter-spacing:-.036em;line-height:1.06}
-.rrow .rm{display:flex;align-items:center;gap:22px;opacity:0;transform:translateX(-14px);
-  transition:opacity .35s,transform .35s}
+.rrow .rm{display:flex;align-items:center;gap:22px}
 .rrow .rr{font-size:14px;color:var(--muted)}
 .rrow .rx{font-family:var(--m);font-size:12px;color:var(--cyan-tx)}
 .roster:hover .rrow{opacity:.32}
@@ -160,15 +154,6 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
 @media(max-width:700px){.rrow{grid-template-columns:1fr}.rrow .rm{opacity:1;transform:none}
   .roster:hover .rrow{opacity:1}}
 
-/* ── STAGGERED REVEAL ── */
-.stag > *{opacity:0;transform:translateY(18px);
-  transition:opacity .62s cubic-bezier(.22,.61,.36,1),transform .62s cubic-bezier(.22,.61,.36,1)}
-.rv.in .stag > *{opacity:1;transform:none}
-.rv.in .stag > *:nth-child(2){transition-delay:.07s}
-.rv.in .stag > *:nth-child(3){transition-delay:.14s}
-.rv.in .stag > *:nth-child(4){transition-delay:.21s}
-.rv.in .stag > *:nth-child(5){transition-delay:.28s}
-.rv.in .stag > *:nth-child(6){transition-delay:.35s}
 
 /* ── HORIZONTAL INDUSTRY RAIL ── */
 .hrail{position:relative}
@@ -429,7 +414,7 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
 .cc .st{font-family:var(--m);font-size:10px;color:var(--faint);margin-top:14px}
 .filters{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:24px}
 .chip{background:none;border:0;padding:0 0 5px;cursor:pointer;font-family:var(--b);font-size:13.5px;
-  color:var(--faint);border-bottom:2px solid transparent}
+  color:var(--muted);border-bottom:2px solid var(--line)}
 .chip[aria-pressed="true"]{color:var(--ink);font-weight:500;border-bottom-color:var(--cyan-tx)}
 
 .isec{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);align-items:center;
@@ -442,11 +427,8 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
 .isec .why b{font-family:var(--d);font-size:10px;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;color:var(--faint);display:block;margin-bottom:10px}
 
-.rv{opacity:0;transform:translateY(22px);
-  transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1)}
-.rv.in{opacity:1;transform:none}
+.rv,.rv.in,.stag > *{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
   .hero .frames img{animation:none}.cyc span{animation:none}
   .page.on{animation:none} html{scroll-behavior:auto}
   .ticker .track{animation:none}.stag > *{opacity:1;transform:none}
