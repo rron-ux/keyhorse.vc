@@ -159,8 +159,13 @@ export default function Partners() {
                 className="imgbox"
                 style={{ aspectRatio: "4 / 3", marginBottom: 20 }}
               >
-                <img src="https://picsum.photos/seed/kh-join/900/675" alt="" />
+                <img
+                  loading="lazy"
+                  src={pic("kh-join").src}
+                  alt={pic("kh-join").alt}
+                />
                 <span className="cap">Reference image</span>
+
               </div>
               <button className="btn cy" style={{ width: "100%", padding: 15 }}>
                 Partner enquiry
