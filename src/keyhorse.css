@@ -739,9 +739,11 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .cfilters{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;margin-bottom:26px}
 .cfrow{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .cfcount{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#909599;white-space:nowrap}
-.chip[aria-pressed="true"]{background:var(--coal);border-color:var(--coal);color:#fff}
-.chip:hover{border-color:var(--cyan);color:var(--cyan)}
-.chip[aria-pressed="true"]:hover{color:#fff}
+.cfilters .filters{flex:1 1 420px;gap:8px}
+.cfilters .chip{border:1px solid var(--line);padding:6px 13px;font-size:12.5px;
+ color:var(--kh-muted);border-radius:999px;transition:border-color .2s ease,color .2s ease,background .2s ease}
+.cfilters .chip:hover{border-color:var(--cyan);color:var(--cyan)}
+.cfilters .chip[aria-pressed="true"]{background:var(--coal);border-color:var(--coal);color:#fff;font-weight:500}
 
 .ctable{border-bottom:1px solid var(--line)}
 .chrow{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1.5fr) minmax(0,1.5fr) 84px 24px;
