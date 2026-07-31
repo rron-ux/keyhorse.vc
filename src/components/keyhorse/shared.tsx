@@ -208,3 +208,11 @@ export function Chips<T extends string>({
 
 export const statusLabel = (s: string) =>
   s === "exit" ? "Exited" : s === "legacy" ? "Legacy" : "Active";
+
+/** Deterministic brand-family colour for a company/entity name. */
+const KH_PALETTE = ["#00A8E1","#0E7C86","#7A5CF0","#E86A2B","#3F9B45","#C1436B","#1F6FEB"];
+export function colorFor(name: string) {
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+  return KH_PALETTE[h % KH_PALETTE.length]!;
+}
