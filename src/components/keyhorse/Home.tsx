@@ -44,12 +44,21 @@ function Hero() {
   return (
     <div className="hero">
       <div className="frames">
-        {HERO.map((s, i) => (
-          <img key={s} className={i === frame ? "on" : ""} src={IMG(s, 1900, 1100)} alt="" />
+        {HERO_FRAMES.map((f, i) => (
+          <img
+            key={f.src}
+            className={i === frame ? "on" : ""}
+            src={f.src}
+            alt={f.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            {...(i === 0 ? { fetchPriority: "high" as const } : {})}
+          />
         ))}
       </div>
       <div className="tint" />
       <div className="scrim" />
+      <div className="slot">Reference imagery — replace with commissioned film</div>
+
       <div className="wrap inner">
         <h1>
           Building Kentucky into the next hub for
