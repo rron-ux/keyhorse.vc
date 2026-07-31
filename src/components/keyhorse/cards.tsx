@@ -33,7 +33,7 @@ export function CompanySlide({ i }: { i: number }) {
       <div className="bd">
         <h3>{n}</h3>
         <div className="role">{statusLabel(x)}</div>
-        <p style={{ color: "var(--muted)", fontSize: 13.5 }}>
+        <p style={{ color: "var(--kh-muted)", fontSize: 13.5 }}>
           Placeholder description.
         </p>
         <div className="kv">
@@ -71,7 +71,7 @@ export function PersonSlide({ i }: { i: number }) {
         <span>Focus area</span>
         <span>{f}</span>
       </div>
-      <p style={{ color: "var(--muted)", fontSize: 13.5 }}>
+      <p style={{ color: "var(--kh-muted)", fontSize: 13.5 }}>
         Placeholder biography.
       </p>
       <div className="kv">

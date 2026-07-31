@@ -71,7 +71,7 @@ export default function Apply() {
               <p
                 style={{
                   marginTop: 18,
-                  color: "var(--muted)",
+                  color: "var(--kh-muted)",
                   fontSize: 14.5,
                 }}
               >
@@ -92,7 +92,7 @@ export default function Apply() {
                 <p className="lbl" style={{ marginBottom: 10 }}>
                   Preparation
                 </p>
-                <p style={{ color: "var(--muted)", fontSize: 14 }}>
+                <p style={{ color: "var(--kh-muted)", fontSize: 14 }}>
                   The Investment Process Checklist lists every diligence item by
                   stage, so nothing arrives unannounced.
                 </p>

@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, type ReactNode } from "react";
 
 export type PageId =
   | "home"
@@ -61,7 +54,7 @@ export function Box({
   );
 }
 
-/** div.wrap.rv — reveals on scroll, mirrors the mockup IntersectionObserver. */
+/** div.wrap — content container (scroll-reveal animation removed). */
 export function Rv({
   children,
   id,
@@ -71,36 +64,13 @@ export function Rv({
   id?: string;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [seen, setSeen] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (es) =>
-        es.forEach((e) => {
-          if (e.isIntersecting) {
-            setSeen(true);
-            io.unobserve(e.target);
-          }
-        }),
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   return (
-    <div
-      ref={ref}
-      id={id}
-      className={`wrap rv${seen ? " in" : ""}${className ? ` ${className}` : ""}`}
-    >
+    <div id={id} className={`wrap${className ? ` ${className}` : ""}`}>
       {children}
     </div>
   );
 }
+
 
 export function MRow({
   n,

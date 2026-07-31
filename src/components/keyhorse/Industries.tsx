@@ -31,7 +31,7 @@ export default function Industries() {
                   <b>Sectors we invest in</b>
                   <p
                     style={{
-                      color: "var(--muted)",
+                      color: "var(--kh-muted)",
                       fontSize: 14.5,
                       margin: "0 0 12px",
                     }}

@@ -1,44 +1,9 @@
-import { useEffect, useRef, useState } from "react";
 import { FUNDS_GEN, GOALS, RELS, STATS, TEAM } from "@/data/keyhorse";
 import { Box, Head, MRow, PageHead, Rv, useSite } from "./shared";
 import { PersonSlide } from "./cards";
 
 function CountUp({ final }: { final: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [text, setText] = useState("0");
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const num = parseFloat(final.replace(/[^0-9.]/g, ""));
-    const pre = final.startsWith("$") ? "$" : "";
-    const suf = final.replace(/^[$]?[0-9.]+/, "");
-    const dec = final.indexOf(".") > -1 ? 1 : 0;
-    const io = new IntersectionObserver(
-      (es) => {
-        if (!es.some((e) => e.isIntersecting)) return;
-        io.disconnect();
-        let t0: number | null = null;
-        const step = (ts: number) => {
-          if (!t0) t0 = ts;
-          const p = Math.min(1, (ts - t0) / 1200);
-          const e = 1 - Math.pow(1 - p, 3);
-          setText(pre + (num * e).toFixed(dec) + suf);
-          if (p < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-      },
-      { threshold: 0.08 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [final]);
-
-  return (
-    <div className="v" ref={ref}>
-      {text}
-    </div>
-  );
+  return <div className="v">{final}</div>;
 }
 
 export default function About() {
