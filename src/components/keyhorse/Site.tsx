@@ -68,7 +68,7 @@ export default function Site() {
     <SiteContext.Provider
       value={{ page, go, jump, openSlide: setSlide, closeSlide }}
     >
-      <header>
+      <header className={page === "home" && atTop ? "over" : ""}>
         <div className="wrap nav">
           <img
             className="logo"
