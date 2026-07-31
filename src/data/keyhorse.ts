@@ -5,7 +5,6 @@ export const CYC=['logistics and trade.','advanced manufacturing.','aerospace an
            'healthcare.','energy and materials.','agriculture and food.'] as const;
 
 
-export const HERO=['kh-hero1','kh-hero2','kh-hero3'] as const;
 
 export const FEED=[
  ['12 May','Beltways','Accelerating walkways','Hebron','$4.2M','Seed',true],
