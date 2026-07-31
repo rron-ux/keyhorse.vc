@@ -6,8 +6,8 @@
   --cyan:#00A8E1; --coal:#222222;
   --max:1300px; --pad:32px;
   --bg:#FFFFFF; --tint:#F2F3F4; --line:#E2E3E4;
-  --ink:#222222; --muted:#5C6165; --faint:#6A6E72;
-  --cyan-tx:#0076A6;
+  --ink:#222222; --muted:#65696D; --faint:#909599;
+  --cyan-tx:#00A8E1;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -31,7 +31,7 @@ p{margin:0 0 13px}
 .band{padding:clamp(50px,5.4vw,80px) 0}
 .band--tint{background:var(--tint)}
 .band--ink{background:var(--coal);
-  --ink:#F5F5F4;--muted:#B4B8BB;--faint:#8E9296;--line:#383838;--bg:#222222;--tint:#2A2A2A;
+  --ink:#F5F5F4;--muted:#A2A6A9;--faint:#909599;--line:#383838;--bg:#222222;--tint:#2A2A2A;
   --cyan-tx:var(--cyan);
   color:var(--ink)}
 
@@ -50,10 +50,10 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
 .links button:hover,.links button[aria-current="true"]{color:var(--ink)}
 .btn{background:var(--coal);color:#fff;border:0;padding:11px 19px;font-size:13px;
   font-weight:500;cursor:pointer;font-family:var(--b);transition:background .2s}
-.btn:hover{background:var(--cyan);color:var(--coal)}
+.btn:hover{background:var(--cyan);color:#FFFFFF}
 .btn.g{background:none;border:1px solid var(--line);color:var(--ink)}
 .btn.g:hover{border-color:var(--cyan-tx);color:var(--cyan-tx);background:none}
-.btn.cy{background:var(--cyan);color:var(--coal)} .btn.cy:hover{background:#0090C2;color:var(--coal)}
+.btn.cy{background:var(--cyan);color:#FFFFFF} .btn.cy:hover{background:var(--coal);color:#FFFFFF}
 .band--ink .btn.g{background:none;border-color:#4A4A4A;color:#F5F5F4}
 
 .page{display:none}
@@ -237,7 +237,7 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
 
 /* ── INDUSTRY DETAIL ── */
 .icard.gen{background:var(--coal);--cyan-tx:var(--cyan);color:#F5F5F4;border-color:var(--coal);display:flex;align-items:center}
-.icard.gen:hover{border-color:var(--cyan-tx);background:#1B1B1D}
+.icard.gen:hover{border-color:var(--cyan-tx);background:#222222}
 
 .icard .call{border-top:1px solid var(--line);margin-top:16px;padding-top:14px}
 .icard .call b{font-family:var(--d);font-size:9.5px;font-weight:600;letter-spacing:.16em;
@@ -331,7 +331,7 @@ header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);
   border:1px solid var(--line)}
 .wcell{background:var(--bg);aspect-ratio:16/9;display:flex;align-items:center;
   justify-content:center;padding:14px;text-align:center;cursor:pointer;
-  font-family:var(--d);font-weight:600;font-size:13px;letter-spacing:-.02em;color:#6A6E72;
+  font-family:var(--d);font-weight:600;font-size:13px;letter-spacing:-.02em;color:#909599;
   transition:color .18s,background .18s}
 .wcell:hover{color:var(--coal);background:var(--cyan)}
 .wallnote{font-size:12px;color:var(--faint);margin-top:14px}
