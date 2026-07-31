@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import raw from "@/data/companies.json";
 import { Rv, colorFor, useSite } from "./shared";
 import { FOUNDER_PORTRAITS } from "@/lib/images";
@@ -114,9 +114,26 @@ function Mosaic() {
 
 export default function Companies() {
   const { openSlide } = useSite();
-  const [status, setStatus] = useState("All");
-  const [sector, setSector] = useState("All");
+  const [status, setStatus] = useState(() => {
+    if (typeof window === "undefined") return "All";
+    const q = new URLSearchParams(window.location.search).get("status");
+    return q === "Active" || q === "Exited" ? q : "All";
+  });
+  const [sector, setSector] = useState(() => {
+    if (typeof window === "undefined") return "All";
+    const q = new URLSearchParams(window.location.search).get("sector");
+    return q && SECTORS.includes(q) ? q : "All";
+  });
   const [shown, setShown] = useState(PAGE);
+
+  /* Keep the URL in step so filter state is shareable. */
+  useEffect(() => {
+    const p = new URLSearchParams();
+    if (sector !== "All") p.set("sector", sector);
+    if (status !== "All") p.set("status", status);
+    const q = p.toString();
+    window.history.replaceState({}, "", `/companies${q ? `?${q}` : ""}`);
+  }, [sector, status]);
 
   const list = useMemo(
     () =>
