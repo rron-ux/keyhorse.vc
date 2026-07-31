@@ -1,4 +1,10 @@
 import { createContext, useContext, type ReactNode } from "react";
+import logisticsAsset from "@/assets/logistics.jpg.asset.json";
+import manufacturingAsset from "@/assets/manufacturing.jpg.asset.json";
+import healthcareAsset from "@/assets/healthcare.jpg.asset.json";
+import energyAsset from "@/assets/energy.jpg.asset.json";
+import agricultureAsset from "@/assets/agriculture.jpg.asset.json";
+
 
 export type PageId =
   | "home"
@@ -30,12 +36,6 @@ export const useSite = () => useContext(SiteContext);
 
 export const IMG = (seed: string, w: number, h: number) =>
   `https://picsum.photos/seed/${seed}/${w}/${h}`;
-
-import logisticsAsset from "@/assets/logistics.jpg.asset.json";
-import manufacturingAsset from "@/assets/manufacturing.jpg.asset.json";
-import healthcareAsset from "@/assets/healthcare.jpg.asset.json";
-import energyAsset from "@/assets/energy.jpg.asset.json";
-import agricultureAsset from "@/assets/agriculture.jpg.asset.json";
 
 const SEED_IMAGES: Record<string, { url: string; alt: string; cap: string }> = {
   "kh-log": {
