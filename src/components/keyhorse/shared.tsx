@@ -108,7 +108,7 @@ export function PageHead({
 }) {
   return (
     <div className="phead">
-      <img className="bgimg" src={IMG(seed, 1800, 700)} alt="" />
+      <img className="bgimg" loading="lazy" src={pic(seed).src} alt={pic(seed).alt} />
       <div className="wrap">
         <h1>{title}</h1>
         <p className="lede">{lede}</p>
