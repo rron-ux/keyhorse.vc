@@ -364,18 +364,16 @@ function Capital() {
       <div className="wrap capgrid">
         <div>
           <p className="lbl">Capital</p>
-          <h2 className="caph">
-            Everything above is open to anyone.{" "}
-            <em>The capital is not.</em>
-          </h2>
+          <h2 className="caph">Building something exceptional in Kentucky?</h2>
           <p className="lede" style={{ marginTop: 20 }}>
-            The reporting, the sessions and the resources are free, and always will
-            be. The cheque is the selective part — tech-enabled, Kentucky-based, and
-            concentrated in the sectors where the state already has an advantage.
+            We invest in tech-enabled companies across the Commonwealth — three
+            funds, from a first cheque through Series A and beyond. Applications
+            are read by the investment team, and every founder hears back either
+            way.
           </p>
           <div className="cta" style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}>
-            <button className="btn g" onClick={() => go("about")}>
-              How the funds work
+            <button className="btn" onClick={() => go("apply")}>
+              See the criteria
             </button>
             <button className="btn cy" onClick={() => go("apply")}>
               Apply
@@ -384,7 +382,7 @@ function Capital() {
         </div>
         <div className="caprows">
           {CAPROWS.map(([n, nm, d]) => (
-            <div className="caprow" key={n} onClick={() => go("about")}>
+            <div className="caprow" key={n} onClick={() => go("apply")}>
               <div className="n">{n}</div>
               <div>
                 <b>{nm}</b>
