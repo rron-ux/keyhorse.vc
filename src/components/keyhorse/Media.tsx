@@ -61,7 +61,7 @@ export default function Media() {
                   className="t"
                   style={{
                     marginTop: 12,
-                    color: "var(--cyan)",
+                    color: "var(--cyan-tx)",
                     fontFamily: "var(--m)",
                     fontSize: 11.5,
                   }}
@@ -164,7 +164,7 @@ export default function Media() {
                     fontSize: 14,
                   }}
                 />
-                <button className="btn" style={{ background: "var(--cyan)" }}>
+                <button className="btn" style={{ background: "var(--cyan)", color: "var(--coal)" }}>
                   Subscribe
                 </button>
               </div>

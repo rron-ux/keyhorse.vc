@@ -66,7 +66,7 @@ export default function Resources() {
                   fontWeight: 600,
                   letterSpacing: ".16em",
                   textTransform: "uppercase",
-                  color: "var(--cyan)",
+                  color: "var(--cyan-tx)",
                   marginBottom: 12,
                 }}
               >
