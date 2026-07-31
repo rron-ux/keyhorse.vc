@@ -136,7 +136,7 @@ export default function Partners() {
               <p
                 style={{
                   fontSize: 12.5,
-                  color: "var(--muted)",
+                  color: "var(--kh-muted)",
                   marginTop: 12,
                   textAlign: "center",
                 }}

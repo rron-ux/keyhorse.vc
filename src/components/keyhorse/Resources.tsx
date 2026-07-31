@@ -76,7 +76,7 @@ export default function Resources() {
                 Raising your first institutional round
               </h3>
               <p
-                style={{ color: "var(--muted)", fontSize: 14.5, marginTop: 12 }}
+                style={{ color: "var(--kh-muted)", fontSize: 14.5, marginTop: 12 }}
               >
                 Free and open to any founder. Recording published here afterwards.
               </p>
