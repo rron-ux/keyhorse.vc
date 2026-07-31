@@ -1,9 +1,5 @@
 import { createContext, useContext, type ReactNode } from "react";
-import logisticsAsset from "@/assets/logistics.jpg.asset.json";
-import manufacturingAsset from "@/assets/manufacturing.jpg.asset.json";
-import healthcareAsset from "@/assets/healthcare.jpg.asset.json";
-import energyAsset from "@/assets/energy.jpg.asset.json";
-import agricultureAsset from "@/assets/agriculture.jpg.asset.json";
+import { pic } from "@/lib/images";
 
 
 export type PageId =
@@ -34,64 +30,31 @@ export const SiteContext = createContext<SiteCtx>({
 
 export const useSite = () => useContext(SiteContext);
 
-export const IMG = (seed: string, w: number, h: number) =>
-  `https://picsum.photos/seed/${seed}/${w}/${h}`;
-
-const SEED_IMAGES: Record<string, { url: string; alt: string; cap: string }> = {
-  "kh-log": {
-    url: logisticsAsset.url,
-    alt: "Freight truck on a highway at sunset",
-    cap: "Logistics & Trade",
-  },
-  "kh-mfg": {
-    url: manufacturingAsset.url,
-    alt: "CNC laser cutting sheet metal with sparks",
-    cap: "Advanced Manufacturing, Aerospace & Defense",
-  },
-  "kh-health": {
-    url: healthcareAsset.url,
-    alt: "Two clinicians reviewing medical imaging on monitors",
-    cap: "Health & Care",
-  },
-  "kh-ev": {
-    url: energyAsset.url,
-    alt: "Wind turbines on rolling hills at dusk",
-    cap: "Energy, Materials & Climate",
-  },
-  "kh-ag": {
-    url: agricultureAsset.url,
-    alt: "Aerial view of a tractor working a field",
-    cap: "Agriculture, Food & Consumer",
-  },
-};
+/** Resolve a legacy image seed to a real project asset URL. */
+export const IMG = (seed: string, _w?: number, _h?: number) => pic(seed).src;
 
 export function Box({
   seed,
-  w,
-  h,
   cap,
   className,
   style,
 }: {
   seed: string;
-  w: number;
-  h: number;
+  w?: number;
+  h?: number;
   cap?: string;
   className?: string;
   style?: React.CSSProperties;
 }) {
-  const real = SEED_IMAGES[seed];
+  const real = pic(seed);
   return (
     <div className={className ? `imgbox ${className}` : "imgbox"} style={style}>
-      <img
-        loading="lazy"
-        src={real ? real.url : IMG(seed, w, h)}
-        alt={real ? real.alt : ""}
-      />
-      <span className="cap">{cap || real?.cap || "Reference image"}</span>
+      <img loading="lazy" src={real.src} alt={real.alt} />
+      <span className="cap">{cap || real.cap || "Reference image"}</span>
     </div>
   );
 }
+
 
 
 /** div.wrap — content container (scroll-reveal animation removed). */
