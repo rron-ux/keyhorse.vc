@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { JOIN, PARTNERS, PARTNER_COLORS } from "@/data/keyhorse";
+import { pic } from "@/lib/images";
 import { PageHead, Rv, useSite } from "./shared";
+
 import { PCell } from "./cards";
 
 function PartnerWall() {
