@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { CAL, POSTS, SOCIALS } from "@/data/keyhorse";
-import { Box, Chips, Head, PageHead, Rv } from "./shared";
-import { PostCard } from "./cards";
+import { CAL, FEED, POSTS, SOCIALS } from "@/data/keyhorse";
+import { Box, Chips, Head, PageHead, Rv, colorFor, useSite } from "./shared";
+import { CompanySlide, PostCard } from "./cards";
 
 const FILTERS = [
   ["all", "All"],
@@ -12,6 +12,8 @@ const FILTERS = [
 
 export default function Media() {
   const [t, setT] = useState<(typeof FILTERS)[number][0]>("all");
+  const { openSlide } = useSite();
+
 
   return (
     <section className="page on">
