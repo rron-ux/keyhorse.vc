@@ -1,17 +1,40 @@
-import { useEffect, useRef, useState } from "react";
-import { AUD, CYC, FEED, HERO, IND, PARTNERS, POSTS } from "@/data/keyhorse";
-import { Box, Head, IMG, Rv, useSite } from "./shared";
-import { CompanySlide, CompanyWall, PCell, PostCard } from "./cards";
+import { useEffect, useState } from "react";
+import {
+  AUD,
+  CAPROWS,
+  CYC,
+  FEED,
+  FOUNDERS,
+  HERO,
+  MEDIA3,
+  PILLARS,
+} from "@/data/keyhorse";
+import { IMG, Rv, colorFor, useSite } from "./shared";
+
+const reduced = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function Clock() {
+  const [t, setT] = useState("--:--:--");
+  useEffect(() => {
+    const tick = () => setT(new Date().toLocaleTimeString("en-GB", { hour12: false }));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return <span className="clock">Updated {t}</span>;
+}
 
 function Hero() {
-  const { go, jump } = useSite();
+  const { go } = useSite();
   const [frame, setFrame] = useState(0);
   const [ci, setCi] = useState(0);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const a = setInterval(() => setFrame((f) => (f + 1) % HERO.length), 5200);
-    const b = setInterval(() => setCi((c) => (c + 1) % CYC.length), 2600);
+    if (reduced()) return;
+    const a = setInterval(() => setFrame((f) => (f + 1) % HERO.length), 5400);
+    const b = setInterval(() => setCi((c) => (c + 1) % CYC.length), 2500);
     return () => {
       clearInterval(a);
       clearInterval(b);
@@ -22,17 +45,11 @@ function Hero() {
     <div className="hero">
       <div className="frames">
         {HERO.map((s, i) => (
-          <img
-            key={s}
-            className={i === frame ? "on" : ""}
-            src={IMG(s, 1900, 1100)}
-            alt=""
-          />
+          <img key={s} className={i === frame ? "on" : ""} src={IMG(s, 1900, 1100)} alt="" />
         ))}
       </div>
       <div className="tint" />
       <div className="scrim" />
-      <div className="slot">Reference imagery — replace with commissioned film</div>
       <div className="wrap inner">
         <h1>
           Building Kentucky into the next hub for
@@ -51,7 +68,7 @@ function Hero() {
           <button
             className="btn g"
             style={{ borderColor: "rgba(255,255,255,.3)", color: "#F5F5F4" }}
-            onClick={() => jump("record")}
+            onClick={() => go("media")}
           >
             What is happening
           </button>
@@ -59,8 +76,11 @@ function Hero() {
       </div>
       <div className="foot">
         <div className="wrap">
-          <span>The record of Kentucky venture</span>
-          <span>Updated weekly</span>
+          <span className="live">
+            <i className="dot" />
+            The record of Kentucky venture
+          </span>
+          <Clock />
         </div>
       </div>
     </div>
@@ -70,15 +90,14 @@ function Hero() {
 function Ticker() {
   const items = [...FEED, ...FEED];
   return (
-    <div className="ticker">
+    <div className="ticker ticker--dark">
       <div className="track">
-        {items.map(([, co, sec, city, amt], i) => (
+        {items.map(([, co, sec, , amt], i) => (
           <div className="it" key={i}>
+            <i className="d" style={{ background: colorFor(String(co)) }} />
             <b>{co}</b>
             <span className="a">{amt}</span>
-            <span>
-              {sec} · {city}
-            </span>
+            <span>{sec}</span>
           </div>
         ))}
       </div>
@@ -87,23 +106,22 @@ function Ticker() {
 }
 
 function Mission() {
-  const { go, jump } = useSite();
+  const { go } = useSite();
   const [ai, setAi] = useState(0);
   const [, , copy, links] = AUD[ai]!;
 
   return (
-    <div className="band">
+    <div className="band mband">
+      <img className="mband-bg" src={IMG("kh-kentucky", 1800, 1000)} alt="" />
       <Rv>
         <div className="msn">
           <div>
             <p className="lbl">Mission</p>
             <div className="big">
               <span>Kentucky should be where the</span>
+              <span>company gets built,</span>
               <span>
-                company gets built, <em>not the</em>
-              </span>
-              <span>
-                <em>place it leaves.</em>
+                <em>not the place it leaves.</em>
               </span>
             </div>
             <p className="lede" style={{ marginTop: 26 }}>
@@ -140,9 +158,7 @@ function Mission() {
                     <button
                       key={l}
                       className={`btn ${p === "apply" ? "cy" : "g"}`}
-                      onClick={() =>
-                        p === "record" ? jump("record") : go(p as never)
-                      }
+                      onClick={() => go((p === "record" ? "media" : p) as never)}
                     >
                       {l}
                     </button>
@@ -157,185 +173,204 @@ function Mission() {
   );
 }
 
-function Record() {
-  const { go, openSlide } = useSite();
-  return (
-    <div className="band band--tint" id="record">
-      <Rv>
-        <Head label="The record" title="Every round in Kentucky.">
-          <button className="btn g" onClick={() => go("media")}>
-            All coverage
-          </button>
-        </Head>
-        <div className="feed">
-          {FEED.map(([dt, co, sec, city, amt, stage, ours], i) => (
-            <div
-              className="fr"
-              key={i}
-              onClick={() => openSlide(<CompanySlide i={i} />)}
-            >
-              <div className="dt">{dt}</div>
-              <div className="co">
-                {co}
-                <small>{city}, Kentucky</small>
-              </div>
-              <div className="sec">{sec}</div>
-              <div className="amt">{amt}</div>
-              <div className="tag">
-                <span className={`tagpill${ours ? "" : " off"}`}>
-                  {ours ? "Keyhorse participated" : stage}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="feednote">
-          We report every disclosed round in the Commonwealth, whether or not we
-          participated. Participation is noted as a fact, never as the headline.
-        </p>
-      </Rv>
-    </div>
-  );
-}
-
-function IndustryRail() {
+function Pillars() {
   const { go } = useSite();
-  const ref = useRef<HTMLDivElement>(null);
-  const hs = (dir: number) =>
-    ref.current?.scrollBy({
-      left: dir * (ref.current.clientWidth * 0.8),
-      behavior: "smooth",
-    });
-
   return (
-    <div className="band band--tint">
+    <div className="band">
       <Rv>
         <div className="head">
           <div>
             <p className="lbl">Where Kentucky wins</p>
             <h2>Five pillars. Everything nests inside them.</h2>
           </div>
-          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <div className="harrows">
-              <button className="harrow" onClick={() => hs(-1)} aria-label="Previous">
-                ←
-              </button>
-              <button className="harrow" onClick={() => hs(1)} aria-label="Next">
-                →
-              </button>
-            </div>
-            <button className="btn g" onClick={() => go("industries")}>
-              Explore
-            </button>
-          </div>
+          <button className="btn g" onClick={() => go("industries")}>
+            All five sectors
+          </button>
         </div>
-        <div className="hrail">
-          <div className="hscroll" ref={ref}>
-            {IND.map(([num, n, d, seed, subs]) => (
-              <div className="hcard" key={num} onClick={() => go("industries")}>
-                <Box seed={seed} w={760} h={428} />
-                <div className="bd">
-                  <div className="n">{num}</div>
-                  <div className="nm">{n}</div>
-                  <div className="d">{d}</div>
-                  <div className="sub">{subs}</div>
+        <div className="pacc">
+          {PILLARS.map((p) => (
+            <div
+              className="pane"
+              key={p.n}
+              style={{ ["--pc" as string]: p.c }}
+              onClick={() => go("industries")}
+            >
+              <img src={IMG(p.seed, 900, 1200)} alt="" />
+              <span className="wash" />
+              <span className="rule" />
+              <div className="pbd">
+                <div className="n">{p.n}</div>
+                <div className="nm">{p.nm}</div>
+                <div className="rev">
+                  <p className="d">{p.d}</p>
+                  <div className="co">{p.co}</div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </Rv>
     </div>
   );
 }
 
-export default function Home() {
+function FounderFeature() {
   const { go } = useSite();
+  return (
+    <div className="ffeat">
+      <div className="fimg">
+        <img src={IMG("kh-feature", 1400, 1200)} alt="Founder on the factory floor" />
+      </div>
+      <div className="fpanel">
+        <div className="glow" />
+        <div className="fbd">
+          <div className="k">Founder feature · Video</div>
+          <h3>
+            They moved the company from Silicon Valley to a factory two miles from
+            the airport.
+          </h3>
+          <p className="mt">
+            A reported profile of a company building in one of our industries — how
+            they got here, what they found, what it cost.
+          </p>
+          <div className="by">Reported by Keyhorse · [Month] 2026</div>
+          <button className="btn cy" onClick={() => go("media")}>
+            Watch the feature
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function People() {
+  const rowA = [...FOUNDERS, ...FOUNDERS];
+  const rowB = [...FOUNDERS].reverse();
+  const rowBx = [...rowB, ...rowB];
+  return (
+    <div className="people">
+      <div className="wrap">
+        <p className="lbl">Portfolio</p>
+        <h2 className="w">The people building it.</h2>
+      </div>
+      <div className="mq">
+        <div className="mqtrack">
+          {rowA.map((n, i) => (
+            <figure className="pp" key={`a${i}`}>
+              <img src={IMG(`kh-p${i % FOUNDERS.length}`, 500, 640)} alt="" />
+              <figcaption>{n}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+      <div className="mq">
+        <div className="mqtrack rev">
+          {rowBx.map((n, i) => (
+            <figure className="pp" key={`b${i}`}>
+              <img src={IMG(`kh-q${i % FOUNDERS.length}`, 500, 640)} alt="" />
+              <figcaption>{n}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MediaSection() {
+  const { go } = useSite();
+  return (
+    <div className="medsec">
+      <div className="wrap">
+        <div className="head">
+          <div>
+            <p className="lbl">Perspectives</p>
+            <h2 className="w">Reporting and analysis.</h2>
+          </div>
+          <button
+            className="btn g"
+            style={{ borderColor: "#41474E", color: "#F5F5F4" }}
+            onClick={() => go("media")}
+          >
+            All coverage
+          </button>
+        </div>
+        <div className="mcards">
+          {MEDIA3.map((m) => (
+            <article
+              className="mcard"
+              key={m.t}
+              style={{ ["--mc" as string]: m.c }}
+              onClick={() => go("media")}
+            >
+              <div className="ph">
+                <img src={IMG(`kh-m-${m.k}`, 900, 600)} alt="" />
+                <span className="wipe" />
+              </div>
+              <div className="k">{m.k}</div>
+              <h3 className="w">{m.t}</h3>
+              <div className="dt">{m.d}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Capital() {
+  const { go } = useSite();
+  return (
+    <div className="capsec">
+      <div className="wrap capgrid">
+        <div>
+          <p className="lbl">Capital</p>
+          <h2 className="caph">
+            Everything above is open to anyone.{" "}
+            <em>The capital is not.</em>
+          </h2>
+          <p className="lede" style={{ marginTop: 20 }}>
+            The reporting, the sessions and the resources are free, and always will
+            be. The cheque is the selective part — tech-enabled, Kentucky-based, and
+            concentrated in the sectors where the state already has an advantage.
+          </p>
+          <div className="cta" style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}>
+            <button className="btn g" onClick={() => go("about")}>
+              How the funds work
+            </button>
+            <button className="btn cy" onClick={() => go("apply")}>
+              Apply
+            </button>
+          </div>
+        </div>
+        <div className="caprows">
+          {CAPROWS.map(([n, nm, d]) => (
+            <div className="caprow" key={n} onClick={() => go("about")}>
+              <div className="n">{n}</div>
+              <div>
+                <b>{nm}</b>
+                <p>{d}</p>
+              </div>
+              <span className="ar">→</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Home() {
   return (
     <section className="page on">
       <Hero />
       <Ticker />
       <Mission />
-      <Record />
-
-      <div className="band">
-        <Rv>
-          <Head label="Behind the mission" title="We do not do this alone.">
-            <button className="btn g" onClick={() => go("partners")}>
-              All partners
-            </button>
-          </Head>
-          <div className="pgrid">
-            {PARTNERS.flatMap(([ty, list]) =>
-              list.slice(0, 2).map((n, i) => <PCell key={`${ty}-${n}-${i}`} n={n} ty={ty} />),
-            )}
-          </div>
-          <p className="wallnote">
-            Accelerators, universities, corporates, angels and state partners. Logos
-            are placeholders.
-          </p>
-        </Rv>
-      </div>
-
-      <IndustryRail />
-
-      <div className="band">
-        <Rv>
-          <Head label="Feature" title="The people building it.">
-            <button className="btn g" onClick={() => go("media")}>
-              All features
-            </button>
-          </Head>
-          <div className="feat">
-            <Box seed="kh-feature" w={1200} h={820} />
-            <div className="bd">
-              <div className="k">Founder feature · Video</div>
-              <h3>
-                They moved the company from Silicon Valley to a factory two miles
-                from the airport.
-              </h3>
-              <div className="mt">
-                Placeholder standfirst. A reported profile of a company building in
-                one of our industries — how they got here, what they found, what it
-                cost.
-              </div>
-              <div className="by">Reported by Keyhorse · [Month] 2026</div>
-            </div>
-          </div>
-        </Rv>
-      </div>
-
-      <div className="band band--tint">
-        <Rv>
-          <Head label="Perspectives" title="Reporting and analysis.">
-            <button className="btn g" onClick={() => go("media")}>
-              All coverage
-            </button>
-          </Head>
-          <div className="cards stag">
-            {POSTS.slice(0, 3).map((p, i) => (
-              <PostCard key={p.t} p={p} i={i} />
-            ))}
-          </div>
-        </Rv>
-      </div>
-
-      <div className="band">
-        <Rv>
-          <Head label="Companies" title="Who is building here.">
-            <button className="btn g" onClick={() => go("companies")}>
-              Browse all
-            </button>
-          </Head>
-          <div className="wall">
-            <CompanyWall count={12} />
-          </div>
-          <p className="wallnote">
-            Company wordmarks shown as placeholders — final build pulls grayscale
-            logo files from the CMS.
-          </p>
-        </Rv>
-      </div>
+      <Pillars />
+      <FounderFeature />
+      <People />
+      <MediaSection />
+      <Capital />
     </section>
   );
 }

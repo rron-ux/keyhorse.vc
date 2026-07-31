@@ -1,7 +1,36 @@
 import { useState } from "react";
-import { JOIN, PARTNERS } from "@/data/keyhorse";
+import { JOIN, PARTNERS, PARTNER_COLORS } from "@/data/keyhorse";
 import { PageHead, Rv, useSite } from "./shared";
 import { PCell } from "./cards";
+
+function PartnerWall() {
+  return (
+    <div className="band">
+      <Rv>
+        <div className="head">
+          <div>
+            <p className="lbl">Behind the mission</p>
+            <h2>We do not do this alone.</h2>
+          </div>
+          <div className="bignum">40+</div>
+        </div>
+        <div className="pcats">
+          {PARTNERS.map(([ty, list]) => (
+            <div className="pcat" key={ty} style={{ ["--kc" as string]: PARTNER_COLORS[ty] }}>
+              <div className="ct">{ty}</div>
+              {list.map((n, i) => (
+                <div className="pent" key={n + i}>
+                  <span className="mono">{n.replace(/[[\]]/g, "").trim()[0]}</span>
+                  <span className="pnm">{n}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </Rv>
+    </div>
+  );
+}
 
 export default function Partners() {
   const { go } = useSite();
@@ -15,6 +44,9 @@ export default function Partners() {
         title="Partners"
         lede="The accelerators, universities, corporates, angels and state agencies that make this work. If you want to be one of them, this is the page."
       />
+
+      <PartnerWall />
+
 
       <div className="band">
         <Rv>
