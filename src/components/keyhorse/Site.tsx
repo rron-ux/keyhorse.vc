@@ -41,11 +41,15 @@ export default function Site() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  const [atTop, setAtTop] = useState(true);
+
   useEffect(() => {
     const onScroll = () => {
       const h = document.documentElement;
       setProgress(h.scrollTop / (h.scrollHeight - h.clientHeight || 1));
+      setAtTop(h.scrollTop < window.innerHeight - 90);
     };
+    onScroll();
     addEventListener("scroll", onScroll, { passive: true });
     return () => removeEventListener("scroll", onScroll);
   }, []);
@@ -64,7 +68,7 @@ export default function Site() {
     <SiteContext.Provider
       value={{ page, go, jump, openSlide: setSlide, closeSlide }}
     >
-      <header>
+      <header className={page === "home" && atTop ? "over" : ""}>
         <div className="wrap nav">
           <img
             className="logo"
@@ -91,7 +95,7 @@ export default function Site() {
         <div id="prog" style={{ width: `${progress * 100}%` }} />
       </header>
 
-      <main key={page}>
+      <main key={page} className={page === "home" ? "" : "pt-nav"}>
         <View />
       </main>
 
