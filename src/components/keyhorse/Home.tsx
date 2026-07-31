@@ -5,11 +5,12 @@ import {
   CYC,
   FEED,
   FOUNDERS,
-  HERO,
   MEDIA3,
   PILLARS,
 } from "@/data/keyhorse";
-import { IMG, Rv, colorFor, useSite } from "./shared";
+import { FOUNDER_PORTRAITS, HERO_FRAMES, pic } from "@/lib/images";
+import { Rv, colorFor, useSite } from "./shared";
+
 
 const reduced = () =>
   typeof window !== "undefined" &&
