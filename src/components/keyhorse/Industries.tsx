@@ -2,6 +2,12 @@ import { useState } from "react";
 import { ISEC, POSTS } from "@/data/keyhorse";
 import { Head, Rv, useSite } from "./shared";
 import { pic } from "@/lib/images";
+import companies from "@/data/companies.json";
+
+const COUNT: Record<string, number> = (companies as { sector: string }[]).reduce(
+  (m, c) => ((m[c.sector] = (m[c.sector] || 0) + 1), m),
+  {} as Record<string, number>,
+);
 
 /** Pillar colour + closest single Airtable sector for the Companies filter. */
 const PILLAR_META: Record<
@@ -119,7 +125,7 @@ export default function Industries() {
                       <span className="iap-adv">{meta.advantage}</span>
                     </span>
                     <span className="iap-c">
-                      <b>{facts.length * 7 + 12}</b>
+                      <b>{COUNT[meta.sector] ?? 0}</b>
                       <i>companies</i>
                     </span>
                     <span className="iap-p" aria-hidden="true">

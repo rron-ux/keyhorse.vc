@@ -14,7 +14,7 @@ export type PageId =
 
 type SiteCtx = {
   page: PageId;
-  go: (id: PageId) => void;
+  go: (id: PageId, search?: string) => void;
   jump: (id: string) => void;
   openSlide: (node: ReactNode) => void;
   closeSlide: () => void;
