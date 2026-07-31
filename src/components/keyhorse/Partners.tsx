@@ -198,11 +198,6 @@ const ROUTES: RouteDef[] = [
   },
 ];
 
-const ETA_ROWS: Array<[string, string]> = [
-  ["Searchers", "Operators looking to buy and run a Kentucky business."],
-  ["Owners planning an exit", "We can point you toward buyers and advisors."],
-  ["ETA investors", "Search funds and holding companies active in the region."],
-];
 
 function Figures() {
   return (
@@ -342,42 +337,6 @@ function BecomePartner() {
   );
 }
 
-function ETA() {
-  return (
-    <div className="ptband ptwhite">
-      <div className="wrap ptteo">
-        <div>
-          <p className="lbl">Entrepreneurship through acquisition</p>
-          <h2 className="pth2">
-            Roughly 190,000 Kentucky business owners are expected to retire within ten years, against{" "}
-            <em className="ptem">one search-fund deal closed in 2024</em>.
-          </h2>
-          <p className="ptp" style={{ marginTop: 14, maxWidth: "54ch" }}>
-            Seventy-nine percent of them have no succession plan. That is a large pool of profitable
-            companies with nobody lined up to run them.
-          </p>
-          <p className="ptp" style={{ maxWidth: "54ch" }}>
-            This is a gap rather than a fund we run. If you are working on it from any side, we would
-            like to know you.
-          </p>
-        </div>
-        <div className="pteta">
-          {ETA_ROWS.map(([t, d]) => (
-            <a className="pteta-row" href="#enquiry" key={t}>
-              <span>
-                <b>{t}</b>
-                <span className="pteta-d">{d}</span>
-              </span>
-              <span className="pteta-ar" aria-hidden="true">
-                →
-              </span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function Enquiry() {
   const [sent, setSent] = useState(false);
@@ -464,7 +423,7 @@ export default function Partners() {
       <Working />
       <Network />
       <BecomePartner />
-      <ETA />
+      
       <Enquiry />
     </section>
   );
