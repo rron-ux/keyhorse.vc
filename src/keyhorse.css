@@ -80,7 +80,7 @@ main.pt-nav{padding-top:70px}
 .hero .scrim{position:absolute;inset:0;
   background:linear-gradient(to top,rgba(18,20,24,.92),rgba(18,20,24,.42) 58%,rgba(18,20,24,.72))}
 .hero .tint{position:absolute;inset:0;background:rgba(0,60,86,.28);mix-blend-mode:multiply}
-.hero .slot{position:absolute;top:24px;right:26px;font-family:var(--d);font-size:9px;
+.hero .slot{position:absolute;top:90px;right:26px;font-family:var(--d);font-size:9px;
   font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);
   border:1px solid rgba(255,255,255,.22);padding:6px 11px;z-index:4}
 .hero .inner{position:relative;z-index:3;width:100%}
