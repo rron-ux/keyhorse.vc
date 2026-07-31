@@ -190,3 +190,39 @@ export const TEAM=[["Kelby Price","Managing Partner","Investment committee"],
  ["Rron Thaci","Associate","Sourcing & diligence"],
  ["Zimri Rodriguez","Venture Programs Coordinator","Sessions & programs"],
  ["Aditya Padmaraj","Analyst","Market data"]] as const;
+
+/* ── Homepage pillars (accordion) ── */
+export const PILLARS=[
+ {n:'01',nm:'Logistics & Trade',c:'#00A8E1',seed:'kh-log',
+  d:'Three major air cargo hubs and a one-day truck drive to two-thirds of the country.',co:'38 companies'},
+ {n:'02',nm:'Advanced Manufacturing',c:'#0E7C86',seed:'kh-mfg',
+  d:'6,000+ facilities, 250,000+ workers, and roughly $19B in aerospace exports.',co:'52 companies'},
+ {n:'03',nm:'Health & Care',c:'#7A5CF0',seed:'kh-health',
+  d:'Humana, Atria and Waystar headquartered here, against a rural care gap that shows up early.',co:'47 companies'},
+ {n:'04',nm:'Energy & Materials',c:'#E86A2B',seed:'kh-ev',
+  d:'$10B+ in EV battery investment and the largest primary aluminium capacity in the US.',co:'29 companies'},
+ {n:'05',nm:'Agriculture & Food',c:'#3F9B45',seed:'kh-ag',
+  d:'69,425 farms, a $10.6B bourbon supply chain, and the global headquarters of quick service.',co:'34 companies'}] as const;
+
+/* ── Founder marquee ── */
+export const FOUNDERS=[
+ 'Beltways','Cloverleaf','Bexion','AquiSense','AuthoFi','Airtrek Robotics',
+ 'BehaVR','Applied Industrials','Avana Health','Alt Distilling','Another Nine','Besti Co.',
+ 'BeyondWill','Content Credits','Biscuit Belly','ADEM','Affinna','AboutBit'] as const;
+
+/* ── Homepage media cards ── */
+export const MEDIA3=[
+ {k:'Feature',c:'#00A8E1',t:'They moved the company from Silicon Valley to a factory two miles from the airport',d:'05 / 2026'},
+ {k:'Market note',c:'#E86A2B',t:'Third Northern Kentucky hardware round this quarter',d:'05 / 2026'},
+ {k:'Round',c:'#3F9B45',t:'Beltways raises a Seed round led by an out-of-state fund',d:'05 / 2026'}] as const;
+
+/* ── Capital closing section ── */
+export const CAPROWS=[
+ ['01','Discovery Fund','Programmatic, earliest capital — invested through partner programs.'],
+ ['02','Kentucky Enterprise Fund','Direct investment into validated tech-enabled startups.'],
+ ['03','KSBCI','Larger direct positions in companies with revenue and traction.']] as const;
+
+/* ── Partner category colours ── */
+export const PARTNER_COLORS: Record<string,string> = {
+ 'Accelerators & ESOs':'#00A8E1','Universities':'#7A5CF0','Corporate partners':'#0E7C86',
+ 'Angels & investors':'#E86A2B','State & regional':'#3F9B45'};
