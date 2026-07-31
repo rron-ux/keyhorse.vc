@@ -41,11 +41,15 @@ export default function Site() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  const [atTop, setAtTop] = useState(true);
+
   useEffect(() => {
     const onScroll = () => {
       const h = document.documentElement;
       setProgress(h.scrollTop / (h.scrollHeight - h.clientHeight || 1));
+      setAtTop(h.scrollTop < window.innerHeight - 90);
     };
+    onScroll();
     addEventListener("scroll", onScroll, { passive: true });
     return () => removeEventListener("scroll", onScroll);
   }, []);
