@@ -231,7 +231,9 @@ function Working() {
           {WORKING.map((c) => (
             <article className="ptcard" key={c.name} style={{ ["--pc" as string]: c.color }}>
               <div className="ptcard-img">
-                <img loading="lazy" src={c.img} alt={c.alt} width={1200} height={900} />
+                <span className="ptclip">
+                  <img loading="lazy" src={c.img} alt={c.alt} width={1200} height={900} />
+                </span>
                 <span className="ptcard-mark">{c.mark}</span>
               </div>
               <div className="ptcard-body">
