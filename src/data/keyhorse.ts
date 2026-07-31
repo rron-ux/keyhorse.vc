@@ -2,8 +2,8 @@ export const PAGES=[["industries","Industries"],["companies","Companies"],["medi
              ["resources","Resources"],["partners","Partners"],["about","About"]] as const;
 
 export const CYC=['logistics and trade.','advanced manufacturing.','aerospace and defense.',
-           'health and care.','energy and materials.','agriculture and food.',
-           'the founders who build here.'] as const;
+           'healthcare.','energy and materials.','agriculture and food.'] as const;
+
 
 export const HERO=['kh-hero1','kh-hero2','kh-hero3'] as const;
 
