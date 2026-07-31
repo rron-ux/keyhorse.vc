@@ -66,7 +66,14 @@ export default function Site() {
     >
       <header>
         <div className="wrap nav">
+          <img
+            className="logo"
+            src="/keyhorse-logo.png"
+            alt="Keyhorse Capital"
+            onClick={() => go("home")}
+          />
           <nav className="links">
+
             {PAGES.map(([id, l]) => (
               <button
                 key={id}
