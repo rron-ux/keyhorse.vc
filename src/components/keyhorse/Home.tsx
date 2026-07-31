@@ -267,7 +267,7 @@ export default function Home() {
           </Head>
           <div className="pgrid">
             {PARTNERS.flatMap(([ty, list]) =>
-              list.slice(0, 2).map((n) => <PCell key={ty + n} n={n} ty={ty} />),
+              list.slice(0, 2).map((n, i) => <PCell key={`${ty}-${n}-${i}`} n={n} ty={ty} />),
             )}
           </div>
           <p className="wallnote">
