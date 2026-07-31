@@ -1,10 +1,11 @@
 export const PAGES=[["industries","Industries"],["companies","Companies"],["media","Media"],
-             ["resources","Resources"],["partners","Partners"],["about","About"]];
+             ["resources","Resources"],["partners","Partners"],["about","About"]] as const;
 
 export const CYC=['logistics and trade.','advanced manufacturing.','aerospace and defense.',
            'health and care.','energy and materials.','agriculture and food.',
-           'the founders who build here.'];
-export const HERO=['kh-hero1','kh-hero2','kh-hero3'];
+           'the founders who build here.'] as const;
+
+export const HERO=['kh-hero1','kh-hero2','kh-hero3'] as const;
 
 export const FEED=[
  ['12 May','Beltways','Accelerating walkways','Hebron','$4.2M','Seed',true],
@@ -12,19 +13,19 @@ export const FEED=[
  ['29 Apr','Cloverleaf','Team performance software','Covington','$8M','Series A',true],
  ['22 Apr','[Company]','Care logistics','Lexington','$3.1M','Seed',false],
  ['15 Apr','Bexion','Therapeutics','Covington','$12M','Series B',true],
- ['08 Apr','[Company]','Supply chain','Bowling Green','$900K','Pre-seed',false]];
+ ['08 Apr','[Company]','Supply chain','Bowling Green','$900K','Pre-seed',false]] as const;
 
 export const GOALS=[
  ['01','Be the first call','A founder raising in Kentucky should think of us before they think of anyone else.'],
  ['02','Be the record','The place people check to know what is happening in the state.'],
  ['03','Be the reason someone moves here','Sector coverage that makes the case before we ever make a pitch.'],
- ['04','Leave something behind','Published work, a data record, and an audience that outlasts any single fund.']];
+ ['04','Leave something behind','Published work, a data record, and an audience that outlasts any single fund.']] as const;
 
 export const RELS=[
  ['KSTC','The Kentucky Science and Technology Corporation. Keyhorse is its venture arm; KSTC is the entity that holds and administers the funds.'],
  ['Cabinet for Economic Development','The Commonwealth agency we work alongside on programs, tax credits and company attraction.'],
  ['KYInnovation','The statewide network of accelerators, incubators and support organisations we invest through and co-programme with.'],
- ['U.S. Treasury','SSBCI capital carries federal reporting obligations. That transparency requirement is a foundation, not a burden.']];
+ ['U.S. Treasury','SSBCI capital carries federal reporting obligations. That transparency requirement is a foundation, not a burden.']] as const;
 
 export const IND=[
  ['01','Logistics & Trade','The only state with three major air cargo hubs, and a one-day truck drive to two-thirds of the country.','kh-log',
@@ -36,7 +37,7 @@ export const IND=[
  ['04','Energy, Materials & Climate','$10B+ in EV battery investment, the largest primary aluminium capacity in the US, and some of the lowest energy rates.','kh-ev',
   'Grid-edge & battery intelligence · Energy storage · Critical minerals processing · Battery lifecycle & recycling · Industrial energy procurement · Carbon accounting · Efficiency retrofits'],
  ['05','Agriculture, Food & Consumer','69,425 farms, a $10.6B bourbon supply chain, and the global headquarters of quick service.','kh-ag',
-  'Livestock health analytics · Farm management · Crop yield · Agricultural marketplaces · Food distribution · Barrel tracking & ageing analytics · Beverage & CPG · QSR supply chain · SAF feedstock']];
+  'Livestock health analytics · Farm management · Crop yield · Agricultural marketplaces · Food distribution · Barrel tracking & ageing analytics · Beverage & CPG · QSR supply chain · SAF feedstock']] as const;
 
 export const ISEC=[
  ['Logistics & Trade',
@@ -63,7 +64,7 @@ export const ISEC=[
   'Kentucky has 69,425 farms across roughly half of its 25.8 million acres, and is the largest beef-cattle producer east of the Mississippi. The bourbon supply chain adds about $10.6B in economic output and supports nearly 24,000 jobs, with 17.1 million barrels ageing in the state. Louisville is the global headquarters of quick service — Yum! Brands and RSCS, the largest procurement cooperative in the industry.',
   ['69,425 farms · 25.8M acres','Largest beef producer east of the Mississippi','Bourbon: ~$10.6B output · 17.1M barrels','Equine: $2.99B output · 40,665 jobs','Yum! Brands and RSCS headquartered here'],
   'Livestock health analytics · Farm management platforms · Crop yield prediction · Agricultural marketplaces · Food distribution optimisation · Barrel tracking and ageing analytics · Beverage and CPG production · QSR supply chain and food-service CPG · Sustainable aviation fuel feedstock',
-  'QSR supply chain products built for the world\u2019s largest restaurant networks, limestone-water beverage brands, and agri-wellness verticals that turn legacy agriculture into higher-margin categories.','kh-ag']];
+  'QSR supply chain products built for the world\u2019s largest restaurant networks, limestone-water beverage brands, and agri-wellness verticals that turn legacy agriculture into higher-margin categories.','kh-ag']] as const;
 
 export const AUD=[
  ['I want to build here','Founder',
@@ -77,12 +78,12 @@ export const AUD=[
   [['Partners','partners'],['Media','media']]],
  ['I want to invest','Investor',
   'Co-investors, angels and prospective LPs. Kentucky angel credits run up to 40%, and our coverage is the earliest look at what is forming here.',
-  [['Partners','partners'],['About','about']]]];
+  [['Partners','partners'],['About','about']]]] as const;
 
 export const FUNDS_GEN=[
  ['Discovery Fund','Programmatic investments made through partner accelerators, incubators and pitch competitions. The earliest capital we deploy.','kh-f1','Pre-seed · via partner programs'],
  ['Kentucky Enterprise Fund','Direct investment into validated tech-enabled startups. Evergreen, funded by the Commonwealth.','kh-f2','Pre-seed / Seed · direct'],
- ['KSBCI','Larger direct positions in companies with revenue and traction, with reserves held for follow-on. Funded through the U.S. Treasury SSBCI programme.','kh-f3','Seed / Series A+ · direct']];
+ ['KSBCI','Larger direct positions in companies with revenue and traction, with reserves held for follow-on. Funded through the U.S. Treasury SSBCI programme.','kh-f3','Seed / Series A+ · direct']] as const;
 
 export const FUNDS3=[
  {k:'Programmatic',n:'Discovery Fund',c:'Pre-seed',cl:'Stage',
@@ -93,26 +94,26 @@ export const FUNDS3=[
   cr:['Validated prototype or MVP','Evidence of demand','Path to revenue','Kentucky HQ or relocating']},
  {k:'Direct',n:'KSBCI',c:'Seed / Series A+',cl:'Stage',
   d:'Larger direct positions in companies with revenue and traction, with reserves held for follow-on. Funded through the U.S. Treasury SSBCI programme.',
-  cr:['Revenue and repeatable traction','Customers beyond a local market','Institutional round forming','Employment potential in-state']}];
+  cr:['Revenue and repeatable traction','Customers beyond a local market','Institutional round forming','Employment potential in-state']}] as const;
 
 export const PARTNERS=[
  ['Accelerators & ESOs',['[ESO name]','[ESO name]','[ESO name]','[ESO name]','[ESO name]']],
  ['Universities',['[University]','[University]','[University]']],
  ['Corporate partners',['[Corporate]','[Corporate]','[Corporate]','[Corporate]']],
  ['Angels & investors',['[Angel group]','[Co-investor]','[Co-investor]']],
- ['State & regional',['KSTC','Cabinet for Economic Development','KYInnovation']]];
+ ['State & regional',['KSTC','Cabinet for Economic Development','KYInnovation']]] as const;
 
 export const JOIN=[
  ['Run a program','Accelerators, incubators and pitch competitions we can invest through.'],
  ['Corporate partner','Pilot customers, venture partners and category expertise.'],
  ['Angel investor','Join the syndicate, and the state credits that come with it.'],
- ['Prospective LP','Early conversations about private vehicles as they are built.']];
+ ['Prospective LP','Early conversations about private vehicles as they are built.']] as const;
 
 export const SOCIALS=[
  ['Instagram','@keyhorsecapital','Deal cards, founder faces, sessions. The record, made scrollable.','6.8K'],
  ['LinkedIn','Keyhorse Capital','Where founders and co-investors actually are. Team accounts amplify.','4.2K'],
  ['X','@keyhorsecapital','Rounds as they break, plus the pattern behind them.','2.1K'],
- ['YouTube','Keyhorse Capital','Full sessions and founder features. The library everything points to.','1.4K']];
+ ['YouTube','Keyhorse Capital','Full sessions and founder features. The library everything points to.','1.4K']] as const;
 
 export const CAL=[
  ['14','May','Raising your first institutional round','Venture Session · Keyhorse','Story Louisville','own'],
@@ -120,19 +121,19 @@ export const CAL=[
  ['04','Jun','Logistics tech, in the state that moves everything','Venture Session · Keyhorse','Covington','own'],
  ['11','Jun','[Pitch competition]','Statewide competition','[Host], Bowling Green',''],
  ['19','Jun','[Ecosystem summit]','Annual gathering','[Host], Lexington',''],
- ['09','Jul','Care at scale: building for the 65+','Venture Session · Keyhorse','Louisville','own']];
+ ['09','Jul','Care at scale: building for the 65+','Venture Session · Keyhorse','Louisville','own']] as const;
 
 export const EXT=[
  ['StartupKY Navigator','Notion','The statewide map of programs, funders and support organisations. Built by us, open to everyone.','keyhorse.notion.site'],
  ['InnovateKentucky','External','The KYInnovation network — regional hubs, programs and state resources across the Commonwealth.','innovatekentucky.org'],
  ['Regional front doors','Network','Amplify (Louisville) · Awesome Inc (Lexington) · Blue North (Covington) · CREATE (Bowling Green) · Sprocket (Paducah) · SOAR (Pikeville).',''],
- ['Angel & investor networks','Network','Bluegrass Angels · Kentucky Angels · Louisville Angel Network · Tri-State Angel Investment Group · Appalachian Investors Alliance.','']];
+ ['Angel & investor networks','Network','Bluegrass Angels · Kentucky Angels · Louisville Angel Network · Tri-State Angel Investment Group · Appalachian Investors Alliance.','']] as const;
 
 export const RESCATS=[
  ['01','Frameworks','Diligence checklists, term sheet primers and the scorecards we actually use.'],
  ['02','Video','Session recordings, founder features and short explainers.'],
  ['03','Sessions','Live workshops across the Commonwealth. Free and open to any founder.'],
- ['04','Tools','Cap table, model and data room templates you can copy.']];
+ ['04','Tools','Cap table, model and data room templates you can copy.']] as const;
 
 export const RESOURCES=[
  ['Framework','Investment Process Checklist','Every diligence item and task, stage by stage.'],
@@ -143,7 +144,7 @@ export const RESOURCES=[
  ['Session','Venture Sessions calendar','Where we will be next, and how to register.'],
  ['Tool','Cap table template','A clean starting point with common scenarios modelled.'],
  ['Tool','Data room checklist','What to have ready before diligence starts.'],
- ['Report','Kentucky ecosystem map','Accelerators, universities, support organisations and co-investors.']];
+ ['Report','Kentucky ecosystem map','Accelerators, universities, support organisations and co-investors.']] as const;
 
 export const COS=[
  ["AboutBit","Software","Lexington","active"],["ADEM","Advanced materials","Lexington","active"],
@@ -158,7 +159,7 @@ export const COS=[
  ["Bexion","Therapeutics","Covington","active"],["BeyondWill","Legal technology","Louisville","active"],
  ["BioGlitz","Consumer","Lexington","active"],["Biscuit Belly","Consumer","Louisville","active"],
  ["Cloverleaf","Software","Covington","active"],["Ceptaris","Therapeutics","Louisville","exit"],
- ["Content Credits","Media","Louisville","active"]];
+ ["Content Credits","Media","Louisville","active"]] as const;
 
 export const POSTS=[
  {k:'story',t:'They moved the company from Silicon Valley to a factory two miles from the airport',d:'05 / 2026'},
@@ -166,12 +167,12 @@ export const POSTS=[
  {k:'deal',t:'Beltways raises $4.2M Seed',d:'05 / 2026'},
  {k:'note',t:'What the state actually pays for, and who qualifies',d:'04 / 2026'},
  {k:'story',t:'Hiring engineers when you are not in a tech city',d:'04 / 2026'},
- {k:'deal',t:'Cloverleaf raises $8M Series A',d:'04 / 2026'}];
+ {k:'deal',t:'Cloverleaf raises $8M Series A',d:'04 / 2026'}] as const;
 
 export const STATS=[['$100M+',100,'M+','$','Invested in Kentucky companies'],
  ['$3.3B+',3.3,'B+','$','Follow-on capital raised'],
  ['600+',600,'+','','Companies funded'],
- ['800+',800,'+','','Jobs created, active portfolio']];
+ ['800+',800,'+','','Jobs created, active portfolio']] as const;
 
 export const STEPS=[["01","Apply","Submit the form. Every applicant hears back, either way."],
  ["02","Screening","Reviewed against published criteria and fit with a specific fund."],
@@ -179,7 +180,7 @@ export const STEPS=[["01","Apply","Submit the form. Every applicant hears back, 
  ["04","Data room","Financials, metrics, cap table, customers and legal."],
  ["05","Diligence call","A deeper session with the team, plus reference calls."],
  ["06","Investment committee","The committee reviews the file and votes."],
- ["07","Decision","Terms and documentation, or a clear no with the reason."]];
+ ["07","Decision","Terms and documentation, or a clear no with the reason."]] as const;
 
 export const TEAM=[["Kelby Price","Managing Partner","Investment committee"],
  ["Autumn Rice","Director of Operations","Fund operations"],
@@ -188,5 +189,4 @@ export const TEAM=[["Kelby Price","Managing Partner","Investment committee"],
  ["Bobby Riley","Platform Manager","Portfolio support"],
  ["Rron Thaci","Associate","Sourcing & diligence"],
  ["Zimri Rodriguez","Venture Programs Coordinator","Sessions & programs"],
- ["Aditya Padmaraj","Analyst","Market data"]];
-
+ ["Aditya Padmaraj","Analyst","Market data"]] as const;
