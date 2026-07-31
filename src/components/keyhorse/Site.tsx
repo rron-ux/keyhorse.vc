@@ -21,15 +21,17 @@ const VIEWS: Record<PageId, () => ReactNode> = {
   apply: Apply,
 };
 
-export default function Site() {
-  const [page, setPage] = useState<PageId>("home");
+export default function Site({ initialPage = "home" }: { initialPage?: PageId } = {}) {
+  const [page, setPage] = useState<PageId>(initialPage);
   const [slide, setSlide] = useState<ReactNode>(null);
   const [progress, setProgress] = useState(0);
 
   const closeSlide = useCallback(() => setSlide(null), []);
 
   const go = useCallback(
-    (id: PageId) => {
+    (id: PageId, search?: string) => {
+      const path = id === "home" ? "/" : `/${id}${search || ""}`;
+      window.history.pushState({}, "", path);
       setPage(id);
       window.scrollTo(0, 0);
       closeSlide();
