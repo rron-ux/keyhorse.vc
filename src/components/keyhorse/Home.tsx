@@ -5,11 +5,12 @@ import {
   CYC,
   FEED,
   FOUNDERS,
-  HERO,
   MEDIA3,
   PILLARS,
 } from "@/data/keyhorse";
-import { IMG, Rv, colorFor, useSite } from "./shared";
+import { FOUNDER_PORTRAITS, HERO_FRAMES, pic } from "@/lib/images";
+import { Rv, colorFor, useSite } from "./shared";
+
 
 const reduced = () =>
   typeof window !== "undefined" &&
@@ -33,7 +34,7 @@ function Hero() {
 
   useEffect(() => {
     if (reduced()) return;
-    const a = setInterval(() => setFrame((f) => (f + 1) % HERO.length), 5400);
+    const a = setInterval(() => setFrame((f) => (f + 1) % HERO_FRAMES.length), 5400);
     const b = setInterval(() => setCi((c) => (c + 1) % CYC.length), 2500);
     return () => {
       clearInterval(a);
@@ -44,12 +45,21 @@ function Hero() {
   return (
     <div className="hero">
       <div className="frames">
-        {HERO.map((s, i) => (
-          <img key={s} className={i === frame ? "on" : ""} src={IMG(s, 1900, 1100)} alt="" />
+        {HERO_FRAMES.map((f, i) => (
+          <img
+            key={f.src}
+            className={i === frame ? "on" : ""}
+            src={f.src}
+            alt={f.alt}
+            loading={i === 0 ? "eager" : "lazy"}
+            {...(i === 0 ? { fetchPriority: "high" as const } : {})}
+          />
         ))}
       </div>
       <div className="tint" />
       <div className="scrim" />
+      <div className="slot">Reference imagery — replace with commissioned film</div>
+
       <div className="wrap inner">
         <h1>
           Building Kentucky into the next hub for
@@ -112,7 +122,13 @@ function Mission() {
 
   return (
     <div className="band mband">
-      <img className="mband-bg" src={IMG("kh-kentucky", 1800, 1000)} alt="" />
+      <img
+        className="mband-bg"
+        loading="lazy"
+        src={pic("kh-kentucky").src}
+        alt={pic("kh-kentucky").alt}
+      />
+
       <Rv>
         <div className="msn">
           <div>
@@ -195,7 +211,7 @@ function Pillars() {
               style={{ ["--pc" as string]: p.c }}
               onClick={() => go("industries")}
             >
-              <img src={IMG(p.seed, 900, 1200)} alt="" />
+              <img loading="lazy" src={pic(p.seed).src} alt={pic(p.seed).alt} />
               <span className="wash" />
               <span className="rule" />
               <div className="pbd">
@@ -219,7 +235,7 @@ function FounderFeature() {
   return (
     <div className="ffeat">
       <div className="fimg">
-        <img src={IMG("kh-feature", 1400, 1200)} alt="Founder on the factory floor" />
+        <img loading="lazy" src={pic("kh-feature").src} alt={pic("kh-feature").alt} />
       </div>
       <div className="fpanel">
         <div className="glow" />
@@ -257,7 +273,12 @@ function People() {
         <div className="mqtrack">
           {rowA.map((n, i) => (
             <figure className="pp" key={`a${i}`}>
-              <img src={IMG(`kh-p${i % FOUNDERS.length}`, 500, 640)} alt="" />
+              <img
+                loading="lazy"
+                src={FOUNDER_PORTRAITS[i % FOUNDER_PORTRAITS.length]!.src}
+                alt={FOUNDER_PORTRAITS[i % FOUNDER_PORTRAITS.length]!.alt}
+              />
+
               <figcaption>{n}</figcaption>
             </figure>
           ))}
@@ -267,7 +288,20 @@ function People() {
         <div className="mqtrack rev">
           {rowBx.map((n, i) => (
             <figure className="pp" key={`b${i}`}>
-              <img src={IMG(`kh-q${i % FOUNDERS.length}`, 500, 640)} alt="" />
+              <img
+                loading="lazy"
+                src={
+                  FOUNDER_PORTRAITS[
+                    (FOUNDER_PORTRAITS.length - 1 - (i % FOUNDER_PORTRAITS.length))
+                  ]!.src
+                }
+                alt={
+                  FOUNDER_PORTRAITS[
+                    (FOUNDER_PORTRAITS.length - 1 - (i % FOUNDER_PORTRAITS.length))
+                  ]!.alt
+                }
+              />
+
               <figcaption>{n}</figcaption>
             </figure>
           ))}
@@ -304,7 +338,12 @@ function MediaSection() {
               onClick={() => go("media")}
             >
               <div className="ph">
-                <img src={IMG(`kh-m-${m.k}`, 900, 600)} alt="" />
+                <img
+                  loading="lazy"
+                  src={pic(`kh-m-${m.k}`).src}
+                  alt={pic(`kh-m-${m.k}`).alt}
+                />
+
                 <span className="wipe" />
               </div>
               <div className="k">{m.k}</div>
