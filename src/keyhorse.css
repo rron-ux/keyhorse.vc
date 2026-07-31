@@ -647,8 +647,8 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 /* Capital */
 .capsec{background:#F4F5F6;padding:clamp(56px,6vw,92px) 0}
 .capgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:start}
-.caph{font-size:clamp(26px,3.2vw,44px);letter-spacing:-.035em;line-height:1.14}
-.caph em{font-family:var(--sf);font-style:italic;color:var(--cyan)}
+.caph{font-size:clamp(30px,4vw,56px);letter-spacing:-.035em;line-height:1.1;
+  font-family:var(--d);font-weight:600;color:var(--ink)}
 .caprows{border-top:1px solid var(--line)}
 .caprow{display:grid;grid-template-columns:44px 1fr 26px;gap:18px;align-items:center;
   padding:22px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding-left .3s}
