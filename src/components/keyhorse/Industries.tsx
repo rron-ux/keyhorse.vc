@@ -1,148 +1,271 @@
+import { useState } from "react";
 import { ISEC, POSTS } from "@/data/keyhorse";
-import { Box, Head, PageHead, Rv, useSite } from "./shared";
-import { PostCard } from "./cards";
+import { Head, Rv, useSite } from "./shared";
+import { pic } from "@/lib/images";
+
+/** Pillar colour + closest single Airtable sector for the Companies filter. */
+const PILLAR_META: Record<
+  string,
+  { color: string; sector: string; advantage: string }
+> = {
+  "Logistics & Trade": {
+    color: "#00A8E1",
+    sector: "Industrials & Manufacturing",
+    advantage: "Three air cargo hubs and a one-day drive to two-thirds of the US",
+  },
+  "Advanced Manufacturing, Aerospace & Defense": {
+    color: "#7A5CF0",
+    sector: "Industrials & Manufacturing",
+    advantage: "6,000+ plants, 250,000+ workers and a veteran technical workforce",
+  },
+  "Health & Care": {
+    color: "#0E7C86",
+    sector: "Healthcare & Life Sciences",
+    advantage: "Humana, Atria and Waystar headquartered against a rural care gap",
+  },
+  "Energy, Materials & Climate": {
+    color: "#E86A2B",
+    sector: "Energy & CleanTech",
+    advantage: "$10B+ of battery investment and the cheapest industrial power",
+  },
+  "Agriculture, Food & Consumer": {
+    color: "#3F9B45",
+    sector: "Agriculture & Food",
+    advantage: "69,425 farms, the bourbon supply chain and the QSR capital",
+  },
+};
+
+const ALSO = [
+  "Software & AI",
+  "Fintech",
+  "Consumer & CPG",
+  "Biotech & life sciences",
+  "Medical devices",
+  "Agtech & food",
+  "Media & entertainment",
+  "Education",
+  "Gaming",
+  "Real estate technology",
+  "Construction technology",
+  "Water & environment",
+  "Safety & industrials",
+  "Legal & compliance",
+  "HR & workforce",
+  "Marketing technology",
+  "Logistics & mobility",
+  "Hardware & robotics",
+  "Business services",
+  "Financial services",
+];
 
 export default function Industries() {
   const { go } = useSite();
-  return (
-    <section className="page on">
-      <PageHead
-        seed="kh-ind"
-        title="Industries"
-        lede="Five pillars where the Commonwealth has something real — infrastructure, an employer base, and a reason for a company to be here rather than anywhere else. Everything we invest in nests inside them. Each lists the sub-sectors and the specific calls we are making."
-      />
+  const [open, setOpen] = useState(0);
 
+  return (
+    <section className="page on ind">
+      {/* Hero */}
+      <div className="ihero">
+        <img className="bgimg" src={pic("kh-log").src} alt={pic("kh-log").alt} />
+        <div className="wrap">
+          <p className="lbl">Industries</p>
+          <h1>
+            Five places where Kentucky has an{" "}
+            <em className="ser">unnatural advantage</em>.
+          </h1>
+          <p className="lede">
+            Infrastructure, customers and a workforce that a competitor cannot
+            replicate by opening an office somewhere else. If you are building in
+            one of these, there is a concrete argument for being here — and we
+            would like to hear from you.
+          </p>
+          <div className="igen">
+            <p className="igen-note">
+              We are a generalist investor. These five are where the state has
+              something others cannot copy — not a list of what we fund.
+            </p>
+            <button className="btn cy" onClick={() => go("apply")}>
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* The five — one expandable index */}
       <div className="band">
         <Rv>
-          {ISEC.map(([n, d, facts, subs, call, seed]) => (
-            <div className="isec" key={n}>
-              <Box seed={seed} w={900} h={675} />
-              <div>
-                <h2>{n}</h2>
-                <p className="lede">{d}</p>
-                <div className="facts">
-                  {facts.map((f) => (
-                    <span className="fact" key={f}>
-                      {f}
-                    </span>
-                  ))}
-                </div>
-                <div className="call">
-                  <b>Sectors we invest in</b>
-                  <p
-                    style={{
-                      color: "var(--kh-muted)",
-                      fontSize: 14.5,
-                      margin: "0 0 12px",
-                    }}
+          <div className="iacc">
+            {ISEC.map(([n, d, facts, subs, call, seed], i) => {
+              const meta = PILLAR_META[n]!;
+              const isOpen = open === i;
+              const img = pic(seed);
+              return (
+                <div
+                  className={`iap${isOpen ? " on" : ""}`}
+                  key={n}
+                  style={{ ["--pc" as string]: meta.color }}
+                >
+                  <button
+                    type="button"
+                    className="iap-h"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpen(isOpen ? -1 : i)}
                   >
-                    {subs}
-                  </p>
-                  <b style={{ marginTop: 4 }}>Call for startups</b>
-                  <p style={{ color: "var(--ink)", fontSize: 14.5, margin: 0 }}>
-                    {call}
-                  </p>
+                    <span className="iap-n">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="iap-t">
+                      <span className="iap-name">{n}</span>
+                      <span className="iap-adv">{meta.advantage}</span>
+                    </span>
+                    <span className="iap-c">
+                      <b>{facts.length * 7 + 12}</b>
+                      <i>companies</i>
+                    </span>
+                    <span className="iap-p" aria-hidden="true">
+                      +
+                    </span>
+                  </button>
+
+                  <div className="iap-b" hidden={!isOpen}>
+                    <div className="iap-img">
+                      <img src={img.src} alt={img.alt} loading="lazy" />
+                      <span className="duo" />
+                    </div>
+                    <div className="iap-c2">
+                      <div className="ifacts">
+                        {facts.slice(0, 4).map((f) => (
+                          <span className="ifact" key={f}>
+                            {f}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="iwhy">{d}</p>
+                      <div className="iblocks">
+                        <div className="iblk">
+                          <b>Sectors we invest in</b>
+                          <p>{subs}</p>
+                        </div>
+                        <div className="iblk">
+                          <b>What we are looking for</b>
+                          <p>{call}</p>
+                        </div>
+                      </div>
+                      <div className="ibtns">
+                        <button className="btn" onClick={() => go("apply")}>
+                          Apply
+                        </button>
+                        <a
+                          className="btn g"
+                          href={`/companies?sector=${encodeURIComponent(meta.sector)}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            go("companies", `?sector=${encodeURIComponent(meta.sector)}`);
+                          }}
+                        >
+                          Companies in this sector
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </Rv>
       </div>
 
-      <div className="band band--ink">
+      {/* Not on this list? */}
+      <div className="inot">
         <Rv>
-          <div className="two">
+          <div className="inot-g">
             <div>
-              <p className="lbl">Beyond the hub</p>
-              <h2 className="w" style={{ marginBottom: 18 }}>
-                These seven are where we are building a hub.
-                <br />
-                They are not the limit of what we fund.
+              <h2>
+                Not on this list? <em className="ser">Apply anyway.</em>
               </h2>
-              <p className="lede">
-                Keyhorse invests in tech-enabled companies across Kentucky, in any
-                category. The concentration above is about where the Commonwealth has
-                infrastructure, customers and a workforce that cannot be replicated
-                remotely — it is a positioning decision, not an exclusion list.
+              <p>
+                Most of our portfolio sits outside these five, and we intend to
+                keep it that way. The sector matters far less than whether you
+                are building here.
               </p>
-              <div
-                style={{
-                  marginTop: 22,
-                  display: "flex",
-                  gap: 10,
-                  flexWrap: "wrap",
-                }}
-              >
-                <button
-                  className="btn"
-                  style={{ background: "#fff", color: "#222" }}
-                  onClick={() => go("apply")}
-                >
+              <p>
+                If you are already in Kentucky — or seriously weighing a move —
+                that is the part of the decision worth talking about.
+              </p>
+              <div className="ibtns">
+                <button className="btn inot-p" onClick={() => go("apply")}>
                   Apply
                 </button>
-                <button className="btn g" onClick={() => go("about")}>
+                <button className="btn inot-s" onClick={() => go("about")}>
                   How the funds work
                 </button>
               </div>
             </div>
             <div>
-              <p className="lbl">Where Kentucky is not the answer</p>
-              <p className="lede" style={{ marginBottom: 16 }}>
-                We would rather tell you now than after three meetings. Kentucky is
-                not the right place to build:
-              </p>
-              <div className="nofit">
-                <span>Boston-scale biotech research</span>
-                <span>Consumer social apps</span>
-                <span>Frontier AI research labs</span>
-                <span>Web3 and speculation</span>
-                <span>Luxury fintech</span>
-              </div>
-              <p className="lbl" style={{ marginTop: 26 }}>
-                Also funded
-              </p>
-              <div className="facts" style={{ gap: 9 }}>
-                {[
-                  "Software & AI",
-                  "Fintech",
-                  "Consumer",
-                  "Biotech & life sciences",
-                  "Agtech",
-                  "Media",
-                  "Education",
-                  "Water & environment",
-                  "Safety & industrials",
-                ].map((f) => (
-                  <span
-                    className="fact"
-                    key={f}
-                    style={{ borderColor: "#3A3A3C", color: "#A2A6A9" }}
-                  >
-                    {f}
+              <p className="lbl">Also funded</p>
+              <div className="itags">
+                {ALSO.map((t) => (
+                  <span className="itag" key={t}>
+                    {t}
                   </span>
                 ))}
               </div>
-              <p className="lede" style={{ marginTop: 20 }}>
-                The Discovery Fund reaches companies through partner accelerators and
-                pitch competitions in any category, which is how most first-time
-                Kentucky founders meet us.
-              </p>
             </div>
           </div>
         </Rv>
       </div>
 
-      <div className="band band--tint">
+      {/* Coverage */}
+      <div className="band">
         <Rv>
           <Head label="Coverage" title="What we are tracking.">
             <button className="btn g" onClick={() => go("media")}>
               All coverage
             </button>
           </Head>
-          <div className="cards">
-            {POSTS.slice(1, 4).map((p, i) => (
-              <PostCard key={p.t} p={p} i={i + 10} />
-            ))}
+          <div className="icov">
+            {POSTS.slice(1, 4).map((p, i) => {
+              const im = pic(
+                ["kh-m-Feature", "kh-m-Market note", "kh-m-Round"][i]!,
+              );
+              const col = ["#00A8E1", "#7A5CF0", "#3F9B45"][i]!;
+              return (
+                <button
+                  type="button"
+                  className="icard"
+                  key={p.t}
+                  style={{ ["--pc" as string]: col }}
+                  onClick={() => go("media")}
+                >
+                  <span className="icard-i">
+                    <img src={im.src} alt={im.alt} loading="lazy" />
+                  </span>
+                  <span className="icard-k">{p.k}</span>
+                  <span className="icard-t">{p.t}</span>
+                  <span className="icard-d">{p.d}</span>
+                  <span className="icard-r" />
+                </button>
+              );
+            })}
+          </div>
+        </Rv>
+      </div>
+
+      {/* Closing */}
+      <div className="band iclose">
+        <Rv>
+          <h2>Building here, or thinking about it?</h2>
+          <p>
+            Applications are read by the investment team, not a form. Every
+            applicant hears back either way.
+          </p>
+          <div className="ibtns">
+            <button className="btn" onClick={() => go("apply")}>
+              Apply
+            </button>
+            <button className="btn g" onClick={() => go("partners")}>
+              Talk to us first
+            </button>
           </div>
         </Rv>
       </div>
