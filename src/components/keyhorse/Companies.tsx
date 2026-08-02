@@ -63,9 +63,18 @@ const FEATURED_COMPANIES = [
   "Revolution RE",
 ];
 
-const FEATURED = FEATURED_COMPANIES.map((name) =>
-  ARTICLES.find((a) => a.company === name && a.category === "stories"),
-).filter(Boolean) as (typeof ARTICLES)[number][];
+/* A couple of source covers are wide logo lockups — use a real portrait. */
+const PORTRAIT_OVERRIDE: Record<string, string> = {
+  Proximity: proximityPortrait.url,
+};
+
+const FEATURED = FEATURED_COMPANIES.map((name) => {
+  const a = ARTICLES.find((x) => x.company === name && x.category === "stories");
+  return a
+    ? { ...a, cover: PORTRAIT_OVERRIDE[a.company] ?? a.cover }
+    : undefined;
+}).filter(Boolean) as (typeof ARTICLES)[number][];
+
 
 const findCo = (q: string) =>
   ALL.find((c) => c.display_name.toLowerCase().startsWith(q.toLowerCase()));
