@@ -348,8 +348,8 @@ function MediaSection() {
       <div className="wrap">
         <div className="head">
           <div>
-            <p className="lbl">Perspectives</p>
-            <h2 className="w">Reporting and analysis.</h2>
+            <p className="lbl">MEDIA</p>
+            <h2 className="w">Stories, Reports, and more...</h2>
           </div>
           <button
             className="btn g"
