@@ -99,7 +99,7 @@ export default function Site({
 
   return (
     <SiteContext.Provider
-      value={{ page, go, jump, openSlide: setSlide, closeSlide, openPost }}
+      value={{ page, go, jump, openSlide: setSlide, closeSlide, openPost, pendingCompany }}
     >
 
       <header className={page === "home" && atTop ? "over" : ""}>
