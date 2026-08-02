@@ -270,7 +270,7 @@ export default function Media() {
     barRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const rounds = ROUNDS.slice(0, 8);
+  const rounds = ROUNDS.slice(0, 5);
 
   return (
     <section className="page on md">
