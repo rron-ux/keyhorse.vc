@@ -1,15 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FEED } from "@/data/keyhorse";
-import { ARTICLES, CONTAIN } from "@/data/articles";
-import {
-  CYCLE,
-  KH,
-  LINKEDIN_POSTS,
-  MEDIA_CAL,
-  MEDIA_FIGURES,
-  MEDIA_FILTERS,
-  SERIES,
-} from "@/data/media";
+import { ARTICLES, initialsOf, type Article, type Category } from "@/data/articles";
+import { CYCLE, KH, LINKEDIN_POSTS, MEDIA_CAL, MEDIA_FIGURES } from "@/data/media";
 import { Chips, Head, PageHead, Rv, colorFor, useSite } from "./shared";
 import { CompanySlide } from "./cards";
 
@@ -18,6 +10,25 @@ declare global {
     twttr?: { widgets?: { load?: (el?: HTMLElement | null) => void } };
   }
 }
+
+export const CAT_COLOR: Record<Category, string> = {
+  stories: "#00A8E1",
+  perspectives: "#00A8E1",
+  announcements: "#7B4FD0",
+};
+
+export const TAG_LABEL: Record<string, string> = {
+  founding: "Founding Stories",
+  behind: "Behind the Scenes",
+  cycle: "Investment Cycle",
+};
+
+const FILTERS = [
+  ["all", "All"],
+  ["stories", "Stories"],
+  ["perspectives", "Perspectives"],
+  ["announcements", "Announcements"],
+] as const;
 
 function XTimeline() {
   const ref = useRef<HTMLDivElement>(null);
@@ -58,14 +69,89 @@ function XTimeline() {
   );
 }
 
-const CYCLE_COVER =
-  ARTICLES.find((a) => a.series === "cycle")?.cover ?? "";
+function PostCard({ a, onOpen }: { a: Article; onOpen: () => void }) {
+  const c = CAT_COLOR[a.category];
+  const announcement = a.category === "announcements";
+  return (
+    <button className="pcard" onClick={onOpen} style={{ ["--sc" as string]: c }}>
+      <div className={`pcard-img${announcement ? " pcard-img--q" : ""}`}>
+        {announcement ? (
+          <span className="pcard-q">{a.quarter}</span>
+        ) : a.cover ? (
+          <img loading="lazy" src={a.cover} alt={a.person || a.title} />
+        ) : (
+          <span className="pcard-mono">{initialsOf(a.person || a.company || a.title)}</span>
+        )}
+      </div>
+      <div className="pcard-bd">
+        <span className="pcard-tag">{TAG_LABEL[a.series]}</span>
+        {announcement ? (
+          <div className="pcard-name">Keyhorse Capital</div>
+        ) : (
+          <>
+            <div className="pcard-name">{a.person}</div>
+            <div className="pcard-co">{a.company}</div>
+          </>
+        )}
+        <h3>{a.title}</h3>
+        <div className="pcard-dt">{a.date}</div>
+      </div>
+    </button>
+  );
+}
+
+function PitchForm({ kind }: { kind: "pitch" | "nominate" }) {
+  const [sent, setSent] = useState(false);
+  return (
+    <div className="pitch-form">
+      <p className="lbl" style={{ color: "var(--cyan-tx)" }}>
+        {kind === "pitch" ? "Pitch a story" : "Nominate a founder"}
+      </p>
+      <h3 style={{ fontSize: 26, marginBottom: 14 }}>
+        {kind === "pitch" ? "Tell us what you are building." : "Who should we be writing about?"}
+      </h3>
+      {sent ? (
+        <p className="lede">Thank you — we read every one and will be in touch.</p>
+      ) : (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSent(true);
+          }}
+        >
+          <label className="pf">
+            <span>Name</span>
+            <input required maxLength={100} placeholder="Your name" />
+          </label>
+          <label className="pf">
+            <span>Company</span>
+            <input required maxLength={100} placeholder="Company name" />
+          </label>
+          <label className="pf">
+            <span>Email</span>
+            <input required type="email" maxLength={255} placeholder="you@company.com" />
+          </label>
+          <label className="pf">
+            <span>The short version</span>
+            <textarea required maxLength={800} rows={4} placeholder="A few lines on the story." />
+          </label>
+          <button className="btn" type="submit" style={{ marginTop: 6 }}>
+            Send it
+          </button>
+        </form>
+      )}
+    </div>
+  );
+}
 
 export default function Media() {
-  const [t, setT] = useState<(typeof MEDIA_FILTERS)[number][0]>("all");
+  const [t, setT] = useState<(typeof FILTERS)[number][0]>("all");
   const { go, openSlide, openPost } = useSite();
 
-  const posts = ARTICLES.filter((p) => t === "all" || p.series === t);
+  const posts = useMemo(
+    () => (t === "all" ? ARTICLES : ARTICLES.filter((p) => p.category === t)),
+    [t],
+  );
 
   return (
     <section className="page on mdx">
@@ -77,9 +163,15 @@ export default function Media() {
 
       <div className="band">
         <Rv>
-          <div className="feat mdx-feat" style={{ marginBottom: 40 }}>
+          <div className="feat mdx-feat" id="cycle" style={{ marginBottom: 40 }}>
             <div className="imgbox">
-              <img src={CYCLE_COVER} alt="Q3 2026 investment cycle" style={{ objectFit: "contain", background: "#222222" }} />
+              <img
+                src={
+                  ARTICLES.find((a) => a.series === "cycle")?.cover ?? ""
+                }
+                alt="Q3 2026 investment cycle"
+                style={{ objectFit: "contain", background: "#262B31" }}
+              />
             </div>
             <div className="bd">
               <div className="k">{CYCLE.kicker}</div>
@@ -114,40 +206,29 @@ export default function Media() {
           </div>
 
           <div className="mdx-chead">
-            <Chips items={MEDIA_FILTERS} value={t} onChange={setT} />
-            <a className="btn g" href={`${KH}/blog`} target="_blank" rel="noreferrer">
-              View all posts ↗
-            </a>
+            <Chips items={FILTERS} value={t} onChange={setT} />
+            <span className="mdx-count">{posts.length} posts</span>
           </div>
 
-          <div className="cards mdx-cards">
-            {posts.map((p) => (
-              <button
-                className="card mdx-card"
-                key={p.slug}
-                onClick={() => openPost(p.slug)}
-                style={{ ["--sc" as string]: SERIES[p.series].color }}
-              >
-                <div className="imgbox">
-                  <img
-                    loading="lazy"
-                    src={p.cover}
-                    alt={p.title}
-                    style={
-                      CONTAIN.has(p.slug)
-                        ? { objectFit: "contain", background: "#222222" }
-                        : undefined
-                    }
-                  />
-                </div>
-                <div className="k" style={{ color: SERIES[p.series].color }}>
-                  {SERIES[p.series].label}
-                </div>
-                <h3>{p.title}</h3>
-                <div className="dt">{p.date}</div>
-              </button>
-            ))}
-          </div>
+          {t === "perspectives" ? (
+            <div className="persp">
+              <p>
+                Perspectives is where our market analysis will live — what we are
+                seeing across the portfolio, what is forming in the state, and where
+                the capital is going. First pieces coming soon.
+              </p>
+              <div className="persp-sub">
+                <input placeholder="you@company.com" aria-label="Email address" />
+                <button className="btn">Notify me</button>
+              </div>
+            </div>
+          ) : (
+            <div className="pgrid">
+              {posts.map((p) => (
+                <PostCard key={p.slug} a={p} onOpen={() => openPost(p.slug)} />
+              ))}
+            </div>
+          )}
 
           <div className="recsec" id="record">
             <div className="rechead">
@@ -188,7 +269,33 @@ export default function Media() {
         </Rv>
       </div>
 
-      <div className="band band--tint">
+      <div className="band band--cyan pitch">
+        <span className="pitch-orb" aria-hidden="true" />
+        <Rv>
+          <div className="pitch-in">
+            <p className="lbl pitch-lbl">Pitch us a story</p>
+            <h2 className="pitch-h">Building something worth writing about?</h2>
+            <p className="pitch-p">
+              We publish founder stories from across the Commonwealth — portfolio or
+              not. If you are building here and have a story worth telling, we would
+              like to hear it.
+            </p>
+            <div className="mdx-btns">
+              <button className="btn pitch-b1" onClick={() => openSlide(<PitchForm kind="pitch" />)}>
+                Pitch a story
+              </button>
+              <button
+                className="btn pitch-b2"
+                onClick={() => openSlide(<PitchForm kind="nominate" />)}
+              >
+                Nominate a founder
+              </button>
+            </div>
+          </div>
+        </Rv>
+      </div>
+
+      <div className="band band--cy4">
         <Rv>
           <Head label="Channels" title="Where else we publish." />
           <div className="mgrid mdx-mgrid">
@@ -344,12 +451,13 @@ export default function Media() {
               >
                 <input
                   placeholder="you@company.com"
+                  aria-label="Email address"
                   style={{
                     flex: 1,
                     minWidth: 200,
                     padding: "13px 15px",
                     border: "1px solid #3A3A3C",
-                    background: "#2A2A2A",
+                    background: "#2F343A",
                     color: "#F5F5F4",
                     fontFamily: "var(--b)",
                     fontSize: 14,
@@ -357,7 +465,7 @@ export default function Media() {
                 />
                 <button
                   className="btn"
-                  style={{ background: "var(--cyan)", color: "var(--coal)" }}
+                  style={{ background: "var(--cyan)", color: "#222222" }}
                 >
                   Subscribe
                 </button>
