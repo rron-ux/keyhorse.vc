@@ -21,6 +21,8 @@ type SiteCtx = {
   openSlide: (node: ReactNode) => void;
   closeSlide: () => void;
   openPost: (slug: string) => void;
+  /** Company name to auto-open on the companies page, if any. */
+  pendingCompany: string;
 };
 
 export const SiteContext = createContext<SiteCtx>({
@@ -30,6 +32,7 @@ export const SiteContext = createContext<SiteCtx>({
   openSlide: () => {},
   closeSlide: () => {},
   openPost: () => {},
+  pendingCompany: "",
 });
 
 export const useSite = () => useContext(SiteContext);
