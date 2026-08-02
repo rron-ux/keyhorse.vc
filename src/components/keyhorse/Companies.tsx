@@ -126,6 +126,17 @@ export default function Companies() {
   });
   const [shown, setShown] = useState(PAGE);
 
+  /* Deep link: ?company=Name opens that company's panel on arrival. */
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("company");
+    if (!q) return;
+    const target =
+      ALL.find((c) => c.display_name.toLowerCase() === q.toLowerCase()) ||
+      findCo(q);
+    if (target) openSlide(<CompanyPanel c={target} />);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   /* Keep the URL in step so filter state is shareable. */
   useEffect(() => {
     const p = new URLSearchParams();
