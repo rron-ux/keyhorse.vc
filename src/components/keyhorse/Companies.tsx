@@ -119,7 +119,7 @@ function CompanyPanel({ c }: { c: Company }) {
 }
 
 function Mosaic() {
-  const { go } = useSite();
+  const { go, openPost } = useSite();
   return (
     <div className="band">
       <Rv>
@@ -130,21 +130,29 @@ function Mosaic() {
           </button>
         </div>
         <div className="mosaic">
-          {FEATURED.map((f, i) => {
-            const co = findCo(f.company);
-            const p = FOUNDER_PORTRAITS[i % FOUNDER_PORTRAITS.length]!;
-            const col = colorFor(co?.name || f.company);
+          {FEATURED.map((a) => {
+            const co = findCo(a.company);
+            const col = colorFor(co?.name || a.company);
             return (
-              <figure className="mtile" key={f.person}>
-                <img src={p.src} alt={p.alt} loading="lazy" />
+              <button
+                type="button"
+                className="mtile"
+                key={a.slug}
+                onClick={() => openPost(a.slug)}
+              >
+                <img
+                  src={a.cover}
+                  alt={`${a.person}, founder of ${a.company}`}
+                  loading="lazy"
+                />
                 <figcaption>
-                  <span className="mn">{f.person}</span>
-                  <span className="mc">{co?.display_name || f.company}</span>
+                  <span className="mn">{a.person}</span>
+                  <span className="mc">{co?.display_name || a.company}</span>
                   <span className="ms" style={{ color: col }}>
                     {co?.sector || ""}
                   </span>
                 </figcaption>
-              </figure>
+              </button>
             );
           })}
         </div>
@@ -152,6 +160,7 @@ function Mosaic() {
     </div>
   );
 }
+
 
 export default function Companies() {
   const { openSlide, pendingCompany } = useSite();
