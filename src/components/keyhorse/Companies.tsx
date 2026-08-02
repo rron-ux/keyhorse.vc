@@ -1,10 +1,46 @@
 import { useEffect, useMemo, useState } from "react";
 import raw from "@/data/companies.json";
+import { ARTICLES } from "@/data/articles";
+import proximityPortrait from "@/assets/wall/proximity-2.png.asset.json";
+
 import { Rv, colorFor, useSite } from "./shared";
-import { FOUNDER_PORTRAITS } from "@/lib/images";
 import { LogoMark, type Company } from "./CompanyCard";
 
 const ALL = raw as Company[];
+
+/* Direct investments — companies Keyhorse backed straight off its own balance
+   sheet. Everything else came through a programmatic partner. */
+const DIRECT = new Set([
+  "Illume",
+  "Flamel AI",
+  "AquiSense Inc.",
+  "Proximity Parking",
+  "Resonate Recordings",
+  "Revolution RE",
+  "Bexion Pharmaceuticals Inc",
+  "Beltways",
+  "Gun Media Holdings",
+  "GoodMaps",
+  "Narratize",
+  "Sofab Inks",
+  "EQL Games",
+  "Wicked Sheets",
+  "Dealer Trade Network",
+  "Level 6 Cybersecurity",
+  "FlyWire",
+  "Due Gooder",
+  "Virtual Peaker",
+  "Forecastr",
+  "Cloverleaf",
+  "Kanbol",
+  "MobileServe",
+  "Switcher Studio",
+]);
+
+const laneOf = (c: Company) =>
+  DIRECT.has(c.display_name) ? "Direct" : "Programmatic";
+
+type Lane = "Direct" | "Programmatic";
 
 const SECTORS = Array.from(
   new Set(ALL.map((c) => c.sector).filter(Boolean)),
@@ -13,20 +49,36 @@ const SECTORS = Array.from(
 const ACTIVE = ALL.filter((c) => c.status === "Active").length;
 const EXITED = ALL.filter((c) => c.status === "Exited").length;
 const TOTAL = ALL.length;
+const DIRECT_N = ALL.filter((c) => laneOf(c) === "Direct").length;
 
 const PAGE = 40;
 
-/* Five featured founders — company records drive sector + colour. */
-const FEATURED: { person: string; company: string }[] = [
-  { person: "Marcus Ellery", company: "Beltways" },
-  { person: "Dana Whitfield", company: "Bexion" },
-  { person: "Priya Raman", company: "AquiSense" },
-  { person: "Tom Vasquez", company: "BehaVR" },
-  { person: "Elise Carter", company: "Biscuit Belly" },
+/* Six founder stories — portrait links straight through to the article. */
+const FEATURED_COMPANIES = [
+  "Illume",
+  "Flamel.ai",
+  "AquiSense",
+  "Proximity",
+  "Resonate Recordings",
+  "Revolution RE",
 ];
+
+/* A couple of source covers are wide logo lockups — use a real portrait. */
+const PORTRAIT_OVERRIDE: Record<string, string> = {
+  Proximity: proximityPortrait.url,
+};
+
+const FEATURED = FEATURED_COMPANIES.map((name) => {
+  const a = ARTICLES.find((x) => x.company === name && x.category === "stories");
+  return a
+    ? { ...a, cover: PORTRAIT_OVERRIDE[a.company] ?? a.cover }
+    : undefined;
+}).filter(Boolean) as (typeof ARTICLES)[number][];
+
 
 const findCo = (q: string) =>
   ALL.find((c) => c.display_name.toLowerCase().startsWith(q.toLowerCase()));
+
 
 function CompanyPanel({ c }: { c: Company }) {
   return (
@@ -36,8 +88,9 @@ function CompanyPanel({ c }: { c: Company }) {
       </div>
       <h3>{c.display_name}</h3>
       <div className="role" style={{ color: "var(--cyan)" }}>
-        {c.status}
+        {c.status} · {laneOf(c)} investment
       </div>
+
       {c.description ? (
         <p style={{ color: "var(--kh-muted)", fontSize: 13.5 }}>
           {c.description}
@@ -78,7 +131,7 @@ function CompanyPanel({ c }: { c: Company }) {
 }
 
 function Mosaic() {
-  const { go } = useSite();
+  const { go, openPost } = useSite();
   return (
     <div className="band">
       <Rv>
@@ -89,21 +142,29 @@ function Mosaic() {
           </button>
         </div>
         <div className="mosaic">
-          {FEATURED.map((f, i) => {
-            const co = findCo(f.company);
-            const p = FOUNDER_PORTRAITS[i % FOUNDER_PORTRAITS.length]!;
-            const col = colorFor(co?.name || f.company);
+          {FEATURED.map((a) => {
+            const co = findCo(a.company);
+            const col = colorFor(co?.name || a.company);
             return (
-              <figure className="mtile" key={f.person}>
-                <img src={p.src} alt={p.alt} loading="lazy" />
+              <button
+                type="button"
+                className="mtile"
+                key={a.slug}
+                onClick={() => openPost(a.slug)}
+              >
+                <img
+                  src={a.cover}
+                  alt={`${a.person}, founder of ${a.company}`}
+                  loading="lazy"
+                />
                 <figcaption>
-                  <span className="mn">{f.person}</span>
-                  <span className="mc">{co?.display_name || f.company}</span>
+                  <span className="mn">{a.person}</span>
+                  <span className="mc">{co?.display_name || a.company}</span>
                   <span className="ms" style={{ color: col }}>
                     {co?.sector || ""}
                   </span>
                 </figcaption>
-              </figure>
+              </button>
             );
           })}
         </div>
@@ -111,6 +172,7 @@ function Mosaic() {
     </div>
   );
 }
+
 
 export default function Companies() {
   const { openSlide, pendingCompany } = useSite();
@@ -124,7 +186,13 @@ export default function Companies() {
     const q = new URLSearchParams(window.location.search).get("sector");
     return q && SECTORS.includes(q) ? q : "All";
   });
+  const [lane, setLane] = useState<Lane>(() => {
+    if (typeof window === "undefined") return "Direct";
+    const q = new URLSearchParams(window.location.search).get("lane");
+    return q === "Programmatic" ? "Programmatic" : "Direct";
+  });
   const [shown, setShown] = useState(PAGE);
+
 
   /* Deep link: ?company=Name opens that company's panel on arrival. */
   useEffect(() => {
@@ -147,6 +215,7 @@ export default function Companies() {
   /* Keep the URL in step so filter state is shareable. */
   useEffect(() => {
     const p = new URLSearchParams();
+    p.set("lane", lane);
     if (sector !== "All") p.set("sector", sector);
     if (status !== "All") p.set("status", status);
     /* Preserve the deep-link company so a remount can still resolve it. */
@@ -154,16 +223,17 @@ export default function Companies() {
     if (co) p.set("company", co);
     const q = p.toString();
     window.history.replaceState({}, "", `/companies${q ? `?${q}` : ""}`);
-  }, [sector, status]);
+  }, [sector, status, lane]);
 
   const list = useMemo(
     () =>
       ALL.filter(
         (c) =>
+          laneOf(c) === lane &&
           (status === "All" || c.status === status) &&
           (sector === "All" || c.sector === sector),
       ),
-    [status, sector],
+    [status, sector, lane],
   );
 
   const pick = (set: (v: string) => void) => (v: string) => {
@@ -171,23 +241,27 @@ export default function Companies() {
     setShown(PAGE);
   };
 
+
   return (
     <section className="page on">
       <div className="chead">
         <div className="wrap">
           <h1>Companies</h1>
           <p className="lede">
-            We have funded more than 600 Kentucky companies since 2001. Over 200
-            are active today. Every one of them is listed here, alongside the
-            ones that exited.
+            We invest in two lanes: directly from our own funds, and
+            programmatically alongside partner programs. More than 600 Kentucky
+            companies have been funded since 2001, and every one of them is
+            listed here, alongside the ones that exited.
           </p>
           <div className="cstats">
             {[
               ["600+", "funded since 2001"],
+              [String(DIRECT_N), "direct investments"],
               [String(ACTIVE), "active today"],
               [String(EXITED), "exited"],
               [String(SECTORS.length), "sectors"],
             ].map(([n, l]) => (
+
               <div key={l} className="cstat">
                 <div className="n">{n}</div>
                 <div className="l">{l}</div>
@@ -201,7 +275,42 @@ export default function Companies() {
 
       <div className="band">
         <Rv>
+          <div className="clanes">
+            {(
+              [
+                [
+                  "Direct",
+                  "Direct investments",
+                  "Companies we back straight from our own funds, led or co-led by Keyhorse.",
+                ],
+                [
+                  "Programmatic",
+                  "Programmatic investments",
+                  "Indirect investments made through our partner programs across the Commonwealth.",
+                ],
+              ] as const
+            ).map(([id, title, blurb]) => (
+              <button
+                key={id}
+                type="button"
+                className="clane"
+                aria-pressed={lane === id}
+                onClick={() => {
+                  setLane(id);
+                  setShown(PAGE);
+                }}
+              >
+                <em>
+                  {id === "Direct" ? "Lane 01" : "Lane 02"} ·{" "}
+                  {ALL.filter((c) => laneOf(c) === id).length}
+                </em>
+                <b>{title}</b>
+                <span>{blurb}</span>
+              </button>
+            ))}
+          </div>
           <div className="cfilters">
+
             <div className="cfrow">
               <div className="filters">
                 {["All", "Active", "Exited"].map((s) => (
