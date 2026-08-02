@@ -174,7 +174,13 @@ export default function Companies() {
     const q = new URLSearchParams(window.location.search).get("sector");
     return q && SECTORS.includes(q) ? q : "All";
   });
+  const [lane, setLane] = useState<Lane>(() => {
+    if (typeof window === "undefined") return "Direct";
+    const q = new URLSearchParams(window.location.search).get("lane");
+    return q === "Programmatic" ? "Programmatic" : "Direct";
+  });
   const [shown, setShown] = useState(PAGE);
+
 
   /* Deep link: ?company=Name opens that company's panel on arrival. */
   useEffect(() => {
