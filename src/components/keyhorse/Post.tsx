@@ -1,4 +1,4 @@
-import { bySlug, ARTICLES } from "@/data/articles";
+import { bySlug, ARTICLES, CONTAIN } from "@/data/articles";
 import { SERIES } from "@/data/media";
 import { Rv, useSite } from "./shared";
 
@@ -99,7 +99,12 @@ export default function Post({ slug }: { slug: string }) {
           <h1 className="art-title">{a.title}</h1>
           <div className="art-date">{a.date}</div>
           <div className="art-cover">
-            <img src={a.cover} alt={a.title} loading="lazy" />
+            <img
+              src={a.cover}
+              alt={a.title}
+              loading="lazy"
+              style={CONTAIN.has(a.slug) ? { objectFit: "contain", background: "#222222" } : undefined}
+            />
           </div>
           <div className="art-body">
             <Body lines={a.body} />
@@ -121,7 +126,12 @@ export default function Post({ slug }: { slug: string }) {
                 onClick={() => openPost(m.slug)}
                 style={{ ["--sc" as string]: SERIES[m.series].color }}
               >
-                <img src={m.cover} alt={m.title} loading="lazy" />
+                <img
+                  src={m.cover}
+                  alt={m.title}
+                  loading="lazy"
+                  style={CONTAIN.has(m.slug) ? { objectFit: "contain", background: "#222222" } : undefined}
+                />
                 <div className="k" style={{ color: SERIES[m.series].color }}>
                   {SERIES[m.series].label}
                 </div>

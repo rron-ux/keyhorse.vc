@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FEED } from "@/data/keyhorse";
-import { ARTICLES } from "@/data/articles";
+import { ARTICLES, CONTAIN } from "@/data/articles";
 import {
   CYCLE,
   KH,
@@ -79,7 +79,7 @@ export default function Media() {
         <Rv>
           <div className="feat mdx-feat" style={{ marginBottom: 40 }}>
             <div className="imgbox">
-              <img src={CYCLE_COVER} alt="Q3 2026 investment cycle" />
+              <img src={CYCLE_COVER} alt="Q3 2026 investment cycle" style={{ objectFit: "contain", background: "#222222" }} />
             </div>
             <div className="bd">
               <div className="k">{CYCLE.kicker}</div>
@@ -129,7 +129,16 @@ export default function Media() {
                 style={{ ["--sc" as string]: SERIES[p.series].color }}
               >
                 <div className="imgbox">
-                  <img loading="lazy" src={p.cover} alt={p.title} />
+                  <img
+                    loading="lazy"
+                    src={p.cover}
+                    alt={p.title}
+                    style={
+                      CONTAIN.has(p.slug)
+                        ? { objectFit: "contain", background: "#222222" }
+                        : undefined
+                    }
+                  />
                 </div>
                 <div className="k" style={{ color: SERIES[p.series].color }}>
                   {SERIES[p.series].label}

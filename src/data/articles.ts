@@ -430,4 +430,10 @@ export const ARTICLES: Article[] = RAW.map((a) => ({
   cover: LOCAL[a.slug] ?? a.cover,
 }));
 
+/** Logo-style covers that must not be cropped. */
+export const CONTAIN = new Set([
+  "keyhorse-capital-launches-2026-q3-investment-cycle-for-eligible-kentucky-companies",
+  "keyhorse-founding-stories-grant-murray-of-proximity",
+]);
+
 export const bySlug = (s: string) => ARTICLES.find((a) => a.slug === s);
