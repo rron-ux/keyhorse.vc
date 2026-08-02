@@ -126,16 +126,25 @@ export default function Companies() {
   });
   const [shown, setShown] = useState(PAGE);
 
+  /* Captured during render, before the filter effect rewrites the URL. */
+  const [deepCo] = useState(() => {
+    if (typeof window === "undefined") return "";
+    return new URLSearchParams(window.location.search).get("company") || "";
+  });
+
   /* Deep link: ?company=Name opens that company's panel on arrival. */
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get("company");
-    if (!q) return;
+    if (!deepCo) return;
     const target =
-      ALL.find((c) => c.display_name.toLowerCase() === q.toLowerCase()) ||
-      findCo(q);
-    if (target) openSlide(<CompanyPanel c={target} />);
+      ALL.find((c) => c.display_name.toLowerCase() === deepCo.toLowerCase()) ||
+      findCo(deepCo);
+    openSlide(
+      <CompanyPanel
+        c={target || ({ display_name: deepCo, name: deepCo } as Company)}
+      />,
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [deepCo]);
 
   /* Keep the URL in step so filter state is shareable. */
   useEffect(() => {
