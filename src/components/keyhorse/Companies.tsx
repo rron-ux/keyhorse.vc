@@ -129,6 +129,7 @@ export default function Companies() {
   /* Deep link: ?company=Name opens that company's panel on arrival. */
   useEffect(() => {
     if (!pendingCompany) return;
+    console.log("DEEPCO", pendingCompany);
     const target =
       ALL.find(
         (c) => c.display_name.toLowerCase() === pendingCompany.toLowerCase(),
