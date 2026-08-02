@@ -46,7 +46,7 @@ export default function Site({
 
   const openPost = useCallback(
     (s: string) => {
-      window.history.pushState({}, "", `/post/${s}`);
+      window.history.pushState({}, "", `/media/${s}`);
       setSlug(s);
       setPage("post");
       window.scrollTo(0, 0);
