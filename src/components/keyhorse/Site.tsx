@@ -115,9 +115,10 @@ export default function Site({
         <div id="prog" style={{ width: `${progress * 100}%` }} />
       </header>
 
-      <main key={page} className={page === "home" ? "" : "pt-nav"}>
-        <View />
+      <main key={page + slug} className={page === "home" ? "" : "pt-nav"}>
+        {View ? <View /> : <Post slug={slug} />}
       </main>
+
 
       <footer>
         <div className="wrap">
