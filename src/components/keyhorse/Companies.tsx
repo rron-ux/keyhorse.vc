@@ -77,8 +77,9 @@ function CompanyPanel({ c }: { c: Company }) {
       </div>
       <h3>{c.display_name}</h3>
       <div className="role" style={{ color: "var(--cyan)" }}>
-        {c.status}
+        {c.status} · {laneOf(c)} investment
       </div>
+
       {c.description ? (
         <p style={{ color: "var(--kh-muted)", fontSize: 13.5 }}>
           {c.description}
