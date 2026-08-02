@@ -236,17 +236,20 @@ export default function Companies() {
         <div className="wrap">
           <h1>Companies</h1>
           <p className="lede">
-            We have funded more than 600 Kentucky companies since 2001. Over 200
-            are active today. Every one of them is listed here, alongside the
-            ones that exited.
+            We invest in two lanes: directly from our own funds, and
+            programmatically alongside partner programs. More than 600 Kentucky
+            companies have been funded since 2001, and every one of them is
+            listed here, alongside the ones that exited.
           </p>
           <div className="cstats">
             {[
               ["600+", "funded since 2001"],
+              [String(DIRECT_N), "direct investments"],
               [String(ACTIVE), "active today"],
               [String(EXITED), "exited"],
               [String(SECTORS.length), "sectors"],
             ].map(([n, l]) => (
+
               <div key={l} className="cstat">
                 <div className="n">{n}</div>
                 <div className="l">{l}</div>
