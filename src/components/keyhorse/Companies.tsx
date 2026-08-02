@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import raw from "@/data/companies.json";
 import { ARTICLES } from "@/data/articles";
+import proximityPortrait from "@/assets/wall/proximity-2.png.asset.json";
+
 import { Rv, colorFor, useSite } from "./shared";
 import { LogoMark, type Company } from "./CompanyCard";
 
