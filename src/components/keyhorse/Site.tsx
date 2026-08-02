@@ -30,16 +30,14 @@ export default function Site({
 }: { initialPage?: PageId; initialSlug?: string } = {}) {
   const [page, setPage] = useState<PageId>(initialPage);
   const [slug, setSlug] = useState(initialSlug);
-  const [slide, _setSlide] = useState<ReactNode>(null);
-  const setSlide = ((n:any)=>{console.log("RAWSET",!!n,new Error().stack?.split("\n").slice(1,5).join(" | "));_setSlide(n)}) as any;
+  const [slide, setSlide] = useState<ReactNode>(null);
   const [progress, setProgress] = useState(0);
   const [pendingCompany, setPendingCompany] = useState(() => {
     if (typeof window === "undefined") return "";
     return new URLSearchParams(window.location.search).get("company") || "";
   });
 
-  console.log("RENDER slide=", !!slide, "page=", page);
-  const closeSlide = useCallback(() => { console.log("CLOSE", new Error().stack?.split("\n")[2]); setSlide(null); }, []);
+  const closeSlide = useCallback(() => setSlide(null), []);
 
   const go = useCallback(
     (id: PageId, search?: string) => {
@@ -101,7 +99,7 @@ export default function Site({
 
   return (
     <SiteContext.Provider
-      value={{ page, go, jump, openSlide: ((n:any)=>{console.log("SETSLIDE",!!n,new Error().stack?.split("\n").slice(1,4).join(" | "));setSlide(n)}) as any, closeSlide, openPost, pendingCompany }}
+      value={{ page, go, jump, openSlide: setSlide, closeSlide, openPost, pendingCompany }}
     >
 
       <header className={page === "home" && atTop ? "over" : ""}>

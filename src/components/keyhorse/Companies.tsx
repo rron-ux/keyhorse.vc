@@ -129,7 +129,6 @@ export default function Companies() {
   /* Deep link: ?company=Name opens that company's panel on arrival. */
   useEffect(() => {
     if (!pendingCompany) return;
-    console.log("DEEPCO", pendingCompany);
     const target =
       ALL.find(
         (c) => c.display_name.toLowerCase() === pendingCompany.toLowerCase(),
@@ -150,6 +149,9 @@ export default function Companies() {
     const p = new URLSearchParams();
     if (sector !== "All") p.set("sector", sector);
     if (status !== "All") p.set("status", status);
+    /* Preserve the deep-link company so a remount can still resolve it. */
+    const co = new URLSearchParams(window.location.search).get("company");
+    if (co) p.set("company", co);
     const q = p.toString();
     window.history.replaceState({}, "", `/companies${q ? `?${q}` : ""}`);
   }, [sector, status]);
