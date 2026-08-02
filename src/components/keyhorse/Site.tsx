@@ -9,6 +9,7 @@ import Media from "./Media";
 import Resources from "./Resources";
 import Partners from "./Partners";
 import Apply from "./Apply";
+import Record from "./Record";
 import Post from "./Post";
 
 const VIEWS: Record<Exclude<PageId, "post">, () => ReactNode> = {
@@ -20,6 +21,7 @@ const VIEWS: Record<Exclude<PageId, "post">, () => ReactNode> = {
   resources: Resources,
   partners: Partners,
   apply: Apply,
+  record: Record,
 };
 
 export default function Site({
@@ -35,7 +37,12 @@ export default function Site({
 
   const go = useCallback(
     (id: PageId, search?: string) => {
-      const path = id === "home" ? "/" : `/${id}${search || ""}`;
+      const path =
+        id === "home"
+          ? "/"
+          : id === "record"
+            ? "/media/record"
+            : `/${id}${search || ""}`;
       window.history.pushState({}, "", path);
       setPage(id);
       window.scrollTo(0, 0);

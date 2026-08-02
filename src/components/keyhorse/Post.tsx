@@ -103,22 +103,32 @@ export default function Post({ slug }: { slug: string }) {
           </button>
           <span className="art-tag">{TAG_LABEL[a.series]}</span>
           <h1 className="art-title">{a.title}</h1>
-          <div className="art-meta-hero">
-            <span>{a.date}</span>
+        </div>
+      </div>
+
+      <div className="art-metabar">
+        <div className="wrap art-metabar-in">
+          <span className="art-avatar" style={{ background: c }}>
+            {a.cover && a.category !== "announcements" ? (
+              <img src={a.cover} alt="" />
+            ) : (
+              initialsOf(a.person || a.company || "Keyhorse Capital")
+            )}
+          </span>
+          <div className="art-meta-who">
+            <b>{a.person || "Keyhorse Capital"}</b>
             {a.company ? (
-              <>
-                <i>·</i>
-                <button
-                  className="art-colink"
-                  onClick={() =>
-                    go("companies", sector ? `?sector=${encodeURIComponent(sector)}` : "")
-                  }
-                >
-                  {a.company} ↗
-                </button>
-              </>
+              <button
+                className="art-colink"
+                onClick={() =>
+                  go("companies", sector ? `?sector=${encodeURIComponent(sector)}` : "")
+                }
+              >
+                {a.company} →
+              </button>
             ) : null}
           </div>
+          <span className="art-meta-dt">{a.date}</span>
         </div>
       </div>
 
@@ -128,6 +138,7 @@ export default function Post({ slug }: { slug: string }) {
           <div className="art-body">
             <Body lines={a.body} />
           </div>
+
           <p className="art-src">
             Originally published at{" "}
             <a href={a.sourceUrl} target="_blank" rel="noreferrer">
