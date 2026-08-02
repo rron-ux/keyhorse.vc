@@ -4,11 +4,11 @@ import {
   CAPROWS,
   CYC,
   FEED,
-  FOUNDERS,
   MEDIA3,
   PILLARS,
 } from "@/data/keyhorse";
-import { FOUNDER_PORTRAITS, HERO_FRAMES, pic } from "@/lib/images";
+import { ARTICLES } from "@/data/articles";
+import { HERO_FRAMES, pic } from "@/lib/images";
 import { Rv, colorFor, useSite } from "./shared";
 
 
