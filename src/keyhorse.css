@@ -553,7 +553,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mband .big em{font-family:var(--sf);font-style:italic;color:#04384F}
 .mband .fact{border-color:rgba(4,56,79,.42);color:#04384F}
 
-.mband .audtab{color:rgba(4,56,79,.6)}
+.mband .audtab{color:rgba(4,56,79,.85)}
 .mband .audtab:hover,.mband .audtab[aria-pressed="true"]{color:#04384F}
 .mband .audtab::after{content:"";position:absolute;inset:0;background:#fff;
   transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.22,.61,.36,1);z-index:-1}
