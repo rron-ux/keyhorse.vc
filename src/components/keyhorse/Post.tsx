@@ -1,5 +1,5 @@
-import { bySlug, ARTICLES, CONTAIN } from "@/data/articles";
-import { SERIES } from "@/data/media";
+import { ARTICLES, bySlug, initialsOf, relatedTo, sectorFor } from "@/data/articles";
+import { CAT_COLOR, TAG_LABEL } from "./Media";
 import { Rv, useSite } from "./shared";
 
 /** Minimal inline markdown → JSX (links, bold, italic). */
@@ -55,7 +55,7 @@ function Body({ lines }: { lines: string[] }) {
     } else if (raw.startsWith("> ")) {
       nodes.push(
         <blockquote className="art-q" key={k}>
-          {inline(raw.slice(2), k)}
+          {inline(raw.slice(2).replace(/\*\*|_/g, ""), k)}
         </blockquote>,
       );
     } else {
@@ -72,7 +72,7 @@ export default function Post({ slug }: { slug: string }) {
 
   if (!a)
     return (
-      <section className="page on">
+      <section className="page on art">
         <div className="band">
           <Rv>
             <h2>Story not found.</h2>
@@ -84,31 +84,56 @@ export default function Post({ slug }: { slug: string }) {
       </section>
     );
 
-  const more = ARTICLES.filter((x) => x.slug !== a.slug).slice(0, 3);
+  const c = CAT_COLOR[a.category];
+  const more = relatedTo(a, 3);
+  const sector = sectorFor(a.company);
 
   return (
-    <section className="page on art">
-      <div className="band">
-        <Rv>
+    <section className="page on art" style={{ ["--sc" as string]: c }}>
+      <div className="art-hero">
+        {a.cover ? (
+          <img className="art-hero-img" src={a.cover} alt={a.person || a.title} />
+        ) : (
+          <div className="art-hero-img art-hero-fill" style={{ background: c }} />
+        )}
+        <div className="art-hero-scrim" />
+        <div className="wrap art-hero-in">
           <button className="art-back" onClick={() => go("media")}>
             ← Media
           </button>
-          <div className="k" style={{ color: SERIES[a.series].color }}>
-            {SERIES[a.series].label}
-          </div>
+          <span className="art-tag">{TAG_LABEL[a.series]}</span>
           <h1 className="art-title">{a.title}</h1>
-          <div className="art-date">{a.date}</div>
-          <div className="art-cover">
-            <img
-              src={a.cover}
-              alt={a.title}
-              loading="lazy"
-              style={CONTAIN.has(a.slug) ? { objectFit: "contain", background: "#222222" } : undefined}
-            />
+          <div className="art-meta-hero">
+            <span>{a.date}</span>
+            {a.company ? (
+              <>
+                <i>·</i>
+                <button
+                  className="art-colink"
+                  onClick={() =>
+                    go("companies", sector ? `?sector=${encodeURIComponent(sector)}` : "")
+                  }
+                >
+                  {a.company} ↗
+                </button>
+              </>
+            ) : null}
           </div>
+        </div>
+      </div>
+
+      <div className="band">
+        <Rv>
+          <p className="art-stand">{a.standfirst}</p>
           <div className="art-body">
             <Body lines={a.body} />
           </div>
+          <p className="art-src">
+            Originally published at{" "}
+            <a href={a.sourceUrl} target="_blank" rel="noreferrer">
+              keyhorse.vc
+            </a>
+          </p>
           <div className="art-cta">
             <button className="btn" onClick={() => go("apply")}>
               Apply for investment
@@ -118,30 +143,36 @@ export default function Post({ slug }: { slug: string }) {
             </button>
           </div>
 
-          <div className="art-more">
-            {more.map((m) => (
-              <button
-                className="art-mcard"
-                key={m.slug}
-                onClick={() => openPost(m.slug)}
-                style={{ ["--sc" as string]: SERIES[m.series].color }}
-              >
-                <img
-                  src={m.cover}
-                  alt={m.title}
-                  loading="lazy"
-                  style={CONTAIN.has(m.slug) ? { objectFit: "contain", background: "#222222" } : undefined}
-                />
-                <div className="k" style={{ color: SERIES[m.series].color }}>
-                  {SERIES[m.series].label}
-                </div>
-                <h3>{m.title}</h3>
-                <div className="dt">{m.date}</div>
-              </button>
-            ))}
-          </div>
+          {more.length ? (
+            <>
+              <p className="lbl art-morelbl">Related</p>
+              <div className="art-more">
+                {more.map((m) => (
+                  <button
+                    className="art-mcard"
+                    key={m.slug}
+                    onClick={() => openPost(m.slug)}
+                    style={{ ["--sc" as string]: CAT_COLOR[m.category] }}
+                  >
+                    <div className="art-mimg">
+                      {m.cover ? (
+                        <img src={m.cover} alt={m.title} loading="lazy" />
+                      ) : (
+                        <span>{initialsOf(m.person || m.company || m.title)}</span>
+                      )}
+                    </div>
+                    <div className="k">{TAG_LABEL[m.series]}</div>
+                    <h3>{m.title}</h3>
+                    <div className="dt">{m.date}</div>
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : null}
         </Rv>
       </div>
     </section>
   );
 }
+
+export const ALL_SLUGS = ARTICLES.map((a) => a.slug);
