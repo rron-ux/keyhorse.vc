@@ -36,7 +36,11 @@ export const Route = createFileRoute("/$")({
 
 function CatchAll() {
   const { _splat } = Route.useParams();
-  const first = (_splat || "").split("/")[0] as PageId;
+  const parts = (_splat || "").split("/");
+  const first = parts[0] as PageId;
+  if (first === "post" && parts[1])
+    return <Site initialPage="post" initialSlug={parts[1]} />;
   const page = IDS.includes(first) ? first : "home";
   return <Site initialPage={page} />;
 }
+

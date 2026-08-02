@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FEED } from "@/data/keyhorse";
+import { ARTICLES, CONTAIN } from "@/data/articles";
 import {
   CYCLE,
   KH,
@@ -7,10 +8,9 @@ import {
   MEDIA_CAL,
   MEDIA_FIGURES,
   MEDIA_FILTERS,
-  MEDIA_POSTS,
   SERIES,
 } from "@/data/media";
-import { Box, Chips, Head, PageHead, Rv, colorFor, useSite } from "./shared";
+import { Chips, Head, PageHead, Rv, colorFor, useSite } from "./shared";
 import { CompanySlide } from "./cards";
 
 declare global {
@@ -58,11 +58,14 @@ function XTimeline() {
   );
 }
 
+const CYCLE_COVER =
+  ARTICLES.find((a) => a.series === "cycle")?.cover ?? "";
+
 export default function Media() {
   const [t, setT] = useState<(typeof MEDIA_FILTERS)[number][0]>("all");
-  const { go, openSlide } = useSite();
+  const { go, openSlide, openPost } = useSite();
 
-  const posts = MEDIA_POSTS.filter((p) => t === "all" || p.s === t);
+  const posts = ARTICLES.filter((p) => t === "all" || p.series === t);
 
   return (
     <section className="page on mdx">
@@ -75,7 +78,9 @@ export default function Media() {
       <div className="band">
         <Rv>
           <div className="feat mdx-feat" style={{ marginBottom: 40 }}>
-            <Box seed="kh-feature" w={1200} h={820} />
+            <div className="imgbox">
+              <img src={CYCLE_COVER} alt="Q3 2026 investment cycle" style={{ objectFit: "contain", background: "#222222" }} />
+            </div>
             <div className="bd">
               <div className="k">{CYCLE.kicker}</div>
               <div className="mdx-status">{CYCLE.status}</div>
@@ -85,14 +90,16 @@ export default function Media() {
                 <button className="btn" onClick={() => go("apply")}>
                   Apply
                 </button>
-                <a
+                <button
                   className="btn g"
-                  href={CYCLE.announcement}
-                  target="_blank"
-                  rel="noreferrer"
+                  onClick={() =>
+                    openPost(
+                      "keyhorse-capital-launches-2026-q3-investment-cycle-for-eligible-kentucky-companies",
+                    )
+                  }
                 >
-                  Read the announcement ↗
-                </a>
+                  Read the announcement
+                </button>
               </div>
             </div>
           </div>
@@ -115,21 +122,30 @@ export default function Media() {
 
           <div className="cards mdx-cards">
             {posts.map((p) => (
-              <a
+              <button
                 className="card mdx-card"
-                key={p.href}
-                href={p.href}
-                target="_blank"
-                rel="noreferrer"
-                style={{ ["--sc" as string]: SERIES[p.s].color }}
+                key={p.slug}
+                onClick={() => openPost(p.slug)}
+                style={{ ["--sc" as string]: SERIES[p.series].color }}
               >
-                <Box seed={p.seed} w={900} h={560} />
-                <div className="k" style={{ color: SERIES[p.s].color }}>
-                  {SERIES[p.s].label}
+                <div className="imgbox">
+                  <img
+                    loading="lazy"
+                    src={p.cover}
+                    alt={p.title}
+                    style={
+                      CONTAIN.has(p.slug)
+                        ? { objectFit: "contain", background: "#222222" }
+                        : undefined
+                    }
+                  />
                 </div>
-                <h3>{p.t}</h3>
-                <div className="dt">{p.d}</div>
-              </a>
+                <div className="k" style={{ color: SERIES[p.series].color }}>
+                  {SERIES[p.series].label}
+                </div>
+                <h3>{p.title}</h3>
+                <div className="dt">{p.date}</div>
+              </button>
             ))}
           </div>
 
