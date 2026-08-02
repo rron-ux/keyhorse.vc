@@ -283,6 +283,10 @@ const WALL_SWAP: Record<string, { company: string; cover: string }> = {
   BioGlitz: { company: "GoodMaps", cover: goodmaps.url },
   "River Guide": { company: "Flywire Cameras", cover: flywire.url },
   PONTIS: { company: "SoFab Inks", cover: sofab.url },
+  Proximity: { company: "Proximity", cover: proximity2.url },
+  DataRovers: { company: "Level 6 Cybersecurity", cover: level6.url },
+  "Rhiza Health": { company: "Narratize AI", cover: narratize.url },
+  "Due Gooder": { company: "Due Gooder", cover: dueGooder2.url },
 };
 
 /** Cards pulled from the wall entirely. */
