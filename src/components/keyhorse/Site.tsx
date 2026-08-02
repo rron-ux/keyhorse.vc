@@ -37,6 +37,7 @@ export default function Site({
     return new URLSearchParams(window.location.search).get("company") || "";
   });
 
+  console.log("RENDER slide=", !!slide, "page=", page);
   const closeSlide = useCallback(() => { console.log("CLOSE", new Error().stack?.split("\n")[2]); setSlide(null); }, []);
 
   const go = useCallback(
