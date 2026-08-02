@@ -100,7 +100,7 @@ export default function Site({
 
   return (
     <SiteContext.Provider
-      value={{ page, go, jump, openSlide: setSlide, closeSlide, openPost, pendingCompany }}
+      value={{ page, go, jump, openSlide: ((n:any)=>{console.log("SETSLIDE",!!n,new Error().stack?.split("\n").slice(1,4).join(" | "));setSlide(n)}) as any, closeSlide, openPost, pendingCompany }}
     >
 
       <header className={page === "home" && atTop ? "over" : ""}>
