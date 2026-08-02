@@ -263,7 +263,42 @@ export default function Companies() {
 
       <div className="band">
         <Rv>
+          <div className="clanes">
+            {(
+              [
+                [
+                  "Direct",
+                  "Direct investments",
+                  "Companies we back straight from our own funds, led or co-led by Keyhorse.",
+                ],
+                [
+                  "Programmatic",
+                  "Programmatic investments",
+                  "Indirect investments made through our partner programs across the Commonwealth.",
+                ],
+              ] as const
+            ).map(([id, title, blurb]) => (
+              <button
+                key={id}
+                type="button"
+                className="clane"
+                aria-pressed={lane === id}
+                onClick={() => {
+                  setLane(id);
+                  setShown(PAGE);
+                }}
+              >
+                <em>
+                  {id === "Direct" ? "Lane 01" : "Lane 02"} ·{" "}
+                  {ALL.filter((c) => laneOf(c) === id).length}
+                </em>
+                <b>{title}</b>
+                <span>{blurb}</span>
+              </button>
+            ))}
+          </div>
           <div className="cfilters">
+
             <div className="cfrow">
               <div className="filters">
                 {["All", "Active", "Exited"].map((s) => (
