@@ -11,6 +11,7 @@ export type PageId =
   | "resources"
   | "partners"
   | "apply"
+  | "record"
   | "post";
 
 type SiteCtx = {

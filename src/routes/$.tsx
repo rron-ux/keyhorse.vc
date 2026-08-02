@@ -38,6 +38,7 @@ function CatchAll() {
   const { _splat } = Route.useParams();
   const parts = (_splat || "").split("/");
   const first = parts[0] as PageId;
+  if (first === "media" && parts[1] === "record") return <Site initialPage="record" />;
   if ((first === "media" || first === "post") && parts[1])
     return <Site initialPage="post" initialSlug={parts[1]} />;
   const page = IDS.includes(first) ? first : "home";
