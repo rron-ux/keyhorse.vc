@@ -405,9 +405,9 @@ export default function Home() {
       <Hero />
       <Ticker />
       <Mission />
-      <Pillars />
-      <FounderFeature />
       <People />
+      <FounderFeature />
+      <Pillars />
       <MediaSection />
       <Capital />
     </section>
