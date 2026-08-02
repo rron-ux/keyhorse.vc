@@ -32,6 +32,10 @@ export default function Site({
   const [slug, setSlug] = useState(initialSlug);
   const [slide, setSlide] = useState<ReactNode>(null);
   const [progress, setProgress] = useState(0);
+  const [pendingCompany, setPendingCompany] = useState(() => {
+    if (typeof window === "undefined") return "";
+    return new URLSearchParams(window.location.search).get("company") || "";
+  });
 
   const closeSlide = useCallback(() => setSlide(null), []);
 
@@ -44,6 +48,9 @@ export default function Site({
             ? "/media/record"
             : `/${id}${search || ""}`;
       window.history.pushState({}, "", path);
+      setPendingCompany(
+        new URLSearchParams(search || "").get("company") || "",
+      );
       setPage(id);
       window.scrollTo(0, 0);
       closeSlide();
