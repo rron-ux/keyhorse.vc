@@ -203,6 +203,7 @@ export default function Companies() {
   /* Keep the URL in step so filter state is shareable. */
   useEffect(() => {
     const p = new URLSearchParams();
+    p.set("lane", lane);
     if (sector !== "All") p.set("sector", sector);
     if (status !== "All") p.set("status", status);
     /* Preserve the deep-link company so a remount can still resolve it. */
@@ -210,22 +211,24 @@ export default function Companies() {
     if (co) p.set("company", co);
     const q = p.toString();
     window.history.replaceState({}, "", `/companies${q ? `?${q}` : ""}`);
-  }, [sector, status]);
+  }, [sector, status, lane]);
 
   const list = useMemo(
     () =>
       ALL.filter(
         (c) =>
+          laneOf(c) === lane &&
           (status === "All" || c.status === status) &&
           (sector === "All" || c.sector === sector),
       ),
-    [status, sector],
+    [status, sector, lane],
   );
 
   const pick = (set: (v: string) => void) => (v: string) => {
     set(v);
     setShown(PAGE);
   };
+
 
   return (
     <section className="page on">
