@@ -8,6 +8,14 @@ import {
   PILLARS,
 } from "@/data/keyhorse";
 import { ARTICLES } from "@/data/articles";
+import gunMedia from "@/assets/wall/gun-media.png.asset.json";
+import biscuitBelly from "@/assets/wall/biscuit-belly.png.asset.json";
+import dealerTrade from "@/assets/wall/dealer-trade-network.png.asset.json";
+import wicked from "@/assets/wall/wicked-technologies.png.asset.json";
+import eqlGames from "@/assets/wall/eql-games.png.asset.json";
+import goodmaps from "@/assets/wall/goodmaps.png.asset.json";
+import flywire from "@/assets/wall/flywire-cameras.png.asset.json";
+import sofab from "@/assets/wall/sofab-inks.png.asset.json";
 import { HERO_FRAMES, pic } from "@/lib/images";
 import { Rv, colorFor, useSite } from "./shared";
 
@@ -261,8 +269,29 @@ function FounderFeature() {
   );
 }
 
+/** Cards swapped out for other portfolio companies, keyed by original company. */
+const WALL_SWAP: Record<string, { company: string; cover: string }> = {
+  VerityXR: { company: "Gun Media", cover: gunMedia.url },
+  Ecoshell: { company: "Biscuit Belly", cover: biscuitBelly.url },
+  "The Nori Project": { company: "Dealer Trade Network", cover: dealerTrade.url },
+  "Advanced Energy Materials": { company: "Wicked Technologies", cover: wicked.url },
+  "Garnet Gazelle": { company: "EQL Games", cover: eqlGames.url },
+  BioGlitz: { company: "GoodMaps", cover: goodmaps.url },
+  "River Guide": { company: "Flywire Cameras", cover: flywire.url },
+  PONTIS: { company: "SoFab Inks", cover: sofab.url },
+};
+
+/** Cards pulled from the wall entirely. */
+const WALL_DROP = (a: { company: string; cover: string }) =>
+  a.company === "Forecastr" || a.cover.includes("Bridget_Flamel");
+
 function People() {
-  const stories = ARTICLES.filter((a) => a.category === "stories" && a.cover);
+  const stories = ARTICLES.filter(
+    (a) => a.category === "stories" && a.cover && !WALL_DROP(a),
+  ).map((a) => {
+    const s = WALL_SWAP[a.company];
+    return s ? { ...a, company: s.company, person: s.company, cover: s.cover } : a;
+  });
   const half = Math.ceil(stories.length / 2);
   const rowA = [...stories.slice(0, half), ...stories.slice(0, half)];
   const rowB = [...stories.slice(half)].reverse();

@@ -620,7 +620,8 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .people .mqtrack.rev{animation-direction:reverse}
 .people .mq:hover .mqtrack{animation-play-state:paused}
 .people .pp{margin:0;flex:0 0 190px;position:relative}
-.people .pp img{width:190px;height:242px;object-fit:cover;filter:grayscale(1);
+.people .pp img{width:190px;height:242px;object-fit:cover;object-position:50% 22%;
+  background:#1B1F23;filter:grayscale(1);
   transition:filter .35s ease}
 .people .pp:hover img{filter:none}
 .people .pp figcaption{font-family:var(--d);font-size:12.5px;font-weight:600;
