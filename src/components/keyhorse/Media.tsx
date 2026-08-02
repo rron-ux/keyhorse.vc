@@ -255,7 +255,7 @@ export default function Media() {
             <button className="btn g">Submit an event</button>
           </Head>
           <div className="cal">
-            {MEDIA_CAL.map(([d, m, nm, ty, wh, own, url]) => {
+            {MEDIA_CAL.map(([d, m, nm, ty, wh, own, url], i) => {
               const inner = (
                 <>
                   <div className="dt">
@@ -275,11 +275,11 @@ export default function Media() {
                 </>
               );
               return url ? (
-                <a className="ev mdx-ev" key={nm} href={url} target="_blank" rel="noreferrer">
+                <a className="ev mdx-ev" key={i} href={url} target="_blank" rel="noreferrer">
                   {inner}
                 </a>
               ) : (
-                <div className="ev" key={nm}>
+                <div className="ev" key={i}>
                   {inner}
                 </div>
               );
