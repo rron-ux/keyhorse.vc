@@ -113,7 +113,7 @@ function Mosaic() {
 }
 
 export default function Companies() {
-  const { openSlide } = useSite();
+  const { openSlide, pendingCompany } = useSite();
   const [status, setStatus] = useState(() => {
     if (typeof window === "undefined") return "All";
     const q = new URLSearchParams(window.location.search).get("status");
@@ -126,11 +126,32 @@ export default function Companies() {
   });
   const [shown, setShown] = useState(PAGE);
 
+  /* Deep link: ?company=Name opens that company's panel on arrival. */
+  useEffect(() => {
+    if (!pendingCompany) return;
+    const target =
+      ALL.find(
+        (c) => c.display_name.toLowerCase() === pendingCompany.toLowerCase(),
+      ) || findCo(pendingCompany);
+    openSlide(
+      <CompanyPanel
+        c={
+          target ||
+          ({ display_name: pendingCompany, name: pendingCompany } as Company)
+        }
+      />,
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingCompany]);
+
   /* Keep the URL in step so filter state is shareable. */
   useEffect(() => {
     const p = new URLSearchParams();
     if (sector !== "All") p.set("sector", sector);
     if (status !== "All") p.set("status", status);
+    /* Preserve the deep-link company so a remount can still resolve it. */
+    const co = new URLSearchParams(window.location.search).get("company");
+    if (co) p.set("company", co);
     const q = p.toString();
     window.history.replaceState({}, "", `/companies${q ? `?${q}` : ""}`);
   }, [sector, status]);

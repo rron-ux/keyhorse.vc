@@ -294,6 +294,7 @@ const WALL_DROP = (a: { company: string; cover: string }) =>
   a.company === "Forecastr" || a.cover.includes("Bridget_Flamel");
 
 function People() {
+  const { go } = useSite();
   const stories = ARTICLES.filter(
     (a) => a.category === "stories" && a.cover && !WALL_DROP(a),
   ).map((a) => {
@@ -305,7 +306,20 @@ function People() {
   const rowB = [...stories.slice(half)].reverse();
   const rowBx = [...rowB, ...rowB];
   const card = (a: (typeof stories)[number], key: string) => (
-    <figure className="pp" key={key}>
+    <figure
+      className="pp"
+      key={key}
+      role="button"
+      tabIndex={0}
+      style={{ cursor: "pointer" }}
+      onClick={() => go("companies", `?company=${encodeURIComponent(a.company)}`)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          go("companies", `?company=${encodeURIComponent(a.company)}`);
+        }
+      }}
+    >
       <img loading="lazy" src={a.cover} alt={`${a.person}, founder of ${a.company}`} />
       <figcaption>{a.company || a.person}</figcaption>
     </figure>
