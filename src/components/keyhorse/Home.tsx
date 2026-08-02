@@ -8,6 +8,14 @@ import {
   PILLARS,
 } from "@/data/keyhorse";
 import { ARTICLES } from "@/data/articles";
+import gunMedia from "@/assets/wall/gun-media.png.asset.json";
+import biscuitBelly from "@/assets/wall/biscuit-belly.png.asset.json";
+import dealerTrade from "@/assets/wall/dealer-trade-network.png.asset.json";
+import wicked from "@/assets/wall/wicked-technologies.png.asset.json";
+import eqlGames from "@/assets/wall/eql-games.png.asset.json";
+import goodmaps from "@/assets/wall/goodmaps.png.asset.json";
+import flywire from "@/assets/wall/flywire-cameras.png.asset.json";
+import sofab from "@/assets/wall/sofab-inks.png.asset.json";
 import { HERO_FRAMES, pic } from "@/lib/images";
 import { Rv, colorFor, useSite } from "./shared";
 
