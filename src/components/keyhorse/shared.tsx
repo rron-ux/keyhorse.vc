@@ -10,7 +10,8 @@ export type PageId =
   | "media"
   | "resources"
   | "partners"
-  | "apply";
+  | "apply"
+  | "post";
 
 type SiteCtx = {
   page: PageId;
@@ -18,6 +19,7 @@ type SiteCtx = {
   jump: (id: string) => void;
   openSlide: (node: ReactNode) => void;
   closeSlide: () => void;
+  openPost: (slug: string) => void;
 };
 
 export const SiteContext = createContext<SiteCtx>({
@@ -26,9 +28,11 @@ export const SiteContext = createContext<SiteCtx>({
   jump: () => {},
   openSlide: () => {},
   closeSlide: () => {},
+  openPost: () => {},
 });
 
 export const useSite = () => useContext(SiteContext);
+
 
 /** Resolve a legacy image seed to a real project asset URL. */
 export const IMG = (seed: string, _w?: number, _h?: number) => pic(seed).src;
