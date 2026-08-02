@@ -29,18 +29,15 @@ function Clock() {
 
 function Hero() {
   const { go } = useSite();
-  const [frame, setFrame] = useState(0);
   const [ci, setCi] = useState(0);
 
   useEffect(() => {
     if (reduced()) return;
-    const a = setInterval(() => setFrame((f) => (f + 1) % HERO_FRAMES.length), 5400);
-    const b = setInterval(() => setCi((c) => (c + 1) % CYC.length), 2500);
-    return () => {
-      clearInterval(a);
-      clearInterval(b);
-    };
+    const id = setInterval(() => setCi((c) => (c + 1) % CYC.length), 3000);
+    return () => clearInterval(id);
   }, []);
+
+  const frame = ci % HERO_FRAMES.length;
 
   return (
     <div className="hero">
@@ -82,6 +79,11 @@ function Hero() {
           >
             What is happening
           </button>
+        </div>
+        <div className="hdash" aria-hidden="true">
+          {CYC.map((c, i) => (
+            <i key={c} className={i === ci ? "on" : ""} />
+          ))}
         </div>
       </div>
       <div className="foot">
