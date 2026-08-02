@@ -4,11 +4,11 @@ import {
   CAPROWS,
   CYC,
   FEED,
-  FOUNDERS,
   MEDIA3,
   PILLARS,
 } from "@/data/keyhorse";
-import { FOUNDER_PORTRAITS, HERO_FRAMES, pic } from "@/lib/images";
+import { ARTICLES } from "@/data/articles";
+import { HERO_FRAMES, pic } from "@/lib/images";
 import { Rv, colorFor, useSite } from "./shared";
 
 
@@ -262,56 +262,33 @@ function FounderFeature() {
 }
 
 function People() {
-  const rowA = [...FOUNDERS, ...FOUNDERS];
-  const rowB = [...FOUNDERS].reverse();
+  const stories = ARTICLES.filter((a) => a.category === "stories" && a.cover);
+  const half = Math.ceil(stories.length / 2);
+  const rowA = [...stories.slice(0, half), ...stories.slice(0, half)];
+  const rowB = [...stories.slice(half)].reverse();
   const rowBx = [...rowB, ...rowB];
+  const card = (a: (typeof stories)[number], key: string) => (
+    <figure className="pp" key={key}>
+      <img loading="lazy" src={a.cover} alt={`${a.person}, founder of ${a.company}`} />
+      <figcaption>{a.company || a.person}</figcaption>
+    </figure>
+  );
   return (
     <div className="people">
       <div className="wrap">
-        <p className="lbl">Portfolio</p>
+        <p className="lbl">Companies</p>
         <h2 className="w">The people building it.</h2>
       </div>
       <div className="mq">
-        <div className="mqtrack">
-          {rowA.map((n, i) => (
-            <figure className="pp" key={`a${i}`}>
-              <img
-                loading="lazy"
-                src={FOUNDER_PORTRAITS[i % FOUNDER_PORTRAITS.length]!.src}
-                alt={FOUNDER_PORTRAITS[i % FOUNDER_PORTRAITS.length]!.alt}
-              />
-
-              <figcaption>{n}</figcaption>
-            </figure>
-          ))}
-        </div>
+        <div className="mqtrack">{rowA.map((a, i) => card(a, `a${i}`))}</div>
       </div>
       <div className="mq">
-        <div className="mqtrack rev">
-          {rowBx.map((n, i) => (
-            <figure className="pp" key={`b${i}`}>
-              <img
-                loading="lazy"
-                src={
-                  FOUNDER_PORTRAITS[
-                    (FOUNDER_PORTRAITS.length - 1 - (i % FOUNDER_PORTRAITS.length))
-                  ]!.src
-                }
-                alt={
-                  FOUNDER_PORTRAITS[
-                    (FOUNDER_PORTRAITS.length - 1 - (i % FOUNDER_PORTRAITS.length))
-                  ]!.alt
-                }
-              />
-
-              <figcaption>{n}</figcaption>
-            </figure>
-          ))}
-        </div>
+        <div className="mqtrack rev">{rowBx.map((a, i) => card(a, `b${i}`))}</div>
       </div>
     </div>
   );
 }
+
 
 function MediaSection() {
   const { go } = useSite();
