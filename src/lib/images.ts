@@ -11,7 +11,7 @@ import agricultureAsset from "@/assets/agriculture.jpg.asset.json";
 import heroCargo from "@/assets/hero-cargo.jpg";
 import heroFactory from "@/assets/hero-factory.jpg";
 import heroBluegrass from "@/assets/hero-bluegrass.jpg";
-import missionHorse from "@/assets/mission-horsecountry.jpg";
+import missionHorse from "@/assets/mission-horse-solo.jpg";
 import founderFeature from "@/assets/founder-feature.jpg";
 import mediaRelocation from "@/assets/media-relocation.jpg";
 import mediaAerial from "@/assets/media-aerial.jpg";
@@ -42,19 +42,31 @@ export const FOUNDER_PORTRAITS: Pic[] = [
   { src: f9, alt: "Founder in a clinic space with patient monitoring screens" },
 ];
 
-/** Three crossfading hero frames — first one is the LCP image. */
+/** Six crossfading hero frames — one per cycling phrase. First is the LCP image. */
 export const HERO_FRAMES: Pic[] = [
   {
     src: heroCargo,
-    alt: "Freighter aircraft being loaded at a floodlit air cargo apron at dusk",
+    alt: "Freight yard and cargo terminal under late light",
   },
   {
     src: heroFactory,
-    alt: "Factory floor mid-shift with machining centres in operation",
+    alt: "Factory floor mid-shift with machinery running",
+  },
+  {
+    src: healthcareAsset.url,
+    alt: "Clinicians at work in natural light",
+  },
+  {
+    src: energyAsset.url,
+    alt: "Wind turbines at an industrial energy site at dusk",
   },
   {
     src: heroBluegrass,
-    alt: "Bluegrass farmland with horses grazing behind black plank fencing at low sun",
+    alt: "Rolling Kentucky farmland with equipment working the ground",
+  },
+  {
+    src: founderFeature,
+    alt: "A founder standing in their own working environment",
   },
 ];
 
