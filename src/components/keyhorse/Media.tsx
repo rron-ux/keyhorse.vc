@@ -14,7 +14,7 @@ import { colorFor, useSite } from "./shared";
 export const CAT_COLOR: Record<Category, string> = {
   stories: "#00A8E1",
   perspectives: "#00A8E1",
-  announcements: "#7B4FD0",
+  announcements: "#222222",
 };
 
 export const TAG_LABEL: Record<string, string> = {
