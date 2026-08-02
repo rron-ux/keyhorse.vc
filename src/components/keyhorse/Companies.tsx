@@ -1,10 +1,44 @@
 import { useEffect, useMemo, useState } from "react";
 import raw from "@/data/companies.json";
+import { ARTICLES } from "@/data/articles";
 import { Rv, colorFor, useSite } from "./shared";
-import { FOUNDER_PORTRAITS } from "@/lib/images";
 import { LogoMark, type Company } from "./CompanyCard";
 
 const ALL = raw as Company[];
+
+/* Direct investments — companies Keyhorse backed straight off its own balance
+   sheet. Everything else came through a programmatic partner. */
+const DIRECT = new Set([
+  "Illume",
+  "Flamel AI",
+  "AquiSense Inc.",
+  "Proximity Parking",
+  "Resonate Recordings",
+  "Revolution RE",
+  "Bexion Pharmaceuticals Inc",
+  "Beltways",
+  "Gun Media Holdings",
+  "GoodMaps",
+  "Narratize",
+  "Sofab Inks",
+  "EQL Games",
+  "Wicked Sheets",
+  "Dealer Trade Network",
+  "Level 6 Cybersecurity",
+  "FlyWire",
+  "Due Gooder",
+  "Virtual Peaker",
+  "Forecastr",
+  "Cloverleaf",
+  "Kanbol",
+  "MobileServe",
+  "Switcher Studio",
+]);
+
+const laneOf = (c: Company) =>
+  DIRECT.has(c.display_name) ? "Direct" : "Programmatic";
+
+type Lane = "Direct" | "Programmatic";
 
 const SECTORS = Array.from(
   new Set(ALL.map((c) => c.sector).filter(Boolean)),
@@ -13,20 +47,27 @@ const SECTORS = Array.from(
 const ACTIVE = ALL.filter((c) => c.status === "Active").length;
 const EXITED = ALL.filter((c) => c.status === "Exited").length;
 const TOTAL = ALL.length;
+const DIRECT_N = ALL.filter((c) => laneOf(c) === "Direct").length;
 
 const PAGE = 40;
 
-/* Five featured founders — company records drive sector + colour. */
-const FEATURED: { person: string; company: string }[] = [
-  { person: "Marcus Ellery", company: "Beltways" },
-  { person: "Dana Whitfield", company: "Bexion" },
-  { person: "Priya Raman", company: "AquiSense" },
-  { person: "Tom Vasquez", company: "BehaVR" },
-  { person: "Elise Carter", company: "Biscuit Belly" },
+/* Six founder stories — portrait links straight through to the article. */
+const FEATURED_COMPANIES = [
+  "Illume",
+  "Flamel.ai",
+  "AquiSense",
+  "Proximity",
+  "Resonate Recordings",
+  "Revolution RE",
 ];
+
+const FEATURED = FEATURED_COMPANIES.map((name) =>
+  ARTICLES.find((a) => a.company === name && a.category === "stories"),
+).filter(Boolean) as (typeof ARTICLES)[number][];
 
 const findCo = (q: string) =>
   ALL.find((c) => c.display_name.toLowerCase().startsWith(q.toLowerCase()));
+
 
 function CompanyPanel({ c }: { c: Company }) {
   return (
