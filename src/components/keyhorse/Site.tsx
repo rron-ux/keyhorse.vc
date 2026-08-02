@@ -81,12 +81,13 @@ export default function Site({
     return () => document.removeEventListener("keydown", onKey);
   }, [closeSlide]);
 
-  const View = VIEWS[page];
+  const View = page === "post" ? null : VIEWS[page];
 
   return (
     <SiteContext.Provider
-      value={{ page, go, jump, openSlide: setSlide, closeSlide }}
+      value={{ page, go, jump, openSlide: setSlide, closeSlide, openPost }}
     >
+
       <header className={page === "home" && atTop ? "over" : ""}>
         <div className="wrap nav">
           <img
