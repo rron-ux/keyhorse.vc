@@ -1,43 +1,135 @@
-import { useState } from "react";
-import { CAL, FEED, POSTS, SOCIALS } from "@/data/keyhorse";
+import { useEffect, useRef, useState } from "react";
+import { FEED } from "@/data/keyhorse";
+import {
+  CYCLE,
+  KH,
+  LINKEDIN_POSTS,
+  MEDIA_CAL,
+  MEDIA_FIGURES,
+  MEDIA_FILTERS,
+  MEDIA_POSTS,
+  SERIES,
+} from "@/data/media";
 import { Box, Chips, Head, PageHead, Rv, colorFor, useSite } from "./shared";
-import { CompanySlide, PostCard } from "./cards";
+import { CompanySlide } from "./cards";
 
-const FILTERS = [
-  ["all", "All"],
-  ["deal", "Rounds"],
-  ["story", "Features"],
-  ["note", "Market notes"],
-] as const;
+declare global {
+  interface Window {
+    twttr?: { widgets?: { load?: (el?: HTMLElement | null) => void } };
+  }
+}
+
+function XTimeline() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    const SRC = "https://platform.twitter.com/widgets.js";
+    const done = () => window.twttr?.widgets?.load?.(ref.current);
+    let s = document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`);
+    if (!s) {
+      s = document.createElement("script");
+      s.src = SRC;
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    s.addEventListener("load", done);
+    s.addEventListener("error", () => setFailed(true));
+    done();
+    const t = window.setTimeout(() => {
+      if (!ref.current?.querySelector("iframe")) setFailed(true);
+    }, 6000);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  if (failed) return null;
+  return (
+    <div className="mdx-x" ref={ref}>
+      <a
+        className="twitter-timeline"
+        data-theme="dark"
+        data-height="500"
+        data-chrome="noheader nofooter transparent"
+        href="https://twitter.com/keyhorsevc"
+      >
+        Posts by @keyhorsevc
+      </a>
+    </div>
+  );
+}
 
 export default function Media() {
-  const [t, setT] = useState<(typeof FILTERS)[number][0]>("all");
-  const { openSlide } = useSite();
+  const [t, setT] = useState<(typeof MEDIA_FILTERS)[number][0]>("all");
+  const { go, openSlide } = useSite();
 
+  const posts = MEDIA_POSTS.filter((p) => t === "all" || p.s === t);
 
   return (
-    <section className="page on">
+    <section className="page on mdx">
       <PageHead
         seed="kh-media"
         title="Media"
-        lede="Everything we publish about Kentucky venture, in one place — rounds, features, market notes, video, the newsletter, and a live calendar of what is happening across the Commonwealth."
+        lede="Founder interviews, operator conversations and quarterly investment cycle announcements — everything we publish about Kentucky venture, in one place."
       />
 
       <div className="band">
         <Rv>
-          <div className="feat" style={{ marginBottom: 40 }}>
-            <Box seed="kh-anchor" w={1200} h={820} />
+          <div className="feat mdx-feat" style={{ marginBottom: 40 }}>
+            <Box seed="kh-feature" w={1200} h={820} />
             <div className="bd">
-              <div className="k">Founder feature · Video</div>
-              <h3>Placeholder headline for the anchor feature of the month.</h3>
-              <div className="mt">Long-form profile, shot on location.</div>
-              <div className="by">Reported by Keyhorse · [Month] 2026</div>
+              <div className="k">{CYCLE.kicker}</div>
+              <div className="mdx-status">{CYCLE.status}</div>
+              <h3>{CYCLE.headline}</h3>
+              <div className="mt">{CYCLE.standfirst}</div>
+              <div className="mdx-btns">
+                <button className="btn" onClick={() => go("apply")}>
+                  Apply
+                </button>
+                <a
+                  className="btn g"
+                  href={CYCLE.announcement}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Read the announcement ↗
+                </a>
+              </div>
             </div>
           </div>
-          <Chips items={FILTERS} value={t} onChange={setT} />
-          <div className="cards">
-            {POSTS.filter((p) => t === "all" || p.k === t).map((p, i) => (
-              <PostCard key={p.t} p={p} i={i} />
+
+          <div className="mdx-figs">
+            {MEDIA_FIGURES.map(([n, l]) => (
+              <div className="mdx-fig" key={l}>
+                <b>{n}</b>
+                <span>{l}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mdx-chead">
+            <Chips items={MEDIA_FILTERS} value={t} onChange={setT} />
+            <a className="btn g" href={`${KH}/blog`} target="_blank" rel="noreferrer">
+              View all posts ↗
+            </a>
+          </div>
+
+          <div className="cards mdx-cards">
+            {posts.map((p) => (
+              <a
+                className="card mdx-card"
+                key={p.href}
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                style={{ ["--sc" as string]: SERIES[p.s].color }}
+              >
+                <Box seed={p.seed} w={900} h={560} />
+                <div className="k" style={{ color: SERIES[p.s].color }}>
+                  {SERIES[p.s].label}
+                </div>
+                <h3>{p.t}</h3>
+                <div className="dt">{p.d}</div>
+              </a>
             ))}
           </div>
 
@@ -80,36 +172,75 @@ export default function Media() {
         </Rv>
       </div>
 
-
       <div className="band band--tint">
         <Rv>
           <Head label="Channels" title="Where else we publish." />
-          <div className="mgrid">
-            {SOCIALS.map(([p, h, tx, c]) => (
-              <div className="msoc" key={p}>
-                <div className="h">
-                  <div className="p">{p}</div>
-                  <div className="c">{c}</div>
-                </div>
-                <div className="t">{tx}</div>
-                <div className="g">
-                  <div />
-                  <div />
-                  <div />
-                </div>
-                <div
-                  className="t"
-                  style={{
-                    marginTop: 12,
-                    color: "var(--cyan-tx)",
-                    fontFamily: "var(--m)",
-                    fontSize: 11.5,
-                  }}
-                >
-                  {h}
-                </div>
+          <div className="mgrid mdx-mgrid">
+            <a
+              className="msoc mdx-soc mdx-soc--wide"
+              href="https://www.linkedin.com/company/keyhorse"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="h">
+                <div className="p">LinkedIn</div>
+                <div className="c">Primary channel ↗</div>
               </div>
-            ))}
+              <div className="t">
+                Where our founders and co-investors are. Company news, portfolio
+                milestones and the team.
+              </div>
+              <ul className="mdx-li">
+                {LINKEDIN_POSTS.map((l) => (
+                  <li key={l}>{l}</li>
+                ))}
+              </ul>
+            </a>
+
+            <div className="msoc mdx-soc mdx-soc--x">
+              <div className="h">
+                <div className="p">X</div>
+                <a
+                  className="c"
+                  href="https://twitter.com/keyhorsevc"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @keyhorsevc ↗
+                </a>
+              </div>
+              <div className="t">
+                Rounds as they close, and what we are seeing.
+              </div>
+              <XTimeline />
+            </div>
+
+            <a
+              className="msoc mdx-soc"
+              href={`${KH}/blog`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="h">
+                <div className="p">Blog</div>
+                <div className="c">keyhorse.vc/blog ↗</div>
+              </div>
+              <div className="t">
+                Founding Stories, Behind the Scenes and investment cycle
+                announcements.
+              </div>
+            </a>
+
+            <div className="msoc mdx-soc mdx-soc--soon">
+              <div className="h">
+                <div className="p">YouTube</div>
+                <div className="c">Coming soon</div>
+              </div>
+              <div className="t">
+                Video interviews and session recordings. No channel yet — we will
+                link it here when it launches.
+              </div>
+            </div>
           </div>
         </Rv>
       </div>
@@ -124,24 +255,35 @@ export default function Media() {
             <button className="btn g">Submit an event</button>
           </Head>
           <div className="cal">
-            {CAL.map(([d, m, nm, ty, wh, own]) => (
-              <div className="ev" key={nm}>
-                <div className="dt">
-                  <b>{d}</b>
-                  {m}
+            {MEDIA_CAL.map(([d, m, nm, ty, wh, own, url]) => {
+              const inner = (
+                <>
+                  <div className="dt">
+                    <b>{d}</b>
+                    {m}
+                  </div>
+                  <div className="nm">
+                    {nm}
+                    <small>{ty}</small>
+                  </div>
+                  <div className="wh">{wh}</div>
+                  <div className="by">
+                    <span className={`evtag ${own}`}>
+                      {own ? "Keyhorse" : "Ecosystem"}
+                    </span>
+                  </div>
+                </>
+              );
+              return url ? (
+                <a className="ev mdx-ev" key={nm} href={url} target="_blank" rel="noreferrer">
+                  {inner}
+                </a>
+              ) : (
+                <div className="ev" key={nm}>
+                  {inner}
                 </div>
-                <div className="nm">
-                  {nm}
-                  <small>{ty}</small>
-                </div>
-                <div className="wh">{wh}</div>
-                <div className="by">
-                  <span className={`evtag ${own}`}>
-                    {own ? "Keyhorse" : "Ecosystem"}
-                  </span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Rv>
       </div>
@@ -150,43 +292,36 @@ export default function Media() {
         <Rv>
           <div className="two">
             <div>
-              <p className="lbl">Reports</p>
+              <p className="lbl">Impact</p>
               <h2 className="w" style={{ marginBottom: 16 }}>
-                The Kentucky Venture Report.
+                Where the capital has gone.
               </h2>
               <p className="lede">
-                Every disclosed round, every fund forming, every program opening, by
-                sector and region. Published annually, free, and cited by people who
-                never read a single post. It is the record the rest of this is built
-                on.
+                Portfolio performance, jobs created and capital deployed across the
+                Commonwealth.
               </p>
               <div
-                style={{
-                  display: "flex",
-                  gap: 10,
-                  marginTop: 22,
-                  flexWrap: "wrap",
-                }}
+                style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap" }}
               >
-                <button className="btn" style={{ background: "#fff", color: "#222" }}>
-                  Read the 2026 report
-                </button>
-                <button
-                  className="btn g"
-                  style={{ borderColor: "#4A4A4A", color: "#F5F5F4" }}
+                <a
+                  className="btn"
+                  style={{ background: "#fff", color: "#222" }}
+                  href={`${KH}/impact`}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  Previous editions
-                </button>
+                  See the impact ↗
+                </a>
               </div>
             </div>
             <div>
-              <p className="lbl">Subscribe</p>
+              <p className="lbl">Receive updates</p>
               <h3 className="w" style={{ fontSize: 24, marginBottom: 12 }}>
                 One email a month.
               </h3>
               <p className="lede">
-                Rounds, features, open calls and what we are seeing. No forwarding
-                required — it is the same thing we would tell you on a call.
+                Founding Stories, Behind the Scenes and each investment cycle as it
+                opens. Same list as the signup on keyhorse.vc — no second inbox.
               </p>
               <div
                 style={{ display: "flex", gap: 8, marginTop: 18, flexWrap: "wrap" }}
@@ -204,7 +339,10 @@ export default function Media() {
                     fontSize: 14,
                   }}
                 />
-                <button className="btn" style={{ background: "var(--cyan)", color: "var(--coal)" }}>
+                <button
+                  className="btn"
+                  style={{ background: "var(--cyan)", color: "var(--coal)" }}
+                >
                   Subscribe
                 </button>
               </div>
