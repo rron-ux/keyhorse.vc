@@ -19,7 +19,7 @@ import wicked from "@/assets/wall/wicked-technologies.png.asset.json";
 import eqlGames from "@/assets/wall/eql-games.png.asset.json";
 import goodmaps from "@/assets/wall/goodmaps.png.asset.json";
 import flywire from "@/assets/wall/flywire-2.png.asset.json";
-import sofab from "@/assets/wall/sofab-inks.png.asset.json";
+import sofab from "@/assets/wall/sofab-inks-clean.png.asset.json";
 import { HERO_FRAMES, pic } from "@/lib/images";
 import { Rv, colorFor, useSite } from "./shared";
 
