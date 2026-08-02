@@ -30,7 +30,8 @@ export default function Site({
 }: { initialPage?: PageId; initialSlug?: string } = {}) {
   const [page, setPage] = useState<PageId>(initialPage);
   const [slug, setSlug] = useState(initialSlug);
-  const [slide, setSlide] = useState<ReactNode>(null);
+  const [slide, _setSlide] = useState<ReactNode>(null);
+  const setSlide = ((n:any)=>{console.log("RAWSET",!!n,new Error().stack?.split("\n").slice(1,5).join(" | "));_setSlide(n)}) as any;
   const [progress, setProgress] = useState(0);
   const [pendingCompany, setPendingCompany] = useState(() => {
     if (typeof window === "undefined") return "";
