@@ -9,8 +9,9 @@ import Media from "./Media";
 import Resources from "./Resources";
 import Partners from "./Partners";
 import Apply from "./Apply";
+import Post from "./Post";
 
-const VIEWS: Record<PageId, () => ReactNode> = {
+const VIEWS: Record<Exclude<PageId, "post">, () => ReactNode> = {
   home: Home,
   about: About,
   industries: Industries,
@@ -21,8 +22,12 @@ const VIEWS: Record<PageId, () => ReactNode> = {
   apply: Apply,
 };
 
-export default function Site({ initialPage = "home" }: { initialPage?: PageId } = {}) {
+export default function Site({
+  initialPage = "home",
+  initialSlug = "",
+}: { initialPage?: PageId; initialSlug?: string } = {}) {
   const [page, setPage] = useState<PageId>(initialPage);
+  const [slug, setSlug] = useState(initialSlug);
   const [slide, setSlide] = useState<ReactNode>(null);
   const [progress, setProgress] = useState(0);
 
@@ -38,6 +43,18 @@ export default function Site({ initialPage = "home" }: { initialPage?: PageId } 
     },
     [closeSlide],
   );
+
+  const openPost = useCallback(
+    (s: string) => {
+      window.history.pushState({}, "", `/post/${s}`);
+      setSlug(s);
+      setPage("post");
+      window.scrollTo(0, 0);
+      closeSlide();
+    },
+    [closeSlide],
+  );
+
 
   const jump = useCallback((id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
