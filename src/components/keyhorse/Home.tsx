@@ -314,7 +314,7 @@ function MediaSection() {
         <div className="head">
           <div>
             <p className="lbl">MEDIA</p>
-            <h2 className="w">Stories, Reports, and more...</h2>
+            <h2 className="w">Stories, insights, and more...</h2>
           </div>
           <button
             className="btn g"
