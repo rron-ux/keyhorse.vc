@@ -1,387 +1,457 @@
-import { useEffect, useMemo, useState } from "react";
-import raw from "@/data/companies.json";
-import { ARTICLES } from "@/data/articles";
-import proximityPortrait from "@/assets/wall/proximity-2.png.asset.json";
-
-import { Rv, colorFor, useSite } from "./shared";
-import { LogoMark, type Company } from "./CompanyCard";
-
-const ALL = raw as Company[];
-
-/* Direct investments — companies Keyhorse backed straight off its own balance
-   sheet. Everything else came through a programmatic partner. */
-const DIRECT = new Set([
-  "Illume",
-  "Flamel AI",
-  "AquiSense Inc.",
-  "Proximity Parking",
-  "Resonate Recordings",
-  "Revolution RE",
-  "Bexion Pharmaceuticals Inc",
-  "Beltways",
-  "Gun Media Holdings",
-  "GoodMaps",
-  "Narratize",
-  "Sofab Inks",
-  "EQL Games",
-  "Wicked Sheets",
-  "Dealer Trade Network",
-  "Level 6 Cybersecurity",
-  "FlyWire",
-  "Due Gooder",
-  "Virtual Peaker",
-  "Forecastr",
-  "Cloverleaf",
-  "Kanbol",
-  "MobileServe",
-  "Switcher Studio",
-]);
-
-const laneOf = (c: Company) =>
-  DIRECT.has(c.display_name) ? "Direct" : "Programmatic";
-
-type Lane = "Direct" | "Programmatic";
-
-const SECTORS = Array.from(
-  new Set(ALL.map((c) => c.sector).filter(Boolean)),
-).sort();
-
-const ACTIVE = ALL.filter((c) => c.status === "Active").length;
-const EXITED = ALL.filter((c) => c.status === "Exited").length;
-const TOTAL = ALL.length;
-const DIRECT_N = ALL.filter((c) => laneOf(c) === "Direct").length;
+import { useEffect, useMemo, useRef, useState } from "react";
+import heroBluegrass from "@/assets/hero-bluegrass.jpg";
+import {
+  BUSINESS_MODELS,
+  COMPANIES,
+  INDUSTRIES,
+  MARQUEE,
+  TOTAL,
+  TYPE_COLOR,
+  TYPE_TEXT,
+  type CompanyRow,
+} from "@/data/company-meta";
+import { initials } from "./CompanyCard";
+import { useSite } from "./shared";
 
 const PAGE = 40;
 
-/* Six founder stories — portrait links straight through to the article. */
-const FEATURED_COMPANIES = [
-  "Illume",
-  "Flamel.ai",
-  "AquiSense",
-  "Proximity",
-  "Resonate Recordings",
-  "Revolution RE",
-];
+/* ---------------------------------------------------------------- helpers */
 
-/* A couple of source covers are wide logo lockups — use a real portrait. */
-const PORTRAIT_OVERRIDE: Record<string, string> = {
-  Proximity: proximityPortrait.url,
-};
-
-const FEATURED = FEATURED_COMPANIES.map((name) => {
-  const a = ARTICLES.find((x) => x.company === name && x.category === "stories");
-  return a
-    ? { ...a, cover: PORTRAIT_OVERRIDE[a.company] ?? a.cover }
-    : undefined;
-}).filter(Boolean) as (typeof ARTICLES)[number][];
-
-
-const findCo = (q: string) =>
-  ALL.find((c) => c.display_name.toLowerCase().startsWith(q.toLowerCase()));
-
-
-function CompanyPanel({ c }: { c: Company }) {
+function Portrait({
+  c,
+  className,
+}: {
+  c: CompanyRow;
+  className?: string;
+}) {
+  if (c.portrait)
+    return (
+      <img
+        className={className}
+        src={c.portrait}
+        alt={c.founder ? `${c.founder}, ${c.display_name}` : c.display_name}
+        loading="lazy"
+      />
+    );
   return (
-    <div className="bd cpanel">
-      <div className="cpanel-mark">
-        <LogoMark c={c} size={92} plate />
-      </div>
-      <h3>{c.display_name}</h3>
-      <div className="role" style={{ color: "var(--cyan)" }}>
-        {c.status} · {laneOf(c)} investment
-      </div>
+    <span
+      className={`cx-mono-fallback${className ? ` ${className}` : ""}`}
+      style={{ color: TYPE_TEXT[c.type] }}
+      aria-hidden
+    >
+      {initials(c.display_name)}
+    </span>
+  );
+}
 
-      {c.description ? (
-        <p style={{ color: "var(--kh-muted)", fontSize: 13.5 }}>
-          {c.description}
-        </p>
-      ) : null}
-      {c.sector ? (
-        <div className="kv">
-          <span>Primary sector</span>
-          <span>{c.sector}</span>
-        </div>
-      ) : null}
-      {c.industry ? (
-        <div className="kv">
-          <span>Industry</span>
-          <span>{c.industry}</span>
-        </div>
-      ) : null}
-      {c.website ? (
-        <div className="kv">
-          <span>Website</span>
-          <span>{c.domain}</span>
-        </div>
-      ) : null}
-      {c.website ? (
-        <div style={{ marginTop: 24, display: "flex", gap: 9 }}>
-          <a
-            className="btn g"
-            href={c.website}
-            target="_blank"
-            rel="noopener noreferrer"
+/* --------------------------------------------------------------- marquee */
+
+function Marquee({ onPick }: { onPick: (c: CompanyRow) => void }) {
+  const row = [...MARQUEE, ...MARQUEE];
+  return (
+    <div className="cx-marquee">
+      <div className="cx-track">
+        {row.map((c, i) => (
+          <button
+            type="button"
+            key={`${c.domain}-${i}`}
+            className="cx-mcard"
+            style={{ ["--tc" as string]: TYPE_COLOR[c.type] }}
+            onClick={() => onPick(c)}
           >
-            Visit site
-          </a>
-        </div>
-      ) : null}
+            <span className="cx-mshot">
+              <Portrait c={c} />
+            </span>
+            <span className="cx-mname">{c.display_name}</span>
+            <span className="cx-mtype">{c.type.toUpperCase()}</span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
 
-function Mosaic() {
-  const { go, openPost } = useSite();
+/* -------------------------------------------------------------- dropdown */
+
+function Dropdown({
+  label,
+  options,
+  counts,
+  selected,
+  onToggle,
+  onClear,
+  open,
+  setOpen,
+}: {
+  label: string;
+  options: string[];
+  counts: Record<string, number>;
+  selected: string[];
+  onToggle: (v: string) => void;
+  onClear: () => void;
+  open: boolean;
+  setOpen: (v: boolean) => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e: MouseEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDoc);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDoc);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open, setOpen]);
+
   return (
-    <div className="band">
-      <Rv>
-        <div className="mosaic-head">
-          <p className="lbl">The people building it</p>
-          <button className="mosaic-all" onClick={() => go("media")}>
-            All features →
+    <div className="cx-dd" ref={ref}>
+      <button
+        type="button"
+        className="cx-ddb"
+        aria-expanded={open}
+        data-active={selected.length > 0 || undefined}
+        onClick={() => setOpen(!open)}
+      >
+        {label}
+        {selected.length ? ` (${selected.length})` : ""}
+        <i aria-hidden>▾</i>
+      </button>
+      {open ? (
+        <div className="cx-ddp" role="group" aria-label={label}>
+          <div className="cx-ddscroll">
+            {options.map((o) => (
+              <label key={o} className="cx-ddrow">
+                <input
+                  type="checkbox"
+                  checked={selected.includes(o)}
+                  onChange={() => onToggle(o)}
+                />
+                <span className="cx-ddn">{o}</span>
+                <span className="cx-ddc">{counts[o] || 0}</span>
+              </label>
+            ))}
+          </div>
+          <button type="button" className="cx-ddclear" onClick={onClear}>
+            Clear
           </button>
         </div>
-        <div className="mosaic">
-          {FEATURED.map((a) => {
-            const co = findCo(a.company);
-            const col = colorFor(co?.name || a.company);
-            return (
-              <button
-                type="button"
-                className="mtile"
-                key={a.slug}
-                onClick={() => openPost(a.slug)}
-              >
-                <img
-                  src={a.cover}
-                  alt={`${a.person}, founder of ${a.company}`}
-                  loading="lazy"
-                />
-                <figcaption>
-                  <span className="mn">{a.person}</span>
-                  <span className="mc">{co?.display_name || a.company}</span>
-                  <span className="ms" style={{ color: col }}>
-                    {co?.sector || ""}
-                  </span>
-                </figcaption>
-              </button>
-            );
-          })}
-        </div>
-      </Rv>
+      ) : null}
     </div>
   );
 }
 
+/* ----------------------------------------------------------------- modal */
 
-export default function Companies() {
-  const { openSlide, pendingCompany } = useSite();
-  const [status, setStatus] = useState(() => {
-    if (typeof window === "undefined") return "All";
-    const q = new URLSearchParams(window.location.search).get("status");
-    return q === "Active" || q === "Exited" ? q : "All";
-  });
-  const [sector, setSector] = useState(() => {
-    if (typeof window === "undefined") return "All";
-    const q = new URLSearchParams(window.location.search).get("sector");
-    return q && SECTORS.includes(q) ? q : "All";
-  });
-  const [lane, setLane] = useState<Lane>(() => {
-    if (typeof window === "undefined") return "Direct";
-    const q = new URLSearchParams(window.location.search).get("lane");
-    return q === "Programmatic" ? "Programmatic" : "Direct";
-  });
-  const [shown, setShown] = useState(PAGE);
-
-
-  /* Deep link: ?company=Name opens that company's panel on arrival. */
+function Modal({ c, onClose }: { c: CompanyRow; onClose: () => void }) {
+  const { openPost } = useSite();
   useEffect(() => {
-    if (!pendingCompany) return;
-    const target =
-      ALL.find(
-        (c) => c.display_name.toLowerCase() === pendingCompany.toLowerCase(),
-      ) || findCo(pendingCompany);
-    openSlide(
-      <CompanyPanel
-        c={
-          target ||
-          ({ display_name: pendingCompany, name: pendingCompany } as Company)
-        }
-      />,
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pendingCompany]);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
 
-  /* Keep the URL in step so filter state is shareable. */
-  useEffect(() => {
-    const p = new URLSearchParams();
-    p.set("lane", lane);
-    if (sector !== "All") p.set("sector", sector);
-    if (status !== "All") p.set("status", status);
-    /* Preserve the deep-link company so a remount can still resolve it. */
-    const co = new URLSearchParams(window.location.search).get("company");
-    if (co) p.set("company", co);
-    const q = p.toString();
-    window.history.replaceState({}, "", `/companies${q ? `?${q}` : ""}`);
-  }, [sector, status, lane]);
-
-  const list = useMemo(
-    () =>
-      ALL.filter(
-        (c) =>
-          laneOf(c) === lane &&
-          (status === "All" || c.status === status) &&
-          (sector === "All" || c.sector === sector),
-      ),
-    [status, sector, lane],
-  );
-
-  const pick = (set: (v: string) => void) => (v: string) => {
-    set(v);
-    setShown(PAGE);
-  };
-
+  const rows: [string, string][] = [
+    ["Founder", c.founder || "—"],
+    ["Industry", c.industry],
+    ["Sector", c.sector],
+    ["Business model", c.businessModel],
+    ["Stage", c.stage],
+    ["Headquarters", c.hq],
+  ];
+  if (c.type === "Programmatic")
+    rows.push(["Invested via", c.partnerProgram || "—"]);
 
   return (
-    <section className="page on">
-      <div className="chead">
-        <div className="wrap">
-          <h1>Companies</h1>
-          <p className="lede">
-            We invest in two lanes: directly from our own funds, and
-            programmatically alongside partner programs. More than 600 Kentucky
-            companies have been funded since 2001, and every one of them is
-            listed here, alongside the ones that exited.
-          </p>
-          <div className="cstats">
-            {[
-              ["600+", "funded since 2001"],
-              [String(DIRECT_N), "direct investments"],
-              [String(ACTIVE), "active today"],
-              [String(EXITED), "exited"],
-              [String(SECTORS.length), "sectors"],
-            ].map(([n, l]) => (
-
-              <div key={l} className="cstat">
-                <div className="n">{n}</div>
-                <div className="l">{l}</div>
+    <div className="cx-scrim" onClick={onClose}>
+      <div
+        className="cx-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={c.display_name}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="cx-x" onClick={onClose} aria-label="Close">
+          ×
+        </button>
+        <div className="cx-mleft">
+          <Portrait c={c} />
+        </div>
+        <div className="cx-mbody">
+          <span className="cx-badge" style={{ ["--tc" as string]: TYPE_TEXT[c.type] }}>
+            {c.type.toUpperCase()}
+          </span>
+          <h2>{c.display_name}</h2>
+          <p className="cx-one">{c.oneLiner}</p>
+          <div className="cx-kv">
+            {rows.map(([k, v]) => (
+              <div key={k}>
+                <span>{k}</span>
+                <span>{v}</span>
               </div>
             ))}
+          </div>
+          {c.articles.length ? (
+            <div className="cx-cov">
+              <p className="cx-covl">Coverage</p>
+              {c.articles.map((a) => (
+                <a
+                  key={a.slug}
+                  href={a.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <em>Keyhorse</em>
+                  <b>{a.title}</b>
+                  <i>{a.date}</i>
+                </a>
+              ))}
+            </div>
+          ) : null}
+          <div className="cx-acts">
+            {c.website ? (
+              <a
+                className="cx-btn cy"
+                href={c.website}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit {c.domain}
+              </a>
+            ) : null}
+            {c.articles[0] ? (
+              <button
+                className="cx-btn out"
+                onClick={() => {
+                  onClose();
+                  openPost(c.articles[0]!.slug);
+                }}
+              >
+                Read the story
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
+    </div>
+  );
+}
 
-      <Mosaic />
+/* ------------------------------------------------------------------ page */
 
-      <div className="band">
-        <Rv>
-          <div className="clanes">
-            {(
-              [
-                [
-                  "Direct",
-                  "Direct investments",
-                  "Companies we back straight from our own funds, led or co-led by Keyhorse.",
-                ],
-                [
-                  "Programmatic",
-                  "Programmatic investments",
-                  "Indirect investments made through our partner programs across the Commonwealth.",
-                ],
-              ] as const
-            ).map(([id, title, blurb]) => (
-              <button
-                key={id}
-                type="button"
-                className="clane"
-                aria-pressed={lane === id}
-                onClick={() => {
-                  setLane(id);
-                  setShown(PAGE);
-                }}
-              >
-                <em>
-                  {id === "Direct" ? "Lane 01" : "Lane 02"} ·{" "}
-                  {ALL.filter((c) => laneOf(c) === id).length}
-                </em>
-                <b>{title}</b>
-                <span>{blurb}</span>
+export default function Companies() {
+  const { pendingCompany } = useSite();
+  const [types, setTypes] = useState<string[]>([]);
+  const [inds, setInds] = useState<string[]>([]);
+  const [models, setModels] = useState<string[]>([]);
+  const [q, setQ] = useState("");
+  const [open, setOpen] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [active, setActive] = useState<CompanyRow | null>(null);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!pendingCompany) return;
+    const hit = COMPANIES.find(
+      (c) => c.display_name.toLowerCase() === pendingCompany.toLowerCase(),
+    );
+    if (hit) setActive(hit);
+  }, [pendingCompany]);
+
+  const list = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    return COMPANIES.filter(
+      (c) =>
+        (!types.length || types.includes(c.type)) &&
+        (!inds.length || inds.includes(c.industry)) &&
+        (!models.length || models.includes(c.businessModel)) &&
+        (!needle ||
+          c.display_name.toLowerCase().includes(needle) ||
+          c.oneLiner.toLowerCase().includes(needle) ||
+          c.founder.toLowerCase().includes(needle)),
+    );
+  }, [types, inds, models, q]);
+
+  const pages = Math.max(1, Math.ceil(list.length / PAGE));
+  const cur = Math.min(page, pages);
+  const slice = list.slice((cur - 1) * PAGE, cur * PAGE);
+
+  const toggler =
+    (set: React.Dispatch<React.SetStateAction<string[]>>) => (v: string) => {
+      setPage(1);
+      set((s) => (s.includes(v) ? s.filter((x) => x !== v) : [...s, v]));
+    };
+
+  const goPage = (n: number) => {
+    setPage(n);
+    barRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const counts = (key: (c: CompanyRow) => string) => {
+    const m: Record<string, number> = {};
+    for (const c of COMPANIES) m[key(c)] = (m[key(c)] || 0) + 1;
+    return m;
+  };
+
+  const chips: { k: string; v: string; drop: () => void }[] = [
+    ...types.map((v) => ({ k: "Investment", v, drop: () => toggler(setTypes)(v) })),
+    ...inds.map((v) => ({ k: "Industry", v, drop: () => toggler(setInds)(v) })),
+    ...models.map((v) => ({ k: "Model", v, drop: () => toggler(setModels)(v) })),
+  ];
+
+  return (
+    <section className="page on cx">
+      <header className="cx-head">
+        <img src={heroBluegrass} alt="" aria-hidden />
+        <div className="wrap">
+          <p className="cx-eyebrow">Companies</p>
+          <h1>Companies</h1>
+        </div>
+      </header>
+
+      <Marquee onPick={setActive} />
+
+      <div className="cx-bar" ref={barRef}>
+        <div className="wrap cx-barin">
+          <Dropdown
+            label="Investment"
+            options={["Direct", "Programmatic"]}
+            counts={counts((c) => c.type)}
+            selected={types}
+            onToggle={toggler(setTypes)}
+            onClear={() => setTypes([])}
+            open={open === "t"}
+            setOpen={(v) => setOpen(v ? "t" : null)}
+          />
+          <Dropdown
+            label="Industry"
+            options={INDUSTRIES}
+            counts={counts((c) => c.industry)}
+            selected={inds}
+            onToggle={toggler(setInds)}
+            onClear={() => setInds([])}
+            open={open === "i"}
+            setOpen={(v) => setOpen(v ? "i" : null)}
+          />
+          <Dropdown
+            label="Business model"
+            options={[...BUSINESS_MODELS]}
+            counts={counts((c) => c.businessModel)}
+            selected={models}
+            onToggle={toggler(setModels)}
+            onClear={() => setModels([])}
+            open={open === "m"}
+            setOpen={(v) => setOpen(v ? "m" : null)}
+          />
+          <input
+            className="cx-search"
+            value={q}
+            placeholder="Search companies, founders"
+            onChange={(e) => {
+              setQ(e.target.value);
+              setPage(1);
+            }}
+          />
+          <span className="cx-count">
+            {list.length} of {TOTAL}
+          </span>
+        </div>
+        {chips.length ? (
+          <div className="wrap cx-chips">
+            {chips.map((ch) => (
+              <button key={`${ch.k}-${ch.v}`} className="cx-chip" onClick={ch.drop}>
+                {ch.v} <i aria-hidden>×</i>
               </button>
             ))}
+            <button
+              className="cx-clearall"
+              onClick={() => {
+                setTypes([]);
+                setInds([]);
+                setModels([]);
+                setPage(1);
+              }}
+            >
+              Clear all
+            </button>
           </div>
-          <div className="cfilters">
-
-            <div className="cfrow">
-              <div className="filters">
-                {["All", "Active", "Exited"].map((s) => (
-                  <button
-                    key={s}
-                    className="chip"
-                    aria-pressed={status === s}
-                    onClick={() => pick(setStatus)(s)}
-                  >
-                    {s}
-                  </button>
-                ))}
-                {["All", ...SECTORS].map((s) => (
-                  <button
-                    key={`sec-${s}`}
-                    className="chip"
-                    aria-pressed={sector === s}
-                    onClick={() => pick(setSector)(s)}
-                  >
-                    {s === "All" ? "All sectors" : s}
-                  </button>
-                ))}
-              </div>
-              <span className="cfcount">
-                {list.length} shown · {TOTAL} total
-              </span>
-            </div>
-          </div>
-
-          <div className="ctable">
-            <div className="chrow chhead">
-              <span>Company</span>
-              <span>Sector</span>
-              <span>Industry</span>
-              <span>Status</span>
-              <span />
-            </div>
-            {list.slice(0, shown).map((c) => {
-              const col = colorFor(c.name);
-              return (
-                <button
-                  type="button"
-                  key={`${c.name}-${c.domain}`}
-                  className="chrow crow"
-                  style={{ ["--cc" as string]: col }}
-                  onClick={() => openSlide(<CompanyPanel c={c} />)}
-                >
-                  <span className="cname">
-                    <LogoMark c={c} size={26} />
-                    <b>{c.display_name}</b>
-                  </span>
-                  <span className="csec">{c.sector}</span>
-                  <span className="cind">{c.industry}</span>
-                  <span className={`cst${c.status === "Exited" ? " ex" : ""}`}>
-                    {c.status}
-                  </span>
-                  <span className="car">→</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {shown < list.length ? (
-            <div style={{ marginTop: 32, textAlign: "center" }}>
-              <button className="btn" onClick={() => setShown((n) => n + PAGE)}>
-                Load more
-              </button>
-            </div>
-          ) : null}
-        </Rv>
+        ) : null}
       </div>
+
+      <div className="wrap cx-listwrap">
+        <div className="cx-lhead">
+          <span>Company</span>
+          <span>Industry</span>
+          <span>Sector</span>
+          <span>Investment</span>
+          <span />
+        </div>
+
+        {slice.length ? (
+          slice.map((c) => (
+            <button
+              type="button"
+              key={`${c.name}-${c.domain}`}
+              className="cx-row"
+              style={{ ["--tc" as string]: TYPE_TEXT[c.type] }}
+              onClick={() => setActive(c)}
+            >
+              <span className="cx-co">
+                <span className="cx-shot">
+                  <Portrait c={c} />
+                </span>
+                <span className="cx-cot">
+                  <b>{c.display_name}</b>
+                  <em>{c.oneLiner}</em>
+                </span>
+              </span>
+              <span className="cx-cell">{c.industry}</span>
+              <span className="cx-cell">{c.sector}</span>
+              <span className="cx-typecell">
+                <span className="cx-pill">{c.type.toUpperCase()}</span>
+                {c.type === "Programmatic" ? (
+                  <em>via {c.partnerProgram}</em>
+                ) : null}
+              </span>
+              <span className="cx-arrow" aria-hidden>
+                →
+              </span>
+            </button>
+          ))
+        ) : (
+          <p className="cx-empty">No companies match those filters.</p>
+        )}
+
+        {pages > 1 ? (
+          <div className="cx-pager">
+            <button disabled={cur === 1} onClick={() => goPage(cur - 1)}>
+              Previous
+            </button>
+            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => (
+              <button
+                key={n}
+                aria-current={n === cur || undefined}
+                onClick={() => goPage(n)}
+              >
+                {n}
+              </button>
+            ))}
+            <button disabled={cur === pages} onClick={() => goPage(cur + 1)}>
+              Next
+            </button>
+          </div>
+        ) : null}
+      </div>
+
+      {active ? <Modal c={active} onClose={() => setActive(null)} /> : null}
     </section>
   );
 }
