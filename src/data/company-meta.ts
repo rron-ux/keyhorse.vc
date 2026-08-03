@@ -223,8 +223,18 @@ export const countBy = (
   return m;
 };
 
-/** Marquee picks companies that actually have a founder portrait first. */
-export const MARQUEE = [
-  ...COMPANIES.filter((c) => c.portrait),
-  ...COMPANIES.filter((c) => !c.portrait && c.type === "Direct"),
-].slice(0, 30);
+/** Marquee mirrors the founder wall on the home page, in the same order. */
+export const MARQUEE = WALL.map((w) => {
+  const k = norm(w.company);
+  const row =
+    COMPANIES.find((c) => norm(c.display_name) === k) ||
+    COMPANIES.find((c) => norm(c.name) === k) ||
+    COMPANIES.find(
+      (c) => norm(c.display_name).includes(k) || k.includes(norm(c.display_name)),
+    );
+  if (!row) return null;
+  return { ...row, display_name: w.company, founder: w.person, portrait: w.cover };
+})
+  .filter((c): c is CompanyRow => Boolean(c))
+  .slice(0, 30);
+
