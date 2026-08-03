@@ -7,19 +7,8 @@ import {
   MEDIA3,
   PILLARS,
 } from "@/data/keyhorse";
-import { ARTICLES } from "@/data/articles";
-import gunMedia from "@/assets/wall/gun-media-2.png.asset.json";
-import biscuitBelly from "@/assets/wall/biscuit-belly-2.png.asset.json";
-import proximity2 from "@/assets/wall/proximity-2.png.asset.json";
-import level6 from "@/assets/wall/level6-cyber.png.asset.json";
-import narratize from "@/assets/wall/narratize.png.asset.json";
-import dueGooder2 from "@/assets/wall/due-gooder-2.png.asset.json";
-import dealerTrade from "@/assets/wall/dealer-trade-network.png.asset.json";
-import wicked from "@/assets/wall/wicked-technologies.png.asset.json";
-import eqlGames from "@/assets/wall/eql-games.png.asset.json";
-import goodmaps from "@/assets/wall/goodmaps.png.asset.json";
-import flywire from "@/assets/wall/flywire-2.png.asset.json";
-import sofab from "@/assets/wall/sofab-inks-clean.png.asset.json";
+import { WALL } from "@/data/wall";
+
 import { HERO_FRAMES, pic } from "@/lib/images";
 import { Rv, colorFor, useSite } from "./shared";
 
