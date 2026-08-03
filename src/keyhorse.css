@@ -1654,7 +1654,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mband .lbl{opacity:.95}
 .mband .fact{border-color:rgba(2,41,58,.5);background:rgba(255,255,255,.16)}
 .mband .audtab{color:rgba(2,41,58,.9)}
-.mband .audpane{background:rgba(255,255,255,.14)}
+.mband .audpane{background:none}
 @media (prefers-reduced-motion:reduce){.hero .hdash i{transition:none}}
 
 /* ============================ Companies page (cx) ======================== */
