@@ -8,6 +8,8 @@
  */
 import raw from "./companies.json";
 import { ARTICLES } from "./articles";
+import { WALL } from "./wall";
+
 
 export type InvestmentType = "Direct" | "Programmatic";
 
