@@ -145,15 +145,13 @@ export default function Site({
               </div>
             </div>
             <div>
-              <div className="fh">Read</div>
+              <div className="fh">PAGES</div>
               <div className="fn">
-                Industries
-                <br />
-                Perspectives
-                <br />
-                Companies
-                <br />
-                Resources
+                <div onClick={() => go("industries")}>Industries</div>
+                <div onClick={() => go("companies")}>Portfolio</div>
+                <div onClick={() => go("media")}>Media</div>
+                <div onClick={() => go("resources")}>Resources</div>
+                <div onClick={() => go("partners")}>Partners</div>
               </div>
             </div>
             <div>
