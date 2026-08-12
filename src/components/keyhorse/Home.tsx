@@ -376,10 +376,9 @@ function Capital() {
           <p className="lbl">Capital</p>
           <h2 className="caph">Building something exceptional in Kentucky?</h2>
           <p className="lede" style={{ marginTop: 20 }}>
-            We invest in tech-enabled companies across the Commonwealth — three
-            funds, from a first cheque through Series A and beyond. Applications
-            are read by the investment team, and every founder hears back either
-            way.
+            We invest in tech-enabled companies across the Commonwealth — From a
+            first cheque through Series A and beyond. Applications are read by
+            the investment team, and every founder hears back either way.
           </p>
           <div className="cta" style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}>
             <button className="btn" onClick={() => go("apply")}>
