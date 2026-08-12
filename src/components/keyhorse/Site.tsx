@@ -74,6 +74,25 @@ export default function Site({
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  // Navigate to a page, then scroll to a section once it has rendered.
+  const goSection = useCallback(
+    (id: PageId, anchor: string) => {
+      go(id);
+      let tries = 0;
+      const tick = () => {
+        const el = document.getElementById(anchor);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else if (tries++ < 40) {
+          requestAnimationFrame(tick);
+        }
+      };
+      requestAnimationFrame(tick);
+    },
+    [go],
+  );
+
+
   const [atTop, setAtTop] = useState(true);
 
   useEffect(() => {
