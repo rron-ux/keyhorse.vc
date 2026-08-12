@@ -148,10 +148,10 @@ function Mission() {
               here can see it — and we put capital behind the ones who do.
             </p>
             <div className="facts">
-              <span className="fact">Three air cargo hubs</span>
-              <span className="fact">13% manufacturing workforce</span>
-              <span className="fact">$26.1B automotive since 2014</span>
-              <span className="fact">Fortune 50 payer in-state</span>
+              <span className="fact"></span>
+              <span className="fact"></span>
+              <span className="fact"></span>
+              <span className="fact"></span>
             </div>
           </div>
           <div>
