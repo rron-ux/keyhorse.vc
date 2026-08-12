@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   AUD,
-  CAPROWS,
   CYC,
   FEED,
   MEDIA3,
@@ -388,18 +387,6 @@ function Capital() {
               Apply
             </button>
           </div>
-        </div>
-        <div className="caprows">
-          {CAPROWS.map(([n, nm, d]) => (
-            <div className="caprow" key={n} onClick={() => go("apply")}>
-              <div className="n">{n}</div>
-              <div>
-                <b>{nm}</b>
-                <p>{d}</p>
-              </div>
-              <span className="ar">→</span>
-            </div>
-          ))}
         </div>
       </div>
     </div>
