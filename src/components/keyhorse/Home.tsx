@@ -150,10 +150,10 @@ function Mission() {
           <div>
             <p className="lbl">Mission</p>
             <div className="big">
-              <span>Kentucky should be where the</span>
-              <span>company gets built,</span>
+              <span>Kentucky is a place for builders</span>
+              <span>{"\n"}</span>
               <span>
-                <em>not the place it leaves.</em>
+                <em></em>
               </span>
             </div>
             <p className="lede" style={{ marginTop: 26 }}>
