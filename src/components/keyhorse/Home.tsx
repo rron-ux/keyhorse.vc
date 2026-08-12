@@ -386,6 +386,9 @@ function Capital() {
             </button>
           </div>
         </div>
+        <div className="capmark" aria-hidden="true">
+          <img src={keyhorseLogomark.url} alt="" />
+        </div>
       </div>
     </div>
   );
