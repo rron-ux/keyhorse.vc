@@ -1,5 +1,6 @@
-export const PAGES=[["industries","Industries"],["companies","Companies"],["media","Media"],
+export const PAGES=[["industries","Industries"],["companies","Portfolio"],["media","Media"],
              ["resources","Resources"],["partners","Partners"],["about","About"]] as const;
+
 
 export const CYC=['logistics and trade.','advanced manufacturing.','healthcare.',
            'energy and materials.','agriculture and food.','exceptional founders.'] as const;
