@@ -653,11 +653,20 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mcard .dt{font-family:var(--m);font-size:11.5px;color:rgba(245,245,244,.5)}
 
 /* Capital */
-.capsec{background:#F4F5F6;padding:clamp(56px,6vw,92px) 0}
-.capgrid{display:block}
+.capsec{background:#F4F5F6;padding:clamp(56px,6vw,92px) 0;position:relative;overflow:hidden}
+.capgrid{display:grid;grid-template-columns:1fr auto;gap:clamp(30px,5vw,80px);align-items:center}
 .caph{font-size:clamp(30px,4vw,56px);letter-spacing:-.035em;line-height:1.1;
   font-family:var(--d);font-weight:600;color:var(--ink);max-width:18ch}
 .capsec .lede{max-width:56ch}
+.capmark{position:relative;display:flex;align-items:center;justify-content:center}
+.capmark img{width:clamp(260px,30vw,420px);height:auto;opacity:.14;
+  -webkit-mask-image:linear-gradient(to right,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 30%,rgba(0,0,0,1) 70%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(to right,rgba(0,0,0,0) 0%,rgba(0,0,0,1) 30%,rgba(0,0,0,1) 70%,rgba(0,0,0,0) 100%);
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;pointer-events:none;transform:translateX(6%)}
+@media(max-width:900px){
+  .capgrid{grid-template-columns:1fr}
+  .capmark{display:none}
+}
 
 /* The record — on Media page */
 .recsec{border-top:1px solid var(--ink);margin-top:clamp(40px,4.4vw,64px);
