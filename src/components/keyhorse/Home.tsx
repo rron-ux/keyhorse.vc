@@ -101,9 +101,19 @@ function Hero() {
 }
 
 function Ticker() {
+  const { go } = useSite();
   const items = [...FEED, ...FEED];
   return (
-    <Link to="/media/record" className="ticker ticker--dark">
+    <div
+      className="ticker ticker--dark"
+      role="link"
+      tabIndex={0}
+      onClick={() => go("record")}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") go("record");
+      }}
+      style={{ cursor: "pointer" }}
+    >
       <div className="track">
         {items.map(([, co, sec, , amt], i) => (
           <div className="it" key={i}>
@@ -114,7 +124,7 @@ function Ticker() {
           </div>
         ))}
       </div>
-    </Link>
+    </div>
   );
 }
 
