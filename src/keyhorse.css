@@ -563,13 +563,15 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mband .audtab:hover,.mband .audtab[aria-pressed="true"]{color:var(--cyan)}
 .mband .audtab::before{background:#fff}
 .mband .audtab .ar{transition:transform .3s}
-.mband .audtab:hover .ar,.mband .audtab[aria-pressed="true"] .ar{transform:translateX(6px);color:var(--cyan)}
-.mband .btn{background:#04384F;color:#fff}
-.mband .btn:hover{background:#fff;color:#04384F}
-.mband .btn.g{background:none;border:1px solid rgba(4,56,79,.4);color:#04384F}
-.mband .btn.g:hover{background:#fff;border-color:#fff;color:#04384F}
-.mband .btn.cy{background:#fff;color:var(--cyan)}
-.mband .btn.cy:hover{background:#04384F;color:#fff}
+.mband .audtab:hover .ar,.mband .audtab[aria-pressed="true"] .ar{transform:none;color:var(--cyan)}
+.mband .audpane .in2{background:rgba(255,255,255,.92);box-shadow:0 10px 30px rgba(2,41,58,.18)}
+.mband .audpane p{color:#011C28;font-weight:600}
+.mband .btn{background:#011C28;color:#fff;font-weight:600}
+.mband .btn:hover{background:#fff;color:#011C28}
+.mband .btn.g{background:#fff;border:1px solid rgba(1,28,40,.25);color:#011C28}
+.mband .btn.g:hover{background:#011C28;border-color:#011C28;color:#fff}
+.mband .btn.cy{background:var(--cyan);color:#fff}
+.mband .btn.cy:hover{background:#011C28;color:#fff}
 .mband .msn .big{font-size:clamp(28px,4vw,64px)}
 
 /* Pillars accordion */
