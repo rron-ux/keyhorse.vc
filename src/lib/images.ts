@@ -80,7 +80,7 @@ export const PICS: Record<string, Pic> = {
   "kh-mfg": {
     src: manufacturingAsset.url,
     alt: "CNC laser cutting sheet metal with sparks",
-    cap: "Advanced Manufacturing, Aerospace & Defense",
+    cap: "Advanced Manufacturing & Automotive, Aerospace & Defense",
   },
   "kh-health": {
     src: healthcareAsset.url,
