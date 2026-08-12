@@ -312,8 +312,8 @@ export default function Companies() {
       <header className="cx-head">
         <img src={heroBluegrass} alt="" aria-hidden />
         <div className="wrap">
-          <p className="cx-eyebrow">Companies</p>
-          <h1>Companies</h1>
+          <p className="cx-eyebrow">Portfolio</p>
+          <h1>Portfolio</h1>
         </div>
       </header>
 

@@ -1,5 +1,7 @@
-export const PAGES=[["industries","Industries"],["companies","Companies"],["media","Media"],
+export const PAGES=[["industries","Industries"],["companies","Portfolio"],["media","Media"],
              ["resources","Resources"],["partners","Partners"],["about","About"]] as const;
+
+
 
 export const CYC=['logistics and trade.','advanced manufacturing.','healthcare.',
            'energy and materials.','agriculture and food.','exceptional founders.'] as const;
@@ -71,7 +73,7 @@ export const AUD=[
   [['The industries','industries'],['Apply','apply']]],
  ['I am looking for work','Talent',
   'The companies hiring here, what they are building, and why senior operators are choosing to move. Every round we report names the company — start there.',
-  [['Companies','companies'],['The record','record']]],
+  [['Portfolio','companies'],['The record','record']]],
  ['I want access to what is happening','Corporate',
   'Every disclosed round in the Commonwealth, the funds forming, the programs opening. If you want pilot partners or early sight of deal flow in your category, become a partner.',
   [['Partners','partners'],['Media','media']]],
