@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import {
   AUD,
-  CAPROWS,
   CYC,
   FEED,
   MEDIA3,
