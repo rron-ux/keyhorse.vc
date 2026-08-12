@@ -68,18 +68,18 @@ export const ISEC=[
   'QSR supply chain products built for the world\u2019s largest restaurant networks, limestone-water beverage brands, and agri-wellness verticals that turn legacy agriculture into higher-margin categories.','kh-ag']] as const;
 
 export const AUD=[
- ['I want to build here','Founder',
-  'Six sectors where Kentucky has infrastructure, customers and a workforce that competitors cannot replicate remotely. Read what we are looking for in each, then apply to the fund that fits.',
-  [['The industries','industries'],['Apply','apply']]],
- ['I am looking for work','Talent',
-  'The companies hiring here, what they are building, and why senior operators are choosing to move. Every round we report names the company — start there.',
-  [['Portfolio','companies'],['The record','record']]],
- ['I want access to what is happening','Corporate',
-  'Every disclosed round in the Commonwealth, the funds forming, the programs opening. If you want pilot partners or early sight of deal flow in your category, become a partner.',
-  [['Partners','partners'],['Media','media']]],
- ['I want to invest','Investor',
-  'Co-investors, angels and prospective LPs. Kentucky angel credits run up to 40%, and our coverage is the earliest look at what is forming here.',
-  [['Partners','partners'],['About','about']]]] as const;
+  ['I want to build here','Founder',
+   'Sectors where Kentucky has infrastructure, customers, and a workforce that competitors cannot replicate remotely.',
+   [['The industries','industries'],['Apply','apply']]],
+  ['I am looking for work','Talent',
+   'The companies hiring here, what they are building, and why senior operators are choosing the Commonwealth. Every round, we report names a company with opportunity.',
+   [['Portfolio','companies'],['The record','record']]],
+  ['I want access to what is happening','Corporate',
+   'Every disclosed round in the Commonwealth, the funds forming, the programs opening. If you want pilot partners or early sight of deal flow in your category, become a partner.',
+   [['Partners','partners'],['Media','media']]],
+  ['I want to invest','Investor',
+   'Co-investors, angels and prospective LPs. Kentucky angel credits run up to 40%, and our coverage is the earliest look at what is forming here.',
+   [['Partners','partners'],['About','about']]]] as const;
 
 export const FUNDS_GEN=[
  ['Discovery Fund','Programmatic investments made through partner accelerators, incubators and pitch competitions. The earliest capital we deploy.','kh-f1','Pre-seed · via partner programs'],
