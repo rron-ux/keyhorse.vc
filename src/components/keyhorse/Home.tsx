@@ -383,9 +383,6 @@ function Capital() {
             <button className="btn" onClick={() => go("apply")}>
               See the criteria
             </button>
-            <button className="btn cy" onClick={() => go("apply")}>
-              Apply
-            </button>
           </div>
         </div>
       </div>
