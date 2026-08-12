@@ -8,6 +8,7 @@ import {
 } from "@/data/keyhorse";
 import { WALL } from "@/data/wall";
 
+import keyhorseLogomark from "@/assets/keyhorse-logomark-color.png.asset.json";
 import { HERO_FRAMES, pic } from "@/lib/images";
 import { Rv, colorFor, useSite } from "./shared";
 
