@@ -308,7 +308,7 @@ function People() {
   return (
     <div className="people">
       <div className="wrap">
-        <p className="lbl">Companies</p>
+        <p className="lbl">PORTFOLIO</p>
         <h2 className="w">The people building it.</h2>
       </div>
       <div className="mq">
