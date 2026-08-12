@@ -138,8 +138,8 @@ main.pt-nav{padding-top:70px}
 .audtab:hover{color:var(--kh-muted)}
 .audtab[aria-pressed="true"]{color:var(--ink);padding-left:18px}
 .audtab[aria-pressed="true"]::before{transform:scaleY(1)}
-.audtab .ar{margin-left:auto;font-family:var(--m);font-size:15px;min-width:18px;text-align:center}
-.audtab[aria-pressed="true"] .ar{opacity:1;color:var(--cyan-tx)}
+.audtab .ar{margin-left:auto;font-family:var(--m);font-size:15px;min-width:18px;text-align:center;transition:transform .3s,color .3s,opacity .3s}
+.audtab[aria-pressed="true"] .ar{opacity:1;color:var(--cyan-tx);transform:rotate(90deg)}
 .audpane{padding:0 0 18px;animation:apin .35s cubic-bezier(.22,.61,.36,1)}
 @keyframes apin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .audpane .in2{padding:16px;background:rgba(255,255,255,.78);border-radius:2px;
