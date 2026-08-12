@@ -130,7 +130,7 @@ function Ticker() {
 
 function Mission() {
   const { go } = useSite();
-  const [ai, setAi] = useState<number | null>(null);
+  const [ai, setAi] = useState<number | null>(0);
   const active = ai !== null ? AUD[ai] : null;
   const [, , copy, links] = active ?? [null, null, "", []];
 
