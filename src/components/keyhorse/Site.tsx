@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { PAGES } from "@/data/keyhorse";
 import khLogo from "@/assets/keyhorse-horizontal-light.png.asset.json";
 import kstcLogo from "@/assets/kstc-white.png.asset.json";
+import cedLogo from "@/assets/ced-teamky.png.asset.json";
 import { SiteContext, type PageId } from "./shared";
 
 import Home from "./Home";
@@ -171,15 +172,27 @@ export default function Site({
                 partnership with the Cabinet for Economic Development and
                 KYInnovation.
               </div>
-              <div className="fpart">
-                <span className="fpl">An initiative of</span>
-                <a
-                  href="https://www.kstc.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
-                </a>
+              <div className="fpartners">
+                <div className="fpart">
+                  <span className="fpl">An initiative of</span>
+                  <a
+                    href="https://www.kstc.com"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
+                  </a>
+                </div>
+                <div className="fpart">
+                  <span className="fpl">In partnership with</span>
+                  <a
+                    href="https://ced.ky.gov"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <img src={cedLogo.url} alt="Team Kentucky Cabinet for Economic Development" />
+                  </a>
+                </div>
               </div>
             </div>
 
