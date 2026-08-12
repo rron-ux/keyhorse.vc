@@ -163,13 +163,25 @@ export default function Site({
               </div>
             </div>
             <div>
-              <div className="fh">Elsewhere</div>
+              <div className="fh">Contact</div>
               <div className="fn">
-                Instagram
-                <br />
-                LinkedIn
-                <br />X<br />
-                Newsletter
+                <div className="fc">
+                  <b>Mailing Address</b>
+                  <span>PO Box 1049</span>
+                  <span>Lexington, KY 40588</span>
+                </div>
+                <div className="fc">
+                  <b>Office Locations</b>
+                  <span><strong>Story</strong></span>
+                  <span>828 E. Market St. Ste. 212</span>
+                  <span>Louisville, KY</span>
+                  <span><strong>SparkHaus</strong></span>
+                  <span>727 Madison Ave</span>
+                  <span>Covington, KY</span>
+                  <span><strong>Dudley Square</strong></span>
+                  <span>380 S Mill St, Ste 300</span>
+                  <span>Lexington, KY</span>
+                </div>
               </div>
             </div>
           </div>
