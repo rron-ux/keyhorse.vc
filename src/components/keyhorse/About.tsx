@@ -386,7 +386,8 @@ export default function About() {
       </div>
 
       {/* The funds */}
-      <div className="band abt-thesis-band">
+      <div className="band abt-thesis-band" id="funds">
+
         <Rv>
           <div className="abt-fhead">
             <p className="lbl" style={{ margin: 0 }}>
