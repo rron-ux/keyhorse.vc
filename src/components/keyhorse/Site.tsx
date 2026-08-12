@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { PAGES } from "@/data/keyhorse";
+import khLogo from "@/assets/keyhorse-horizontal-light.png.asset.json";
+import kstcLogo from "@/assets/kstc-white.png.asset.json";
 import { SiteContext, type PageId } from "./shared";
+
 import Home from "./Home";
 import About from "./About";
 import Industries from "./Industries";
