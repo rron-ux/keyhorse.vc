@@ -357,7 +357,8 @@ export default function About() {
       </div>
 
       {/* Team */}
-      <div className="band">
+      <div className="band" id="team">
+
         <Rv>
           <p className="lbl">Team</p>
           <div className="abt-team">
