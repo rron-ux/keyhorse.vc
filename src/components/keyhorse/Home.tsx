@@ -104,7 +104,7 @@ function Hero() {
 function Ticker() {
   const items = [...FEED, ...FEED];
   return (
-    <div className="ticker ticker--dark">
+    <Link to="/media/record" className="ticker ticker--dark">
       <div className="track">
         {items.map(([, co, sec, , amt], i) => (
           <div className="it" key={i}>
@@ -115,7 +115,7 @@ function Ticker() {
           </div>
         ))}
       </div>
-    </div>
+    </Link>
   );
 }
 
