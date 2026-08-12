@@ -468,10 +468,14 @@ main.pt-nav{padding-top:70px}
 .kv span:last-child{font-family:var(--m);font-size:12px}
 
 footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
-.frow{display:grid;grid-template-columns:2.4fr 1fr 1fr 1fr;gap:30px}
+.frow{display:grid;grid-template-columns:2.2fr 1fr 1fr 1.35fr;gap:30px}
 .fn{font-size:12.5px;color:rgba(245,245,244,.62);line-height:1.85}
 .fn div{cursor:pointer;transition:color .2s ease;margin-bottom:6px}
 .fn div:hover{color:#fff}
+.fn .fc{display:flex;flex-direction:column;gap:0;margin-bottom:14px}
+.fn .fc b{font-family:var(--d);font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,245,244,.45);margin-bottom:6px}
+.fn .fc span{margin-bottom:2px}
+.fn .fc span strong{font-weight:500;color:rgba(245,245,244,.75)}
 .fh{font-family:var(--d);font-size:9.5px;font-weight:600;letter-spacing:.15em;
   text-transform:uppercase;color:rgba(245,245,244,.4);margin-bottom:11px}
 .legal{border-top:1px solid #383838;margin-top:34px;padding-top:20px;font-size:11px;
