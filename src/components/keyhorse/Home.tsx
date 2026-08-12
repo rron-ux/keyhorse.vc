@@ -216,7 +216,7 @@ function Pillars() {
         <div className="head">
           <div>
             <p className="lbl">Where Kentucky wins</p>
-            <h2>Five pillars. Everything nests inside them.</h2>
+            <h2>Priority Sectors</h2>
           </div>
           <button className="btn g" onClick={() => go("industries")}>
             All five sectors
