@@ -157,8 +157,8 @@ function Mission() {
               </span>
             </div>
             <p className="lede" style={{ marginTop: 26 }}>
-              We report what is being built here so the people who could build it
-              here can see it — and we put capital behind the ones who do.
+              We report what is being built here so future builders can see and
+              put capital behind those who do it at scale.
             </p>
           </div>
           <div>
