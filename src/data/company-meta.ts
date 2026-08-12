@@ -92,7 +92,7 @@ export const BUSINESS_MODELS = [
 const MODEL_BY_INDUSTRY: Record<string, string> = {
   "AI & ML": "B2B SaaS",
   AdTech: "B2B SaaS",
-  "Advanced Manufacturing": "B2B hardware",
+  "Advanced Manufacturing & Automotive": "B2B hardware",
   AgTech: "B2B",
   Audiotech: "B2B services",
   "Augmented Reality": "B2B SaaS",

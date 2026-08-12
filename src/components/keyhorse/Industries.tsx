@@ -19,7 +19,7 @@ const PILLAR_META: Record<
     sector: "Industrials & Manufacturing",
     advantage: "Three air cargo hubs and a one-day drive to two-thirds of the US",
   },
-  "Advanced Manufacturing, Aerospace & Defense": {
+  "Advanced Manufacturing & Automotive, Aerospace & Defense": {
     color: "#7A5CF0",
     sector: "Industrials & Manufacturing",
     advantage: "6,000+ plants, 250,000+ workers and a veteran technical workforce",
