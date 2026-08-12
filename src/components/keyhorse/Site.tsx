@@ -172,15 +172,27 @@ export default function Site({
                 partnership with the Cabinet for Economic Development and
                 KYInnovation.
               </div>
-              <div className="fpart">
-                <span className="fpl">An initiative of</span>
-                <a
-                  href="https://www.kstc.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
-                </a>
+              <div className="fpartners">
+                <div className="fpart">
+                  <span className="fpl">An initiative of</span>
+                  <a
+                    href="https://www.kstc.com"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
+                  </a>
+                </div>
+                <div className="fpart">
+                  <span className="fpl">In partnership with</span>
+                  <a
+                    href="https://ced.ky.gov"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <img src={cedLogo.url} alt="Team Kentucky Cabinet for Economic Development" />
+                  </a>
+                </div>
               </div>
             </div>
 
