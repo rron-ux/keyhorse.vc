@@ -388,18 +388,6 @@ function Capital() {
             </button>
           </div>
         </div>
-        <div className="caprows">
-          {CAPROWS.map(([n, nm, d]) => (
-            <div className="caprow" key={n} onClick={() => go("apply")}>
-              <div className="n">{n}</div>
-              <div>
-                <b>{nm}</b>
-                <p>{d}</p>
-              </div>
-              <span className="ar">→</span>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );
