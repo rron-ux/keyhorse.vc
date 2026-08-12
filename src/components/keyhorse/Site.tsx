@@ -1,6 +1,9 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { PAGES } from "@/data/keyhorse";
+import khLogo from "@/assets/keyhorse-horizontal-light.png.asset.json";
+import kstcLogo from "@/assets/kstc-white.png.asset.json";
 import { SiteContext, type PageId } from "./shared";
+
 import Home from "./Home";
 import About from "./About";
 import Industries from "./Industries";
@@ -157,12 +160,29 @@ export default function Site({
         <div className="wrap">
           <div className="frow">
             <div>
+              <img
+                className="flogo"
+                src={khLogo.url}
+                alt="Keyhorse Capital"
+                onClick={() => go("home")}
+              />
               <div className="fn" style={{ maxWidth: "38ch" }}>
                 An initiative of the Kentucky Science and Technology Corporation, in
                 partnership with the Cabinet for Economic Development and
                 KYInnovation.
               </div>
+              <div className="fpart">
+                <span className="fpl">An initiative of</span>
+                <a
+                  href="https://www.kstc.com"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
+                </a>
+              </div>
             </div>
+
             <div>
               <div className="fh">PAGES</div>
               <div className="fn">
