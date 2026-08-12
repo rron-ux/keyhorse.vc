@@ -245,12 +245,14 @@ export default function Site({
             </div>
             <div className="fpart">
               <span className="fpl">In partnership with</span>
-              <a href="https://ced.ky.gov" target="_blank" rel="noreferrer noopener">
-                <img src={cedLogo.url} alt="Team Kentucky Cabinet for Economic Development" />
-              </a>
-              <a href="https://kyinnovation.com" target="_blank" rel="noreferrer noopener">
-                <img className="kyi" src={kyiLogo.url} alt="KY Innovation" />
-              </a>
+              <div className="fprow">
+                <a href="https://ced.ky.gov" target="_blank" rel="noreferrer noopener">
+                  <img src={cedLogo.url} alt="Team Kentucky Cabinet for Economic Development" />
+                </a>
+                <a href="https://kyinnovation.com" target="_blank" rel="noreferrer noopener">
+                  <img className="kyi" src={kyiLogo.url} alt="KY Innovation" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
