@@ -176,7 +176,7 @@ function Mission() {
                     >
                       {t}
                       <span className="ar" aria-hidden="true">
-                        {open ? "−" : "+"}
+                        ›
                       </span>
                     </button>
                     {open && (
