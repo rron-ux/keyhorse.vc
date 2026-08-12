@@ -157,13 +157,9 @@ export default function Site({
             <div>
               <div className="fh">Work with us</div>
               <div className="fn">
-                About
-                <br />
-                Partners
-                <br />
-                Apply
-                <br />
-                Team
+                <div onClick={() => go("about")}>About</div>
+                <div onClick={() => go("apply")}>Apply</div>
+                <div onClick={() => { go("about"); setTimeout(() => jump("team"), 100); }}>Team</div>
               </div>
             </div>
             <div>
