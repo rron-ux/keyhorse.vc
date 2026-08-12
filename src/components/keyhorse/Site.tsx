@@ -74,6 +74,25 @@ export default function Site({
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  // Navigate to a page, then scroll to a section once it has rendered.
+  const goSection = useCallback(
+    (id: PageId, anchor: string) => {
+      go(id);
+      let tries = 0;
+      const tick = () => {
+        const el = document.getElementById(anchor);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else if (tries++ < 40) {
+          requestAnimationFrame(tick);
+        }
+      };
+      requestAnimationFrame(tick);
+    },
+    [go],
+  );
+
+
   const [atTop, setAtTop] = useState(true);
 
   useEffect(() => {
@@ -150,18 +169,27 @@ export default function Site({
                 <div onClick={() => go("industries")}>Industries</div>
                 <div onClick={() => go("companies")}>Portfolio</div>
                 <div onClick={() => go("media")}>Media</div>
+                <div onClick={() => goSection("media", "record")}>The Record</div>
+                <div onClick={() => go("record")}>Record archive</div>
                 <div onClick={() => go("resources")}>Resources</div>
+                <div onClick={() => goSection("resources", "res")}>Resource library</div>
                 <div onClick={() => go("partners")}>Partners</div>
+                <div onClick={() => goSection("partners", "become")}>Become a partner</div>
+                <div onClick={() => goSection("partners", "network")}>The network</div>
               </div>
             </div>
             <div>
               <div className="fh">Work with us</div>
               <div className="fn">
                 <div onClick={() => go("about")}>About</div>
+                <div onClick={() => goSection("about", "team")}>Team</div>
+                <div onClick={() => goSection("about", "funds")}>The funds</div>
                 <div onClick={() => go("apply")}>Apply</div>
-                <div onClick={() => { go("about"); setTimeout(() => jump("team"), 100); }}>Team</div>
+                <div onClick={() => goSection("apply", "criteria-apply")}>Criteria</div>
+                <div onClick={() => goSection("partners", "enquiry")}>Enquiries</div>
               </div>
             </div>
+
             <div>
               <div className="fh">Contact</div>
               <div className="fn">

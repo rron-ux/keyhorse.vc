@@ -357,7 +357,8 @@ export default function About() {
       </div>
 
       {/* Team */}
-      <div className="band">
+      <div className="band" id="team">
+
         <Rv>
           <p className="lbl">Team</p>
           <div className="abt-team">
@@ -385,7 +386,8 @@ export default function About() {
       </div>
 
       {/* The funds */}
-      <div className="band abt-thesis-band">
+      <div className="band abt-thesis-band" id="funds">
+
         <Rv>
           <div className="abt-fhead">
             <p className="lbl" style={{ margin: 0 }}>
