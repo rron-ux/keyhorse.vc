@@ -3,7 +3,7 @@ export const PAGES=[["industries","Industries"],["companies","Portfolio"],["medi
 
 
 
-export const CYC=['logistics and trade.','advanced manufacturing.','healthcare.',
+export const CYC=['logistics and trade.','advanced manufacturing & automotive.','healthcare.',
            'energy and materials.','agriculture and food.','exceptional founders.'] as const;
 
 
