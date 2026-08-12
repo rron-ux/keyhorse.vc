@@ -130,8 +130,11 @@ function Ticker() {
 
 function Mission() {
   const { go } = useSite();
-  const [ai, setAi] = useState(0);
-  const [, , copy, links] = AUD[ai]!;
+  const [ai, setAi] = useState<number | null>(null);
+  const active = ai !== null ? AUD[ai] : null;
+  const [, , copy, links] = active ?? [null, null, "", []];
+
+  const toggle = (i: number) => setAi((c) => (c === i ? null : i));
 
   return (
     <div className="band mband">
@@ -160,34 +163,43 @@ function Mission() {
           </div>
           <div>
             <div className="audq">What brings you here?</div>
-            <div className="audtabs">
-              {AUD.map(([t], i) => (
-                <button
-                  key={t}
-                  className="audtab"
-                  aria-pressed={i === ai}
-                  onClick={() => setAi(i)}
-                >
-                  {t}
-                  <span className="ar">→</span>
-                </button>
-              ))}
-            </div>
-            <div className="audpane">
-              <div className="in2" key={ai}>
-                <p>{copy}</p>
-                <div className="acts">
-                  {links.map(([l, p]) => (
+            <div className="audtabs" role="region" aria-label="Audience choices">
+              {AUD.map(([t], i) => {
+                const open = ai === i;
+                return (
+                  <div key={t} className="auditem">
                     <button
-                      key={l}
-                      className={`btn ${p === "apply" ? "cy" : "g"}`}
-                      onClick={() => go((p === "record" ? "media" : p) as never)}
+                      className="audtab"
+                      aria-expanded={open}
+                      aria-pressed={open}
+                      onClick={() => toggle(i)}
                     >
-                      {l}
+                      {t}
+                      <span className="ar" aria-hidden="true">
+                        {open ? "−" : "+"}
+                      </span>
                     </button>
-                  ))}
-                </div>
-              </div>
+                    {open && (
+                      <div className="audpane">
+                        <div className="in2">
+                          <p>{copy}</p>
+                          <div className="acts">
+                            {links.map(([l, p]) => (
+                              <button
+                                key={l}
+                                className={`btn ${p === "apply" ? "cy" : "g"}`}
+                                onClick={() => go((p === "record" ? "media" : p) as never)}
+                              >
+                                {l}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
