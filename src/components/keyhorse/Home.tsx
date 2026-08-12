@@ -147,12 +147,6 @@ function Mission() {
               We report what is being built here so the people who could build it
               here can see it — and we put capital behind the ones who do.
             </p>
-            <div className="facts">
-              <span className="fact"></span>
-              <span className="fact"></span>
-              <span className="fact"></span>
-              <span className="fact"></span>
-            </div>
           </div>
           <div>
             <div className="audq">What brings you here?</div>
