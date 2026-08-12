@@ -261,8 +261,7 @@ function FounderFeature() {
         <div className="fbd">
           <div className="k">Founder feature · Video</div>
           <h3>
-            They moved the company from Silicon Valley to a factory two miles from
-            the airport.
+            They moved the company from Silicon Valley to a factory two miles from a Class Bravo international airport.
           </h3>
           <p className="mt">
             A reported profile of a company building in one of our industries — how
