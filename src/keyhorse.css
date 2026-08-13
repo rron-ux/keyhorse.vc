@@ -84,14 +84,16 @@ main.pt-nav{padding-top:70px}
 .hero .slot{position:absolute;top:90px;right:26px;font-family:var(--d);font-size:9px;
   font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);
   border:1px solid rgba(255,255,255,.22);padding:6px 11px;z-index:4}
-.hero .inner{position:relative;z-index:3;width:100%}
-.hero h1{max-width:19ch;color:#fff;margin-bottom:22px}
+.hero .inner{position:relative;z-index:3;width:100%;padding-bottom:18vh}
+.hero h1{max-width:19ch;color:#fff;margin-bottom:16px}
 .cyc{display:block;color:var(--cyan-tx);min-height:1.12em}
 .cyc span{display:inline-block;animation:fadein .55s ease}
 @keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.hero .sub{font-size:17px;color:rgba(245,245,244,.76);max-width:46ch;font-weight:300}
-.hero .cta{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap}
-.hero .foot{position:absolute;bottom:24px;left:0;right:0;z-index:3}
+.hero .sub{font-size:17px;color:rgba(245,245,244,.76);max-width:46ch;font-weight:300;margin-bottom:22px}
+.hero .hdash{display:flex;gap:7px;margin-top:18px}
+.hero .hdash i{width:22px;height:3px;background:rgba(255,255,255,.22);transition:background .3s}
+.hero .hdash i.on{background:var(--cyan)}
+.hero .foot{position:absolute;bottom:18px;left:0;right:0;z-index:3}
 .hero .foot .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
   font-family:var(--m);font-size:11px;color:rgba(245,245,244,.55);letter-spacing:.04em}
 
