@@ -71,7 +71,7 @@ main.pt-nav{padding-top:70px}
 
 /* ── HERO with crossfading photography ── */
 .hero{background:var(--coal);color:#F5F5F4;--cyan-tx:var(--cyan);position:relative;overflow:hidden;
-  min-height:100vh;padding-top:70px;display:flex;flex-direction:column;justify-content:center}
+  min-height:92vh;padding-top:70px;display:flex;flex-direction:column;justify-content:flex-start;padding-bottom:8vh}
 .hero .frames{position:absolute;inset:0}
 .hero .frames img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   opacity:0;transition:opacity 1.6s ease;animation:kb 26s ease-in-out infinite alternate}
@@ -84,7 +84,7 @@ main.pt-nav{padding-top:70px}
 .hero .slot{position:absolute;top:90px;right:26px;font-family:var(--d);font-size:9px;
   font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);
   border:1px solid rgba(255,255,255,.22);padding:6px 11px;z-index:4}
-.hero .inner{position:relative;z-index:3;width:100%;padding-bottom:14vh}
+.hero .inner{position:relative;z-index:3;width:100%;margin-top:18vh}
 .hero h1{max-width:19ch;color:#fff;margin-bottom:14px}
 .cyc{display:block;color:var(--cyan-tx);min-height:1.12em}
 .cyc span{display:inline-block;animation:fadein .55s ease}
