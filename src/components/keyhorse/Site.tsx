@@ -146,9 +146,6 @@ export default function Site({
               </button>
             ))}
           </nav>
-          <button className="btn" onClick={() => go("apply")}>
-            Apply
-          </button>
         </div>
         <div id="prog" style={{ width: `${progress * 100}%` }} />
       </header>
