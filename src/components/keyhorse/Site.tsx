@@ -173,6 +173,25 @@ export default function Site({
                 partnership with the Cabinet for Economic Development and
                 KYInnovation.
               </div>
+              <div className="fpartners">
+                <div className="fpart">
+                  <span className="fpl">An initiative of</span>
+                  <a href="https://www.kstc.com" target="_blank" rel="noreferrer noopener">
+                    <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
+                  </a>
+                </div>
+                <div className="fpart">
+                  <span className="fpl">In partnership with</span>
+                  <div className="fprow">
+                    <a href="https://ced.ky.gov" target="_blank" rel="noreferrer noopener">
+                      <img src={cedLogo.url} alt="Team Kentucky Cabinet for Economic Development" />
+                    </a>
+                    <a href="https://kyinnovation.com" target="_blank" rel="noreferrer noopener">
+                      <img className="kyi" src={kyiLogo.url} alt="KY Innovation" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div>
@@ -235,25 +254,6 @@ export default function Site({
             future results. Concept mockup — not a live site. Photography is
             reference only. Names and quotes are placeholder. © 2026 Keyhorse
             Capital.
-          </div>
-          <div className="fpartners">
-            <div className="fpart">
-              <span className="fpl">An initiative of</span>
-              <a href="https://www.kstc.com" target="_blank" rel="noreferrer noopener">
-                <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
-              </a>
-            </div>
-            <div className="fpart">
-              <span className="fpl">In partnership with</span>
-              <div className="fprow">
-                <a href="https://ced.ky.gov" target="_blank" rel="noreferrer noopener">
-                  <img src={cedLogo.url} alt="Team Kentucky Cabinet for Economic Development" />
-                </a>
-                <a href="https://kyinnovation.com" target="_blank" rel="noreferrer noopener">
-                  <img className="kyi" src={kyiLogo.url} alt="KY Innovation" />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </footer>
