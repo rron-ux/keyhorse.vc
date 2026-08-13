@@ -69,18 +69,6 @@ function Hero() {
           We back tech-enabled founders across the Commonwealth — and concentrate
           where the state already wins.
         </p>
-        <div className="cta">
-          <button className="btn cy" onClick={() => go("industries")}>
-            The industries
-          </button>
-          <button
-            className="btn g"
-            style={{ borderColor: "rgba(255,255,255,.3)", color: "#F5F5F4" }}
-            onClick={() => go("media")}
-          >
-            What is happening
-          </button>
-        </div>
         <div className="hdash" aria-hidden="true">
           {CYC.map((c, i) => (
             <i key={c} className={i === ci ? "on" : ""} />
