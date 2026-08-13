@@ -176,9 +176,11 @@ export default function Site({
               <div className="fpartners">
                 <div className="fpart">
                   <span className="fpl">An initiative of</span>
-                  <a href="https://www.kstc.com" target="_blank" rel="noreferrer noopener">
-                    <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
-                  </a>
+                  <div className="fprow">
+                    <a href="https://www.kstc.com" target="_blank" rel="noreferrer noopener">
+                      <img src={kstcLogo.url} alt="Kentucky Science and Technology Corporation" />
+                    </a>
+                  </div>
                 </div>
                 <div className="fpart">
                   <span className="fpl">In partnership with</span>
