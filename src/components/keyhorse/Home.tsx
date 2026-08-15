@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  AUD,
   CYC,
   FEED,
   MEDIA3,
@@ -116,16 +115,66 @@ function Ticker() {
   );
 }
 
+const ROUTER = [
+  {
+    tab: "I want to build here",
+    body: [
+      { t: "Infrastructure, customers and a workforce that a competitor cannot replicate by opening an office somewhere else.", b: true },
+      { t: " If you are building in one of these, there is a concrete argument for being here.", b: false },
+    ],
+    links: [
+      ["The industries", "industries"],
+      ["Apply", "apply"],
+    ],
+  },
+  {
+    tab: "I am looking for work",
+    body: [
+      { t: "More than 200 active companies are hiring across the Commonwealth,", b: true },
+      { t: " from first engineers to plant managers. We publish the roles and the founders behind them.", b: false },
+    ],
+    links: [["See who is hiring", "companies"]],
+  },
+  {
+    tab: "I want to follow along",
+    body: [
+      { t: "Coverage of deals, founders and market movement across Kentucky,", b: true },
+      { t: " plus the events calendar and the weekly newsletter. Free to read, no application.", b: false },
+    ],
+    links: [
+      ["Read the coverage", "media"],
+      ["Get the newsletter", "media"],
+    ],
+  },
+  {
+    tab: "I want to invest",
+    body: [
+      { t: "Public dollars invested like private ones, with room beside us on most deals.", b: true },
+      { t: " Tell us what you are looking for.", b: false },
+    ],
+    links: [
+      ["How capital works", "partners"],
+      ["Talk to us", "partners"],
+    ],
+  },
+] as const;
+
 function Mission() {
   const { go } = useSite();
-  const [ai, setAi] = useState<number | null>(0);
-  const active = ai !== null ? AUD[ai] : null;
-  const [, , copy, links] = active ?? [null, null, "", []];
+  const [ti, setTi] = useState(0);
+  const active = ROUTER[ti]!;
 
-  const toggle = (i: number) => setAi((c) => (c === i ? null : i));
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const next = (ti + (e.key === "ArrowRight" ? 1 : ROUTER.length - 1)) % ROUTER.length;
+    setTi(next);
+    const el = document.getElementById(`msn-tab-${next}`);
+    el?.focus();
+  };
 
   return (
-    <div className="band mband">
+    <div className="mband msn2">
       <img
         className="mband-bg"
         loading="lazy"
@@ -133,65 +182,59 @@ function Mission() {
         alt={pic("kh-kentucky").alt}
       />
 
-      <Rv>
-        <div className="msn">
-          <div>
-            <p className="lbl">Mission</p>
-            <div className="big">
-              <span>Kentucky is a place for builders</span>
-              <span>{"\n"}</span>
-              <span>
-                <em></em>
-              </span>
-            </div>
-            <p className="lede" style={{ marginTop: 26 }}>
-              We report what is being built here so future builders can see and
-              put capital behind those who do it at scale.
-            </p>
+      <div className="msn2-in">
+        <div className="msn2-rule">
+          <span>Mission</span>
+          <i />
+          <span>Keyhorse Capital</span>
+        </div>
+
+        <p className="msn2-stmt">
+          <mark>Kentucky is a place for builders.</mark> We report what is being built here so
+          future builders can see it, and we <mark>put capital behind those who do it at scale.</mark>
+        </p>
+
+        <p className="msn2-stand">
+          We back tech-enabled founders across the Commonwealth — and concentrate where the state
+          already wins.
+        </p>
+
+        <div className="msn2-router">
+          <div className="msn2-q">What brings you here?</div>
+          <div className="msn2-tabs" role="tablist" aria-label="What brings you here?" onKeyDown={onKey}>
+            {ROUTER.map((r, i) => (
+              <button
+                key={r.tab}
+                id={`msn-tab-${i}`}
+                role="tab"
+                type="button"
+                aria-selected={i === ti}
+                aria-controls="msn-panel"
+                tabIndex={i === ti ? 0 : -1}
+                className={i === ti ? "on" : ""}
+                onClick={() => setTi(i)}
+              >
+                {r.tab}
+              </button>
+            ))}
           </div>
-          <div>
-            <div className="audq">What brings you here?</div>
-            <div className="audtabs" role="region" aria-label="Audience choices">
-              {AUD.map(([t], i) => {
-                const open = ai === i;
-                return (
-                  <div key={t} className="auditem">
-                    <button
-                      className="audtab"
-                      aria-expanded={open}
-                      aria-pressed={open}
-                      onClick={() => toggle(i)}
-                    >
-                      {t}
-                      <span className="ar" aria-hidden="true">
-                        ›
-                      </span>
-                    </button>
-                    {open && (
-                      <div className="audpane">
-                        <div className="in2">
-                          <p>{copy}</p>
-                          <div className="acts">
-                            {links.map(([l, p]) => (
-                              <button
-                                key={l}
-                                className={`btn ${p === "apply" ? "cy" : "g"}`}
-                                onClick={() => go((p === "record" ? "media" : p) as never)}
-                              >
-                                {l}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+
+          <div className="msn2-panel" id="msn-panel" role="tabpanel" aria-labelledby={`msn-tab-${ti}`}>
+            <p className="msn2-ans">
+              {active.body.map((s, i) =>
+                s.b ? <strong key={i}>{s.t}</strong> : <span key={i}>{s.t}</span>
+              )}
+            </p>
+            <div className="msn2-links">
+              {active.links.map(([l, p]) => (
+                <button key={l} type="button" onClick={() => go(p as never)}>
+                  {l}
+                </button>
+              ))}
             </div>
           </div>
         </div>
-      </Rv>
+      </div>
     </div>
   );
 }
