@@ -290,11 +290,11 @@ function People() {
       role="button"
       tabIndex={0}
       style={{ cursor: "pointer" }}
-      onClick={() => go("companies", `?company=${encodeURIComponent(a.company)}`)}
+      onClick={() => go("portfolio", `?company=${encodeURIComponent(a.company)}`)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          go("companies", `?company=${encodeURIComponent(a.company)}`);
+          go("portfolio", `?company=${encodeURIComponent(a.company)}`);
         }
       }}
     >
