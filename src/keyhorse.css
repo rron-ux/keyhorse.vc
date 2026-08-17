@@ -1833,7 +1833,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mband2{--m2f:"Inter Tight","Helvetica Neue",Arial,sans-serif;
  --m2m:"IBM Plex Mono",monospace;padding:0}
 .mband2 .mband-bg{opacity:.62;filter:grayscale(.15) contrast(1.04);
- mix-blend-mode:normal;object-position:72% 42%}
+ mix-blend-mode:normal;object-position:88% 42%}
 .mband2::before{background:
  linear-gradient(96deg,rgba(255,255,255,.30) 0 32%,rgba(255,255,255,.16) 64%,rgba(255,255,255,.02) 100%),
  linear-gradient(90deg,rgba(0,168,225,.80),rgba(0,168,225,.60))}
