@@ -2,12 +2,7 @@ import { useState, type ReactNode } from "react";
 import { ISEC, POSTS } from "@/data/keyhorse";
 import { Head, Rv, useSite } from "./shared";
 import { pic } from "@/lib/images";
-import companies from "@/data/companies.json";
 
-const COUNT: Record<string, number> = (companies as { sector: string }[]).reduce(
-  (m, c) => ((m[c.sector] = (m[c.sector] || 0) + 1), m),
-  {} as Record<string, number>,
-);
 
 /** Pillar colour + closest single Airtable sector for the Companies filter. */
 const PILLAR_META: Record<
