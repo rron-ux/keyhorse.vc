@@ -24,7 +24,7 @@ const PILLAR_META: Record<
     sector: "Industrials & Manufacturing",
     advantage: "6,000+ plants, 250,000+ workers and a veteran technical workforce",
   },
-  "Health & Care": {
+  "Healthcare": {
     color: "#0E7C86",
     sector: "Healthcare & Life Sciences",
     advantage: "Humana, Atria and Waystar headquartered against a rural care gap",
