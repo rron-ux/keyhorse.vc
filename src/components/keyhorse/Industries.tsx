@@ -80,10 +80,11 @@ export default function Industries() {
             <em className="ser">unnatural advantage</em>.
           </h1>
           <p className="lede">
-            Infrastructure, customers and a workforce that a competitor cannot
-            replicate by opening an office somewhere else. If you are building in
-            one of these, there is a concrete argument for being here — and we
-            would like to hear from you.
+            Infrastructure, customers, and a workforce that a competitor cannot
+            replicate by opening an office somewhere else. We are a generalist
+            investor, but if you are building in one of these industries, there
+            is an even more compelling argument for being here — and we would
+            like to hear from you.
           </p>
           <div className="igen">
             <p className="igen-note">
