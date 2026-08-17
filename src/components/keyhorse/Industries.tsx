@@ -88,8 +88,6 @@ export default function Industries() {
           </p>
           <div className="igen">
             <p className="igen-note">
-              We are a generalist investor. These five are where the state has
-              something others cannot copy — not a list of what we fund.
             </p>
             <button className="btn cy" onClick={() => go("apply")}>
               Apply
