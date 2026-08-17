@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { ISEC, POSTS } from "@/data/keyhorse";
 import { Head, Rv, useSite } from "./shared";
 import { pic } from "@/lib/images";
@@ -42,7 +42,7 @@ const PILLAR_META: Record<
 };
 
 /** One consolidated argument per sector, drawn from the existing panel content. */
-const NARRATIVE: Record<string, JSX.Element> = {
+const NARRATIVE: Record<string, ReactNode> = {
   "Logistics & Trade": (
     <>
       Kentucky is the only state with three major air cargo hubs — UPS Worldport
