@@ -116,16 +116,38 @@ function Ticker() {
   );
 }
 
+// Emphasis phrase per panel (copy unchanged — weight only)
+const PANEL_BOLD = [
+  "infrastructure, customers, and a workforce",
+  "The companies hiring here",
+  "Every disclosed round in the Commonwealth",
+  "Kentucky angel credits run up to 40%",
+];
+
+function boldPhrase(copy: string, phrase: string) {
+  const i = copy.indexOf(phrase);
+  if (i < 0) return copy;
+  return (
+    <>
+      {copy.slice(0, i)}
+      <strong>{phrase}</strong>
+      {copy.slice(i + phrase.length)}
+    </>
+  );
+}
+
 function Mission() {
   const { go } = useSite();
-  const [ai, setAi] = useState<number | null>(0);
-  const active = ai !== null ? AUD[ai] : null;
-  const [, , copy, links] = active ?? [null, null, "", []];
+  const [ai, setAi] = useState(0);
+  const [, , copy, links] = AUD[ai];
 
-  const toggle = (i: number) => setAi((c) => (c === i ? null : i));
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight") setAi((c) => (c + 1) % AUD.length);
+    if (e.key === "ArrowLeft") setAi((c) => (c - 1 + AUD.length) % AUD.length);
+  };
 
   return (
-    <div className="band mband">
+    <div className="band mband mband2">
       <img
         className="mband-bg"
         loading="lazy"
@@ -134,60 +156,59 @@ function Mission() {
       />
 
       <Rv>
-        <div className="msn">
-          <div>
-            <p className="lbl">Mission</p>
-            <div className="big">
-              <span>Kentucky is a place for builders</span>
-              <span>{"\n"}</span>
-              <span>
-                <em></em>
-              </span>
-            </div>
-            <p className="lede" style={{ marginTop: 26 }}>
-              We report what is being built here so future builders can see and
-              put capital behind those who do it at scale.
-            </p>
+        <div className="msn2">
+          <div className="m2rule">
+            <span>Mission</span>
+            <i />
+            <span>Keyhorse Capital</span>
           </div>
-          <div>
-            <div className="audq">What brings you here?</div>
-            <div className="audtabs" role="region" aria-label="Audience choices">
-              {AUD.map(([t], i) => {
-                const open = ai === i;
-                return (
-                  <div key={t} className="auditem">
-                    <button
-                      className="audtab"
-                      aria-expanded={open}
-                      aria-pressed={open}
-                      onClick={() => toggle(i)}
-                    >
-                      {t}
-                      <span className="ar" aria-hidden="true">
-                        ›
-                      </span>
-                    </button>
-                    {open && (
-                      <div className="audpane">
-                        <div className="in2">
-                          <p>{copy}</p>
-                          <div className="acts">
-                            {links.map(([l, p]) => (
-                              <button
-                                key={l}
-                                className={`btn ${p === "apply" ? "cy" : "g"}`}
-                                onClick={() => go((p === "record" ? "media" : p) as never)}
-                              >
-                                {l}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+
+          <h2 className="m2h">
+            Kentucky is <mark>a place for builders</mark>
+          </h2>
+
+          <p className="m2sf">
+            We report what is being built here so future builders can see and
+            put capital behind those who do it at scale.
+          </p>
+
+          <div className="m2router">
+            <div className="m2lbl">What brings you here?</div>
+            <div className="m2tabs" role="tablist" aria-label="What brings you here?" onKeyDown={onKey}>
+              {AUD.map(([t], i) => (
+                <button
+                  key={t}
+                  role="tab"
+                  id={`m2tab-${i}`}
+                  aria-selected={ai === i}
+                  aria-controls="m2panel"
+                  tabIndex={ai === i ? 0 : -1}
+                  className={`m2tab${ai === i ? " on" : ""}`}
+                  onClick={() => setAi(i)}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+
+            <div
+              className="m2panel"
+              id="m2panel"
+              role="tabpanel"
+              aria-labelledby={`m2tab-${ai}`}
+            >
+              <p className="m2copy">{boldPhrase(copy, PANEL_BOLD[ai] ?? "")}</p>
+              <div className="m2links">
+                {links.map(([l, p]) => (
+                  <button
+                    key={l}
+                    className="m2link"
+                    onClick={() => go((p === "record" ? "media" : p) as never)}
+                  >
+                    {l}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
