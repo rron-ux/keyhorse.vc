@@ -200,17 +200,6 @@ function Mission() {
               aria-labelledby={`m2tab-${ai}`}
             >
               <p className="m2copy">{boldPhrase(copy, PANEL_BOLD[ai] ?? "")}</p>
-              <div className="m2links">
-                {links.map(([l, p]) => (
-                  <button
-                    key={l}
-                    className="m2link"
-                    onClick={() => go((p === "record" ? "media" : p) as never)}
-                  >
-                    {l}
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
         </div>
