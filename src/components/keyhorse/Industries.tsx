@@ -100,7 +100,7 @@ export default function Industries() {
       <div className="band">
         <Rv>
           <div className="iacc">
-            {ISEC.map(([n, d, facts, subs, call, seed], i) => {
+            {ISEC.map(([n, , , , , seed], i) => {
               const meta = PILLAR_META[n]!;
               const isOpen = open === i;
               const img = pic(seed);
@@ -123,10 +123,6 @@ export default function Industries() {
                       <span className="iap-name">{n}</span>
                       <span className="iap-adv">{meta.advantage}</span>
                     </span>
-                    <span className="iap-c">
-                      <b>{COUNT[meta.sector] ?? 0}</b>
-                      <i>companies</i>
-                    </span>
                     <span className="iap-p" aria-hidden="true">
                       +
                     </span>
@@ -137,45 +133,12 @@ export default function Industries() {
                       <img src={img.src} alt={img.alt} loading="lazy" />
                       <span className="duo" />
                     </div>
-                    <div className="iap-c2">
-                      <div className="ifacts">
-                        {facts.slice(0, 4).map((f) => (
-                          <span className="ifact" key={f}>
-                            {f}
-                          </span>
-                        ))}
-                      </div>
-                      <p className="iwhy">{d}</p>
-                      <div className="iblocks">
-                        <div className="iblk">
-                          <b>Sectors we invest in</b>
-                          <p>{subs}</p>
-                        </div>
-                        <div className="iblk">
-                          <b>What we are looking for</b>
-                          <p>{call}</p>
-                        </div>
-                      </div>
-                      <div className="ibtns">
-                        <button className="btn" onClick={() => go("apply")}>
-                          Apply
-                        </button>
-                        <a
-                          className="btn g"
-                          href={`/companies?sector=${encodeURIComponent(meta.sector)}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            go("companies", `?sector=${encodeURIComponent(meta.sector)}`);
-                          }}
-                        >
-                          Companies in this sector
-                        </a>
-                      </div>
-                    </div>
+                    <p className="inarr">{NARRATIVE[n]}</p>
                   </div>
                 </div>
               );
             })}
+
           </div>
         </Rv>
       </div>
