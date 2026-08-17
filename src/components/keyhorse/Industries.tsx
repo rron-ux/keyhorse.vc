@@ -41,7 +41,84 @@ const PILLAR_META: Record<
   },
 };
 
+/** One consolidated argument per sector, drawn from the existing panel content. */
+const NARRATIVE: Record<string, JSX.Element> = {
+  "Logistics & Trade": (
+    <>
+      Kentucky is the only state with three major air cargo hubs — UPS Worldport
+      in Louisville, the DHL Americas hub, and Amazon&rsquo;s $1.5B Air Global
+      Hub — and Worldport alone moves{" "}
+      <b>416,000 packages an hour</b> across 155 miles of conveyor. Two-thirds of
+      the US population sits within a one-day truck drive, which is why more than
+      1,300 logistics companies already employ about 84,000 people here. That
+      density is the advantage: software built on top of it is tested against real
+      freight volume from the first week. We are most interested in the
+      intelligence layer sitting above Worldport — customs automation, freight
+      pricing, trade compliance — and in the river, where barge-to-rail
+      transloading and autonomous monitoring on the Ohio remain largely unbuilt.
+    </>
+  ),
+  "Advanced Manufacturing & Automotive, Aerospace & Defense": (
+    <>
+      More than <b>6,000 manufacturing facilities</b> employ over 250,000 workers
+      here, with roughly $28B of capital investment announced in five years.
+      Toyota Georgetown is Toyota&rsquo;s largest assembly plant in the world,
+      with 350+ suppliers around it; aerospace adds 100+ facilities and about $19B
+      in exports. Fort Knox, Fort Campbell and Blue Grass Army Depot push roughly
+      5,000 technically trained veterans into the civilian workforce every year.
+      That means a company can pilot on a live production floor and hire the
+      people who ran it. We fund predictive maintenance, computer-vision quality
+      control, robotics workflow integration and digital twin simulation proven on
+      a real floor rather than in a lab — dual-use preferred on the defense side.
+    </>
+  ),
+  Healthcare: (
+    <>
+      Humana, Atria Senior Living and Waystar are all headquartered in Louisville,
+      with Atria alone managing 200+ communities and roughly 35,000 residents. By
+      2023 the state counted <b>806,757 residents aged 65 and over</b>, while 43
+      of Kentucky&rsquo;s 120 counties are primary-care shortage areas. The
+      Louisville Healthcare CEO Council turns that into direct pilot access inside
+      Humana, Norton Healthcare and BrightSpring, so a product meets payer and
+      provider reality early instead of after the raise. We are looking for care
+      infrastructure and the system of record — home health deployment,
+      closed-loop pharmacy logistics, care labour matching at scale — plus the
+      payer-provider trust layer: prior-auth automation and AI-native revenue cycle
+      for post-acute care.
+    </>
+  ),
+  "Energy, Materials & Climate": (
+    <>
+      More than <b>$10B</b> has been committed to EV battery manufacturing here,
+      including the $5.8B BlueOval SK project, and industrial energy rates are
+      among the lowest in the country. That is why the state hosts 180+ aluminium
+      and copper facilities employing over 21,000 people, holds the largest primary
+      aluminium capacity in the United States, and has drawn roughly $2.7B of new
+      metals investment since 2017. Cheap power next to heavy industry means a
+      product can be deployed at industrial scale rather than demonstrated at pilot
+      scale. We fund grid-scale battery intelligence for data centre and utility
+      applications, aluminium and critical materials process optimisation, and
+      industrial energy procurement AI.
+    </>
+  ),
+  "Agriculture, Food & Consumer": (
+    <>
+      Kentucky has <b>69,425 farms</b> across roughly half of its 25.8 million
+      acres and is the largest beef-cattle producer east of the Mississippi. The
+      bourbon supply chain adds about $10.6B in output with 17.1 million barrels
+      ageing in the state, the equine economy another $2.99B and 40,665 jobs, and
+      Louisville is the global headquarters of quick service through Yum! Brands
+      and RSCS. A founder here sits beside the buyers, the herds and the barrels
+      rather than pitching them remotely. We are looking for QSR supply chain
+      products built for the world&rsquo;s largest restaurant networks,
+      limestone-water beverage brands, and agri-wellness verticals that turn legacy
+      agriculture into higher-margin categories.
+    </>
+  ),
+};
+
 const ALSO = [
+
   "Software & AI",
   "Fintech",
   "Consumer & CPG",
