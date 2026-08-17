@@ -139,7 +139,9 @@ function boldPhrase(copy: string, phrase: string) {
 function Mission() {
   const { go } = useSite();
   const [ai, setAi] = useState(0);
-  const [, , copy, links] = AUD[ai];
+  const entry = AUD[ai] ?? AUD[0];
+  const copy: string = entry[2];
+  const links: readonly (readonly [string, string])[] = entry[3];
 
   const onKey = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") setAi((c) => (c + 1) % AUD.length);
