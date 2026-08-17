@@ -202,8 +202,22 @@ export default function Industries() {
 
                   <div className="iap-b" hidden={!isOpen}>
                     <div className="iap-img">
-                      <img src={img.src} alt={img.alt} loading="lazy" />
-                      <span className="duo" />
+                      <div className="iap-img-wrap">
+                        <img src={img.src} alt={img.alt} loading="lazy" />
+                        <span className="duo" />
+                      </div>
+                      <button
+                        type="button"
+                        className="btn iap-cta"
+                        onClick={() =>
+                          go(
+                            "portfolio",
+                            `?sector=${encodeURIComponent(meta.sector)}`,
+                          )
+                        }
+                      >
+                        Companies in this industry
+                      </button>
                     </div>
                     <p className="inarr">{NARRATIVE[n]}</p>
                   </div>

@@ -310,7 +310,7 @@ export default function About() {
                 <button className="btn g" onClick={() => go("industries")}>
                   The industries
                 </button>
-                <button className="btn g" onClick={() => go("companies")}>
+                <button className="btn g" onClick={() => go("portfolio")}>
                   Companies
                 </button>
               </div>

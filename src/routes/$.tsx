@@ -5,7 +5,7 @@ import type { PageId } from "@/components/keyhorse/shared";
 const IDS: PageId[] = [
   "about",
   "industries",
-  "companies",
+  "portfolio",
   "media",
   "resources",
   "partners",

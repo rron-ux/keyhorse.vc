@@ -121,7 +121,7 @@ export default function Post({ slug }: { slug: string }) {
               <button
                 className="art-colink"
                 onClick={() =>
-                  go("companies", sector ? `?sector=${encodeURIComponent(sector)}` : "")
+                  go("portfolio", sector ? `?sector=${encodeURIComponent(sector)}` : "")
                 }
               >
                 {a.company} →

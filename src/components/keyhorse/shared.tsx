@@ -6,7 +6,7 @@ export type PageId =
   | "home"
   | "about"
   | "industries"
-  | "companies"
+  | "portfolio"
   | "media"
   | "resources"
   | "partners"

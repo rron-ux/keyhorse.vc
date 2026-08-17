@@ -21,7 +21,7 @@ const VIEWS: Record<Exclude<PageId, "post">, () => ReactNode> = {
   home: Home,
   about: About,
   industries: Industries,
-  companies: Companies,
+  portfolio: Companies,
   media: Media,
   resources: Resources,
   partners: Partners,
@@ -197,7 +197,7 @@ export default function Site({
               <div className="fh">Pages</div>
               <div className="fn">
                 <div onClick={() => go("industries")}>Industries</div>
-                <div onClick={() => go("companies")}>Portfolio</div>
+                <div onClick={() => go("portfolio")}>Portfolio</div>
                 <div onClick={() => go("media")}>Media</div>
                 <div onClick={() => go("resources")}>Resources</div>
                 <div onClick={() => go("partners")}>Partners</div>
