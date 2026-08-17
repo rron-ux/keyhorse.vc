@@ -1846,7 +1846,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .m2h{font-family:var(--m2f);margin:52px 0 0;max-width:22ch;
  font-size:clamp(34px,4.4vw,66px);font-weight:600;line-height:1.08;
  letter-spacing:-.03em;color:#0F1417}
-.m2h mark{background:#FFFFFF;color:#0A0E10;font-weight:700;padding:.06em .22em;
+.m2h mark{background:none;color:#0A0E10;font-weight:700;padding:0;
  -webkit-box-decoration-break:clone;box-decoration-break:clone}
 .m2sf{font-family:var(--m2f);margin:28px 0 0;max-width:52ch;
  font-size:clamp(17px,1.45vw,20px);font-weight:500;line-height:1.55;color:#14262E}
