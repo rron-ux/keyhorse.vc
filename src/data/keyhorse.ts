@@ -33,7 +33,7 @@ export const IND=[
   'Freight software · Supply chain visibility · Warehouse automation · Customs & trade compliance · Last-mile · Cold chain · Inland waterway · Fleet & telematics'],
  ['02','Advanced Manufacturing & Automotive, Aerospace & Defense','6,000+ manufacturing facilities, 250,000+ workers, and roughly $19B in aerospace exports.','kh-mfg',
   'Industrial automation & robotics · Machine vision · Predictive maintenance · Industrial IoT · Digital twin · Additive · Advanced materials · Metals & foundry · Aerospace components · Dual-use defense'],
- ['03','Health & Care','Humana, Atria and Waystar all headquartered here, against a rural care gap that shows up early.','kh-health',
+ ['03','Healthcare','Humana, Atria and Waystar all headquartered here, against a rural care gap that shows up early.','kh-health',
   'Payer infrastructure & claims · Revenue cycle automation · Prior-auth · Care navigation · Home & community care · Care labour matching · Remote monitoring · Senior living tech · Rural telemedicine'],
  ['04','Energy, Materials & Climate','$10B+ in EV battery investment, the largest primary aluminium capacity in the US, and some of the lowest energy rates.','kh-ev',
   'Grid-edge & battery intelligence · Energy storage · Critical minerals processing · Battery lifecycle & recycling · Industrial energy procurement · Carbon accounting · Efficiency retrofits'],
