@@ -1860,7 +1860,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .m2tab.on{font-weight:700;color:#0A0E10}
 .m2tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:5px;background:#15191C}
 .m2tab:focus-visible,.m2link:focus-visible{outline:2px solid #0A0E10;outline-offset:3px}
-.m2panel{display:grid;grid-template-columns:1.4fr .6fr;gap:60px;padding-top:36px}
+.m2panel{display:grid;grid-template-columns:1.4fr .6fr;gap:60px;padding-top:36px;min-height:clamp(180px,17vw,240px)}
 .m2copy{font-family:var(--m2f);margin:0;max-width:36ch;
  font-size:clamp(19px,1.8vw,27px);font-weight:400;line-height:1.42;
  letter-spacing:-.018em;color:#0F1417}
