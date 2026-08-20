@@ -259,41 +259,6 @@ export default function Industries() {
         </Rv>
       </div>
 
-      {/* Coverage */}
-      <div className="band">
-        <Rv>
-          <Head label="Coverage" title="What we are tracking.">
-            <button className="btn g" onClick={() => go("media")}>
-              All coverage
-            </button>
-          </Head>
-          <div className="icov">
-            {POSTS.slice(1, 4).map((p, i) => {
-              const im = pic(
-                ["kh-m-Feature", "kh-m-Market note", "kh-m-Round"][i]!,
-              );
-              const col = ["#00A8E1", "#7A5CF0", "#3F9B45"][i]!;
-              return (
-                <button
-                  type="button"
-                  className="icard"
-                  key={p.t}
-                  style={{ ["--pc" as string]: col }}
-                  onClick={() => go("media")}
-                >
-                  <span className="icard-i">
-                    <img src={im.src} alt={im.alt} loading="lazy" />
-                  </span>
-                  <span className="icard-k">{p.k}</span>
-                  <span className="icard-t">{p.t}</span>
-                  <span className="icard-d">{p.d}</span>
-                  <span className="icard-r" />
-                </button>
-              );
-            })}
-          </div>
-        </Rv>
-      </div>
 
       {/* Closing */}
       <div className="band iclose">
