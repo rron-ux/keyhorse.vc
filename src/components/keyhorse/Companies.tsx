@@ -347,6 +347,7 @@ export default function Companies() {
   const chips: { k: string; v: string; drop: () => void }[] = [
     ...types.map((v) => ({ k: "Investment", v, drop: () => toggler(setTypes)(v) })),
     ...inds.map((v) => ({ k: "Industry", v, drop: () => toggler(setInds)(v) })),
+    ...secs.map((v) => ({ k: "Sector", v, drop: () => toggler(setSecs)(v) })),
     ...models.map((v) => ({ k: "Model", v, drop: () => toggler(setModels)(v) })),
   ];
 
