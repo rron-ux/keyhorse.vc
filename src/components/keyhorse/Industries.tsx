@@ -158,13 +158,6 @@ export default function Industries() {
             is an even more compelling argument for being here — and we would
             like to hear from you.
           </p>
-          <div className="igen">
-            <p className="igen-note">
-            </p>
-            <button className="btn cy" onClick={() => go("apply")}>
-              Apply
-            </button>
-          </div>
         </div>
       </div>
 
