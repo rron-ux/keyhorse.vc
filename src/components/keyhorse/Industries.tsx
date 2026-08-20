@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { ISEC, POSTS } from "@/data/keyhorse";
+import { INDUSTRIES, slugify } from "@/data/company-meta";
 import { Head, Rv, useSite } from "./shared";
 import { pic } from "@/lib/images";
 
