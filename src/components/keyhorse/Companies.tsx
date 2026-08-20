@@ -5,9 +5,11 @@ import {
   COMPANIES,
   INDUSTRIES,
   MARQUEE,
+  SECTORS,
   TOTAL,
   TYPE_COLOR,
   TYPE_TEXT,
+  slugify,
   type CompanyRow,
 } from "@/data/company-meta";
 import { initials } from "./CompanyCard";
