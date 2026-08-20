@@ -216,6 +216,18 @@ export const INDUSTRIES = Array.from(
   new Set(COMPANIES.map((c) => c.industry)),
 ).sort();
 
+export const SECTORS = Array.from(
+  new Set(COMPANIES.map((c) => c.sector)),
+).sort();
+
+/** URL-safe slug: lowercase, ampersands/commas dropped, spaces to hyphens. */
+export const slugify = (v: string) =>
+  v
+    .toLowerCase()
+    .replace(/[&,.']/g, " ")
+    .trim()
+    .replace(/\s+/g, "-");
+
 export const countBy = (
   list: CompanyRow[],
   key: (c: CompanyRow) => string,

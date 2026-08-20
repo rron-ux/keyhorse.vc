@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { ISEC, POSTS } from "@/data/keyhorse";
+import { INDUSTRIES, slugify } from "@/data/company-meta";
 import { Head, Rv, useSite } from "./shared";
 import { pic } from "@/lib/images";
 
@@ -112,29 +113,8 @@ const NARRATIVE: Record<string, ReactNode> = {
   ),
 };
 
-const ALSO = [
-
-  "Software & AI",
-  "Fintech",
-  "Consumer & CPG",
-  "Biotech & life sciences",
-  "Medical devices",
-  "Agtech & food",
-  "Media & entertainment",
-  "Education",
-  "Gaming",
-  "Real estate technology",
-  "Construction technology",
-  "Water & environment",
-  "Safety & industrials",
-  "Legal & compliance",
-  "HR & workforce",
-  "Marketing technology",
-  "Logistics & mobility",
-  "Hardware & robotics",
-  "Business services",
-  "Financial services",
-];
+/** Source of truth: the Portfolio page's own industry filter values. */
+const FUNDED_SECTORS = INDUSTRIES.filter((i) => i && i !== "Other");
 
 export default function Industries() {
   const { go } = useSite();
@@ -222,38 +202,61 @@ export default function Industries() {
         </Rv>
       </div>
 
-      {/* Not on this list? */}
-      <div className="inot">
+      {/* Funded */}
+      <div className="inot ifund">
         <Rv>
-          <div className="inot-g">
-            <div>
-              <h2>
-                Not on this list? <em className="ser">Apply anyway.</em>
-              </h2>
-              <p>
-                Most of our portfolio sits outside these five sectors.&nbsp;
+          <div className="ifund-g">
+            <div className="ifund-l">
+              <p className="ifund-lbl">Funded</p>
+              <h2>Every sector we have backed.</h2>
+              <p className="ifund-body">
+                Five of these are where we concentrate. The rest is where the
+                portfolio actually lives. Pick one to see the companies.
               </p>
-              <p>
-                If you are already in Kentucky or weighing a move,&nbsp;
-              </p>
-              <div className="ibtns">
-                <button className="btn inot-p" onClick={() => go("apply")}>
+              <div className="ifund-links">
+                <a
+                  href="/portfolio"
+                  className="ifund-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    go("portfolio");
+                  }}
+                >
+                  See the whole portfolio
+                </a>
+                <a
+                  href="/apply"
+                  className="ifund-link soft"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    go("apply");
+                  }}
+                >
                   Apply
-                </button>
-                <button className="btn inot-s" onClick={() => go("about")}>
-                  How the funds work
-                </button>
+                </a>
               </div>
             </div>
-            <div>
-              <p className="lbl">Also funded</p>
-              <div className="itags">
-                {ALSO.map((t) => (
-                  <span className="itag" key={t}>
-                    {t}
-                  </span>
+
+            <div className="ifund-r">
+              <nav aria-label="Portfolio sectors" className="ifund-nav">
+                {FUNDED_SECTORS.map((s) => (
+                  <a
+                    key={s}
+                    className="ifund-s"
+                    href={`/portfolio?sector=${slugify(s)}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      go("portfolio", `?sector=${slugify(s)}`);
+                    }}
+                  >
+                    <span>{s}</span>
+                    <i aria-hidden="true">→</i>
+                  </a>
                 ))}
-              </div>
+              </nav>
+              <p className="ifund-cap">
+                {FUNDED_SECTORS.length} sectors · 60+ verticals · 600+ companies funded
+              </p>
             </div>
           </div>
         </Rv>

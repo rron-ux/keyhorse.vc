@@ -5,9 +5,11 @@ import {
   COMPANIES,
   INDUSTRIES,
   MARQUEE,
+  SECTORS,
   TOTAL,
   TYPE_COLOR,
   TYPE_TEXT,
+  slugify,
   type CompanyRow,
 } from "@/data/company-meta";
 import { initials } from "./CompanyCard";
@@ -247,10 +249,25 @@ function Modal({ c, onClose }: { c: CompanyRow; onClose: () => void }) {
 
 /* ------------------------------------------------------------------ page */
 
+/** Resolve an incoming ?sector= slug against the real filter values. */
+function readSectorParam() {
+  if (typeof window === "undefined") return { ind: "", sec: "" };
+  const raw = new URLSearchParams(window.location.search).get("sector") || "";
+  if (!raw) return { ind: "", sec: "" };
+  const slug = slugify(decodeURIComponent(raw));
+  const ind = INDUSTRIES.find((v) => slugify(v) === slug) || "";
+  const sec = ind ? "" : SECTORS.find((v) => slugify(v) === slug) || "";
+  return { ind, sec };
+}
+
 export default function Companies() {
   const { pendingCompany } = useSite();
+  const initial = useRef(readSectorParam()).current;
   const [types, setTypes] = useState<string[]>([]);
-  const [inds, setInds] = useState<string[]>([]);
+  const [inds, setInds] = useState<string[]>(
+    initial.ind ? [initial.ind] : [],
+  );
+  const [secs, setSecs] = useState<string[]>(initial.sec ? [initial.sec] : []);
   const [models, setModels] = useState<string[]>([]);
   const [q, setQ] = useState("");
   const [open, setOpen] = useState<string | null>(null);
@@ -266,19 +283,45 @@ export default function Companies() {
     if (hit) setActive(hit);
   }, [pendingCompany]);
 
+  /** Land on the list, not the top of the page, when arriving pre-filtered. */
+  useEffect(() => {
+    if (!initial.ind && !initial.sec) return;
+    const t = window.setTimeout(
+      () => barRef.current?.scrollIntoView({ block: "start" }),
+      60,
+    );
+    return () => window.clearTimeout(t);
+  }, [initial]);
+
+  /** Keep ?sector= in sync with the filter (replace, no history entry). */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const val = inds[0] || secs[0] || "";
+    if (val && inds.length + secs.length === 1) params.set("sector", slugify(val));
+    else params.delete("sector");
+    const qs = params.toString();
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}${qs ? `?${qs}` : ""}`,
+    );
+  }, [inds, secs]);
+
   const list = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return COMPANIES.filter(
       (c) =>
         (!types.length || types.includes(c.type)) &&
         (!inds.length || inds.includes(c.industry)) &&
+        (!secs.length || secs.includes(c.sector)) &&
         (!models.length || models.includes(c.businessModel)) &&
         (!needle ||
           c.display_name.toLowerCase().includes(needle) ||
           c.oneLiner.toLowerCase().includes(needle) ||
           c.founder.toLowerCase().includes(needle)),
     );
-  }, [types, inds, models, q]);
+  }, [types, inds, secs, models, q]);
 
   const pages = Math.max(1, Math.ceil(list.length / PAGE));
   const cur = Math.min(page, pages);
@@ -304,6 +347,7 @@ export default function Companies() {
   const chips: { k: string; v: string; drop: () => void }[] = [
     ...types.map((v) => ({ k: "Investment", v, drop: () => toggler(setTypes)(v) })),
     ...inds.map((v) => ({ k: "Industry", v, drop: () => toggler(setInds)(v) })),
+    ...secs.map((v) => ({ k: "Sector", v, drop: () => toggler(setSecs)(v) })),
     ...models.map((v) => ({ k: "Model", v, drop: () => toggler(setModels)(v) })),
   ];
 
@@ -376,6 +420,7 @@ export default function Companies() {
               onClick={() => {
                 setTypes([]);
                 setInds([]);
+                setSecs([]);
                 setModels([]);
                 setPage(1);
               }}
