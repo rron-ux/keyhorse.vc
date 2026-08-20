@@ -260,24 +260,6 @@ export default function Industries() {
       </div>
 
 
-      {/* Closing */}
-      <div className="band iclose">
-        <Rv>
-          <h2>Building here, or thinking about it?</h2>
-          <p>
-            Applications are read by the investment team, not a form. Every
-            applicant hears back either way.
-          </p>
-          <div className="ibtns">
-            <button className="btn" onClick={() => go("apply")}>
-              Apply
-            </button>
-            <button className="btn g" onClick={() => go("partners")}>
-              Talk to us first
-            </button>
-          </div>
-        </Rv>
-      </div>
     </section>
   );
 }
