@@ -255,7 +255,7 @@ export default function Industries() {
                 ))}
               </nav>
               <p className="ifund-cap">
-                23 sectors · 60+ verticals · 600+ companies funded
+                {FUNDED_SECTORS.length} sectors · 60+ verticals · 600+ companies funded
               </p>
             </div>
           </div>
