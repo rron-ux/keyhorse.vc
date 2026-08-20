@@ -164,24 +164,23 @@ export default function Industries() {
                     <span className="iap-n">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="iap-t">
-                      <span className="iap-name">{n}</span>
-                      <span className="iap-adv">{meta.advantage}</span>
-                    </span>
+                    <span className="iap-name">{n}</span>
                     <span className="iap-p" aria-hidden="true">
                       +
                     </span>
                   </button>
 
                   <div className="iap-b" hidden={!isOpen}>
-                    <div className="iap-img">
-                      <div className="iap-img-wrap">
-                        <img src={img.src} alt={img.alt} loading="lazy" />
-                        <span className="duo" />
-                      </div>
+                    <div className="iap-img-wrap">
+                      <img src={img.src} alt={img.alt} loading="lazy" />
+                      <span className="duo" />
+                    </div>
+                    <div className="iap-copy">
+                      <p className="iap-adv">{meta.advantage}</p>
+                      <p className="inarr">{NARRATIVE[n]}</p>
                       <button
                         type="button"
-                        className="btn iap-cta"
+                        className="iap-cta"
                         onClick={() =>
                           go(
                             "portfolio",
@@ -189,11 +188,12 @@ export default function Industries() {
                           )
                         }
                       >
-                        Companies in this industry
+                        Investments in this industry
+                        <span aria-hidden="true">→</span>
                       </button>
                     </div>
-                    <p className="inarr">{NARRATIVE[n]}</p>
                   </div>
+
                 </div>
               );
             })}
