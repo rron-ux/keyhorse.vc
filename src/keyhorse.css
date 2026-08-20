@@ -64,6 +64,7 @@ main.pt-nav{padding-top:70px}
 .btn.g{background:none;border:1px solid var(--line);color:var(--ink)}
 .btn.g:hover{border-color:var(--cyan-tx);color:var(--cyan-tx);background:none}
 .btn.cy{background:var(--cyan);color:#FFFFFF} .btn.cy:hover{background:var(--coal);color:#FFFFFF}
+.nav-pitch{margin-left:6px;flex:none}
 .band--ink .btn.g{background:none;border-color:#4A4A4A;color:#F5F5F4}
 
 .page{display:none}
