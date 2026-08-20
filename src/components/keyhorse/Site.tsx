@@ -146,6 +146,9 @@ export default function Site({
               </button>
             ))}
           </nav>
+          <button className="btn nav-pitch" onClick={() => go("apply")}>
+            Pitch
+          </button>
         </div>
         <div id="prog" style={{ width: `${progress * 100}%` }} />
       </header>
