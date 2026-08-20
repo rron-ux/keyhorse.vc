@@ -112,29 +112,8 @@ const NARRATIVE: Record<string, ReactNode> = {
   ),
 };
 
-const ALSO = [
-
-  "Software & AI",
-  "Fintech",
-  "Consumer & CPG",
-  "Biotech & life sciences",
-  "Medical devices",
-  "Agtech & food",
-  "Media & entertainment",
-  "Education",
-  "Gaming",
-  "Real estate technology",
-  "Construction technology",
-  "Water & environment",
-  "Safety & industrials",
-  "Legal & compliance",
-  "HR & workforce",
-  "Marketing technology",
-  "Logistics & mobility",
-  "Hardware & robotics",
-  "Business services",
-  "Financial services",
-];
+/** Source of truth: the Portfolio page's own industry filter values. */
+const FUNDED_SECTORS = INDUSTRIES.filter((i) => i && i !== "Other");
 
 export default function Industries() {
   const { go } = useSite();
