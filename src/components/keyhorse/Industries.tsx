@@ -238,13 +238,10 @@ export default function Industries() {
                 Not on this list? <em className="ser">Apply anyway.</em>
               </h2>
               <p>
-                Most of our portfolio sits outside these five, and we intend to
-                keep it that way. The sector matters far less than whether you
-                are building here.
+                Most of our portfolio sits outside these five sectors.&nbsp;
               </p>
               <p>
-                If you are already in Kentucky — or seriously weighing a move —
-                that is the part of the decision worth talking about.
+                If you are already in Kentucky or weighing a move,&nbsp;
               </p>
               <div className="ibtns">
                 <button className="btn inot-p" onClick={() => go("apply")}>
