@@ -420,6 +420,7 @@ export default function Companies() {
               onClick={() => {
                 setTypes([]);
                 setInds([]);
+                setSecs([]);
                 setModels([]);
                 setPage(1);
               }}
