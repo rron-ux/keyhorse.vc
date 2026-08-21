@@ -229,6 +229,23 @@ export default function Media() {
     c.url !== FEATURED.url &&
     !/bipventures/i.test(c.url);
 
+  const parseCovDate = (d: string) => {
+    const m: Record<string, number> = {
+      jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6,
+      jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12,
+    };
+    const norm = d.toLowerCase().replace(/[^a-z0-9]/g, " ");
+    const parts = norm.trim().split(/\s+/);
+    let month = 0;
+    let year = 0;
+    for (const p of parts) {
+      if (m[p]) month = m[p];
+      else if (/^\d{4}$/.test(p)) year = Number(p);
+    }
+    return { year, month, key: year * 100 + month };
+  };
+  const yearOf = (d: string) => String(parseCovDate(d).year || d);
+
   const mentions = [
     BIP,
     ...COVERAGE.filter((c) => isReal(c as never)).map((c) => ({
@@ -237,7 +254,9 @@ export default function Media() {
       date: c.date,
       url: c.url,
     })),
-  ];
+  ]
+    .map((c) => ({ ...c, sortKey: parseCovDate(c.date).key }))
+    .sort((a, b) => b.sortKey - a.sortKey);
   const per = 3;
   const covPages = Math.max(1, Math.ceil(mentions.length / per));
   const covIdx = Math.min(covPage, covPages - 1);
@@ -422,7 +441,7 @@ export default function Media() {
 
                 <div className="mx-cov-ft">
                   <span className="mx-mono">
-                    {FEATURED.source} · {FEATURED.date}
+                    {FEATURED.source} · {yearOf(FEATURED.date)}
                   </span>
                   <span className="mx-link">Read ↗</span>
                 </div>
@@ -444,7 +463,7 @@ export default function Media() {
                     <span className="mx-mono up">{c.outlet}</span>
                     <h3>{c.title}</h3>
                   </div>
-                  <span className="mx-mono">{c.date}</span>
+                  <span className="mx-mono">{yearOf(c.date)}</span>
                 </a>
               ))}
               <div className="mx-cov-nav">
