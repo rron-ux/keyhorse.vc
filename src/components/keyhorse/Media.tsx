@@ -216,7 +216,8 @@ export default function Media() {
         <div className="wrap">
           <p className="mx-hero-label">Media</p>
           <h1 className="mx-hero-title">
-            The living story of <em>innovation in Kentucky</em>
+            The living story of{" "}
+            <em className="mx-hero-cyan">innovation in Kentucky</em>
           </h1>
         </div>
       </div>
