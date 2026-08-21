@@ -1,52 +1,67 @@
-import { useMemo, useRef, useState } from "react";
-import { ARTICLES, initialsOf, type Article, type Category } from "@/data/articles";
-import {
-  COVERAGE,
-  EVENTS,
-  ROUNDS,
-  SOCIAL,
-  SOCIAL_ROWS,
-  type CalEvent,
-} from "@/data/media";
-import { colorFor, useSite } from "./shared";
+import { useMemo, useState } from "react";
+import { ARTICLES, type Article } from "@/data/articles";
+import { COVERAGE, EVENTS, ROUNDS } from "@/data/media";
+import { PICS } from "@/lib/images";
+import logisticsAsset from "@/assets/logistics.jpg.asset.json";
+import { useSite } from "./shared";
 
-export const CAT_COLOR: Record<Category, string> = {
-  stories: "#00A8E1",
-  perspectives: "#00A8E1",
-  announcements: "#222222",
-};
-
-export const TAG_LABEL: Record<string, string> = {
-  founding: "Founding Stories",
-  behind: "Behind the Scenes",
-  cycle: "Investment Cycle",
-};
-
-const FILTERS = [
-  ["all", "All"],
-  ["stories", "Stories"],
-  ["perspectives", "Perspectives"],
-  ["announcements", "Announcements"],
-] as const;
-
-type FilterId = (typeof FILTERS)[number][0];
-
-const PER_PAGE = 6;
 const ts = (d: string) => Date.parse(d) || 0;
 const SORTED = [...ARTICLES].sort((a, b) => ts(b.date) - ts(a.date));
 
-/* ─────────────────────────── forms ─────────────────────────── */
+const PASTURE = PICS["kh-kentucky"]!.src;
+const LOGISTICS = logisticsAsset.url;
 
-function PitchForm({ kind }: { kind: "pitch" | "round" }) {
+export function SectionLabel({ left, right }: { left: string; right: string }) {
+  return (
+    <div className="mx-lab">
+      <span>{left}</span>
+      <i aria-hidden="true" />
+      <span className="mx-lab-r">{right}</span>
+    </div>
+  );
+}
+
+const CHIPS = [
+  ["all", "All"],
+  ["founding", "Founding stories"],
+  ["perspectives", "Perspectives"],
+  ["market", "Market notes"],
+  ["announcements", "Announcements"],
+  ["video", "Video"],
+] as const;
+type ChipId = (typeof CHIPS)[number][0];
+
+function catOf(a: Article): ChipId {
+  if (a.category === "perspectives") return "perspectives";
+  if (a.category === "announcements") return "announcements";
+  if (a.series === "founding") return "founding";
+  return "market";
+}
+const CAT_LABEL: Record<ChipId, string> = {
+  all: "All",
+  founding: "Founding story",
+  perspectives: "Perspective",
+  market: "Market note",
+  announcements: "Announcement",
+  video: "Video",
+};
+
+const fmtRound = (d: string) =>
+  new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
+/* ─────────── story submission ─────────── */
+
+function PitchForm() {
   const [sent, setSent] = useState(false);
   return (
     <div className="md-form">
-      <p className="md-eyebrow">{kind === "pitch" ? "Pitch a story" : "Submit a round"}</p>
-      <h3 className="md-form-h">
-        {kind === "pitch"
-          ? "Tell us what you are building."
-          : "Which round did we miss?"}
-      </h3>
+      <p className="md-eyebrow">Pitch a story</p>
+      <h3 className="md-form-h">Tell us what we should be covering.</h3>
       {sent ? (
         <p className="md-p">Thank you — we read every one and will be in touch.</p>
       ) : (
@@ -69,7 +84,7 @@ function PitchForm({ kind }: { kind: "pitch" | "round" }) {
             <input required type="email" maxLength={255} placeholder="you@company.com" />
           </label>
           <label className="md-f">
-            <span>{kind === "pitch" ? "The short version" : "Round details"}</span>
+            <span>The short version</span>
             <textarea required maxLength={800} rows={4} placeholder="A few lines." />
           </label>
           <button className="btn" type="submit" style={{ marginTop: 6 }}>
@@ -81,464 +96,397 @@ function PitchForm({ kind }: { kind: "pitch" | "round" }) {
   );
 }
 
-/* ─────────────────────────── cards ─────────────────────────── */
+/* ─────────── blurred calendar shape ─────────── */
 
-function ArticleCard({ a, onOpen }: { a: Article; onOpen: () => void }) {
-  const c = CAT_COLOR[a.category];
-  const announcement = a.category === "announcements";
-  return (
-    <button className="md-card" onClick={onOpen} style={{ ["--sc" as string]: c }}>
-      <div className={`md-card-img${announcement ? " md-card-img--q" : ""}`}>
-        {announcement ? (
-          <span className="md-card-q">{a.quarter}</span>
-        ) : a.cover ? (
-          <img loading="lazy" src={a.cover} alt={a.person || a.title} />
-        ) : (
-          <span className="md-card-mono">
-            {initialsOf(a.person || a.company || a.title)}
-          </span>
-        )}
-        <i className="md-card-rule" />
-      </div>
-      <div className="md-card-bd">
-        <span className="md-card-tag">{TAG_LABEL[a.series]}</span>
-        <h3>{a.title}</h3>
-        <div className="md-card-who">
-          {announcement ? "Keyhorse Capital" : a.person}
-          {a.company && !announcement ? <small>{a.company}</small> : null}
-        </div>
-        <div className="md-card-ft">
-          <span>{a.date}</span>
-          <span className="md-card-go">Read →</span>
-        </div>
-      </div>
-    </button>
-  );
-}
-
-/* ─────────────────────────── calendar ─────────────────────────── */
-
+const DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December",
 ];
-const DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-function monthKey(y: number, m: number) {
-  return `${y}-${String(m + 1).padStart(2, "0")}`;
-}
-
-function Calendar() {
-  const [cursor, setCursor] = useState({ y: 2026, m: 7 });
-  const key = monthKey(cursor.y, cursor.m);
-
+function MonthShape() {
+  const y = 2026;
+  const m = 7; // August 2026
   const cells = useMemo(() => {
-    const first = new Date(Date.UTC(cursor.y, cursor.m, 1));
-    const lead = (first.getUTCDay() + 6) % 7;
-    const days = new Date(Date.UTC(cursor.y, cursor.m + 1, 0)).getUTCDate();
-    const out: { day: number | null; evs: CalEvent[] }[] = [];
-    for (let i = 0; i < lead; i++) out.push({ day: null, evs: [] });
-    for (let d = 1; d <= days; d++) {
-      const iso = `${key}-${String(d).padStart(2, "0")}`;
-      out.push({ day: d, evs: EVENTS.filter((e) => e.date === iso) });
-    }
-    while (out.length % 7) out.push({ day: null, evs: [] });
+    const lead = (new Date(Date.UTC(y, m, 1)).getUTCDay() + 6) % 7;
+    const days = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+    const out: (number | null)[] = Array.from({ length: lead }, () => null);
+    for (let d = 1; d <= days; d++) out.push(d);
+    while (out.length % 7) out.push(null);
     return out;
-  }, [cursor, key]);
-
-  const upcoming = EVENTS.slice(0, 5);
-  const shift = (n: number) =>
-    setCursor((c) => {
-      const m = c.m + n;
-      return { y: c.y + Math.floor(m / 12), m: ((m % 12) + 12) % 12 };
-    });
-
+  }, []);
+  const marked = new Set(
+    EVENTS.filter((e) => e.date.startsWith("2026-08")).map((e) => Number(e.date.slice(8))),
+  );
   return (
-    <div className="md-cal-wrap">
-      <div className="md-cal">
-        <div className="md-cal-bar">
-          <strong>
-            {MONTHS[cursor.m]} {cursor.y}
-          </strong>
-          <div className="md-cal-nav">
-            <button onClick={() => shift(-1)} aria-label="Previous month">
-              ←
-            </button>
-            <button onClick={() => shift(1)} aria-label="Next month">
-              →
-            </button>
-          </div>
-        </div>
-        <div className="md-cal-grid">
-          {DOW.map((d) => (
-            <div className="md-cal-dow" key={d}>
-              {d}
-            </div>
-          ))}
-          {cells.map((c, i) => (
-            <div className={`md-cal-cell${c.day ? "" : " off"}`} key={i}>
-              {c.day ? <span className="md-cal-num">{c.day}</span> : null}
-              {c.evs.map((e) => (
-                <span
-                  className={`md-chip${e.own ? " own" : ""}`}
-                  key={e.title}
-                  title={`${e.title} · ${e.venue}`}
-                >
-                  {e.title}
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
+    <div className="mx-month">
+      <div className="mx-month-h">
+        <strong>
+          {MONTHS[m]} {y}
+        </strong>
+        <span className="mx-mono">Ecosystem</span>
       </div>
-
-      <aside className="md-up">
-        <p className="md-eyebrow">Upcoming</p>
-        {upcoming.map((e) => {
-          const d = new Date(`${e.date}T00:00:00Z`);
-          return (
-            <div className="md-up-row" key={e.date + e.title}>
-              <div className="md-up-dt">
-                <b>{d.getUTCDate()}</b>
-                <span>{MONTHS[d.getUTCMonth()]?.slice(0, 3)}</span>
-              </div>
-              <div>
-                <div className="md-up-t">{e.title}</div>
-                <div className="md-up-v">{e.venue}</div>
-              </div>
-              <span className={`md-up-tag${e.own ? " own" : ""}`}>{e.type}</span>
-            </div>
-          );
-        })}
-      </aside>
+      <div className="mx-month-g">
+        {DOW.map((d) => (
+          <span className="mx-dow" key={d}>
+            {d}
+          </span>
+        ))}
+        {cells.map((d, i) => (
+          <span
+            className={`mx-day${d ? "" : " off"}${d && marked.has(d) ? " on" : ""}`}
+            key={i}
+          >
+            {d ?? ""}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
 
-/* ─────────────────────────── page ─────────────────────────── */
+/* ─────────── page ─────────── */
 
 export default function Media() {
-  const [t, setT] = useState<FilterId>("all");
-  const [page, setPage] = useState(1);
   const { go, openSlide, openPost } = useSite();
-  const barRef = useRef<HTMLDivElement>(null);
+  const [chip, setChip] = useState<ChipId>("all");
+  const [covPage, setCovPage] = useState(0);
 
+  const latest = SORTED[0]!;
   const posts = useMemo(
-    () => (t === "all" ? SORTED : SORTED.filter((p) => p.category === t)),
-    [t],
+    () => (chip === "all" ? SORTED : SORTED.filter((p) => catOf(p) === chip)),
+    [chip],
   );
-  const pages = Math.max(1, Math.ceil(posts.length / PER_PAGE));
-  const current = Math.min(page, pages);
-  const shown = posts.slice((current - 1) * PER_PAGE, current * PER_PAGE);
-
-  const setPageScroll = (n: number) => {
-    setPage(n);
-    barRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const shown = posts.slice(0, 6);
+  const pages = Math.max(1, Math.ceil(posts.length / 6));
 
   const rounds = ROUNDS.slice(0, 5);
+  const mentions = COVERAGE.slice(1);
+  const featured = COVERAGE[0]!;
+  const per = 4;
+  const covPages = Math.max(1, Math.ceil(mentions.length / per));
+  const covIdx = Math.min(covPage, covPages - 1);
+  const covShown = mentions.slice(covIdx * per, covIdx * per + per);
 
   return (
-    <section className="page on md">
-      {/* 1 · Title */}
-      <div className="band" style={{ paddingBottom: 0 }}>
+    <section className="page on md mx">
+      {/* 1 · Hero */}
+      <div className="band mx-hero">
         <div className="wrap">
-          <p className="md-eyebrow">Media</p>
-          <h1 className="md-h2" style={{ maxWidth: "26ch" }}>
-            Stories from the people building in Kentucky.
+          <SectionLabel left="Media" right="Keyhorse Capital" />
+          <h1 className="mx-h1">
+            The living story of <mark>innovation in Kentucky</mark>
           </h1>
-          <p className="md-p" style={{ marginTop: 14, maxWidth: "58ch" }}>
-            Founder interviews, operator conversations, every round we track and every
-            investment cycle we open.
-          </p>
+          <div className="mx-herofoot">
+            <p>
+              Every round raised in the Commonwealth, the founders behind them, and what
+              is being built here — reported weekly.
+            </p>
+            <span className="mx-mono">Published from Lexington · Free to read</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Latest story */}
+      <div className="band mx-latest">
+        <div className="wrap mx-latest-in">
+          <div>
+            <span className="mx-kick">Latest · {CAT_LABEL[catOf(latest)]}</span>
+            <h2 className="mx-lh">{latest.title}</h2>
+            <p className="mx-dek">{latest.standfirst}</p>
+            <div className="mx-latest-ft">
+              <button className="mx-link" onClick={() => openPost(latest.slug)}>
+                Read the story →
+              </button>
+              <span className="mx-mono">{latest.date} · 6 min read</span>
+            </div>
+          </div>
+          <button className="mx-latest-img" onClick={() => openPost(latest.slug)}>
+            <img src={latest.cover} alt={latest.person || latest.title} />
+          </button>
         </div>
       </div>
 
       {/* 2 · The Record */}
-      <div className="band md-slate" id="record">
-        <div className="wrap">
-          <div className="md-head">
+      <div className="mx-dark" id="record">
+        <img className="mx-dark-bg" src={PASTURE} alt="" aria-hidden="true" />
+        <div className="wrap mx-dark-in">
+          <SectionLabel left="The Record" right="Updated weekly" />
+          <div className="mx-rechead">
             <div>
-              <p className="md-eyebrow md-eyebrow--dark">The record</p>
-              <h2 className="md-h2 w">Every round raised in Kentucky.</h2>
-              <p className="md-p md-p--dark">
-                A running list of what is being funded across the Commonwealth.
+              <h2 className="mx-h2">Every round raised in the Commonwealth.</h2>
+              <p className="mx-sub">
+                A running list of disclosed venture funding across Kentucky.
               </p>
             </div>
-            <span className="md-live">
-              <i className="md-pulse" aria-hidden="true" />
-              LIVE · UPDATED WEEKLY
+            <span className="mx-live">
+              <i aria-hidden="true" />
+              Live · {ROUNDS.length} tracked
             </span>
           </div>
 
-          <div className="md-rows">
-            {rounds.map((r) => (
-              <div
-                className="md-row"
-                key={r.company + r.date}
-                style={{ ["--fc" as string]: colorFor(r.company) }}
-              >
-                <div className="md-row-dt">
-                  {new Date(`${r.date}T00:00:00Z`).toLocaleDateString("en-US", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    timeZone: "UTC",
-                  })}
-                </div>
-                <div className="md-row-co">
-                  {r.slug ? (
-                    <button onClick={() => openPost(r.slug!)}>{r.company}</button>
-                  ) : (
-                    r.company
-                  )}
-                  <small>{r.city}, Kentucky</small>
-                </div>
-                <div className="md-row-sec">{r.sector}</div>
-                <div className="md-row-amt">{r.amount}</div>
-                <div className="md-row-out">
-                  <a href={r.outletUrl} target="_blank" rel="noopener noreferrer">
-                    {r.outlet} ↗
-                  </a>
-                </div>
-                <div className="md-row-ar">→</div>
-              </div>
-            ))}
-          </div>
+          <table className="mx-tbl">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Sector</th>
+                <th className="r">Raised</th>
+                <th className="r">Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rounds.map((r) => (
+                <tr key={r.company + r.date}>
+                  <td className="mx-mono">{fmtRound(r.date)}</td>
+                  <td className="co">
+                    {r.slug ? (
+                      <button onClick={() => openPost(r.slug!)}>{r.company}</button>
+                    ) : (
+                      r.company
+                    )}
+                  </td>
+                  <td>{r.city}, KY</td>
+                  <td>{r.sector}</td>
+                  <td className="r amt">{r.amount}</td>
+                  <td className="r">
+                    <a href={r.outletUrl} target="_blank" rel="noopener noreferrer">
+                      {r.outlet} ↗
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-          <div className="md-btns">
-            <button className="btn cy" onClick={() => go("record")}>
-              View all rounds
+          <div className="mx-recfoot">
+            <button className="mx-link cy" onClick={() => go("record")}>
+              All {ROUNDS.length} rounds — the full record →
+            </button>
+            <button className="mx-muted-link" onClick={() => openSlide(<PitchForm />)}>
+              Submit a round we missed
             </button>
           </div>
         </div>
       </div>
 
       {/* 3 · Stories */}
-      <div className="band md-articles">
-        <div className="wrap" style={{ paddingBottom: 18 }}>
-          <p className="md-eyebrow">Stories</p>
-          <h2 className="md-h2">Founder interviews, operator conversations, and announcements.</h2>
-        </div>
-        <div className="md-bar" ref={barRef}>
-          <div className="wrap md-bar-in">
-            <div className="md-pills">
-              {FILTERS.map(([v, l]) => (
+      <div className="band">
+        <div className="wrap">
+          <SectionLabel left="Stories" right="Everything we publish" />
+          <h2 className="mx-h2">Reported from across the Commonwealth.</h2>
+
+          <div className="mx-filter">
+            <div className="mx-chips">
+              {CHIPS.map(([v, l]) => (
                 <button
                   key={v}
-                  className="md-pill"
-                  aria-pressed={t === v}
-                  onClick={() => {
-                    setT(v);
-                    setPage(1);
-                  }}
+                  className="mx-chip"
+                  aria-pressed={chip === v}
+                  onClick={() => setChip(v)}
                 >
                   {l}
                 </button>
               ))}
             </div>
-            <span className="md-count">
-              {t === "perspectives"
-                ? "0 articles"
-                : `${posts.length} articles · page ${current} of ${pages}`}
+            <span className="mx-mono">
+              {posts.length} articles · page 1 of {pages}
             </span>
           </div>
-        </div>
 
-        <div className="wrap">
-          {t === "perspectives" ? (
-            <div className="md-empty">
-              <p>
-                Perspectives is where our market analysis will live — what we are seeing
-                across the portfolio, what is forming in the state, and where the capital
-                is going. First pieces coming soon.
-              </p>
-              <form
-                className="md-empty-sub"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                <input
-                  required
-                  type="email"
-                  placeholder="you@company.com"
-                  aria-label="Email address"
-                />
-                <button className="btn" type="submit">
-                  Notify me
+          {shown.length ? (
+            <div className="mx-grid">
+              {shown.map((p) => (
+                <button className="mx-card" key={p.slug} onClick={() => openPost(p.slug)}>
+                  <div className="mx-card-img">
+                    <img loading="lazy" src={p.cover} alt={p.person || p.title} />
+                  </div>
+                  <div className="mx-card-meta">
+                    <span className="mx-card-cat">{CAT_LABEL[catOf(p)]}</span>
+                    <span className="mx-mono">{p.date}</span>
+                  </div>
+                  <h3 className="mx-card-h">{p.title}</h3>
                 </button>
-              </form>
+              ))}
             </div>
           ) : (
-            <>
-              <div className="md-grid">
-                {shown.map((p) => (
-                  <ArticleCard key={p.slug} a={p} onOpen={() => openPost(p.slug)} />
-                ))}
-              </div>
-              <div className="md-pager">
-                <button
-                  className="md-pg"
-                  disabled={current === 1}
-                  onClick={() => setPageScroll(current - 1)}
-                >
-                  ← Previous
-                </button>
-                {Array.from({ length: pages }, (_, i) => i + 1).map((n) => (
-                  <button
-                    key={n}
-                    className="md-pg num"
-                    aria-current={n === current ? "true" : "false"}
-                    onClick={() => setPageScroll(n)}
-                  >
-                    {n}
-                  </button>
-                ))}
-                <button
-                  className="md-pg"
-                  disabled={current === pages}
-                  onClick={() => setPageScroll(current + 1)}
-                >
-                  Next →
-                </button>
-              </div>
-            </>
+            <p className="mx-empty">Nothing published in this category yet.</p>
           )}
+
+          <div className="mx-center">
+            <button className="mx-link" onClick={() => setChip("all")}>
+              All coverage →
+            </button>
+          </div>
         </div>
       </div>
 
       {/* 4 · Coverage */}
-      <div className="band md-paper">
+      <div className="band mx-cov">
         <div className="wrap">
-          <p className="md-eyebrow">Coverage</p>
-          <h2 className="md-h2">Where we are written about.</h2>
-          <div className="md-cov">
-            {COVERAGE.map((c, i) =>
-              c.url ? (
-                <a
-                  className="md-cov-c"
-                  key={i}
-                  href={c.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="md-cov-o">{c.outlet}</span>
-                  <h3>{c.title}</h3>
-                  <div className="md-cov-f">
-                    <span className="md-mono">{c.date}</span>
-                    <i>↗</i>
-                  </div>
-                </a>
-              ) : (
-                <div className="md-cov-c off" key={i}>
-                  <span className="md-cov-o">{c.outlet}</span>
-                  <h3>{c.title}</h3>
-                  <div className="md-cov-f">
-                    <span className="md-mono">{c.date}</span>
-                  </div>
-                </div>
-              ),
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* 5 · Social */}
-      <div className="band">
-        <div className="wrap">
-          <p className="md-eyebrow">Social</p>
-          <h2 className="md-h2">Where else we publish.</h2>
-          <div className="md-soc">
-            {SOCIAL.map((s) => (
-              <div className="md-panel" key={s.id}>
-                <div className="md-panel-h">
-                  <span className={`md-mark ${s.id}`} aria-hidden="true">
-                    {s.id === "instagram" ? "◎" : "in"}
-                  </span>
-                  <div>
-                    <b>{s.name}</b>
-                    <span>{s.handle}</span>
-                  </div>
-                  <span className="md-followers">{s.followers}</span>
-                </div>
-                <div className="md-tiles">
-                  {s.tiles.map((tl) => (
-                    <a
-                      className="md-tile"
-                      key={tl}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ ["--fc" as string]: colorFor(tl) }}
-                    >
-                      <span>{tl}</span>
-                    </a>
-                  ))}
-                </div>
-                <div className="md-panel-f">
-                  <p>{s.blurb}</p>
+          <SectionLabel left="Coverage" right="Where we are mentioned" />
+          <div className="mx-cov-in">
+            <div className="mx-cov-feat">
+              <span className="mx-kick">Featured</span>
+              <b className="mx-cov-out">{featured.outlet}</b>
+              <p className="mx-quote">
+                <mark>{featured.title}</mark>
+              </p>
+              <div className="mx-cov-ft">
+                <span className="mx-mono">{featured.date}</span>
+                {featured.url ? (
                   <a
-                    className="btn g"
-                    href={s.url}
+                    className="mx-link"
+                    href={featured.url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Follow ↗
+                    Read ↗
                   </a>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="mx-cov-list">
+              {covShown.map((c, i) => (
+                <div className="mx-cov-row" key={c.outlet + i}>
+                  <div>
+                    <span className="mx-mono up">{c.outlet}</span>
+                    <h3>{c.title}</h3>
+                  </div>
+                  <span className="mx-mono">{c.date}</span>
+                </div>
+              ))}
+              <div className="mx-cov-nav">
+                <span className="mx-mono">
+                  {covIdx * per + 1} – {Math.min(mentions.length, covIdx * per + per)} of{" "}
+                  {mentions.length} mentions
+                </span>
+                <div>
+                  <button
+                    aria-label="Previous mentions"
+                    disabled={covIdx === 0}
+                    onClick={() => setCovPage(covIdx - 1)}
+                  >
+                    ←
+                  </button>
+                  <button
+                    aria-label="Next mentions"
+                    disabled={covIdx >= covPages - 1}
+                    onClick={() => setCovPage(covIdx + 1)}
+                  >
+                    →
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="md-socrows">
-            {SOCIAL_ROWS.map((r) =>
-              r.url ? (
-                <a
-                  className="md-socrow"
-                  key={r.name}
-                  href={r.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <b>{r.name}</b>
-                  <span>{r.handle}</span>
-                  <em className="md-mono">{r.meta}</em>
-                  <i>↗</i>
-                </a>
-              ) : (
-                <div className="md-socrow off" key={r.name}>
-                  <b>{r.name}</b>
-                  <span>{r.handle}</span>
-                  <em className="md-mono">{r.meta}</em>
-                  <i />
-                </div>
-              ),
-            )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* 6 · Calendar */}
-      <div className="band md-paper">
+      {/* 5 · Newsletter */}
+      <div className="mx-news">
+        <div className="wrap mx-news-in">
+          <div className="mx-news-l">
+            <span className="mx-mono">Newsletter</span>
+            <p>Every round, every story, once a week.</p>
+          </div>
+          <form className="mx-news-f" onSubmit={(e) => e.preventDefault()}>
+            <input
+              required
+              type="email"
+              aria-label="Email address"
+              placeholder="you@company.com"
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      {/* 6 · Social */}
+      <div className="band">
         <div className="wrap">
-          <div className="md-head">
-            <div>
-              <p className="md-eyebrow">Calendar</p>
-              <h2 className="md-h2">What is happening across Kentucky.</h2>
-              <p className="md-p">
-                Ours and everyone else’s. If you are running something and it is not
-                here, send it to us.
-              </p>
+          <SectionLabel left="Social" right="Placeholder" />
+          <div className="mx-res">
+            <div className="mx-res-body" aria-hidden="true">
+              <div className="mx-soc">
+                {["LinkedIn", "Instagram", "X", "YouTube"].map((s) => (
+                  <div className="mx-soc-c" key={s}>
+                    <b>{s}</b>
+                    <span className="mx-mono">@keyhorsecapital</span>
+                    <p>Latest posts from the channel appear here.</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            <button
-              className="btn g"
-              onClick={() => openSlide(<PitchForm kind="round" />)}
-            >
-              Submit an event
+            <div className="mx-res-over">
+              <span className="mx-mono cy">Section reserved</span>
+              <p>Live channel feeds to be added</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 7 · Calendar */}
+      <div className="band mx-cov">
+        <div className="wrap">
+          <SectionLabel left="Calendar" right="Across Kentucky" />
+          <div className="mx-res">
+            <div className="mx-res-body" aria-hidden="true">
+              <div className="mx-calwrap">
+                <MonthShape />
+                <div className="mx-up">
+                  <span className="mx-mono">Upcoming</span>
+                  {EVENTS.slice(0, 5).map((e) => (
+                    <div className="mx-up-row" key={e.date + e.title}>
+                      <span className="mx-mono">{fmtRound(e.date)}</span>
+                      <div>
+                        <b>{e.title}</b>
+                        <small>{e.venue}</small>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mx-res-over">
+              <span className="mx-mono cy">Section reserved</span>
+              <p>Live ecosystem calendar to be added</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 8 · Closing panels */}
+      <div className="mx-panels">
+        <div className="mx-panel slate">
+          <img className="mx-panel-bg" src={LOGISTICS} alt="" aria-hidden="true" />
+          <div className="mx-panel-in">
+            <span className="mx-kick">For founders</span>
+            <h2>Building something exceptional in Kentucky?</h2>
+            <p>
+              We invest across stages in companies building in the Commonwealth — from
+              first cheque to follow-on, alongside the programmes that get you there.
+            </p>
+            <button className="mx-link cy" onClick={() => go("apply")}>
+              See the criteria →
             </button>
           </div>
-          <Calendar />
+        </div>
+        <div className="mx-panel coal">
+          <img className="mx-panel-bg" src={PASTURE} alt="" aria-hidden="true" />
+          <div className="mx-panel-in">
+            <span className="mx-kick">For everyone else</span>
+            <h2>Know a story we should be telling?</h2>
+            <p>
+              A round we missed, a founder worth meeting, or something being built quietly
+              somewhere in the state. Send it over.
+            </p>
+            <button className="mx-link cy" onClick={() => openSlide(<PitchForm />)}>
+              Pitch a story →
+            </button>
+          </div>
         </div>
       </div>
     </section>
