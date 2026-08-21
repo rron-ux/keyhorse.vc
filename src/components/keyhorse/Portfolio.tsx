@@ -6,27 +6,38 @@ import { initials as monogram } from "./CompanyCard";
 
 type Row = {
   company: string;
+  legal_name?: string | null;
   industry: string;
   vertical: string;
   one_liner: string;
-  website: string;
+  business_model?: string | null;
+  city?: string | null;
+  stage?: string | null;
   status: string;
-  verified?: string;
+  website: string;
+  source?: string | null;
+  review?: string | null;
+  note?: string | null;
 };
 
 const ROWS = raw as Row[];
 
 /** Fixed industry order. */
 export const INDUSTRY_ORDER = [
-  "Health & Life Sciences",
-  "Software & AI",
-  "Consumer & Media",
-  "Business & Professional",
-  "Agriculture, Food & Beverage",
-  "Energy, Materials & Climate",
-  "Manufacturing & Industrials",
-  "Logistics & Mobility",
+  "Healthcare & Life Sciences",
+  "Industrials & Manufacturing",
+  "Software & Technology",
+  "Agriculture & Food",
+  "Media & Entertainment",
+  "Consumer",
+  "Energy & CleanTech",
+  "Business Services",
+  "Education",
+  "Financial Services",
+  "Real Estate",
 ];
+
+export const STAGE_OPTIONS = ["PreSeed", "Seed", "Series A", "Series B+", "IPO"];
 
 export const slug = (s: string) =>
   s
