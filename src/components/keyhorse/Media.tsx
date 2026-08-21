@@ -242,7 +242,7 @@ export default function Media() {
             </div>
           </div>
           <button className="mx-latest-img" onClick={() => openPost(latest.slug)}>
-            <img src={latest.cover} alt={latest.person || latest.title} />
+            <CoverImg eager src={latest.cover} alt={latest.person || latest.title} />
           </button>
         </div>
       </div>
@@ -339,7 +339,7 @@ export default function Media() {
               {shown.map((p) => (
                 <button className="mx-card" key={p.slug} onClick={() => openPost(p.slug)}>
                   <div className="mx-card-img">
-                    <img loading="lazy" src={p.cover} alt={p.person || p.title} />
+                    <CoverImg src={p.cover} alt={p.person || p.title} />
                   </div>
                   <div className="mx-card-meta">
                     <span className="mx-card-cat">{CAT_LABEL[catOf(p)]}</span>
