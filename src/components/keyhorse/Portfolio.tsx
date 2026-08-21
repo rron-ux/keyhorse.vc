@@ -391,6 +391,11 @@ export default function Portfolio() {
                     <span className="pf-name">
                       {r.company}
                       {exited && <i className="pf-exit">Exited</i>}
+                      {r.type && (
+                        <i className={`pf-type ${r.type === "Programmatic" ? "pg" : "dir"}`}>
+                          {r.type}
+                        </i>
+                      )}
                     </span>
                     <span className="pf-one">{r.description}</span>
                   </span>
