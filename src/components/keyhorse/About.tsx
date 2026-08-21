@@ -13,9 +13,7 @@ const FACTS: [string, string][] = [
   ["Founded", "2001"],
   ["Structure", "Evergreen"],
   ["Stage", "Pre-seed → Series A+"],
-  ["Geography", "Kentucky only"],
-  ["Funds", "Three"],
-  ["Affiliation", "KSTC"],
+  ["Industry focus", "Agnostic"],
 ];
 
 type Person = {
