@@ -441,7 +441,7 @@ export default function Media() {
 
                 <div className="mx-cov-ft">
                   <span className="mx-mono">
-                    {FEATURED.source} · {FEATURED.date}
+                    {FEATURED.source} · {yearOf(FEATURED.date)}
                   </span>
                   <span className="mx-link">Read ↗</span>
                 </div>
