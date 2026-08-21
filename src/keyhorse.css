@@ -2280,3 +2280,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mx-card-img img.is-graphic,
 .mx-latest-img img.is-graphic{object-fit:contain;background:var(--tint);padding:14px}
 .art-hero-img.is-graphic{object-fit:contain;background:var(--tint)}
+
+@media(max-width:600px){
+  .mx-cov-feat{grid-template-columns:1fr}
+}
