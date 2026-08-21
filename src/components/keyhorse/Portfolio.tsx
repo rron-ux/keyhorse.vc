@@ -188,13 +188,13 @@ export default function Portfolio() {
   const [verts, setVerts] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
   const [q, setQ] = useState("");
-  const [open, setOpen] = useState<Row | null>(null);
+  const [modal, setModal] = useState<Row | null>(null);
   useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
+    if (!modal) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setModal(null);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+  }, [modal]);
 
   const [open, setOpen] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -377,7 +377,7 @@ export default function Portfolio() {
                 <button
                   type="button"
                   className="pf-link"
-                  onClick={() => setOpen(r)}
+                  onClick={() => setModal(r)}
                 >
                   <span className="pf-tile" aria-hidden="true">
                     {initials(r.company)}
@@ -404,61 +404,61 @@ export default function Portfolio() {
           })}
         </div>
 
-        {open && (
+        {modal && (
           <div
             className="pfm-scrim"
             role="dialog"
             aria-modal="true"
-            aria-label={open.company}
-            onClick={() => setOpen(null)}
+            aria-label={modal.company}
+            onClick={() => setModal(null)}
           >
             <div className="pfm" onClick={(e) => e.stopPropagation()}>
               <button
                 className="pfm-x"
-                onClick={() => setOpen(null)}
+                onClick={() => setModal(null)}
                 aria-label="Close"
               >
                 ×
               </button>
               <div className="pfm-head">
                 <span className="pfm-logo" aria-hidden="true">
-                  {initials(open.company)}
+                  {initials(modal.company)}
                 </span>
                 <div>
-                  <h3 className="pfm-name">{open.company}</h3>
-                  <p className="pfm-one">{open.one_liner}</p>
+                  <h3 className="pfm-name">{modal.company}</h3>
+                  <p className="pfm-one">{modal.one_liner}</p>
                 </div>
               </div>
               <dl className="pfm-meta">
                 <div>
                   <dt>Investment</dt>
-                  <dd>{laneOf(open.company)}</dd>
+                  <dd>{laneOf(modal.company)}</dd>
                 </div>
                 <div>
                   <dt>Sector</dt>
-                  <dd>{open.industry || "Untagged"}</dd>
+                  <dd>{modal.industry || "Untagged"}</dd>
                 </div>
                 <div>
                   <dt>Vertical</dt>
-                  <dd>{open.vertical || "—"}</dd>
+                  <dd>{modal.vertical || "—"}</dd>
                 </div>
                 <div>
                   <dt>Location</dt>
-                  <dd>{open.city || "—"}</dd>
+                  <dd>{modal.city || "—"}</dd>
                 </div>
                 <div>
                   <dt>Stage</dt>
-                  <dd>{open.stage || "—"}</dd>
+                  <dd>{modal.stage || "—"}</dd>
                 </div>
                 <div>
                   <dt>Status</dt>
-                  <dd>{open.status || "—"}</dd>
+                  <dd>{modal.status || "—"}</dd>
                 </div>
               </dl>
-              {open.website && (
+              {modal.website && (
                 <a
                   className="pfm-site"
-                  href={open.website}
+                  href={modal.website}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
