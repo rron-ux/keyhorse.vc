@@ -397,37 +397,37 @@ export default function Media() {
           <div className="mx-cov-in">
             <a
               className="mx-cov-feat"
-              href={featured.url || undefined}
-              target={featured.url ? "_blank" : undefined}
+              href={FEATURED.url}
+              target="_blank"
               rel="noopener noreferrer"
             >
               <div className="mx-cov-shot">
                 <img
-                  src={reportAsset.url}
-                  alt="State of Startups in the Southeast 2025 report"
+                  src={riseCover}
+                  alt="Rise of the Rest — Invest Local report cover"
                   loading="lazy"
-                  width={1280}
-                  height={960}
+                  width={1024}
+                  height={1024}
                 />
               </div>
               <div className="mx-cov-body">
-                <span className="mx-kick">Featured</span>
-                <b className="mx-cov-out">{featured.outlet}</b>
+                <span className="mx-cov-kick">Featured</span>
+                <b className="mx-cov-out">{FEATURED.outlet}</b>
                 <p className="mx-quote">
-                  {featured.headline}
-                  <mark>{featured.mark}</mark>
-                  {featured.headlineEnd}
+                  {FEATURED.quoteStart}
+                  <mark>{FEATURED.mark}</mark>
+                  {FEATURED.quoteEnd}
                 </p>
 
                 <div className="mx-cov-ft">
                   <span className="mx-mono">
-                    {featured.source} · 
-                    {featured.date}
+                    {FEATURED.source} · {FEATURED.date}
                   </span>
-                  {featured.url ? <span className="mx-link">Read ↗</span> : null}
+                  <span className="mx-link">Read ↗</span>
                 </div>
               </div>
             </a>
+
 
 
             <div className="mx-cov-list">
