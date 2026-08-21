@@ -3,6 +3,7 @@ import { ARTICLES, type Article, type Category } from "@/data/articles";
 import { COVERAGE, EVENTS, ROUNDS } from "@/data/media";
 import { PICS } from "@/lib/images";
 import logisticsAsset from "@/assets/logistics.jpg.asset.json";
+import reportAsset from "@/assets/bip-state-of-startups.jpg.asset.json";
 import { useSite } from "./shared";
 
 export const CAT_COLOR: Record<Category, string> = {
@@ -368,36 +369,56 @@ export default function Media() {
         <div className="wrap">
           <SectionLabel left="Coverage" right="Where we are mentioned" />
           <div className="mx-cov-in">
-            <div className="mx-cov-feat">
-              <span className="mx-kick">Featured</span>
-              <b className="mx-cov-out">{featured.outlet}</b>
-              <p className="mx-quote">
-                <mark>{featured.title}</mark>
-              </p>
-              <div className="mx-cov-ft">
-                <span className="mx-mono">{featured.date}</span>
-                {featured.url ? (
-                  <a
-                    className="mx-link"
-                    href={featured.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read ↗
-                  </a>
-                ) : null}
+            <a
+              className="mx-cov-feat"
+              href={featured.url || undefined}
+              target={featured.url ? "_blank" : undefined}
+              rel="noopener noreferrer"
+            >
+              <div className="mx-cov-shot">
+                <img
+                  src={reportAsset.url}
+                  alt="State of Startups in the Southeast 2025 report"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                />
               </div>
-            </div>
+              <div className="mx-cov-body">
+                <span className="mx-kick">Featured</span>
+                <b className="mx-cov-out">{featured.outlet}</b>
+                <p className="mx-quote">
+                  {featured.headline}
+                  <mark>{featured.mark}</mark>
+                  {featured.headlineEnd}
+                </p>
+
+                <div className="mx-cov-ft">
+                  <span className="mx-mono">
+                    {featured.source} · 
+                    {featured.date}
+                  </span>
+                  {featured.url ? <span className="mx-link">Read ↗</span> : null}
+                </div>
+              </div>
+            </a>
+
 
             <div className="mx-cov-list">
               {covShown.map((c, i) => (
-                <div className="mx-cov-row" key={c.outlet + i}>
+                <a
+                  className="mx-cov-row"
+                  key={c.outlet + i}
+                  href={c.url || undefined}
+                  target={c.url ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                >
                   <div>
                     <span className="mx-mono up">{c.outlet}</span>
                     <h3>{c.title}</h3>
                   </div>
                   <span className="mx-mono">{c.date}</span>
-                </div>
+                </a>
               ))}
               <div className="mx-cov-nav">
                 <span className="mx-mono">
