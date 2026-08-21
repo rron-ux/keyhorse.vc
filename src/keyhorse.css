@@ -1944,7 +1944,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .pf-name{display:flex;align-items:center;gap:8px;font-family:var(--d);font-size:17px;font-weight:600;
   letter-spacing:-.026em;color:var(--ink);line-height:1.2;flex-wrap:wrap}
 .pf-exit{font-family:var(--m);font-style:normal;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  color:#fff;background:var(--coal);padding:2px 6px}
+  color:#fff;background:#C9A227;padding:2px 6px}
 .pf-type{font-family:var(--m);font-style:normal;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
   padding:2px 6px}
 .pf-type.dir{color:var(--coal);border:1px solid var(--coal);background:#fff}
