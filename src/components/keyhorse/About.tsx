@@ -217,7 +217,7 @@ export default function About() {
   return (
     <section className="page on abt">
       {/* Hero */}
-      <div className="ihero">
+      <div className="ihero abt-hero">
         <img className="bgimg" src={hero.src} alt={hero.alt} />
         <div className="wrap">
           <p className="lbl">About</p>
@@ -237,12 +237,9 @@ export default function About() {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Figures and the ranking */}
-      <div className="band abt-figs">
-        <Rv>
-          <p className="lbl">Figures</p>
+        {/* Figures integrated into hero */}
+        <div className="wrap abt-hero-figs">
           <div className="abt-fgrid">
             {FIGURES.map(([n, l]) => (
               <div className="abt-fcell" key={l}>
@@ -251,29 +248,11 @@ export default function About() {
               </div>
             ))}
           </div>
-
-        </Rv>
-      </div>
-
-      {/* How we differ */}
-      <div className="band">
-        <Rv>
-          <p className="lbl">How we differ</p>
-          <div className="abt-diff">
-            {DIFF.map(([n, t, d]) => (
-              <article className="abt-dcell" key={n}>
-                <span className="abt-drule" />
-                <span className="abt-dn">{n}</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </article>
-            ))}
-          </div>
-        </Rv>
+        </div>
       </div>
 
       {/* Thesis */}
-      <div className="band abt-thesis-band">
+      <div className="band abt-thesis-band" id="thesis">
         <Rv>
           <div className="abt-thesis">
             <div>
@@ -334,32 +313,8 @@ export default function About() {
         </Rv>
       </div>
 
-      {/* In the press */}
-      <div className="band abt-press-band">
-        <Rv>
-          <p className="lbl">In the press</p>
-          <div className="abt-press">
-            {PRESS.map((r, i) => (
-              <a
-                className="abt-prow"
-                key={`${r.outlet}-${i}`}
-                href={r.url}
-                target={r.url === "#" ? undefined : "_blank"}
-                rel="noopener noreferrer"
-              >
-                <span className="abt-po">{r.outlet}</span>
-                <span className="abt-ph">{r.headline}</span>
-                <span className="abt-pd">{r.date}</span>
-                <span className="abt-pa">↗</span>
-              </a>
-            ))}
-          </div>
-        </Rv>
-      </div>
-
       {/* Team */}
       <div className="band" id="team">
-
         <Rv>
           <p className="lbl">Team</p>
           <div className="abt-team">
@@ -386,9 +341,25 @@ export default function About() {
         </Rv>
       </div>
 
+      {/* How we differ */}
+      <div className="band abt-diff-band" id="how-we-differ">
+        <Rv>
+          <p className="lbl">How we differ</p>
+          <div className="abt-diff">
+            {DIFF.map(([n, t, d]) => (
+              <article className="abt-dcell" key={n}>
+                <span className="abt-drule" />
+                <span className="abt-dn">{n}</span>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </article>
+            ))}
+          </div>
+        </Rv>
+      </div>
+
       {/* The funds */}
       <div className="band abt-thesis-band" id="funds">
-
         <Rv>
           <div className="abt-fhead">
             <p className="lbl" style={{ margin: 0 }}>
@@ -432,8 +403,31 @@ export default function About() {
         </Rv>
       </div>
 
-      {/* Closing */}
-      <div className="band abt-close">
+      {/* Coverage */}
+      <div className="band abt-press-band" id="coverage">
+        <Rv>
+          <p className="lbl">Coverage</p>
+          <div className="abt-press">
+            {PRESS.map((r, i) => (
+              <a
+                className="abt-prow"
+                key={`${r.outlet}-${i}`}
+                href={r.url}
+                target={r.url === "#" ? undefined : "_blank"}
+                rel="noopener noreferrer"
+              >
+                <span className="abt-po">{r.outlet}</span>
+                <span className="abt-ph">{r.headline}</span>
+                <span className="abt-pd">{r.date}</span>
+                <span className="abt-pa">↗</span>
+              </a>
+            ))}
+          </div>
+        </Rv>
+      </div>
+
+      {/* Apply */}
+      <div className="band abt-close" id="apply">
         <span className="abt-orb" />
         <Rv>
           <h2>Building something exceptional in Kentucky?</h2>
