@@ -49,7 +49,7 @@ export default function Record() {
             </div>
             <span className="mx-live">
               <i aria-hidden="true" />
-              Live · {ROUNDS.length} tracked
+              {"\n"}
             </span>
           </div>
 
