@@ -463,7 +463,7 @@ export default function Media() {
                     <span className="mx-mono up">{c.outlet}</span>
                     <h3>{c.title}</h3>
                   </div>
-                  <span className="mx-mono">{c.date}</span>
+                  <span className="mx-mono">{yearOf(c.date)}</span>
                 </a>
               ))}
               <div className="mx-cov-nav">
