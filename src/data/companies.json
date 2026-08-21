@@ -1,2864 +1,1658 @@
 [
   {
-    "name": "1OR Health",
-    "website": "https://1orhealth.com/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "1OR Health",
-    "domain": "1orhealth.com"
-  },
-  {
-    "name": "AboutBit",
+    "company": "AboutBit",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Software development and IT consulting for small and mid-sized businesses",
     "website": "https://aboutbit.co/",
-    "industry": "Crypto & Blockchain",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "AboutBit",
-    "domain": "aboutbit.co"
+    "verified": "needs review"
   },
   {
-    "name": "ADEM Technologies Inc.",
+    "company": "ADEM",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Advanced Materials",
+    "one_liner": "Advanced energy materials for batteries and storage applications",
     "website": "https://advancedenergymat.com/",
-    "industry": "Oil and Gas",
-    "sector": "Energy & CleanTech",
     "status": "Active",
-    "display_name": "ADEM Technologies Inc.",
-    "domain": "advancedenergymat.com"
+    "verified": "needs review"
   },
   {
-    "name": "Airtrek Robotics",
+    "company": "Affinna",
+    "industry": "Consumer & Media",
+    "vertical": "Ticketing",
+    "one_liner": "Simplified ticketing platform for businesses and event organisers",
+    "website": "https://www.affinna.com/",
+    "status": "Exit",
+    "verified": "database"
+  },
+  {
+    "company": "Airtrek Robotics",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Robotics & Drones",
+    "one_liner": "Autonomous mobile robots automating airport ground operations",
     "website": "http://airtrekrobotics.com/",
-    "industry": "Robotics & Drones",
-    "sector": "Industrials & Manufacturing",
     "status": "Active",
-    "display_name": "Airtrek Robotics",
-    "domain": "airtrekrobotics.com"
+    "verified": "database"
   },
   {
-    "name": "ALT Distilling",
-    "website": "https://www.drinknkd.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "ALT Distilling",
-    "domain": "drinknkd.com"
+    "company": "Allylix",
+    "industry": "Health & Life Sciences",
+    "vertical": "Life Sciences",
+    "one_liner": "Terpene production using engineered yeast for flavour, fragrance and pharma",
+    "website": "https://www.crunchbase.com/organization/allylix",
+    "status": "Exit",
+    "verified": "needs review"
   },
   {
-    "name": "Another Nine",
+    "company": "Alt Distilling",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Beverage",
+    "one_liner": "Non-alcoholic spirit alternatives for cocktails and bar programmes",
+    "website": "https://www.altdistilling.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Another Nine",
+    "industry": "Consumer & Media",
+    "vertical": "Marketing",
+    "one_liner": "Brand and creative studio for consumer and lifestyle companies",
     "website": "https://www.anothernine.com",
-    "industry": "eSports",
-    "sector": "Consumer",
     "status": "Active",
-    "display_name": "Another Nine",
-    "domain": "anothernine.com"
+    "verified": "needs review"
   },
   {
-    "name": "Applied Industrials (ROAR)",
+    "company": "Apellis",
+    "industry": "Health & Life Sciences",
+    "vertical": "Biopharma",
+    "one_liner": "C3-targeting complement therapies for retinal, blood and kidney disease",
+    "website": "https://apellis.com/",
+    "status": "Exit",
+    "verified": "needs review"
+  },
+  {
+    "company": "Applied Industrials",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Industrial AI",
+    "one_liner": "AI tooling for industrial operations and maintenance workflows",
     "website": "https://appliedindustrials.ai/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "Applied Industrials",
-    "domain": "appliedindustrials.ai"
+    "verified": "needs review"
   },
   {
-    "name": "AquiSense Inc.",
+    "company": "Aptamera",
+    "industry": "Health & Life Sciences",
+    "vertical": "Biopharma",
+    "one_liner": "Aptamer-based therapeutics for oncology",
+    "website": "https://pitchbook.com/profiles/company/232994-62",
+    "status": "Exit",
+    "verified": "needs review"
+  },
+  {
+    "company": "AquiSense",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Water",
+    "one_liner": "UV-C LED water and surface disinfection systems",
     "website": "https://aquisense.com",
-    "industry": "CleanTech",
-    "sector": "Energy & CleanTech",
     "status": "Active",
-    "display_name": "AquiSense Inc.",
-    "domain": "aquisense.com"
+    "verified": "needs review"
   },
   {
-    "name": "Atlanta BB Holdings (Biscuit Belly)",
-    "website": "https://biscuitbelly.com",
-    "industry": "Restaurant Tech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Atlanta BB Holdings",
-    "domain": "biscuitbelly.com"
-  },
-  {
-    "name": "Aurasense Tech Corporation",
+    "company": "Aurasense",
+    "industry": "Software & AI",
+    "vertical": "Artificial Intelligence",
+    "one_liner": "AI-driven sensing and analytics platform",
     "website": "https://www.aurasense.ai/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "Aurasense Tech Corporation",
-    "domain": "aurasense.ai"
+    "verified": "needs review"
   },
   {
-    "name": "AuthoFi",
+    "company": "AuthoFi",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "Digital financing and checkout tools for dealerships",
     "website": "https://authofi.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "AuthoFi",
-    "domain": "authofi.com"
+    "verified": "needs review"
   },
   {
-    "name": "Avana Health",
+    "company": "Avana Health",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Digital care platform connecting patients with providers",
     "website": "https://www.avana.health/",
-    "industry": "FemTech",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "Avana Health",
-    "domain": "avana.health"
+    "verified": "needs review"
   },
   {
-    "name": "Bailout Systems",
+    "company": "Bailout Systems",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Safety Equipment",
+    "one_liner": "Escape and rescue systems for firefighters and industrial workers",
     "website": "https://www.bailoutsystems.com/",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
     "status": "Active",
-    "display_name": "Bailout Systems",
-    "domain": "bailoutsystems.com"
+    "verified": "needs review"
   },
   {
-    "name": "Baltech (Harris Technology)",
-    "website": "https://www.robotalign.com",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
+    "company": "BehaVR",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Virtual reality therapeutics for mental and behavioural health",
+    "website": "https://behavr.com/",
     "status": "Active",
-    "display_name": "Baltech",
-    "domain": "robotalign.com"
+    "verified": "database"
   },
   {
-    "name": "Beauty Intelligence",
-    "website": "https://beautyintelligence.us/",
-    "industry": "Beauty",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Beauty Intelligence",
-    "domain": "beautyintelligence.us"
-  },
-  {
-    "name": "Beltways",
+    "company": "Beltways",
+    "industry": "Logistics & Mobility",
+    "vertical": "Mobility Tech",
+    "one_liner": "High-capacity pedestrian walkways and last-mile transit for urban environments",
     "website": "https://www.beltways.com/",
-    "industry": "Mobility Tech",
-    "sector": "Industrials & Manufacturing",
     "status": "Active",
-    "display_name": "Beltways",
-    "domain": "beltways.com"
+    "verified": "database"
   },
   {
-    "name": "Bert Thin Films",
-    "website": "https://www.bertthinfilms.com/",
-    "industry": "Climate Tech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "Bert Thin Films",
-    "domain": "bertthinfilms.com"
-  },
-  {
-    "name": "Besti",
+    "company": "Besti Co.",
+    "industry": "Consumer & Media",
+    "vertical": "Consumer Products",
+    "one_liner": "Direct-to-consumer products for everyday household use",
     "website": "https://heybesti.com/",
-    "industry": "FemTech",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "Besti",
-    "domain": "heybesti.com"
+    "verified": "needs review"
   },
   {
-    "name": "Bexion Pharmaceuticals Inc",
+    "company": "Bexion Pharmaceuticals",
+    "industry": "Health & Life Sciences",
+    "vertical": "Oncology",
+    "one_liner": "Targeted oncology therapy platform for cancer treatment",
     "website": "https://www.bexionpharma.com/",
-    "industry": "Oncology",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "Bexion Pharmaceuticals Inc",
-    "domain": "bexionpharma.com"
+    "verified": "database"
   },
   {
-    "name": "BeyondWill",
-    "website": "https://www.beyondwill.co",
-    "industry": "Legal Tech",
-    "sector": "Business Services",
+    "company": "BeyondWill",
+    "industry": "Business & Professional",
+    "vertical": "Legal Tech",
+    "one_liner": "Estate and end-of-life planning platform for individuals and families",
+    "website": "https://www.beyondwill.co/",
     "status": "Active",
-    "display_name": "BeyondWill",
-    "domain": "beyondwill.co"
+    "verified": "database"
   },
   {
-    "name": "BioGlitz",
+    "company": "BioGlitz",
+    "industry": "Consumer & Media",
+    "vertical": "Beauty",
+    "one_liner": "Biodegradable glitter and cosmetics for beauty and festival markets",
     "website": "https://www.bioglitz.co/",
-    "industry": "Beauty",
-    "sector": "Consumer",
     "status": "Active",
-    "display_name": "BioGlitz",
-    "domain": "bioglitz.co"
+    "verified": "needs review"
   },
   {
-    "name": "Black UX Labs",
-    "website": "https://findblackux.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
+    "company": "Biscuit Belly",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Restaurants",
+    "one_liner": "Fast-casual restaurant group built on a scratch-made southern menu",
+    "website": "https://biscuitbelly.com/",
     "status": "Active",
-    "display_name": "Black UX Labs",
-    "domain": "findblackux.com"
+    "verified": "needs review"
   },
   {
-    "name": "Blackbox Energy Systems",
-    "website": "https://blackboxenergysystems.com/index.html",
-    "industry": "CleanTech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "Blackbox Energy Systems",
-    "domain": "blackboxenergysystems.com"
-  },
-  {
-    "name": "Blue Sky Case Management",
+    "company": "Blue Sky Case Management",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Case management services for the health and wellness industry",
     "website": "https://www.blueskyky.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "Blue Sky Case Management",
-    "domain": "blueskyky.com"
+    "verified": "database"
   },
   {
-    "name": "Bluegrass Advanced Materials (HuMed Technologies)",
-    "website": "https://www.humedtech.com/",
-    "industry": "Advanced Manufacturing & Automotive",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Bluegrass Advanced Materials",
-    "domain": "humedtech.com"
-  },
-  {
-    "name": "BrainSTEM",
+    "company": "BrainSTEM",
+    "industry": "Business & Professional",
+    "vertical": "EdTech",
+    "one_liner": "Virtual learning environment for STEAM education through instructor-led courses",
     "website": "https://brainstemu.com/",
-    "industry": "EdTech",
-    "sector": "Education",
     "status": "Active",
-    "display_name": "BrainSTEM",
-    "domain": "brainstemu.com"
+    "verified": "database"
   },
   {
-    "name": "Brite Trace (Birthwrite Technologies)",
+    "company": "Brite Trace",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Healthcare SaaS supporting caregivers of individuals with dementia",
     "website": "https://britetrace.co/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "Brite Trace",
-    "domain": "britetrace.co"
+    "verified": "database"
   },
   {
-    "name": "BumptUp Labs",
-    "website": "https://bumptupapp.com/",
-    "industry": "FemTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "BumptUp Labs",
-    "domain": "bumptupapp.com"
-  },
-  {
-    "name": "C2 Keep",
+    "company": "C2 Keep",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Records and document retention software for regulated organisations",
     "website": "https://www.c2keep.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "C2 Keep",
-    "domain": "c2keep.com"
+    "verified": "needs review"
   },
   {
-    "name": "Capsoul Collective",
-    "website": "https://capsoulco.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Capsoul Collective",
-    "domain": "capsoulco.com"
+    "company": "Ceptaris Therapeutics",
+    "industry": "Health & Life Sciences",
+    "vertical": "Biopharma",
+    "one_liner": "Topical gel therapy for early-stage cutaneous T-cell lymphoma",
+    "website": "https://www.crunchbase.com/organization/ceptaris-therapeutics",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "CleanSpace Corporation",
+    "company": "CleanSpace Corporation",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "CleanTech",
+    "one_liner": "Air quality and environmental monitoring technology",
     "website": "https://cleanspace.com/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "CleanSpace Corporation",
-    "domain": "cleanspace.com"
+    "verified": "needs review"
   },
   {
-    "name": "Cloverleaf",
+    "company": "Cloverleaf",
+    "industry": "Business & Professional",
+    "vertical": "HR Tech",
+    "one_liner": "Team development software that identifies and aligns personality traits within teams",
     "website": "https://cloverleaf.me/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
     "status": "Active",
-    "display_name": "Cloverleaf",
-    "domain": "cloverleaf.me"
+    "verified": "database"
   },
   {
-    "name": "Cognision (Neuronetrix)",
+    "company": "Cognision",
+    "industry": "Health & Life Sciences",
+    "vertical": "Medical Devices",
+    "one_liner": "Neurodiagnostic platform for cognitive testing and analysis",
     "website": "https://www.cognision.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "Cognision",
-    "domain": "cognision.com"
+    "verified": "database"
   },
   {
-    "name": "Connect It All (Connect Digital)",
-    "website": "https://www.partnerwithconnect.com/",
-    "industry": "Real Estate Technology",
-    "sector": "Real Estate",
-    "status": "Active",
-    "display_name": "Connect It All",
-    "domain": "partnerwithconnect.com"
-  },
-  {
-    "name": "ConnectRate",
-    "website": "https://connectrate.ai/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "ConnectRate",
-    "domain": "connectrate.ai"
-  },
-  {
-    "name": "Construction Industry Resources",
-    "website": "https://www.myclma.com/",
-    "industry": "Construction Technology",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Construction Industry Resources",
-    "domain": "myclma.com"
-  },
-  {
-    "name": "Content Credits",
-    "website": "https://contentcredits.com",
-    "industry": "Mobile Commerce",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "Content Credits",
-    "domain": "contentcredits.com"
-  },
-  {
-    "name": "Cornbread Hemp",
-    "website": "https://www.cornbreadhemp.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Cornbread Hemp",
-    "domain": "cornbreadhemp.com"
-  },
-  {
-    "name": "Count.It",
-    "website": "https://www.countit.com/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Count.It",
-    "domain": "countit.com"
-  },
-  {
-    "name": "CTTS (Community Treatment & Tracking Solutions / Springbranch)",
+    "company": "Community Treatment & Tracking Solutions",
+    "industry": "Business & Professional",
+    "vertical": "GovTech",
+    "one_liner": "Home incarceration and monitoring to strengthen community corrections",
     "website": "https://cttsky.com/",
-    "industry": "Wearables & Quantified Self",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "CTTS",
-    "domain": "cttsky.com"
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Cyndelos",
-    "website": "https://www.cyndelos.com/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
+    "company": "Connect It All",
+    "industry": "Business & Professional",
+    "vertical": "Real Estate Tech",
+    "one_liner": "Real estate marketing software for geographic targeting of tenants",
+    "website": "https://www.partnerwithconnect.com/",
     "status": "Active",
-    "display_name": "Cyndelos",
-    "domain": "cyndelos.com"
+    "verified": "database"
   },
   {
-    "name": "DataRovers",
-    "website": "https://datarovers.com",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
+    "company": "ConnectRate",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "AI tools for lender and borrower rate matching",
+    "website": "https://connectrate.ai/",
     "status": "Active",
-    "display_name": "DataRovers",
-    "domain": "datarovers.com"
+    "verified": "needs review"
   },
   {
-    "name": "Dealer Trade Network",
+    "company": "Construction Industry Resources",
+    "industry": "Business & Professional",
+    "vertical": "Construction Tech",
+    "one_liner": "Labour risk management platform reducing construction contingency",
+    "website": "https://www.myclma.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Content Credits",
+    "industry": "Consumer & Media",
+    "vertical": "Media Tech",
+    "one_liner": "Licensing and attribution infrastructure for digital content",
+    "website": "https://contentcredits.com",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "DataRovers",
+    "industry": "Software & AI",
+    "vertical": "Data & Analytics",
+    "one_liner": "Data engineering and analytics services for enterprises",
+    "website": "https://datarovers.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Dealer Trade Network",
+    "industry": "Logistics & Mobility",
+    "vertical": "Automotive",
+    "one_liner": "Wholesale vehicle trading network for franchise dealers",
     "website": "https://dealertradenetwork.com/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "Dealer Trade Network",
-    "domain": "dealertradenetwork.com"
+    "verified": "needs review"
   },
   {
-    "name": "Deepshot (Deepshot Labs)",
+    "company": "Deepshot",
+    "industry": "Software & AI",
+    "vertical": "Artificial Intelligence",
+    "one_liner": "Customisable dialogue generation software for professional video",
     "website": "https://deepshot.ai/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "Deepshot",
-    "domain": "deepshot.ai"
+    "verified": "database"
   },
   {
-    "name": "DesiCorp",
+    "company": "DesiCorp",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Engineering Services",
+    "one_liner": "Engineering and design services for industrial equipment",
     "website": "https://www.desicorpinc.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "DesiCorp",
-    "domain": "desicorpinc.com"
+    "verified": "needs review"
   },
   {
-    "name": "DonateEquity",
-    "website": "https://donateequity.com/",
-    "industry": "SaaS",
-    "sector": "",
-    "status": "Active",
-    "display_name": "DonateEquity",
-    "domain": "donateequity.com"
-  },
-  {
-    "name": "Due Gooder",
-    "website": "https://www.duegooder.com/",
-    "industry": "EdTech",
-    "sector": "Education",
-    "status": "Active",
-    "display_name": "Due Gooder",
-    "domain": "duegooder.com"
-  },
-  {
-    "name": "Ecoshell",
+    "company": "Ecoshell",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Advanced Materials",
+    "one_liner": "Sustainable packaging and materials from agricultural by-products",
     "website": "https://ecoshell.eco/",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
     "status": "Active",
-    "display_name": "Ecoshell",
-    "domain": "ecoshell.eco"
+    "verified": "needs review"
   },
   {
-    "name": "Elixir Kombucha (EK Beverages)",
+    "company": "EdjSports",
+    "industry": "Consumer & Media",
+    "vertical": "Sports Analytics",
+    "one_liner": "Predictive analytics for sports strategy and wagering markets",
+    "website": "https://edjsports.com/",
+    "status": "Exit",
+    "verified": "needs review"
+  },
+  {
+    "company": "Elixir Kombucha",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Beverage",
+    "one_liner": "Kombucha with novel fermentation, packaging and distribution capabilities",
     "website": "https://www.elixirkombucha.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
     "status": "Active",
-    "display_name": "Elixir Kombucha",
-    "domain": "elixirkombucha.com"
+    "verified": "database"
   },
   {
-    "name": "Empath EQ",
-    "website": "https://empatheq.ai/",
-    "industry": "EdTech",
-    "sector": "Education",
-    "status": "Active",
-    "display_name": "Empath EQ",
-    "domain": "empatheq.ai"
-  },
-  {
-    "name": "EndoProtech",
+    "company": "EndoProtech",
+    "industry": "Health & Life Sciences",
+    "vertical": "Biopharma",
+    "one_liner": "Liposome-based therapies for myocardial infarction and liver disease",
     "website": "http://endoprotech.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
     "status": "Active",
-    "display_name": "EndoProtech",
-    "domain": "endoprotech.com"
+    "verified": "database"
   },
   {
-    "name": "Enomalies (RSET)",
-    "website": "https://enomalies.com/",
-    "industry": "Augmented Reality",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Enomalies",
-    "domain": "enomalies.com"
-  },
-  {
-    "name": "Enviro-Fresh (MCS Investments)",
+    "company": "Enviro-Fresh",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "CleanTech",
+    "one_liner": "Odour and contaminant control products for commercial environments",
     "website": "https://www.enviro-fresh.co/",
-    "industry": "Internet of Things",
-    "sector": "Industrials & Manufacturing",
     "status": "Active",
-    "display_name": "Enviro-Fresh",
-    "domain": "enviro-fresh.co"
+    "verified": "needs review"
   },
   {
-    "name": "EnVue Health (fka Melanated Healthcare)",
-    "website": "https://melanatedhealthcare.app/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "EnVue Health",
-    "domain": "melanatedhealthcare.app"
-  },
-  {
-    "name": "EQL Games",
+    "company": "EQL Games",
+    "industry": "Consumer & Media",
+    "vertical": "Gaming",
+    "one_liner": "Digital lottery content studio and licensor to game studios and state lotteries",
     "website": "https://www.eqlgames.com/",
-    "industry": "Gaming",
-    "sector": "Consumer",
     "status": "Active",
-    "display_name": "EQL Games",
-    "domain": "eqlgames.com"
+    "verified": "database"
   },
   {
-    "name": "Essential Innovations",
-    "website": "https://www.essentialinno.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
+    "company": "EZ Turn",
+    "industry": "Business & Professional",
+    "vertical": "Real Estate Tech",
+    "one_liner": "Digital platform assisting property managers with student housing turnover",
+    "website": "http://ezturn.net/",
     "status": "Active",
-    "display_name": "Essential Innovations",
-    "domain": "essentialinno.com"
+    "verified": "database"
   },
   {
-    "name": "Ewagers (E-Ventures)",
-    "website": "https://ewagers.co/",
-    "industry": "eSports",
-    "sector": "Consumer",
+    "company": "Fair Chance Works",
+    "industry": "Business & Professional",
+    "vertical": "HR Tech",
+    "one_liner": "Learning management and video for workforce recovery and development",
+    "website": "https://www.fairchanceworks.com/",
     "status": "Active",
-    "display_name": "Ewagers",
-    "domain": "ewagers.co"
+    "verified": "database"
   },
   {
-    "name": "EZ-Chow",
-    "website": "https://ez-chow.com/",
-    "industry": "Restaurant Tech",
-    "sector": "Agriculture & Food",
+    "company": "FanGo",
+    "industry": "Consumer & Media",
+    "vertical": "Sports",
+    "one_liner": "Mobile ordering and fan engagement for live venues",
+    "website": "https://www.crunchbase.com/organization/fango",
     "status": "Active",
-    "display_name": "EZ-Chow",
-    "domain": "ez-chow.com"
+    "verified": "needs review"
   },
   {
-    "name": "EZOS (EZ Holdings Inc and EZ Turn)",
-    "website": "https://www.ezturn.net/",
-    "industry": "Real Estate Technology",
-    "sector": "Real Estate",
-    "status": "Active",
-    "display_name": "EZOS",
-    "domain": "ezturn.net"
-  },
-  {
-    "name": "Fair Chance Works (Inquiry Technologies)",
-    "website": "https://www.inquirytechnologies.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "Fair Chance Works",
-    "domain": "inquirytechnologies.com"
-  },
-  {
-    "name": "Feedcoyote",
+    "company": "Feedcoyote",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Freelance collaboration and project management network",
     "website": "https://feedcoyote.com/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "Feedcoyote",
-    "domain": "feedcoyote.com"
+    "verified": "database"
   },
   {
-    "name": "Feet to the Fire Writers' Workshops",
+    "company": "Feet to the Fire Writers' Workshops",
+    "industry": "Business & Professional",
+    "vertical": "EdTech",
+    "one_liner": "Licensed content and wellness programming for senior living communities",
     "website": "https://www.feettothefirewriters.com/",
-    "industry": "EdTech",
-    "sector": "Education",
     "status": "Active",
-    "display_name": "Feet to the Fire Writers' Workshops",
-    "domain": "feettothefirewriters.com"
+    "verified": "database"
   },
   {
-    "name": "Fibonacci (Hempwood)",
-    "website": "https://hempwood.com/",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
+    "company": "Fixle",
+    "industry": "Business & Professional",
+    "vertical": "Real Estate Tech",
+    "one_liner": "Home maintenance records and service coordination for homeowners",
+    "website": "http://fixlehome.com/",
     "status": "Active",
-    "display_name": "Fibonacci",
-    "domain": "hempwood.com"
+    "verified": "needs review"
   },
   {
-    "name": "Fireroad Holdings",
-    "website": "https://www.fireroad.io/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Fireroad Holdings",
-    "domain": "fireroad.io"
-  },
-  {
-    "name": "Flamel AI",
+    "company": "Flamel AI",
+    "industry": "Consumer & Media",
+    "vertical": "Marketing Tech",
+    "one_liner": "AI-driven content design studio for marketing content",
     "website": "https://www.flamel.ai/",
-    "industry": "Marketing Tech",
-    "sector": "Media & Entertainment",
     "status": "Active",
-    "display_name": "Flamel AI",
-    "domain": "flamel.ai"
+    "verified": "database"
   },
   {
-    "name": "FlyWire",
+    "company": "FlyWire",
+    "industry": "Software & AI",
+    "vertical": "Internet of Things",
+    "one_liner": "Fishing tech platform using video to track and report catch data",
     "website": "https://www.flywirecameras.com/",
-    "industry": "Internet of Things",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "FlyWire",
-    "domain": "flywirecameras.com"
+    "verified": "database"
   },
   {
-    "name": "Fooji",
+    "company": "Fooji",
+    "industry": "Consumer & Media",
+    "vertical": "Marketing Tech",
+    "one_liner": "Social media activation and fulfilment campaigns for consumer brands",
     "website": "https://fooji.com/",
-    "industry": "Marketing Tech",
-    "sector": "Media & Entertainment",
     "status": "Active",
-    "display_name": "Fooji",
-    "domain": "fooji.com"
+    "verified": "needs review"
   },
   {
-    "name": "Forecastr",
-    "website": "http://www.forecastr.co/",
-    "industry": "FinTech",
-    "sector": "Financial Services",
+    "company": "Forecastr",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "Financial modelling and forecasting software for early-stage startups",
+    "website": "https://www.forecastr.co/",
     "status": "Active",
-    "display_name": "Forecastr",
-    "domain": "forecastr.co"
+    "verified": "needs review"
   },
   {
-    "name": "FreshFry Inc.",
+    "company": "FreshFry",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Restaurant Tech",
+    "one_liner": "Cooking oil filtration that extends fryer oil life and enables reclaimed oil resale",
     "website": "https://www.freshfry.me/",
-    "industry": "Restaurant Tech",
-    "sector": "Agriculture & Food",
     "status": "Active",
-    "display_name": "FreshFry Inc.",
-    "domain": "freshfry.me"
+    "verified": "database"
   },
   {
-    "name": "Gamerabble",
-    "website": "https://www.gamerabble.com/",
-    "industry": "eSports",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Gamerabble",
-    "domain": "gamerabble.com"
-  },
-  {
-    "name": "Garnet Gazelle",
+    "company": "Garnet Gazelle",
+    "industry": "Consumer & Media",
+    "vertical": "E-Commerce",
+    "one_liner": "Auction platform for consumer products with acquisition and tracking tools",
     "website": "http://garnetgazelle.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
     "status": "Active",
-    "display_name": "Garnet Gazelle",
-    "domain": "garnetgazelle.com"
+    "verified": "database"
   },
   {
-    "name": "GoodMaps",
+    "company": "Gnarus Systems",
+    "industry": "Health & Life Sciences",
+    "vertical": "Life Sciences",
+    "one_liner": "Predictive toxicological assessment of chemicals",
+    "website": "http://www.gnarus-systems.com/",
+    "status": "Exit",
+    "verified": "database"
+  },
+  {
+    "company": "Goodmaps",
+    "industry": "Software & AI",
+    "vertical": "Mapping & Location",
+    "one_liner": "Indoor digital mapping enhancing accessibility, safety and productivity",
     "website": "https://www.goodmaps.com/",
-    "industry": "Big Data",
-    "sector": "Software & Technology",
     "status": "Active",
-    "display_name": "GoodMaps",
-    "domain": "goodmaps.com"
+    "verified": "database"
   },
   {
-    "name": "Gryphon Environmental",
-    "website": "http://2gryphon.com/",
-    "industry": "CleanTech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "Gryphon Environmental",
-    "domain": "2gryphon.com"
-  },
-  {
-    "name": "Guide Book Outdoors",
-    "website": "https://guidebookco.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Guide Book Outdoors",
-    "domain": "guidebookco.com"
-  },
-  {
-    "name": "Gun Media Holdings",
-    "website": "https://www.guninteractive.com/",
-    "industry": "Gaming",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Gun Media Holdings",
-    "domain": "guninteractive.com"
-  },
-  {
-    "name": "HANDLE (Healthcare Asset Network)",
-    "website": "https://handleglobal.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "HANDLE",
-    "domain": "handleglobal.com"
-  },
-  {
-    "name": "HippoCLIN (Dues24)",
-    "website": "https://hippoclin.com/",
-    "industry": "HealthTech",
-    "sector": "Education",
-    "status": "Active",
-    "display_name": "HippoCLIN",
-    "domain": "hippoclin.com"
-  },
-  {
-    "name": "Hogshead",
-    "website": "https://www.hogshead.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Hogshead",
-    "domain": "hogshead.com"
-  },
-  {
-    "name": "Hollison",
-    "website": "https://www.hollison.com/",
-    "industry": "AgTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Hollison",
-    "domain": "hollison.com"
-  },
-  {
-    "name": "Hop Flyt",
-    "website": "https://hopflyt.com/",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Hop Flyt",
-    "domain": "hopflyt.com"
-  },
-  {
-    "name": "Humblebrag",
-    "website": "https://humblebrag.ai/",
-    "industry": "FinTech",
-    "sector": "Financial Services",
-    "status": "Active",
-    "display_name": "Humblebrag",
-    "domain": "humblebrag.ai"
-  },
-  {
-    "name": "Illume (InsightX Analytics)",
-    "website": "https://www.joinillume.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Illume",
-    "domain": "joinillume.com"
-  },
-  {
-    "name": "Immersive Hearing Technologies (Immersive Audiology)",
-    "website": "https://www.immersivehearingtech.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Immersive Hearing Technologies",
-    "domain": "immersivehearingtech.com"
-  },
-  {
-    "name": "Inflow (Lets Imagine)",
-    "website": "https://www.getinflow.ai/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Inflow",
-    "domain": "getinflow.ai"
-  },
-  {
-    "name": "Innovative Therapeutix (Lullafeed)",
-    "website": "https://www.innovativetpx.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Innovative Therapeutix",
-    "domain": "innovativetpx.com"
-  },
-  {
-    "name": "J-1",
-    "website": "https://j-1.org/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "J-1",
-    "domain": "j-1.org"
-  },
-  {
-    "name": "JoB\u00e9 Products",
-    "website": "https://jobeproducts.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "JoB\u00e9 Products",
-    "domain": "jobeproducts.com"
-  },
-  {
-    "name": "Kanbol",
-    "website": "https://www.kanbolinc.com/",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Kanbol",
-    "domain": "kanbolinc.com"
-  },
-  {
-    "name": "Kidvestors",
-    "website": "https://kidvestors.co/",
-    "industry": "EdTech",
-    "sector": "Education",
-    "status": "Active",
-    "display_name": "Kidvestors",
-    "domain": "kidvestors.co"
-  },
-  {
-    "name": "Krew Technologies",
-    "website": "https://www.getkrew.ai/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Krew Technologies",
-    "domain": "getkrew.ai"
-  },
-  {
-    "name": "Kyndly Technologies (aka Kyndly Benefits)",
-    "website": "https://kyndlybenefits.com/",
-    "industry": "InsurTech",
-    "sector": "Financial Services",
-    "status": "Active",
-    "display_name": "Kyndly Technologies",
-    "domain": "kyndlybenefits.com"
-  },
-  {
-    "name": "Leapfrog",
-    "website": "https://leapfrog.works/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "Leapfrog",
-    "domain": "leapfrog.works"
-  },
-  {
-    "name": "Level 6 Cybersecurity",
-    "website": "https://www.level6cyber.com/",
-    "industry": "Cybersecurity",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Level 6 Cybersecurity",
-    "domain": "level6cyber.com"
-  },
-  {
-    "name": "Liberate Medical",
-    "website": "https://liberatemedical.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Liberate Medical",
-    "domain": "liberatemedical.com"
-  },
-  {
-    "name": "Limitless (Special Delivery Courier)",
-    "website": "https://limitlesslouisville.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Limitless",
-    "domain": "limitlesslouisville.com"
-  },
-  {
-    "name": "Limitless Minds",
-    "website": "https://limitlessminds.com",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "Limitless Minds",
-    "domain": "limitlessminds.com"
-  },
-  {
-    "name": "Lok-N-Blok (Plastiblok)",
-    "website": "http://www.lok-n-blok.com/",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Lok-N-Blok",
-    "domain": "lok-n-blok.com"
-  },
-  {
-    "name": "Louisville Brands",
-    "website": "https://louisvillebrands.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Louisville Brands",
-    "domain": "louisvillebrands.com"
-  },
-  {
-    "name": "Louisville Vegan Jerky Co.",
-    "website": "http://lvjco.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Louisville Vegan Jerky Co.",
-    "domain": "lvjco.com"
-  },
-  {
-    "name": "LYLA",
-    "website": "https://helpmelyla.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "LYLA",
-    "domain": "helpmelyla.com"
-  },
-  {
-    "name": "MiniGrip (Reaction Items)",
-    "website": "https://myminigrip.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "MiniGrip",
-    "domain": "myminigrip.com"
-  },
-  {
-    "name": "MobileServe",
-    "website": "https://mobileserve.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "MobileServe",
-    "domain": "mobileserve.com"
-  },
-  {
-    "name": "Modica (Mindful Beverage Group)",
-    "website": "https://www.drinkmodica.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Modica",
-    "domain": "drinkmodica.com"
-  },
-  {
-    "name": "MoneyBot",
-    "website": "https://getmoneybot.com/",
-    "industry": "EdTech",
-    "sector": "Education",
-    "status": "Active",
-    "display_name": "MoneyBot",
-    "domain": "getmoneybot.com"
-  },
-  {
-    "name": "Moolathon",
-    "website": "https://moolathon.com/",
-    "industry": "Marketing Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "Moolathon",
-    "domain": "moolathon.com"
-  },
-  {
-    "name": "MPI Digital",
-    "website": "https://mpidigitalhr.com/mpi-digital-hr-ai",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "MPI Digital",
-    "domain": "mpidigitalhr.com"
-  },
-  {
-    "name": "MyGradFiles",
-    "website": "",
-    "industry": "EdTech",
-    "sector": "Education",
-    "status": "Active",
-    "display_name": "MyGradFiles",
-    "domain": ""
-  },
-  {
-    "name": "Naprogenix",
-    "website": "http://www.naprogenix.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Naprogenix",
-    "domain": "naprogenix.com"
-  },
-  {
-    "name": "Narratize",
-    "website": "https://narratize.com/",
-    "industry": "Marketing Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "Narratize",
-    "domain": "narratize.com"
-  },
-  {
-    "name": "NASCEND",
-    "website": "https://nascend.com",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "NASCEND",
-    "domain": "nascend.com"
-  },
-  {
-    "name": "Nexosome Oncology",
-    "website": "https://nexosome-oncology.com/",
-    "industry": "Oncology",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Nexosome Oncology",
-    "domain": "nexosome-oncology.com"
-  },
-  {
-    "name": "Nichefire",
-    "website": "https://nichefire.com/",
-    "industry": "Marketing Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "Nichefire",
-    "domain": "nichefire.com"
-  },
-  {
-    "name": "NonBinary Solutions Corporation",
-    "website": "https://www.nonbinarysolutions.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "NonBinary Solutions Corporation",
-    "domain": "nonbinarysolutions.com"
-  },
-  {
-    "name": "Nongo",
-    "website": "https://www.nongo.ai/",
-    "industry": "Advanced Manufacturing & Automotive",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Nongo",
-    "domain": "nongo.ai"
-  },
-  {
-    "name": "Nousynapse Pharmaceuticals (fka Minerve Pharmaceuticals)",
-    "website": "https://minervepharma.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Nousynapse Pharmaceuticals",
-    "domain": "minervepharma.com"
-  },
-  {
-    "name": "NuPaper",
-    "website": "https://contrabass-celery-6hgw.squarespace.com",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "NuPaper",
-    "domain": "contrabass-celery-6hgw.squarespace.com"
-  },
-  {
-    "name": "NX PharmaGen",
-    "website": "https://nxpharmagen.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "NX PharmaGen",
-    "domain": "nxpharmagen.com"
-  },
-  {
-    "name": "NX Prenatal",
-    "website": "https://www.nxprenatal.com/",
-    "industry": "FemTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "NX Prenatal",
-    "domain": "nxprenatal.com"
-  },
-  {
-    "name": "Nymbl Systems (451.Tech)",
-    "website": "https://www.nymblsystems.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Nymbl Systems",
-    "domain": "nymblsystems.com"
-  },
-  {
-    "name": "OgMentum ARK",
-    "website": "https://www.ogmentum.com/",
-    "industry": "Advanced Manufacturing & Automotive",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "OgMentum ARK",
-    "domain": "ogmentum.com"
-  },
-  {
-    "name": "One Stop (Its Only OneStop)",
-    "website": "https://www.itsonlyonestop.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "One Stop",
-    "domain": "itsonlyonestop.com"
-  },
-  {
-    "name": "Organilock",
-    "website": "https://www.organilock.com/",
-    "industry": "AgTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Organilock",
-    "domain": "organilock.com"
-  },
-  {
-    "name": "OrgVitals",
-    "website": "https://orgvitals.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "OrgVitals",
-    "domain": "orgvitals.com"
-  },
-  {
-    "name": "Parasight System Inc. (MEP Equine Solutions)",
-    "website": "https://www.parasightsystem.com/",
-    "industry": "AgTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Parasight System Inc.",
-    "domain": "parasightsystem.com"
-  },
-  {
-    "name": "ParentMD",
-    "website": "https://parentmd.com",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "ParentMD",
-    "domain": "parentmd.com"
-  },
-  {
-    "name": "Pascal Tags",
-    "website": "https://www.pascaltags.com/",
-    "industry": "Internet of Things",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Pascal Tags",
-    "domain": "pascaltags.com"
-  },
-  {
-    "name": "PCC Hydrogen",
-    "website": "https://pyrochemcatalyst.com/",
-    "industry": "CleanTech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "PCC Hydrogen",
-    "domain": "pyrochemcatalyst.com"
-  },
-  {
-    "name": "PDX Biotech",
-    "website": "https://orastripdx.com",
-    "industry": "Pet Tech",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "PDX Biotech",
-    "domain": "orastripdx.com"
-  },
-  {
-    "name": "Pebble",
-    "website": "https://www.pebbletheapp.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Pebble",
-    "domain": "pebbletheapp.com"
-  },
-  {
-    "name": "Pitch Protect",
-    "website": "",
-    "industry": "Mobile",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Pitch Protect",
-    "domain": ""
-  },
-  {
-    "name": "Planstreet",
-    "website": "https://www.planstreet.com",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Planstreet",
-    "domain": "planstreet.com"
-  },
-  {
-    "name": "Plastic Free Future (dba SustainAgility)",
-    "website": "https://www.sustainagility.ai",
-    "industry": "CleanTech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "Plastic Free Future",
-    "domain": "sustainagility.ai"
-  },
-  {
-    "name": "PONTIS",
-    "website": "",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "PONTIS",
-    "domain": ""
-  },
-  {
-    "name": "PowerTech Water (Electramet)",
-    "website": "https://electramet.com/",
-    "industry": "CleanTech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "PowerTech Water",
-    "domain": "electramet.com"
-  },
-  {
-    "name": "Pram\u0101",
-    "website": "https://goprama.com/",
-    "industry": "Cloudtech & DevOps",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Pram\u0101",
-    "domain": "goprama.com"
-  },
-  {
-    "name": "Prevent Scripts",
-    "website": "https://preventscripts.com/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Prevent Scripts",
-    "domain": "preventscripts.com"
-  },
-  {
-    "name": "Pro IRP",
-    "website": "https://www.proirp.com/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Pro IRP",
-    "domain": "proirp.com"
-  },
-  {
-    "name": "Proximity Parking (ParkPayUSA)",
-    "website": "https://parkpayusa.com",
-    "industry": "Mobile Commerce",
-    "sector": "Financial Services",
-    "status": "Active",
-    "display_name": "Proximity Parking",
-    "domain": "parkpayusa.com"
-  },
-  {
-    "name": "Psympl",
-    "website": "https://www.psympl.com/",
-    "industry": "FinTech",
-    "sector": "Financial Services",
-    "status": "Active",
-    "display_name": "Psympl",
-    "domain": "psympl.com"
-  },
-  {
-    "name": "Purchaser Inc",
-    "website": "https://www.purchaser.ai/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Purchaser Inc",
-    "domain": "purchaser.ai"
-  },
-  {
-    "name": "Qbrics",
-    "website": "https://www.qbrics.com/",
-    "industry": "Crypto & Blockchain",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Qbrics",
-    "domain": "qbrics.com"
-  },
-  {
-    "name": "Qualz AI",
-    "website": "https://qualz.ai/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Qualz AI",
-    "domain": "qualz.ai"
-  },
-  {
-    "name": "RAADZ",
-    "website": "https://raadz.com/",
-    "industry": "AdTech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "RAADZ",
-    "domain": "raadz.com"
-  },
-  {
-    "name": "RaisePoint",
-    "website": "https://www.raisepointsoftware.com",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "RaisePoint",
-    "domain": "raisepointsoftware.com"
-  },
-  {
-    "name": "RaveOn Sports",
-    "website": "https://raveonsports.com/",
-    "industry": "Marketing Tech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "RaveOn Sports",
-    "domain": "raveonsports.com"
-  },
-  {
-    "name": "RedLeaf Biologics",
-    "website": "https://www.redleafbiologics.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "RedLeaf Biologics",
-    "domain": "redleafbiologics.com"
-  },
-  {
-    "name": "Repatient (Repaytient)",
-    "website": "https://repaytient.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Repatient",
-    "domain": "repaytient.com"
-  },
-  {
-    "name": "Resonate Recordings",
-    "website": "https://resonaterecordings.com",
-    "industry": "Audiotech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "Resonate Recordings",
-    "domain": "resonaterecordings.com"
-  },
-  {
-    "name": "Resound",
-    "website": "https://www.resound.fm/",
-    "industry": "Audiotech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "Resound",
-    "domain": "resound.fm"
-  },
-  {
-    "name": "Revitalized Solutions",
-    "website": "https://www.revitalizedsolutions.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Revitalized Solutions",
-    "domain": "revitalizedsolutions.com"
-  },
-  {
-    "name": "Revolution RE",
-    "website": "https://revolutionre.com",
-    "industry": "Real Estate Technology",
-    "sector": "Real Estate",
-    "status": "Active",
-    "display_name": "Revolution RE",
-    "domain": "revolutionre.com"
-  },
-  {
-    "name": "Rhiza Health",
-    "website": "https://rhiza.health/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Rhiza Health",
-    "domain": "rhiza.health"
-  },
-  {
-    "name": "Ridgerunner Outdoors",
-    "website": "https://www.ridgerunner.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Ridgerunner Outdoors",
-    "domain": "ridgerunner.com"
-  },
-  {
-    "name": "Safewave Technology",
-    "website": "https://www.safewavetech.com/",
-    "industry": "Wearables & Quantified Self",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Safewave Technology",
-    "domain": "safewavetech.com"
-  },
-  {
-    "name": "Santerre International",
-    "website": "https://www.santerreinternational.com/",
-    "industry": "AgTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Santerre International",
-    "domain": "santerreinternational.com"
-  },
-  {
-    "name": "Scoop Tech (fka Yornest)",
-    "website": "https://scoop.chat/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Scoop Tech",
-    "domain": "scoop.chat"
-  },
-  {
-    "name": "Scrub Step",
-    "website": "https://www.scrubstep.us/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Scrub Step",
-    "domain": "scrubstep.us"
-  },
-  {
-    "name": "Seamly Systems",
-    "website": "https://seamly.io/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Seamly Systems",
-    "domain": "seamly.io"
-  },
-  {
-    "name": "Seikowave (Savteq)",
-    "website": "https://savteq.com/",
-    "industry": "Industrials",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Seikowave",
-    "domain": "savteq.com"
-  },
-  {
-    "name": "Seikowave Health Solutions (fka Seikowave Dental)",
-    "website": "http://www.seikowave.com/",
-    "industry": "HealthTech",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Seikowave Health Solutions",
-    "domain": "seikowave.com"
-  },
-  {
-    "name": "SelfFull",
-    "website": "https://www.selffull.io",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "SelfFull",
-    "domain": "selffull.io"
-  },
-  {
-    "name": "SentryHealth (SHI Legacy Company)",
-    "website": "https://www.sentryhealth.com/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "SentryHealth",
-    "domain": "sentryhealth.com"
-  },
-  {
-    "name": "Simbryo Technologies",
-    "website": "https://www.simbryotech.com",
-    "industry": "FemTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Simbryo Technologies",
-    "domain": "simbryotech.com"
-  },
-  {
-    "name": "Skyhaul",
-    "website": "https://skyhaul.io/",
-    "industry": "Robotics & Drones",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "Skyhaul",
-    "domain": "skyhaul.io"
-  },
-  {
-    "name": "SMB.co",
-    "website": "http://smb.co",
-    "industry": "FinTech",
-    "sector": "Financial Services",
-    "status": "Active",
-    "display_name": "SMB.co",
-    "domain": "smb.co"
-  },
-  {
-    "name": "Soaring Titan",
-    "website": "https://soaringtitan.com/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Soaring Titan",
-    "domain": "soaringtitan.com"
-  },
-  {
-    "name": "Sofab Inks",
-    "website": "https://sofabinks.com/",
-    "industry": "CleanTech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "Sofab Inks",
-    "domain": "sofabinks.com"
-  },
-  {
-    "name": "Soundspace Technology",
-    "website": "http://www.soundspace.co/",
-    "industry": "Real Estate Technology",
-    "sector": "Real Estate",
-    "status": "Active",
-    "display_name": "Soundspace Technology",
-    "domain": "soundspace.co"
-  },
-  {
-    "name": "Storyaliz (Serializ)",
-    "website": "https://www.serializ.io",
-    "industry": "TMT",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "Storyaliz",
-    "domain": "serializ.io"
-  },
-  {
-    "name": "Stuccco",
-    "website": "https://stuccco.com/",
-    "industry": "Real Estate Technology",
-    "sector": "Real Estate",
-    "status": "Active",
-    "display_name": "Stuccco",
-    "domain": "stuccco.com"
-  },
-  {
-    "name": "Sunflower Fuels",
-    "website": "https://www.sunflowerfuels.com/",
-    "industry": "Climate Tech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "Sunflower Fuels",
-    "domain": "sunflowerfuels.com"
-  },
-  {
-    "name": "SunnySide Egg Co",
-    "website": "https://www.sunnysideeggco.com",
-    "industry": "AgTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "SunnySide Egg Co",
-    "domain": "sunnysideeggco.com"
-  },
-  {
-    "name": "Swell Health (Sage Health Labs)",
-    "website": "http://getswell.app/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Swell Health",
-    "domain": "getswell.app"
-  },
-  {
-    "name": "Switcher Studio",
-    "website": "https://www.switcherstudio.com/",
-    "industry": "Audiotech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "Switcher Studio",
-    "domain": "switcherstudio.com"
-  },
-  {
-    "name": "Sword Performance (Sport Geeks)",
-    "website": "http://drinksword.com/",
-    "industry": "LOHAS & Wellness",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Sword Performance",
-    "domain": "drinksword.com"
-  },
-  {
-    "name": "TalnFlo",
-    "website": "https://talnflo.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "TalnFlo",
-    "domain": "talnflo.com"
-  },
-  {
-    "name": "TapLogic",
-    "website": "https://taplogic.com/",
-    "industry": "AgTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "TapLogic",
-    "domain": "taplogic.com"
-  },
-  {
-    "name": "The Elephant in the Room",
-    "website": "https://www.eitrworkshops.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "The Elephant in the Room",
-    "domain": "eitrworkshops.com"
-  },
-  {
-    "name": "The Kentucky Hug (Experience Tech)",
-    "website": "https://kyhug.com/",
-    "industry": "E-Commerce",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "The Kentucky Hug",
-    "domain": "kyhug.com"
-  },
-  {
-    "name": "The Nori Project",
-    "website": "https://www.thenoriproject.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "The Nori Project",
-    "domain": "thenoriproject.com"
-  },
-  {
-    "name": "Thynk Health",
-    "website": "http://thynkhealth.com/",
-    "industry": "Oncology",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Thynk Health",
-    "domain": "thynkhealth.com"
-  },
-  {
-    "name": "TimberSync",
-    "website": "https://www.timbersync.com/",
-    "industry": "Supply Chain Tech",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "TimberSync",
-    "domain": "timbersync.com"
-  },
-  {
-    "name": "To The Market (Survivor Made Goods)",
-    "website": "http://www.tothemarket.com/",
-    "industry": "Big Data",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "To The Market",
-    "domain": "tothemarket.com"
-  },
-  {
-    "name": "Toggle Health (fka MedUX)",
-    "website": "https://www.togglehealth.com/",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Toggle Health",
-    "domain": "togglehealth.com"
-  },
-  {
-    "name": "Toothsure",
-    "website": "https://www.toothsure.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Toothsure",
-    "domain": "toothsure.com"
-  },
-  {
-    "name": "UJoin",
-    "website": "https://ujoin.co",
-    "industry": "Legal Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "UJoin",
-    "domain": "ujoin.co"
-  },
-  {
-    "name": "UnDesked",
-    "website": "https://undesked.com",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "UnDesked",
-    "domain": "undesked.com"
-  },
-  {
-    "name": "Untitled",
-    "website": "https://untitledfirm.com/",
-    "industry": "AdTech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "Untitled",
-    "domain": "untitledfirm.com"
-  },
-  {
-    "name": "Valent Systems (fka Devyze)",
-    "website": "https://www.getvalent.com/",
-    "industry": "AI & ML",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Valent Systems",
-    "domain": "getvalent.com"
-  },
-  {
-    "name": "Value Buddy",
-    "website": "http://hellovaluebuddy.com/",
-    "industry": "FinTech",
-    "sector": "Financial Services",
-    "status": "Active",
-    "display_name": "Value Buddy",
-    "domain": "hellovaluebuddy.com"
-  },
-  {
-    "name": "Veeper",
-    "website": "https://www.veeper.com/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Veeper",
-    "domain": "veeper.com"
-  },
-  {
-    "name": "Verdant Equus",
-    "website": "https://www.verdantequus.com",
-    "industry": "AgTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Verdant Equus",
-    "domain": "verdantequus.com"
-  },
-  {
-    "name": "Verity Technologies",
-    "website": "https://verityxr.com/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Verity Technologies",
-    "domain": "verityxr.com"
-  },
-  {
-    "name": "Verticalytics (VenueTech Connect)",
-    "website": "https://venuetechconnect.com",
-    "industry": "Real Estate Technology",
-    "sector": "Real Estate",
-    "status": "Active",
-    "display_name": "Verticalytics",
-    "domain": "venuetechconnect.com"
-  },
-  {
-    "name": "Victory Hemp Foods",
-    "website": "https://www.victoryhempfoods.com/",
-    "industry": "FoodTech",
-    "sector": "Agriculture & Food",
-    "status": "Active",
-    "display_name": "Victory Hemp Foods",
-    "domain": "victoryhempfoods.com"
-  },
-  {
-    "name": "Virtual Peaker",
-    "website": "https://virtual-peaker.com/",
-    "industry": "Climate Tech",
-    "sector": "Energy & CleanTech",
-    "status": "Active",
-    "display_name": "Virtual Peaker",
-    "domain": "virtual-peaker.com"
-  },
-  {
-    "name": "Visor Health",
-    "website": "https://visor.health",
-    "industry": "HealthTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Visor Health",
-    "domain": "visor.health"
-  },
-  {
-    "name": "VividCharts",
-    "website": "https://vividcharts.com/",
-    "industry": "Big Data",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "VividCharts",
-    "domain": "vividcharts.com"
-  },
-  {
-    "name": "Vivorte",
-    "website": "https://vivorte.com/",
-    "industry": "Life Sciences",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Vivorte",
-    "domain": "vivorte.com"
-  },
-  {
-    "name": "VRTogether (RalphVR)",
-    "website": "https://vrtogether.us/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "VRTogether",
-    "domain": "vrtogether.us"
-  },
-  {
-    "name": "VSimple",
-    "website": "https://www.vsimple.com/",
-    "industry": "SaaS",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "VSimple",
-    "domain": "vsimple.com"
-  },
-  {
-    "name": "Weather Brother (Storm Chasing for Science)",
-    "website": "https://weatherbrother.com/",
-    "industry": "Mobile",
-    "sector": "Software & Technology",
-    "status": "Active",
-    "display_name": "Weather Brother",
-    "domain": "weatherbrother.com"
-  },
-  {
-    "name": "Weller Co",
-    "website": "https://www.drinkwellerco.com",
-    "industry": "FemTech",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "Weller Co",
-    "domain": "drinkwellerco.com"
-  },
-  {
-    "name": "WholeNote",
-    "website": "http://gotyourback.io",
-    "industry": "Audiotech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "WholeNote",
-    "domain": "gotyourback.io"
-  },
-  {
-    "name": "Wicked Sheets (Wicked Technologies)",
-    "website": "https://wickedsheets.com/",
-    "industry": "LOHAS & Wellness",
-    "sector": "Consumer",
-    "status": "Active",
-    "display_name": "Wicked Sheets",
-    "domain": "wickedsheets.com"
-  },
-  {
-    "name": "Workmatch (fka IribaMaps)",
-    "website": "https://workmatch.com/",
-    "industry": "HR Tech",
-    "sector": "Business Services",
-    "status": "Active",
-    "display_name": "Workmatch",
-    "domain": "workmatch.com"
-  },
-  {
-    "name": "Xena Intelligence",
-    "website": "https://xenaintelligence.com/",
-    "industry": "AdTech",
-    "sector": "Media & Entertainment",
-    "status": "Active",
-    "display_name": "Xena Intelligence",
-    "domain": "xenaintelligence.com"
-  },
-  {
-    "name": "xRake",
-    "website": "",
-    "industry": "Manufacturing",
-    "sector": "Industrials & Manufacturing",
-    "status": "Active",
-    "display_name": "xRake",
-    "domain": ""
-  },
-  {
-    "name": "XRHealth (fka RealizedCare and BehaVR)",
-    "website": "https://www.xr.health/",
-    "industry": "Digital Health",
-    "sector": "Healthcare & Life Sciences",
-    "status": "Active",
-    "display_name": "XRHealth",
-    "domain": "xr.health"
-  },
-  {
-    "name": "Agri-Grow Technologies",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Agri-Grow Technologies",
-    "domain": ""
-  },
-  {
-    "name": "Allylix (Evolva)",
-    "website": "https://evolva.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Allylix",
-    "domain": "evolva.com"
-  },
-  {
-    "name": "Apellis Pharmaceuticals",
-    "website": "https://www.apellis.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Apellis Pharmaceuticals",
-    "domain": "apellis.com"
-  },
-  {
-    "name": "Apoimmune (ApoVax)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Apoimmune",
-    "domain": ""
-  },
-  {
-    "name": "Aptamera",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Aptamera",
-    "domain": ""
-  },
-  {
-    "name": "Athenic Systems",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Athenic Systems",
-    "domain": ""
-  },
-  {
-    "name": "BellaNovus Development Company",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "BellaNovus Development Company",
-    "domain": ""
-  },
-  {
-    "name": "Buswell Energy",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Buswell Energy",
-    "domain": ""
-  },
-  {
-    "name": "Ceptaris Therapeutics (Yaupon)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Ceptaris Therapeutics",
-    "domain": ""
-  },
-  {
-    "name": "ChipRx",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "ChipRx",
-    "domain": ""
-  },
-  {
-    "name": "Collabra",
-    "website": "https://www.collabramusic.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Collabra",
-    "domain": "collabramusic.com"
-  },
-  {
-    "name": "Commonwealth Biofuels",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Commonwealth Biofuels",
-    "domain": ""
-  },
-  {
-    "name": "Conexxus",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Conexxus",
-    "domain": ""
-  },
-  {
-    "name": "Control my ADHD",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Control my ADHD",
-    "domain": ""
-  },
-  {
-    "name": "CredentialedCare",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "CredentialedCare",
-    "domain": ""
-  },
-  {
-    "name": "Credit Fair-E",
-    "website": "https://creditfaire.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Credit Fair-E",
-    "domain": "creditfaire.com"
-  },
-  {
-    "name": "CrownMob",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "CrownMob",
-    "domain": ""
-  },
-  {
-    "name": "Cuddle Clones",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Cuddle Clones",
-    "domain": ""
-  },
-  {
-    "name": "dbaDIRECT",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "dbaDIRECT",
-    "domain": ""
-  },
-  {
-    "name": "Dito Solutions",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Dito Solutions",
-    "domain": ""
-  },
-  {
-    "name": "Earthineer",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Earthineer",
-    "domain": ""
-  },
-  {
-    "name": "ecoPower Generation",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "ecoPower Generation",
-    "domain": ""
-  },
-  {
-    "name": "Elektra",
-    "website": "http://elektra.tech",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Elektra",
-    "domain": "elektra.tech"
-  },
-  {
-    "name": "FanGo Software Systems",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "FanGo Software Systems",
-    "domain": ""
-  },
-  {
-    "name": "Float Money",
-    "website": "https://www.floatmoney.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Float Money",
-    "domain": "floatmoney.com"
-  },
-  {
-    "name": "Global Shelter Systems (HESCO)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Global Shelter Systems",
-    "domain": ""
+    "company": "GoWild",
+    "industry": "Consumer & Media",
+    "vertical": "E-Commerce",
+    "one_liner": "Activity-based social commerce platform for outdoor enthusiasts",
+    "website": "https://timetogowild.com/",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Griffin Residuals",
+    "company": "Griffin Residuals",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Waste & Recycling",
+    "one_liner": "Processing and beneficial reuse of industrial and organic residuals",
     "website": "https://griffinresiduals.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Griffin Residuals",
-    "domain": "griffinresiduals.com"
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "High Tide Technologies",
-    "website": "https://htt.io/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "High Tide Technologies",
-    "domain": "htt.io"
+    "company": "Gryphon Environmental",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "CleanTech",
+    "one_liner": "Industrial drying technology for wastewater, food and agricultural by-products",
+    "website": "http://2gryphon.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Highland Biofuels",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Highland Biofuels",
-    "domain": ""
+    "company": "Guide Book Outdoors",
+    "industry": "Consumer & Media",
+    "vertical": "Marketplace",
+    "one_liner": "Marketplace for booking outdoor excursions and connecting with guides",
+    "website": "https://guidebookco.com/",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Hijro Network (Fluent)",
-    "website": "https://hijro.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Hijro Network",
-    "domain": "hijro.com"
+    "company": "Gun Media",
+    "industry": "Consumer & Media",
+    "vertical": "Gaming",
+    "one_liner": "Interactive entertainment company focused on game development and publishing",
+    "website": "https://www.guninteractive.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Hippo Manager",
+    "company": "HANDLE",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Software for managing healthcare capital equipment and supply chain logistics",
+    "website": "https://handleglobal.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Hempwood",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Advanced Materials",
+    "one_liner": "Hemp-based hardwood alternative for flooring, furniture and building products",
+    "website": "https://hempwood.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Hippo Manager",
+    "industry": "Health & Life Sciences",
+    "vertical": "Veterinary Software",
+    "one_liner": "Cloud practice management software for veterinary clinics",
     "website": "https://www.hippomanager.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Hippo Manager",
-    "domain": "hippomanager.com"
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Hometeam Digital",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Hometeam Digital",
-    "domain": ""
+    "company": "HippoClin",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Electronic health records simulation software for nurse training",
+    "website": "https://hippoclin.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Hummingbird Nano (AMT)",
+    "company": "Hogshead",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Spirits",
+    "one_liner": "Bourbon and spirits brand built on Kentucky supply",
+    "website": "https://www.hogshead.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Hollison Technologies",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Food Safety",
+    "one_liner": "Food safety services protecting against pathogen contamination",
+    "website": "https://www.hollison.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "HopFlyt",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Aerospace",
+    "one_liner": "Electric aircraft technology for advanced air transportation",
+    "website": "https://hopflyt.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Humblebrag",
+    "industry": "Consumer & Media",
+    "vertical": "Marketing Tech",
+    "one_liner": "AI tools for personal branding and professional content",
+    "website": "https://humblebrag.ai/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "HuMed",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Advanced Materials",
+    "one_liner": "Skincare ingredients with improved stability, delivery and effectiveness",
+    "website": "https://www.humedtech.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Hummingbird Nano",
+    "industry": "Health & Life Sciences",
+    "vertical": "Microfluidics",
+    "one_liner": "High-precision, low-cost, flexible design microfluidics",
     "website": "https://www.hummingbirdnano.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Hummingbird Nano",
-    "domain": "hummingbirdnano.com"
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "IF Technologies",
-    "website": "https://www.thinkift.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "IF Technologies",
-    "domain": "thinkift.com"
+    "company": "IF Technologies",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Data analytics for healthcare cost containment and pricing transparency",
+    "website": "https://www.crunchbase.com/organization/if-technologies-inc",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "ImmunoTheragnostics",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "ImmunoTheragnostics",
-    "domain": ""
+    "company": "Illume",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "Financial modelling and business planning software for the medspa industry",
+    "website": "https://www.joinillume.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "InnoRem",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "InnoRem",
-    "domain": ""
+    "company": "Immersive Hearing Technologies",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "VR software simulating real-life hearing aid experiences for patients",
+    "website": "https://www.immersivehearingtech.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Intellirod Spine (OrthoData)",
-    "website": "https://www.intellirodspine.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Intellirod Spine",
-    "domain": "intellirodspine.com"
+    "company": "Innovative Therapeutix",
+    "industry": "Health & Life Sciences",
+    "vertical": "Life Sciences",
+    "one_liner": "Technology supporting infant feeding progression for parents and specialists",
+    "website": "https://www.innovativetpx.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "International Network for Outcomes Research (INOR)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "International Network for Outcomes Research",
-    "domain": ""
+    "company": "IribaMaps",
+    "industry": "Software & AI",
+    "vertical": "Mapping & Location",
+    "one_liner": "Digital mapping and location data for underserved markets",
+    "website": "https://www.iribamaps.com",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Intrepid Bioinformatics Solutions",
-    "website": "http://www.intrepidbio.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Intrepid Bioinformatics Solutions",
-    "domain": "intrepidbio.com"
+    "company": "Jacobs Automation",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Automation",
+    "one_liner": "Independent cart motion control systems for automated manufacturing",
+    "website": "https://www.crunchbase.com/organization/jacobs-automation-llc",
+    "status": "Exit",
+    "verified": "needs review"
   },
   {
-    "name": "iPillBox",
-    "website": "https://ipillbox.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "iPillBox",
-    "domain": "ipillbox.com"
+    "company": "Jobe Products",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Industrial Products",
+    "one_liner": "Manufacturer of industrial and agricultural equipment components",
+    "website": "https://jobeproducts.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Jacobs Automation",
-    "website": "http://jacobsautomation.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Jacobs Automation",
-    "domain": "jacobsautomation.com"
+    "company": "Kanbol",
+    "industry": "Logistics & Mobility",
+    "vertical": "Supply Chain",
+    "one_liner": "Freight and container logistics coordination platform",
+    "website": "https://www.kanbolinc.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Kentucky Wool Society",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Kentucky Wool Society",
-    "domain": ""
+    "company": "Kidvestors",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "Financial literacy and investing education for children and families",
+    "website": "https://kidvestors.co/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "LDG Sleep Technologies",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "LDG Sleep Technologies",
-    "domain": ""
+    "company": "Krew Technologies",
+    "industry": "Software & AI",
+    "vertical": "Artificial Intelligence",
+    "one_liner": "AI assistants for frontline and field service teams",
+    "website": "https://getkrew.ai",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Legal Gantt (Ascending Solutions)",
-    "website": "https://legalgantt.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Legal Gantt",
-    "domain": "legalgantt.com"
+    "company": "Kyndly Technologies",
+    "industry": "Business & Professional",
+    "vertical": "InsurTech",
+    "one_liner": "Automated health insurance decision support and enrollment assistance",
+    "website": "https://kyndlybenefits.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "LevTech",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "LevTech",
-    "domain": ""
+    "company": "Level 6 Cybersecurity",
+    "industry": "Software & AI",
+    "vertical": "Cybersecurity",
+    "one_liner": "Managed cybersecurity and compliance services for mid-market organisations",
+    "website": "https://www.level6cyber.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Lift3D",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Lift3D",
-    "domain": ""
+    "company": "Liberate Medical",
+    "industry": "Health & Life Sciences",
+    "vertical": "Medical Devices",
+    "one_liner": "Respiratory muscle stimulator designed to reduce mechanical ventilation time",
+    "website": "https://liberatemedical.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "LocalBride",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "LocalBride",
-    "domain": ""
+    "company": "Limitless Minds",
+    "industry": "Business & Professional",
+    "vertical": "Coaching & Development",
+    "one_liner": "Mindset training and performance coaching for teams and organisations",
+    "website": "https://limitlessminds.com",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Lorinth's Lab",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Lorinth's Lab",
-    "domain": ""
+    "company": "Louisville Vegan Jerky Co.",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Packaged Food",
+    "one_liner": "Jerky and toppings made from non-GMO whole soybeans",
+    "website": "http://lvjco.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "LPD",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "LPD",
-    "domain": ""
+    "company": "LYLA",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Digital support tools for maternal and family health",
+    "website": "https://helpmelyla.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Lumenari (EIE Materials)",
-    "website": "https://www.lumenariinc.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Lumenari",
-    "domain": "lumenariinc.com"
+    "company": "MakeTime",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Manufacturing Marketplace",
+    "one_liner": "On-demand CNC machining marketplace connecting buyers to idle capacity",
+    "website": "https://www.crunchbase.com/organization/maketime-io",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "MailHaven",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "MailHaven",
-    "domain": ""
+    "company": "Melanated Healthcare",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Telehealth delivering primary, behavioural and women's health care",
+    "website": "https://melanatedhealthcare.app/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Medbiomarkers",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Medbiomarkers",
-    "domain": ""
+    "company": "Mersive Technologies",
+    "industry": "Software & AI",
+    "vertical": "Collaboration Software",
+    "one_liner": "Wireless content sharing for meeting room displays",
+    "website": "https://www.crunchbase.com/organization/mersive",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Mersive Technologies",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Mersive Technologies",
-    "domain": ""
+    "company": "MobileServe",
+    "industry": "Business & Professional",
+    "vertical": "HR Tech",
+    "one_liner": "Volunteer engagement platform to manage, track and report service activity",
+    "website": "https://mobileserve.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Metromojo",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Metromojo",
-    "domain": ""
+    "company": "Modica",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Beverage",
+    "one_liner": "Better-for-you beverage brand for the modern consumer",
+    "website": "https://www.drinkmodica.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "MPI (Murty Pharmaceuticals)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "MPI",
-    "domain": ""
+    "company": "MoneyBot",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "Automated savings and personal finance tools for consumers",
+    "website": "https://getmoneybot.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Nebecor (Spangler Hunsucker & Schug Corporation)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Nebecor",
-    "domain": ""
+    "company": "Moolathon",
+    "industry": "Consumer & Media",
+    "vertical": "Marketing Tech",
+    "one_liner": "Social fundraising platform integrating fitness tracking and charitable giving",
+    "website": "https://moolathon.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Net Quest Services",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Net Quest Services",
-    "domain": ""
+    "company": "Naprogenix",
+    "industry": "Health & Life Sciences",
+    "vertical": "Life Sciences",
+    "one_liner": "Screening plant compounds for pharmaceuticals and agrochemicals",
+    "website": "http://www.naprogenix.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Neuro Atlas",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Neuro Atlas",
-    "domain": ""
+    "company": "Narratize",
+    "industry": "Software & AI",
+    "vertical": "Artificial Intelligence",
+    "one_liner": "AI platform that streamlines high-quality content creation for enterprises",
+    "website": "https://narratize.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Nomad Innovations",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Nomad Innovations",
-    "domain": ""
+    "company": "NASCEND",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Cloud and application modernisation services for enterprises",
+    "website": "https://nascend.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Novobrace (Equinext)",
-    "website": "https://www.novobrace.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Novobrace",
-    "domain": "novobrace.com"
+    "company": "Nexosome Oncology",
+    "industry": "Health & Life Sciences",
+    "vertical": "Oncology",
+    "one_liner": "Cancer diagnostics for early detection using exosome-based technologies",
+    "website": "https://nexosome-oncology.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "NX Development Corp",
-    "website": "http://nxdevcorp.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "NX Development Corp",
-    "domain": "nxdevcorp.com"
+    "company": "Nichefire",
+    "industry": "Consumer & Media",
+    "vertical": "Marketing Tech",
+    "one_liner": "Analytics platform identifying emerging cultural trends from consumer data",
+    "website": "https://nichefire.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "OmniLife (Healthtech Solutions)",
+    "company": "Non-binary Solutions",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Clinical decision support platform for autism service providers",
+    "website": "https://www.nonbinarysolutions.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Nori",
+    "industry": "Consumer & Media",
+    "vertical": "Consumer Products",
+    "one_liner": "Sustainable consumer goods brand",
+    "website": "https://www.thenoriproject.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "NX DC",
+    "industry": "Health & Life Sciences",
+    "vertical": "Life Sciences",
+    "one_liner": "Development services for diagnostics and life science products",
+    "website": "https://nxdevcorp.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "NX PharmaGen",
+    "industry": "Health & Life Sciences",
+    "vertical": "Diagnostics",
+    "one_liner": "Molecular diagnostics and tumour imaging for early disease detection",
+    "website": "https://nxpharmagen.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "NX Prenatal",
+    "industry": "Health & Life Sciences",
+    "vertical": "FemTech",
+    "one_liner": "Diagnostic assays to detect pregnancy complications such as preterm birth",
+    "website": "https://www.nxprenatal.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Nymbl Systems",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Records and practice management for orthotics and prosthetics providers",
+    "website": "https://www.nymbl.healthcare/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "OmniLife",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Communication and logistics software for organ transplant teams",
     "website": "https://omnilife.health/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "OmniLife",
-    "domain": "omnilife.health"
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "On Call Central (Acumantra Solutions)",
+    "company": "On Call Central",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Text and voice communication platform for providers and health systems",
     "website": "https://www.oncallcentral.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "On Call Central",
-    "domain": "oncallcentral.com"
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "One World Clean Energy (Louisville Clean Energy)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "One World Clean Energy",
-    "domain": ""
+    "company": "Onovative",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "Marketing automation for community banks and credit unions",
+    "website": "https://www.onovativebanking.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Onovative",
-    "website": "http://www.onovativebanking.com/index.html",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Onovative",
-    "domain": "onovativebanking.com"
+    "company": "Organilock",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "AgTech",
+    "one_liner": "Soil amendment and nutrient retention products for growers",
+    "website": "https://organilock.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "ParaTechs",
-    "website": "https://paratechs.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "ParaTechs",
-    "domain": "paratechs.com"
+    "company": "OrgVitals",
+    "industry": "Business & Professional",
+    "vertical": "HR Tech",
+    "one_liner": "Workplace culture analytics helping organisations measure employee experience",
+    "website": "https://orgvitals.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "ParkVu Holdings",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "ParkVu Holdings",
-    "domain": ""
+    "company": "OwnAChord",
+    "industry": "Consumer & Media",
+    "vertical": "Music Tech",
+    "one_liner": "Rights and royalty management platform for independent musicians",
+    "website": "https://demo.ownachord.com/landing.html",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Pav*r Solutions",
+    "company": "Parasight",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Animal Health",
+    "one_liner": "Rapid parasite diagnostics for equine and livestock health",
+    "website": "https://www.parasightsystem.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "ParentMD",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "On-demand paediatric guidance for parents",
+    "website": "https://parentmd.com",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Pascal Tags",
+    "industry": "Logistics & Mobility",
+    "vertical": "Internet of Things",
+    "one_liner": "Asset tracking tags and sensors for industrial environments",
+    "website": "https://www.pascaltags.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Pavr Solutions",
+    "industry": "Business & Professional",
+    "vertical": "SaaS",
+    "one_liner": "Calendaring and scheduling management for business tracking and reporting",
     "website": "https://getpavr.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Pav*r Solutions",
-    "domain": "getpavr.com"
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "PeopleStrategy",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "PeopleStrategy",
-    "domain": ""
+    "company": "PCC Hydrogen",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Hydrogen",
+    "one_liner": "Converting ethanol to hydrogen using patented catalytic processes",
+    "website": "https://pyrochemcatalyst.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Podchaser",
+    "company": "PlanStreet",
+    "industry": "Business & Professional",
+    "vertical": "SaaS",
+    "one_liner": "Case management software for social service and nonprofit organisations",
+    "website": "https://www.planstreet.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Podchaser",
+    "industry": "Consumer & Media",
+    "vertical": "Media Tech",
+    "one_liner": "Podcast discovery platform for browsing and coverage of podcasts",
     "website": "https://www.podchaser.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Podchaser",
-    "domain": "podchaser.com"
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Potentia Pharmaceuticals",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Potentia Pharmaceuticals",
-    "domain": ""
+    "company": "PowerTech Water",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Water",
+    "one_liner": "Water treatment technology for industrial users",
+    "website": "https://electramet.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Pradama",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Pradama",
-    "domain": ""
+    "company": "Prama",
+    "industry": "Software & AI",
+    "vertical": "Cloud & DevOps",
+    "one_liner": "Low-code application development platform for enterprise software teams",
+    "website": "https://goprama.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Quantum Leap",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Quantum Leap",
-    "domain": ""
+    "company": "PreventScripts",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Remote monitoring and chronic condition management for diabetes and hypertension",
+    "website": "https://preventscripts.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "RCC Big Shoal",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "RCC Big Shoal",
-    "domain": ""
+    "company": "Proximity",
+    "industry": "Logistics & Mobility",
+    "vertical": "Parking & Mobility",
+    "one_liner": "Parking application for municipalities with geomarketing-based advertising",
+    "website": "https://proximityparking.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "RDT2M (Integrated Freight and PlanGraphics)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "RDT2M",
-    "domain": ""
+    "company": "Purchaser",
+    "industry": "Business & Professional",
+    "vertical": "Procurement",
+    "one_liner": "AI-assisted procurement and vendor sourcing for businesses",
+    "website": "https://www.purchaser.ai/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Resonant Vibes",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Resonant Vibes",
-    "domain": ""
+    "company": "PyroChem Catalyst Company",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Advanced Materials",
+    "one_liner": "High-temperature catalytic materials for exhaust and reforming applications",
+    "website": "https://pyrochemcatalyst.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Revio (GearBrake)",
-    "website": "https://myrevio.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Revio",
-    "domain": "myrevio.com"
+    "company": "Raadz",
+    "industry": "Consumer & Media",
+    "vertical": "Marketing Tech",
+    "one_liner": "Creator and audience engagement platform",
+    "website": "https://raadz.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "RhinoCyte",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "RhinoCyte",
-    "domain": ""
+    "company": "RaveOn Sports",
+    "industry": "Consumer & Media",
+    "vertical": "Sports Media",
+    "one_liner": "Fan engagement and media platform focused on live sports communities",
+    "website": "https://raveonsports.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Rise Design",
-    "website": "http://www.reachabowl.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Rise Design",
-    "domain": "reachabowl.com"
+    "company": "Redleaf Biologics",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Bio-Ingredients",
+    "one_liner": "Botanical extracts from non-GMO sorghum for health, food and cosmetics",
+    "website": "https://www.redleafbiologics.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Schedule It",
-    "website": "http://www.scheduleit.org/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Schedule It",
-    "domain": "scheduleit.org"
+    "company": "Repaytient",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Revenue cycle management and interest-free patient payments for providers",
+    "website": "https://repaytient.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "ShareLab",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "ShareLab",
-    "domain": ""
+    "company": "Resound",
+    "industry": "Consumer & Media",
+    "vertical": "Audio",
+    "one_liner": "Audio production and podcast services for brands",
+    "website": "https://www.resound.fm/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Simba USA",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Simba USA",
-    "domain": ""
+    "company": "Revolution RE",
+    "industry": "Business & Professional",
+    "vertical": "Real Estate Tech",
+    "one_liner": "Standardises data across property management systems for real estate operators",
+    "website": "https://revolutionre.com",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "SinglePipe Communications",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "SinglePipe Communications",
-    "domain": ""
+    "company": "Revon Systems",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Digital health platform for chronic condition triage and management",
+    "website": "https://www.crunchbase.com/organization/revon-systems",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Sisters of Invention",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Sisters of Invention",
-    "domain": ""
+    "company": "Rhiza Health",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Community platform focused on decentralised healthcare administration",
+    "website": "https://rhiza.health/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Smart Farm Systems",
+    "company": "Ridgerunner Outdoors",
+    "industry": "Consumer & Media",
+    "vertical": "E-Commerce",
+    "one_liner": "Commerce cloud and vertical marketplace for outdoor gear brands",
+    "website": "https://www.ridgerunner.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "RSET",
+    "industry": "Software & AI",
+    "vertical": "Augmented Reality",
+    "one_liner": "3D scanning and modelling platform for education and professional training",
+    "website": "https://rsetengine.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "SafeWave",
+    "industry": "Health & Life Sciences",
+    "vertical": "Wearables",
+    "one_liner": "Wearable alert system for hearing-impaired and noise-sensitive individuals",
+    "website": "https://www.safewavetech.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Santerre International",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "AgTech",
+    "one_liner": "High-nutrient fertiliser produced from invasive Asian carp",
+    "website": "https://www.santerreinternational.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Scoop",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Team communication and workflow tools for distributed organisations",
+    "website": "https://scoop.chat/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Scrub Step",
+    "industry": "Health & Life Sciences",
+    "vertical": "Medical Supplies",
+    "one_liner": "Footwear and apparel designed for clinical environments",
+    "website": "https://www.scrubstep.us/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Seamly Systems",
+    "industry": "Consumer & Media",
+    "vertical": "Apparel Tech",
+    "one_liner": "Digital pattern-making platform enabling custom-fit apparel design",
+    "website": "https://seamly.io/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "SentryHealth",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Personalised health and wellness platform for employee benefits management",
+    "website": "https://www.sentryhealth.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Simbryo",
+    "industry": "Health & Life Sciences",
+    "vertical": "Life Sciences",
+    "one_liner": "Reproductive science tools and services",
+    "website": "https://www.simbryotech.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Single Pipe",
+    "industry": "Software & AI",
+    "vertical": "Telecom",
+    "one_liner": "Managed voice, data and network services for businesses",
+    "website": "https://www.crunchbase.com/organization/singlepipe-communications",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Smart Farm Systems",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "AgTech",
+    "one_liner": "Sensor and monitoring systems for row crop and specialty farming",
     "website": "https://www.smartfarm.ag/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Smart Farm Systems",
-    "domain": "smartfarm.ag"
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Smoove Creations",
-    "website": "https://smoovecreations.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Smoove Creations",
-    "domain": "smoovecreations.com"
+    "company": "Soaring Titan",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Workflow and operations software for service businesses",
+    "website": "https://app.soaringtitan.com/sign-in",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Starborn Healthcare Solutions",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Starborn Healthcare Solutions",
-    "domain": ""
+    "company": "SoFab Inks",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Advanced Materials",
+    "one_liner": "Printable conductive inks for flexible and printed electronics",
+    "website": "https://sofabinks.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "SuperFan",
+    "company": "Space Tango",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Aerospace",
+    "one_liner": "Automated research and manufacturing payloads for low-earth orbit",
+    "website": "https://spacetango.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Stuccco",
+    "industry": "Business & Professional",
+    "vertical": "Real Estate Tech",
+    "one_liner": "Online platform for interior design, virtual staging and home goods",
+    "website": "https://stuccco.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Summit Biosciences",
+    "industry": "Health & Life Sciences",
+    "vertical": "Pharmaceuticals",
+    "one_liner": "Generic and innovative nasal spray medicines",
+    "website": "https://www.summitbiosciences.com/",
+    "status": "Exit",
+    "verified": "database"
+  },
+  {
+    "company": "SunnySide Egg Co.",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Packaged Food",
+    "one_liner": "Pasture-raised egg producer and packer",
+    "website": "https://www.sunnysideeggco.com",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "SuperFan",
+    "industry": "Consumer & Media",
+    "vertical": "Sports",
+    "one_liner": "Fan engagement and loyalty technology for teams and venues",
     "website": "https://www.superfaninc.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "SuperFan",
-    "domain": "superfaninc.com"
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Support Nerds, LLC",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Support Nerds, LLC",
-    "domain": ""
+    "company": "Swell Health",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "Digital tools for behavioural and preventive health",
+    "website": "http://getswell.app/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "SureGene",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "SureGene",
-    "domain": ""
+    "company": "Switcher Studio",
+    "industry": "Consumer & Media",
+    "vertical": "Video Production",
+    "one_liner": "Video production and live-streaming platform for professional creators",
+    "website": "https://www.switcherstudio.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Symba",
+    "company": "Sword Performance",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Beverage",
+    "one_liner": "Hydration products designed to reduce fatigue and support endurance",
+    "website": "http://drinksword.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Symba",
+    "industry": "Business & Professional",
+    "vertical": "HR Tech",
+    "one_liner": "Internship and early-career programme management for employers",
     "website": "https://www.getsymba.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Symba",
-    "domain": "getsymba.com"
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Talaris Therapeutics (Regenerex)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Talaris Therapeutics",
-    "domain": ""
+    "company": "Synaptek",
+    "industry": "Health & Life Sciences",
+    "vertical": "HealthTech",
+    "one_liner": "Concussion management for athletic departments, teams and clinics",
+    "website": "https://www.synaptek.io/",
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Tally Rally",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Tally Rally",
-    "domain": ""
+    "company": "Talaris Therapeutics",
+    "industry": "Health & Life Sciences",
+    "vertical": "Biopharma",
+    "one_liner": "Cell therapy aimed at reinventing organ transplantation",
+    "website": "https://xconomy.com/boston/2019/04/18/100m-for-talaris-gives-surgeon-a-shot-to-reinvent-organ-transplants/",
+    "status": "Exit",
+    "verified": "needs review"
   },
   {
-    "name": "The Corporate Playbook",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "The Corporate Playbook",
-    "domain": ""
+    "company": "TapLogic",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "AgTech",
+    "one_liner": "Farm management software for agricultural records and operations",
+    "website": "https://taplogic.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "The Vniversity (Futur-E-Scape)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "The Vniversity",
-    "domain": ""
+    "company": "The Kentucky Hug",
+    "industry": "Consumer & Media",
+    "vertical": "Ticketing",
+    "one_liner": "Ticketing marketplace and tourism software, starting with the bourbon industry",
+    "website": "https://kyhug.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Thortek (Irvine Technologies)",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Thortek",
-    "domain": ""
+    "company": "Thynk Health",
+    "industry": "Health & Life Sciences",
+    "vertical": "Oncology",
+    "one_liner": "AI suite streamlining lung cancer screening and diagnosis workflows",
+    "website": "http://thynkhealth.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "TrackFive Diagnostics",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "TrackFive Diagnostics",
-    "domain": ""
+    "company": "Tixers",
+    "industry": "Consumer & Media",
+    "vertical": "Ticketing",
+    "one_liner": "Secondary ticketing marketplace for live events",
+    "website": "https://www.crunchbase.com/organization/tixers",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Ucloser",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Ucloser",
-    "domain": ""
+    "company": "To The Market",
+    "industry": "Business & Professional",
+    "vertical": "Supply Chain",
+    "one_liner": "Responsible sourcing platform for vetted factories with traceability reporting",
+    "website": "http://www.tothemarket.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "US Worldmeds",
+    "company": "Ujoin",
+    "industry": "Business & Professional",
+    "vertical": "GovTech",
+    "one_liner": "Advocacy and legislative engagement software for organisations",
+    "website": "https://ujoin.co",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Untitled",
+    "industry": "Consumer & Media",
+    "vertical": "Creative Services",
+    "one_liner": "Brand, design and marketing studio",
+    "website": "https://untitledfirm.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "US Worldmeds",
+    "industry": "Health & Life Sciences",
+    "vertical": "Pharmaceuticals",
+    "one_liner": "Specialty pharmaceutical company developing and licensing healthcare products",
     "website": "https://usworldmeds.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "US Worldmeds",
-    "domain": "usworldmeds.com"
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Vaquera Group (Further Media/11Picas)",
-    "website": "http://www.further.media/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Vaquera Group",
-    "domain": "further.media"
+    "company": "Valent Systems",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Operations and workflow software for service organisations",
+    "website": "https://www.getvalent.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "VitaTech",
-    "website": "",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "VitaTech",
-    "domain": ""
+    "company": "Value Buddy",
+    "industry": "Business & Professional",
+    "vertical": "FinTech",
+    "one_liner": "Business valuation and benchmarking software for small and growing companies",
+    "website": "http://hellovaluebuddy.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "VoicePad (Standard Voice Networks)",
+    "company": "Veeper",
+    "industry": "Consumer & Media",
+    "vertical": "E-Commerce",
+    "one_liner": "E-commerce pricing engine offering dynamic discounts based on purchase history",
+    "website": "https://www.veeper.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Victory Hemp Foods",
+    "industry": "Agriculture, Food & Beverage",
+    "vertical": "Food Ingredients",
+    "one_liner": "Hemp-based ingredients providing alternatives to synthetic proteins",
+    "website": "https://www.victoryhempfoods.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "Virtual Peaker",
+    "industry": "Energy, Materials & Climate",
+    "vertical": "Energy Software",
+    "one_liner": "Distributed energy resource management for electric utilities",
+    "website": "http://www.virtualpeaker.io",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "VividCharts",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "Automated reporting and documentation for enterprise IT teams",
+    "website": "https://vividcharts.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Vivorte",
+    "industry": "Health & Life Sciences",
+    "vertical": "Medical Devices",
+    "one_liner": "Bone void filler technology for orthopaedic providers",
+    "website": "https://vivorte.com/",
+    "status": "Active",
+    "verified": "database"
+  },
+  {
+    "company": "VoicePad",
+    "industry": "Business & Professional",
+    "vertical": "Real Estate Tech",
+    "one_liner": "Voice and mobile lead capture for real estate brokerages",
     "website": "https://voicepad.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "VoicePad",
-    "domain": "voicepad.com"
+    "status": "Exit",
+    "verified": "needs review"
   },
   {
-    "name": "WeatherCheck Inc",
-    "website": "https://www.weathercheck.co/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "WeatherCheck Inc",
-    "domain": "weathercheck.co"
+    "company": "VRTogether",
+    "industry": "Health & Life Sciences",
+    "vertical": "Digital Health",
+    "one_liner": "VR platform addressing social isolation and loneliness in senior populations",
+    "website": "https://www.vrtogether.us/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Wellhead Energy Systems",
-    "website": "http://wellheadenergy.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Wellhead Energy Systems",
-    "domain": "wellheadenergy.com"
+    "company": "VSimple",
+    "industry": "Software & AI",
+    "vertical": "SaaS",
+    "one_liner": "B2B workflow automation for manufacturers and distributors",
+    "website": "https://www.vsimple.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "WeStyle (FittingRoom)",
-    "website": "https://www.westyleapp.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "WeStyle",
-    "domain": "westyleapp.com"
+    "company": "Wicked Sheets",
+    "industry": "Health & Life Sciences",
+    "vertical": "Wellness",
+    "one_liner": "Moisture-management bedding and fabric for incontinence and sleep health",
+    "website": "https://wickedsheets.com/",
+    "status": "Active",
+    "verified": "database"
   },
   {
-    "name": "Wind Energy Corporation",
-    "website": "https://windenergycorp.com",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Wind Energy Corporation",
-    "domain": "windenergycorp.com"
+    "company": "Xena Intelligence",
+    "industry": "Software & AI",
+    "vertical": "Artificial Intelligence",
+    "one_liner": "AI optimisation tools for e-commerce sellers",
+    "website": "https://xenaintelligence.com/",
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Xiled Inc.",
+    "company": "Xiled",
+    "industry": "Consumer & Media",
+    "vertical": "Gaming",
+    "one_liner": "Community and team-finding platform for competitive gamers",
     "website": "https://findaclan.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Xiled Inc.",
-    "domain": "findaclan.com"
+    "status": "Active",
+    "verified": "needs review"
   },
   {
-    "name": "Xometry (MakeTime)",
+    "company": "Xometry",
+    "industry": "Manufacturing & Industrials",
+    "vertical": "Manufacturing Marketplace",
+    "one_liner": "On-demand manufacturing marketplace for production parts and prototyping",
     "website": "https://www.xometry.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Xometry",
-    "domain": "xometry.com"
+    "status": "Exit",
+    "verified": "database"
   },
   {
-    "name": "Zynerba Pharmaceuticals (AllTranz)",
+    "company": "XpressRun",
+    "industry": "Logistics & Mobility",
+    "vertical": "Logistics",
+    "one_liner": "Same-day and last-mile delivery services for businesses",
+    "website": "https://www.xpressrun.com/",
+    "status": "Active",
+    "verified": "needs review"
+  },
+  {
+    "company": "Zynerba",
+    "industry": "Health & Life Sciences",
+    "vertical": "Biopharma",
+    "one_liner": "Transdermal cannabinoid therapies for rare neuropsychiatric disorders",
     "website": "https://zynerba.com/",
-    "industry": "",
-    "sector": "",
-    "status": "Exited",
-    "display_name": "Zynerba Pharmaceuticals",
-    "domain": "zynerba.com"
+    "status": "Exit",
+    "verified": "needs review"
+  },
+  {
+    "company": "Zyus",
+    "industry": "Health & Life Sciences",
+    "vertical": "Biopharma",
+    "one_liner": "Phytotherapeutic cannabinoid-based compounds for healthcare",
+    "website": "https://www.zyus.com/",
+    "status": "Exit",
+    "verified": "database"
   }
 ]

@@ -6,7 +6,7 @@
  * founder, portrait, business model, one-liner — is derived here so the
  * page stays purely presentational.
  */
-import raw from "./companies.json";
+import raw from "./companies-legacy.json";
 import { ARTICLES } from "./articles";
 import { WALL } from "./wall";
 

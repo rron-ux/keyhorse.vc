@@ -9,7 +9,7 @@ import { SiteContext, type PageId } from "./shared";
 import Home from "./Home";
 import About from "./About";
 import Industries from "./Industries";
-import Companies from "./Companies";
+import Portfolio from "./Portfolio";
 import Media from "./Media";
 import Resources from "./Resources";
 import Partners from "./Partners";
@@ -21,7 +21,7 @@ const VIEWS: Record<Exclude<PageId, "post">, () => ReactNode> = {
   home: Home,
   about: About,
   industries: Industries,
-  portfolio: Companies,
+  portfolio: Portfolio,
   media: Media,
   resources: Resources,
   partners: Partners,

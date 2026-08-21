@@ -3,7 +3,7 @@
 import ben from "@/assets/ben-wolber.png.asset.json";
 import grant from "@/assets/grant-murray-proximity.png.asset.json";
 import q3 from "@/assets/q3-cycle.png.asset.json";
-import companies from "./companies.json";
+import companies from "./companies-legacy.json";
 
 export type Category = "stories" | "announcements" | "perspectives";
 export type SubSeries = "founding" | "behind" | "cycle";
