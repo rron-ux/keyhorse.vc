@@ -198,6 +198,7 @@ export default function Portfolio() {
     const p = new URLSearchParams(window.location.search);
     const iSlug = p.get("industry");
     const vSlug = p.get("vertical");
+    const sSlug = p.get("stage");
     if (iSlug) {
       const hit = INDUSTRY_ORDER.find((i) => slug(i) === iSlug);
       if (hit) setInds([hit]);
@@ -206,7 +207,11 @@ export default function Portfolio() {
       const hit = ROWS.find((r) => slug(r.vertical) === vSlug);
       if (hit) setVerts([hit.vertical]);
     }
-    if (iSlug || vSlug) {
+    if (sSlug) {
+      const hit = STAGE_OPTIONS.find((s) => slug(s) === sSlug);
+      if (hit) setStages([hit]);
+    }
+    if (iSlug || vSlug || sSlug) {
       requestAnimationFrame(() =>
         gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
       );
