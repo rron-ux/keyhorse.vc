@@ -398,15 +398,11 @@ export default function Portfolio() {
                 >
                   <Mark r={r} className="pf-tile" />
                   <span className="pf-main">
-                    <span className="pf-name">
-                      {r.company}
-                      {exited && <i className="pf-exit">Exited</i>}
-                      {r.type && (
-                        <i className={`pf-type ${r.type === "Programmatic" ? "pg" : "dir"}`}>
-                          {r.type}
-                        </i>
-                      )}
-                    </span>
+                  <span className="pf-name">
+                    {r.company}
+                    {exited && <Tag type="exited" label="Exited" />}
+                    {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
+                  </span>
                     <span className="pf-one">{r.description}</span>
                   </span>
                 </button>
@@ -445,9 +441,8 @@ export default function Portfolio() {
                 <div>
                   <h3 className="pfm-name">
                     {modal.company}
-                    {modal.status === "Exited" && (
-                      <i className="pf-exit">Exited</i>
-                    )}
+                    {modal.status === "Exited" && <Tag type="exited" label="Exited" />}
+                    {modal.type && <Tag type={modal.type.toLowerCase()} label={modal.type} />}
                   </h3>
                   <p className="pfm-one">{modal.description}</p>
                 </div>
