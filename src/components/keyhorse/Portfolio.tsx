@@ -402,13 +402,13 @@ export default function Portfolio() {
                     <span className="pf-one">{r.one_liner}</span>
                   </span>
                 </a>
-                {r.vertical && (
+                {(r.vertical || r.city) && (
                   <button
                     type="button"
                     className="pf-vert"
-                    onClick={() => setVerts([r.vertical])}
+                    onClick={() => r.vertical && setVerts([r.vertical])}
                   >
-                    {r.vertical}
+                    {[r.vertical, r.city].filter(Boolean).join(" · ")}
                   </button>
                 )}
               </div>
