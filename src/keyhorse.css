@@ -2126,22 +2126,19 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mx-herofoot .mx-mono{white-space:nowrap;padding-top:2px}
 
 /* media page hero — white, full-width headline */
-.mx-hero--media{background:var(--bg);color:var(--ink);padding:clamp(110px,12vw,168px) 0 clamp(32px,3.4vw,48px);
+.mx-hero--media{background:var(--bg);color:var(--ink);padding:clamp(58px,6.4vw,92px) 0 clamp(32px,3.4vw,48px);
   position:relative;overflow:hidden}
 .mx-hero--media::before{content:"";position:absolute;inset:0;
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:48px 48px;opacity:.35;pointer-events:none}
 .mx-hero--media .wrap{position:relative;z-index:2;text-align:center}
-.mx-hero-label{position:absolute;top:clamp(76px,8.4vw,112px);left:var(--pad);
-  font-family:var(--d);font-weight:600;font-size:10px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--faint)}
+.mx-hero--media .lbl{margin-bottom:18px}
 .mx-hero--media .mx-hero-title{font-family:var(--d);font-weight:600;font-size:clamp(34px,5.4vw,68px);
   letter-spacing:-.04em;line-height:1.05;color:var(--ink);margin:0;max-width:none;white-space:nowrap}
 .mx-hero--media .mx-hero-title em{font-family:var(--sf);font-style:italic;font-weight:400;
   color:var(--cyan-tx)}
 @media(max-width:900px){
-  .mx-hero--media{padding-top:clamp(96px,14vw,126px)}
-  .mx-hero-label{top:clamp(64px,10vw,86px);left:50%;transform:translateX(-50%)}
+  .mx-hero--media{padding-top:clamp(52px,8vw,78px)}
   .mx-hero--media .mx-hero-title{font-size:clamp(26px,7vw,48px);white-space:normal}
 }
 
