@@ -2,7 +2,6 @@ import { useMemo, useRef, useState } from "react";
 import { ARTICLES, initialsOf, type Article, type Category } from "@/data/articles";
 import {
   COVERAGE,
-  CYCLE,
   EVENTS,
   ROUNDS,
   SOCIAL,
