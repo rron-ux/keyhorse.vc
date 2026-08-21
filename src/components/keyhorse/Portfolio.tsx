@@ -275,7 +275,7 @@ export default function Portfolio() {
 
   const chips = [
     ...lanes.map((v) => ({ k: "Investment", v, drop: () => toggler(setLanes)(v) })),
-    ...inds.map((v) => ({ k: "Industry", v, drop: () => toggler(setInds)(v) })),
+    ...inds.map((v) => ({ k: "Sector", v, drop: () => toggler(setInds)(v) })),
     ...verts.map((v) => ({ k: "Vertical", v, drop: () => toggler(setVerts)(v) })),
     ...stats.map((v) => ({ k: "Status", v, drop: () => toggler(setStats)(v) })),
     ...stages.map((v) => ({ k: "Stage", v, drop: () => toggler(setStages)(v) })),
@@ -305,7 +305,7 @@ export default function Portfolio() {
             setOpen={(v) => setOpen(v ? "t" : null)}
           />
           <Dropdown
-            label="Industry"
+            label="Sector"
             options={INDUSTRY_ORDER}
             selected={inds}
             onToggle={toggler(setInds)}
