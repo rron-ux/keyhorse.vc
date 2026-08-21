@@ -19,6 +19,16 @@ export const TAG_LABEL: Record<string, string> = {
   cycle: "Investment Cycle",
 };
 
+export const MEDIA_RETURN_KEY = "kh:media:return";
+
+/** Remember where the user was on /media before opening /articles. */
+export function goArticles(go: (id: "articles") => void) {
+  try {
+    sessionStorage.setItem(MEDIA_RETURN_KEY, String(window.scrollY));
+  } catch { /* ignore */ }
+  go("articles");
+}
+
 const ts = (d: string) => Date.parse(d) || 0;
 const SORTED = [...ARTICLES].sort((a, b) => ts(b.date) - ts(a.date));
 
@@ -391,7 +401,7 @@ export default function Media() {
           <div className="mx-latest-divider">
             <span className="mx-mono">Latest</span>
             <i aria-hidden="true" />
-            <button className="mx-muted-link" onClick={() => go("articles")}>
+            <button className="mx-muted-link" onClick={() => goArticles(go)}>
               Articles
             </button>
           </div>
@@ -527,7 +537,7 @@ export default function Media() {
           )}
 
           <div className="mx-center">
-            <button className="mx-link" onClick={() => go("articles")}>
+            <button className="mx-link" onClick={() => goArticles(go)}>
               All Articles →
             </button>
           </div>

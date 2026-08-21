@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { ARTICLES, type Article } from "@/data/articles";
-import { CoverImg, SectionLabel } from "./Media";
+import { CoverImg, MEDIA_RETURN_KEY, SectionLabel } from "./Media";
 import { useSite } from "./shared";
 
 const ts = (d: string) => Date.parse(d) || 0;
@@ -43,7 +43,18 @@ const fmtDate = (d: string) => {
 };
 
 export default function Articles() {
-  const { openPost } = useSite();
+  const { openPost, go } = useSite();
+
+  const backToMedia = () => {
+    let y = 0;
+    try {
+      y = Number(sessionStorage.getItem(MEDIA_RETURN_KEY) || 0) || 0;
+    } catch { /* ignore */ }
+    go("media");
+    requestAnimationFrame(() => {
+      setTimeout(() => window.scrollTo({ top: y, behavior: "auto" }), 0);
+    });
+  };
   const [chip, setChip] = useState<ChipId>("all");
 
   const posts = useMemo(
@@ -54,6 +65,9 @@ export default function Articles() {
   return (
     <div className="band mx-blog" id="articles">
       <div className="wrap">
+        <button className="mx-muted-link mx-back" onClick={backToMedia}>
+          ← Back to Media
+        </button>
         <SectionLabel left="Articles" right="Everything we publish" />
         <h1 className="mx-h2">Reported from across the Commonwealth.</h1>
 
