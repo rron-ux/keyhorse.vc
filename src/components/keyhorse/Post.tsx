@@ -92,7 +92,7 @@ export default function Post({ slug }: { slug: string }) {
     <section className="page on art" style={{ ["--sc" as string]: c }}>
       <div className="art-hero">
         {a.cover ? (
-          <img className="art-hero-img" src={a.cover} alt={a.person || a.title} />
+          <img className="art-hero-img" src={a.cover} alt={a.person || a.title} onLoad={(e)=>{const el=e.currentTarget;const r=el.naturalWidth/(el.naturalHeight||1);if(r>=2||r<=0.62||/Group%20342/i.test(a.cover))el.classList.add("is-graphic")}} />
         ) : (
           <div className="art-hero-img art-hero-fill" style={{ background: c }} />
         )}

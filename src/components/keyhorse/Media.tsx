@@ -23,6 +23,36 @@ const SORTED = [...ARTICLES].sort((a, b) => ts(b.date) - ts(a.date));
 const PASTURE = PICS["kh-kentucky"]!.src;
 const LOGISTICS = logisticsAsset.url;
 
+/** Logo / graphic covers should letterbox, photos should fill. */
+export function CoverImg({
+  src,
+  alt,
+  eager,
+}: {
+  src: string;
+  alt: string;
+  eager?: boolean;
+}) {
+  const [fit, setFit] = useState<"cover" | "contain">(
+    /Group%20342|Group 342|logo|q3-cycle|proximity/i.test(src) ? "contain" : "cover",
+  );
+  const check = (el: HTMLImageElement | null) => {
+    if (!el || !el.complete || !el.naturalWidth) return;
+    const r = el.naturalWidth / (el.naturalHeight || 1);
+    if (r >= 1.95 || r <= 0.62) setFit("contain");
+  };
+  return (
+    <img
+      ref={check}
+      className={fit === "contain" ? "is-graphic" : undefined}
+      loading={eager ? undefined : "lazy"}
+      src={src}
+      alt={alt}
+      onLoad={(e) => check(e.currentTarget)}
+    />
+  );
+}
+
 export function SectionLabel({ left, right }: { left: string; right: string }) {
   return (
     <div className="mx-lab">
@@ -214,7 +244,7 @@ export default function Media() {
             </div>
           </div>
           <button className="mx-latest-img" onClick={() => openPost(latest.slug)}>
-            <img src={latest.cover} alt={latest.person || latest.title} />
+            <CoverImg eager src={latest.cover} alt={latest.person || latest.title} />
           </button>
         </div>
       </div>
@@ -311,7 +341,7 @@ export default function Media() {
               {shown.map((p) => (
                 <button className="mx-card" key={p.slug} onClick={() => openPost(p.slug)}>
                   <div className="mx-card-img">
-                    <img loading="lazy" src={p.cover} alt={p.person || p.title} />
+                    <CoverImg src={p.cover} alt={p.person || p.title} />
                   </div>
                   <div className="mx-card-meta">
                     <span className="mx-card-cat">{CAT_LABEL[catOf(p)]}</span>
