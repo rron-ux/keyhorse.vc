@@ -164,11 +164,24 @@ export const COVERAGE = [
     url: "https://www.bipventures.vc/state-of-startups/2025#states",
   },
   {
+    outlet: "NVCA",
+    title: "Kentucky venture capital state data — NVCA Yearbook figures",
+    date: "Dec 2024",
+    url: "https://nvca.org/wp-content/uploads/2024/12/Kentucky-VC-State-Data.pdf",
+  },
+  {
+    outlet: "Visible.vc",
+    title: "The top venture capital firms in Kentucky",
+    date: "2025",
+    url: "https://visible.vc/blog/top-vc-firms-kentucky/",
+  },
+  {
     outlet: "Revolution",
     title: "Revolution — Investment overview and portfolio materials",
     date: "TBC",
     url: "https://revolution.docsend.com/view/jbqah9ydus8djd9m",
   },
+
   {
     outlet: "[Outlet]",
     title: "[Placeholder — coverage headline to be added]",
