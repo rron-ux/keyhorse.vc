@@ -1,43 +1,42 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import heroBluegrass from "@/assets/hero-bluegrass.jpg";
-import raw from "@/data/companies.json";
-import { COMPANIES, MARQUEE } from "@/data/company-meta";
+import raw from "@/data/portfolio.json";
+import { MARQUEE } from "@/data/company-meta";
 import { initials as monogram } from "./CompanyCard";
 
 type Row = {
+  id: string;
   company: string;
-  legal_name?: string | null;
-  industry: string;
-  vertical: string;
-  one_liner: string;
-  business_model?: string | null;
-  city?: string | null;
-  stage?: string | null;
-  status: string;
+  slug: string;
+  description: string;
   website: string;
-  source?: string | null;
-  review?: string | null;
-  note?: string | null;
+  sector: string;
+  vertical: string;
+  stage: string;
+  raw_stage?: string;
+  type: string;
+  status: string;
+  city: string;
+  state: string;
+  logo?: string;
 };
 
 const ROWS = raw as Row[];
 
-/** Fixed industry order. */
+/** Fixed sector order. */
 export const INDUSTRY_ORDER = [
+  "Agriculture & Food",
+  "Business Services",
+  "Consumer",
+  "Education",
+  "Energy & CleanTech",
+  "Financial Services",
   "Healthcare & Life Sciences",
   "Industrials & Manufacturing",
-  "Software & Technology",
-  "Agriculture & Food",
   "Media & Entertainment",
-  "Consumer",
-  "Energy & CleanTech",
-  "Business Services",
-  "Education",
-  "Financial Services",
   "Real Estate",
+  "Software & Technology",
 ];
-
-
 
 export const slug = (s: string) =>
   s
@@ -45,16 +44,6 @@ export const slug = (s: string) =>
     .replace(/&/g, " ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
-
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
-
-/** Investment lane, sourced from the existing Direct/Programmatic classification. */
-const LANE = new Map<string, string>();
-COMPANIES.forEach((c) => {
-  LANE.set(norm(c.display_name), c.type);
-  if (c.name) LANE.set(norm(c.name), c.type);
-});
-const laneOf = (name: string) => LANE.get(norm(name)) || "Programmatic";
 
 const initials = (name: string) => {
   const parts = name
@@ -67,6 +56,26 @@ const initials = (name: string) => {
   return `${joined[0]}${(parts[1] ?? "")[0] ?? ""}`.toUpperCase();
 };
 
+/** Square pale-cyan tile: logo file when present, initials otherwise. */
+function Mark({ r, className }: { r: Row; className: string }) {
+  const [failed, setFailed] = useState(false);
+  useEffect(() => setFailed(false), [r.slug]);
+  return (
+    <span className={className} aria-hidden="true">
+      {failed ? (
+        initials(r.company)
+      ) : (
+        <img
+          src={`/logos/${r.slug}.png`}
+          alt=""
+          loading="lazy"
+          onError={() => setFailed(true)}
+        />
+      )}
+    </span>
+  );
+}
+
 /* --------------------------------------------------------------- marquee */
 
 function Marquee() {
@@ -75,10 +84,7 @@ function Marquee() {
     <div className="cx-marquee">
       <div className="cx-track">
         {row.map((c, i) => (
-          <span
-            key={`${c.domain}-${i}`}
-            className="cx-mcard"
-          >
+          <span key={`${c.domain}-${i}`} className="cx-mcard">
             <span className="cx-mshot">
               {c.portrait ? (
                 <img
@@ -87,10 +93,7 @@ function Marquee() {
                   loading="lazy"
                 />
               ) : (
-                <span
-                  className="cx-mono-fallback"
-                  aria-hidden
-                >
+                <span className="cx-mono-fallback" aria-hidden>
                   {monogram(c.display_name)}
                 </span>
               )}
@@ -180,9 +183,9 @@ const toggler =
 /* ------------------------------------------------------------------ page */
 
 export default function Portfolio() {
-  const [lanes, setLanes] = useState<string[]>([]);
   const [inds, setInds] = useState<string[]>([]);
   const [verts, setVerts] = useState<string[]>([]);
+  const [stages, setStages] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
   const [q, setQ] = useState("");
   const [modal, setModal] = useState<Row | null>(null);
@@ -200,7 +203,7 @@ export default function Portfolio() {
   /* Shareable params on mount. */
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
-    const iSlug = p.get("industry");
+    const iSlug = p.get("sector") || p.get("industry");
     const vSlug = p.get("vertical");
     if (iSlug) {
       const hit = INDUSTRY_ORDER.find((i) => slug(i) === iSlug);
@@ -223,9 +226,10 @@ export default function Portfolio() {
     if (!mounted.current) return;
     const p = new URLSearchParams(window.location.search);
     p.delete("industry");
+    p.delete("sector");
     p.delete("vertical");
     p.delete("stage");
-    if (inds.length === 1) p.set("industry", slug(inds[0]!));
+    if (inds.length === 1) p.set("sector", slug(inds[0]!));
     if (verts.length === 1) p.set("vertical", slug(verts[0]!));
     const s = p.toString();
     window.history.replaceState(
@@ -235,17 +239,17 @@ export default function Portfolio() {
     );
   }, [inds, verts]);
 
-  /* Verticals come from the records visible under the current industry choice. */
+  /* Verticals come from the records visible under the current sector choice. */
   const verticalOptions = useMemo(() => {
     const set = new Set<string>();
     ROWS.forEach((r) => {
-      if (inds.length && !inds.includes(r.industry)) return;
+      if (inds.length && !inds.includes(r.sector)) return;
       if (r.vertical) set.add(r.vertical);
     });
     return Array.from(set).sort((a, b) => a.localeCompare(b));
   }, [inds]);
 
-  /* Drop verticals that no longer exist under the selected industries. */
+  /* Drop verticals that no longer exist under the selected sectors. */
   useEffect(() => {
     setVerts((prev) => {
       const next = prev.filter((v) => verticalOptions.includes(v));
@@ -256,24 +260,23 @@ export default function Portfolio() {
   const results = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return ROWS.filter((r) => {
-      if (lanes.length && !lanes.includes(laneOf(r.company))) return false;
-      if (inds.length && !inds.includes(r.industry)) return false;
+      if (inds.length && !inds.includes(r.sector)) return false;
       if (verts.length && !verts.includes(r.vertical)) return false;
+      if (stages.length && !stages.includes(r.stage)) return false;
       if (stats.length && !stats.includes(r.status)) return false;
       if (needle) {
-        const hay = `${r.company} ${r.legal_name || ""} ${r.vertical} ${
-          r.city || ""
-        } ${r.one_liner}`.toLowerCase();
+        const hay =
+          `${r.company} ${r.description} ${r.vertical}`.toLowerCase();
         if (!hay.includes(needle)) return false;
       }
       return true;
     }).sort((a, b) => a.company.localeCompare(b.company));
-  }, [lanes, inds, verts, stats, q]);
+  }, [inds, verts, stages, stats, q]);
 
   const chips = [
-    ...lanes.map((v) => ({ k: "Investment", v, drop: () => toggler(setLanes)(v) })),
     ...inds.map((v) => ({ k: "Sector", v, drop: () => toggler(setInds)(v) })),
     ...verts.map((v) => ({ k: "Vertical", v, drop: () => toggler(setVerts)(v) })),
+    ...stages.map((v) => ({ k: "Stage", v, drop: () => toggler(setStages)(v) })),
     ...stats.map((v) => ({ k: "Status", v, drop: () => toggler(setStats)(v) })),
   ];
 
@@ -299,15 +302,6 @@ export default function Portfolio() {
       <div className="cx-bar">
         <div className="wrap cx-barin">
           <Dropdown
-            label="Investment"
-            options={["Direct", "Programmatic"]}
-            selected={lanes}
-            onToggle={toggler(setLanes)}
-            onClear={() => setLanes([])}
-            open={open === "t"}
-            setOpen={(v) => setOpen(v ? "t" : null)}
-          />
-          <Dropdown
             label="Sector"
             options={INDUSTRY_ORDER}
             selected={inds}
@@ -326,8 +320,17 @@ export default function Portfolio() {
             setOpen={(v) => setOpen(v ? "v" : null)}
           />
           <Dropdown
+            label="Stage"
+            options={["Inception", "Seed", "Growth"]}
+            selected={stages}
+            onToggle={toggler(setStages)}
+            onClear={() => setStages([])}
+            open={open === "g"}
+            setOpen={(v) => setOpen(v ? "g" : null)}
+          />
+          <Dropdown
             label="Status"
-            options={["Active", "Exit"]}
+            options={["Active", "Exited"]}
             selected={stats}
             onToggle={toggler(setStats)}
             onClear={() => setStats([])}
@@ -355,9 +358,9 @@ export default function Portfolio() {
             <button
               className="cx-clearall"
               onClick={() => {
-                setLanes([]);
                 setInds([]);
                 setVerts([]);
+                setStages([]);
                 setStats([]);
                 setQ("");
               }}
@@ -375,23 +378,21 @@ export default function Portfolio() {
 
         <div className="pf-grid">
           {results.map((r) => {
-            const exited = r.status === "Exit";
+            const exited = r.status === "Exited";
             return (
-              <div className={`pf-card${exited ? " ex" : ""}`} key={r.company}>
+              <div className={`pf-card${exited ? " ex" : ""}`} key={r.id}>
                 <button
                   type="button"
                   className="pf-link"
                   onClick={() => setModal(r)}
                 >
-                  <span className="pf-tile" aria-hidden="true">
-                    {initials(r.company)}
-                  </span>
+                  <Mark r={r} className="pf-tile" />
                   <span className="pf-main">
                     <span className="pf-name">
                       {r.company}
-                      {exited && <i className="pf-exit">Exit</i>}
+                      {exited && <i className="pf-exit">Exited</i>}
                     </span>
-                    <span className="pf-one">{r.one_liner}</span>
+                    <span className="pf-one">{r.description}</span>
                   </span>
                 </button>
                 {(r.vertical || r.city) && (
@@ -425,38 +426,39 @@ export default function Portfolio() {
                 ×
               </button>
               <div className="pfm-head">
-                <span className="pfm-logo" aria-hidden="true">
-                  {initials(modal.company)}
-                </span>
+                <Mark r={modal} className="pfm-logo" />
                 <div>
-                  <h3 className="pfm-name">{modal.company}</h3>
-                  <p className="pfm-one">{modal.one_liner}</p>
+                  <h3 className="pfm-name">
+                    {modal.company}
+                    {modal.status === "Exited" && (
+                      <i className="pf-exit">Exited</i>
+                    )}
+                  </h3>
+                  <p className="pfm-one">{modal.description}</p>
                 </div>
               </div>
               <dl className="pfm-meta">
                 <div>
-                  <dt>Investment</dt>
-                  <dd>{laneOf(modal.company)}</dd>
-                </div>
-                <div>
                   <dt>Sector</dt>
-                  <dd>{modal.industry || "Untagged"}</dd>
+                  <dd>{modal.sector}</dd>
                 </div>
                 <div>
                   <dt>Vertical</dt>
-                  <dd>{modal.vertical || "—"}</dd>
-                </div>
-                <div>
-                  <dt>Location</dt>
-                  <dd>{modal.city || "—"}</dd>
+                  <dd>{modal.vertical}</dd>
                 </div>
                 <div>
                   <dt>Stage</dt>
-                  <dd>{modal.stage || "—"}</dd>
+                  <dd>{modal.stage}</dd>
                 </div>
+                {modal.type ? (
+                  <div>
+                    <dt>Type</dt>
+                    <dd>{modal.type}</dd>
+                  </div>
+                ) : null}
                 <div>
-                  <dt>Status</dt>
-                  <dd>{modal.status || "—"}</dd>
+                  <dt>Location</dt>
+                  <dd>{[modal.city, modal.state].filter(Boolean).join(", ")}</dd>
                 </div>
               </dl>
               {modal.website && (
@@ -472,7 +474,6 @@ export default function Portfolio() {
             </div>
           </div>
         )}
-
 
         <p className="pf-note">
           Coverage of a company does not indicate a current investment. Past
