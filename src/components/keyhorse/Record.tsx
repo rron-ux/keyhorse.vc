@@ -1,14 +1,10 @@
 import { useMemo, useState } from "react";
 import { ROUNDS, ROUND_SECTORS, ROUND_YEARS } from "@/data/media";
-import { PICS } from "@/lib/images";
 import { useSite } from "./shared";
 import { SectionLabel } from "./Media";
 
-const PASTURE = PICS["kh-kentucky"]!.src;
-
 const fmt = (d: string) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", {
-    day: "2-digit",
     month: "short",
     year: "numeric",
     timeZone: "UTC",
@@ -36,7 +32,6 @@ export default function Record() {
   return (
     <section className="page on md mx">
       <div className="mx-dark mx-dark--head">
-        <img className="mx-dark-bg" src={PASTURE} alt="" aria-hidden="true" />
         <div className="wrap mx-dark-in">
           <SectionLabel left="The Record" right="Keyhorse Capital" />
           <div className="mx-rechead">

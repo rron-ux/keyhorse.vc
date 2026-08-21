@@ -89,7 +89,6 @@ const catSlug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 const fmtRound = (d: string) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", {
-    day: "2-digit",
     month: "short",
     year: "numeric",
     timeZone: "UTC",
