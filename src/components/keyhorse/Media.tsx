@@ -193,18 +193,20 @@ export default function Media() {
   return (
     <section className="page on md mx">
       {/* 1 · Hero */}
-      <div className="band mx-hero">
+      <div className="band mx-hero mx-hero--media">
         <div className="wrap">
-          <SectionLabel left="Media" right="Keyhorse Capital" />
-          <h1 className="mx-h1">
-            The living story of <mark>innovation in Kentucky</mark>
-          </h1>
-          <div className="mx-herofoot">
-            <p>
-              Every round raised in the Commonwealth, the founders behind them, and what
-              is being built here — reported weekly.
-            </p>
-            <span className="mx-mono">Published from Lexington · Free to read</span>
+          <div className="mx-hero-row">
+            <span className="mx-hero-label">Media</span>
+            <h1 className="mx-hero-title">
+              The living story of <mark>innovation in Kentucky</mark>
+            </h1>
+            <div className="mx-hero-side">
+              <p>
+                Every round raised in the Commonwealth, the founders behind them, and what
+                is being built here — reported weekly.
+              </p>
+              <span className="mx-mono">Published from Lexington · Free to read</span>
+            </div>
           </div>
         </div>
       </div>
