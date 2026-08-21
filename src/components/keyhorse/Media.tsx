@@ -35,37 +35,25 @@ export function SectionLabel({ left, right }: { left: string; right: string }) {
 
 const CHIPS = [
   ["all", "All"],
-  ["founding", "Founding stories"],
-  ["perspectives", "Perspectives"],
-  ["market", "Market notes"],
-  ["announcements", "Announcements"],
-  ["video", "Video"],
+  ["news", "News"],
+  ["reports", "Reports"],
+  ["stories", "Stories"],
 ] as const;
 type ChipId = (typeof CHIPS)[number][0];
 
 function catOf(a: Article): ChipId {
-  if (a.category === "perspectives") return "perspectives";
-  if (a.category === "announcements") return "announcements";
-  if (a.series === "founding") return "founding";
-  return "market";
+  if (a.category === "announcements") return "news";
+  if (a.category === "perspectives") return "reports";
+  return "stories";
 }
 const CAT_LABEL: Record<ChipId, string> = {
   all: "All",
-  founding: "Founding story",
-  perspectives: "Perspective",
-  market: "Market note",
-  announcements: "Announcement",
-  video: "Video",
+  news: "News",
+  reports: "Reports",
+  stories: "Stories",
 };
 
-/** Normalise a category label so singular/plural forms compare equal. */
-const catSlug = (s: string) =>
-  s
-    .toLowerCase()
-    .split(/[^a-z0-9]+/)
-    .filter(Boolean)
-    .map((w) => w.replace(/ies$/, "y").replace(/s$/, ""))
-    .join("-");
+const catSlug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
 const fmtRound = (d: string) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", {
