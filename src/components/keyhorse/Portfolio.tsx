@@ -188,6 +188,14 @@ export default function Portfolio() {
   const [verts, setVerts] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
   const [q, setQ] = useState("");
+  const [open, setOpen] = useState<Row | null>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   const [open, setOpen] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const mounted = useRef(false);
