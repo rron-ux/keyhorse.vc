@@ -4,10 +4,10 @@ import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
 import logoAsset from "@/assets/keyhorse-horizontal.png.asset.json";
 
 const FIGURES: [string, string][] = [
-  ["$100M+", "invested in Kentucky"],
-  ["$3.3B+", "follow-on raised"],
-  ["600+", "backed since 2001"],
-  ["209", "active today"],
+  ["600+", "companies funded across all sub funds, grants and investments"],
+  ["$100M+", "invested in Kentucky companies"],
+  ["$3.3B+", "follow-on capital raised by portfolio companies"],
+  ["800+", "jobs created by founders (active portfolio only)"],
 ];
 
 const FACTS: [string, string][] = [
@@ -168,14 +168,13 @@ export default function About() {
           <div className="abt-hero2">
             <div>
               <LabelRow left="About" right="Keyhorse Capital" />
-              <h1 className="abt-h1">
-                A venture capital firm investing across Kentucky.
-              </h1>
+              <h1 className="abt-h1">Go the distance.</h1>
               <p className="abt-dek">
-                We back tech-enabled companies in any sector, from a first cheque
-                through Series A and beyond. We invest more often than anyone else
-                in the state, and we weight toward the industries where Kentucky
-                has an advantage that is hard to copy.
+                Keyhorse Capital invests seed and early stage venture capital
+                focused on supporting a thriving community of entrepreneurs
+                willing to build and scale innovative companies and bring value
+                to Kentucky. We back exceptional founders across industries and
+                sectors, from a first cheque through growth.
               </p>
               <div className="abt-tlinks">
                 <button type="button" className="abt-tlink" onClick={() => go("apply")}>
@@ -219,7 +218,7 @@ export default function About() {
       {/* 3 · Thesis */}
       <div className="abt-sec" id="thesis">
         <div className="wrap">
-          <LabelRow left="Thesis" right="Where we weight" />
+          <LabelRow left="Thesis" right="What we invest in · Our approach" />
           <div className="abt-th2">
             <h2 className="abt-thh">
               We invest in any tech-enabled company here.{" "}
@@ -227,15 +226,19 @@ export default function About() {
             </h2>
             <div>
               <p className="abt-thp">
-                Most of our portfolio sits outside any single sector thesis, and it
-                will stay that way. A good company building in Kentucky is a good
-                company, whatever it does.
+                We believe entrepreneurs pursuing big bets and scalable businesses
+                are vital to our community's health and success. We invest in early
+                and growth stage companies and technologies across industries and
+                sectors, supporting exceptional founders with a vision to go the
+                distance.
               </p>
               <p className="abt-thp">
-                But capital is mobile now and infrastructure is not, so the reason
-                to be somewhere has to be physical. Kentucky has a handful of those
-                reasons, and our growth fund weights toward them — because that is
-                where a company here beats the same company somewhere else.
+                We take on financial risk and venture with founders and their
+                companies in hopes they have a successful run building and scaling
+                new businesses in Kentucky. We work with investors, subject matter
+                experts and strategic partners to help founders gain early wins and
+                growth — and our growth fund weights toward the industries where the
+                Commonwealth holds an advantage that is hard to copy.
               </p>
               <button
                 type="button"
@@ -281,8 +284,8 @@ export default function About() {
         <img className="abt-close2-bg" src={closing.src} alt="" aria-hidden="true" />
         <div className="wrap abt-close2-in">
           <h2>
-            Building something exceptional{" "}
-            <strong>in Kentucky?</strong>
+            Are you a founder{" "}
+            <strong>seeking investment capital?</strong>
           </h2>
           <div className="abt-tlinks">
             <button type="button" className="abt-tlink w" onClick={() => go("apply")}>
