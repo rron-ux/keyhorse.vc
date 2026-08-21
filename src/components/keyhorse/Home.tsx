@@ -380,7 +380,7 @@ function Capital() {
           </p>
           <div className="cta" style={{ display: "flex", gap: 10, marginTop: 24, flexWrap: "wrap" }}>
             <button className="btn" onClick={() => go("apply")}>
-              See the criteria and
+              See the criteria and pitch us
             </button>
           </div>
         </div>
