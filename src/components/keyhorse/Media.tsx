@@ -202,12 +202,46 @@ export default function Media() {
   const pages = Math.max(1, Math.ceil(posts.length / 6));
 
   const rounds = ROUNDS.slice(0, 5);
-  const mentions = COVERAGE.slice(1);
-  const featured = COVERAGE[0]!;
-  const per = 4;
+
+  const FEATURED = {
+    outlet: "Rise of the Rest / Revolution",
+    quoteStart: "Invest Local: ",
+    mark: "The State of Intra-State Venture Investing",
+    quoteEnd: "",
+    source: "2026 annual report",
+    date: "2026",
+    url: "https://revolution.docsend.com/view/jbqah9ydus8djd9m",
+  };
+
+  const BIP = {
+    outlet: "BIP Ventures",
+    title: "Keyhorse named third most active VC fund in the Southeast",
+    date: "Oct 2025",
+    url: "https://www.bipventures.vc/state-of-startups/2025#highlights",
+  };
+
+  const isReal = (c: { outlet: string; title: string; date: string; url: string }) =>
+    Boolean(c.url) &&
+    !/^\[|TBC/i.test(c.outlet) &&
+    !/^\[|TBC/i.test(c.title) &&
+    !/TBC/i.test(c.date) &&
+    c.url !== FEATURED.url &&
+    !/bipventures/i.test(c.url);
+
+  const mentions = [
+    BIP,
+    ...COVERAGE.filter((c) => isReal(c as never)).map((c) => ({
+      outlet: c.outlet,
+      title: c.title,
+      date: c.date,
+      url: c.url,
+    })),
+  ];
+  const per = 3;
   const covPages = Math.max(1, Math.ceil(mentions.length / per));
   const covIdx = Math.min(covPage, covPages - 1);
   const covShown = mentions.slice(covIdx * per, covIdx * per + per);
+
 
   return (
     <section className="page on md mx">
