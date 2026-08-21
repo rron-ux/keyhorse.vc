@@ -2,7 +2,6 @@ import { useMemo, useRef, useState } from "react";
 import { ARTICLES, initialsOf, type Article, type Category } from "@/data/articles";
 import {
   COVERAGE,
-  CYCLE,
   EVENTS,
   ROUNDS,
   SOCIAL,
@@ -75,39 +74,6 @@ function PitchForm({ kind }: { kind: "pitch" | "round" }) {
           </label>
           <button className="btn" type="submit" style={{ marginTop: 6 }}>
             Send it
-          </button>
-        </form>
-      )}
-    </div>
-  );
-}
-
-function SubscribeForm() {
-  const [sent, setSent] = useState(false);
-  return (
-    <div className="md-form">
-      <p className="md-eyebrow">Newsletter</p>
-      <h3 className="md-form-h">One email a month.</h3>
-      <p className="md-p">
-        Founding Stories, Behind the Scenes and each investment cycle as it opens.
-      </p>
-      {sent ? (
-        <p className="md-p" style={{ marginTop: 14 }}>
-          You are on the list.
-        </p>
-      ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSent(true);
-          }}
-        >
-          <label className="md-f">
-            <span>Email</span>
-            <input required type="email" maxLength={255} placeholder="you@company.com" />
-          </label>
-          <button className="btn" type="submit">
-            Subscribe
           </button>
         </form>
       )}
@@ -274,53 +240,86 @@ export default function Media() {
 
   return (
     <section className="page on md">
-      {/* 1 · Hero */}
-      <div className="md-hero">
-        <span className="md-hero-orb" aria-hidden="true" />
-        <div className="wrap md-hero-in">
-          <div className="md-hero-top">
+      {/* 1 · Title */}
+      <div className="band" style={{ paddingBottom: 0 }}>
+        <div className="wrap">
+          <p className="md-eyebrow">Media</p>
+          <h1 className="md-h2" style={{ maxWidth: "26ch" }}>
+            Stories from the people building in Kentucky.
+          </h1>
+          <p className="md-p" style={{ marginTop: 14, maxWidth: "58ch" }}>
+            Founder interviews, operator conversations, every round we track and every
+            investment cycle we open.
+          </p>
+        </div>
+      </div>
+
+      {/* 2 · The Record */}
+      <div className="band md-slate" id="record">
+        <div className="wrap">
+          <div className="md-head">
             <div>
-              <p className="md-eyebrow md-eyebrow--dark">Media</p>
-              <h1 className="md-hero-h">Stories from the people building in Kentucky.</h1>
-              <p className="md-hero-p">
-                Founder interviews, operator conversations, every round we track and
-                every investment cycle we open.
+              <p className="md-eyebrow md-eyebrow--dark">The record</p>
+              <h2 className="md-h2 w">Every round raised in Kentucky.</h2>
+              <p className="md-p md-p--dark">
+                A running list of what is being funded across the Commonwealth.
               </p>
             </div>
-            <button className="btn md-btn-ow" onClick={() => openSlide(<SubscribeForm />)}>
-              Subscribe
-            </button>
+            <span className="md-live">
+              <i className="md-pulse" aria-hidden="true" />
+              LIVE · UPDATED WEEKLY
+            </span>
           </div>
 
-          <div className="md-feat" id="cycle">
-            <div className="md-feat-img">
-              <img
-                src={ARTICLES.find((a) => a.slug === CYCLE.slug)?.cover ?? ""}
-                alt="Q3 2026 investment cycle"
-              />
-            </div>
-            <div className="md-feat-bd">
-              <span className="md-status">
-                <i className="md-pulse" aria-hidden="true" />
-                {CYCLE.status}
-              </span>
-              <h2 className="md-feat-h">{CYCLE.headline}</h2>
-              <p className="md-p">{CYCLE.standfirst}</p>
-              <div className="md-btns">
-                <button className="btn cy" onClick={() => go("apply")}>
-                  Apply
-                </button>
-                <button className="btn g" onClick={() => openPost(CYCLE.slug)}>
-                  Read the announcement
-                </button>
+          <div className="md-rows">
+            {rounds.map((r) => (
+              <div
+                className="md-row"
+                key={r.company + r.date}
+                style={{ ["--fc" as string]: colorFor(r.company) }}
+              >
+                <div className="md-row-dt">
+                  {new Date(`${r.date}T00:00:00Z`).toLocaleDateString("en-US", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    timeZone: "UTC",
+                  })}
+                </div>
+                <div className="md-row-co">
+                  {r.slug ? (
+                    <button onClick={() => openPost(r.slug!)}>{r.company}</button>
+                  ) : (
+                    r.company
+                  )}
+                  <small>{r.city}, Kentucky</small>
+                </div>
+                <div className="md-row-sec">{r.sector}</div>
+                <div className="md-row-amt">{r.amount}</div>
+                <div className="md-row-out">
+                  <a href={r.outletUrl} target="_blank" rel="noopener noreferrer">
+                    {r.outlet} ↗
+                  </a>
+                </div>
+                <div className="md-row-ar">→</div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="md-btns">
+            <button className="btn cy" onClick={() => go("record")}>
+              View all rounds
+            </button>
           </div>
         </div>
       </div>
 
-      {/* 2 · Articles */}
+      {/* 3 · Stories */}
       <div className="band md-articles">
+        <div className="wrap" style={{ paddingBottom: 18 }}>
+          <p className="md-eyebrow">Stories</p>
+          <h2 className="md-h2">Founder interviews, operator conversations, and announcements.</h2>
+        </div>
         <div className="md-bar" ref={barRef}>
           <div className="wrap md-bar-in">
             <div className="md-pills">
@@ -409,68 +408,44 @@ export default function Media() {
         </div>
       </div>
 
-      {/* 3 · The Record */}
-      <div className="band md-slate" id="record">
+      {/* 4 · Coverage */}
+      <div className="band md-paper">
         <div className="wrap">
-          <div className="md-head">
-            <div>
-              <p className="md-eyebrow md-eyebrow--dark">The record</p>
-              <h2 className="md-h2 w">Every round raised in Kentucky.</h2>
-              <p className="md-p md-p--dark">
-                A running list of what is being funded across the Commonwealth.
-              </p>
-            </div>
-            <span className="md-live">
-              <i className="md-pulse" aria-hidden="true" />
-              LIVE · UPDATED WEEKLY
-            </span>
-          </div>
-
-          <div className="md-rows">
-            {rounds.map((r) => (
-              <div
-                className="md-row"
-                key={r.company + r.date}
-                style={{ ["--fc" as string]: colorFor(r.company) }}
-              >
-                <div className="md-row-dt">
-                  {new Date(`${r.date}T00:00:00Z`).toLocaleDateString("en-US", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    timeZone: "UTC",
-                  })}
+          <p className="md-eyebrow">Coverage</p>
+          <h2 className="md-h2">Where we are written about.</h2>
+          <div className="md-cov">
+            {COVERAGE.map((c, i) =>
+              c.url ? (
+                <a
+                  className="md-cov-c"
+                  key={i}
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="md-cov-o">{c.outlet}</span>
+                  <h3>{c.title}</h3>
+                  <div className="md-cov-f">
+                    <span className="md-mono">{c.date}</span>
+                    <i>↗</i>
+                  </div>
+                </a>
+              ) : (
+                <div className="md-cov-c off" key={i}>
+                  <span className="md-cov-o">{c.outlet}</span>
+                  <h3>{c.title}</h3>
+                  <div className="md-cov-f">
+                    <span className="md-mono">{c.date}</span>
+                  </div>
                 </div>
-                <div className="md-row-co">
-                  {r.slug ? (
-                    <button onClick={() => openPost(r.slug!)}>{r.company}</button>
-                  ) : (
-                    r.company
-                  )}
-                  <small>{r.city}, Kentucky</small>
-                </div>
-                <div className="md-row-sec">{r.sector}</div>
-                <div className="md-row-amt">{r.amount}</div>
-                <div className="md-row-out">
-                  <a href={r.outletUrl} target="_blank" rel="noopener noreferrer">
-                    {r.outlet} ↗
-                  </a>
-                </div>
-                <div className="md-row-ar">→</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="md-btns">
-            <button className="btn cy" onClick={() => go("record")}>
-              View all rounds
-            </button>
+              ),
+            )}
           </div>
         </div>
       </div>
 
-      {/* 4 · Social */}
-      <div className="band md-paper">
+      {/* 5 · Social */}
+      <div className="band">
         <div className="wrap">
           <p className="md-eyebrow">Social</p>
           <h2 className="md-h2">Where else we publish.</h2>
@@ -544,8 +519,8 @@ export default function Media() {
         </div>
       </div>
 
-      {/* 5 · Calendar */}
-      <div className="band">
+      {/* 6 · Calendar */}
+      <div className="band md-paper">
         <div className="wrap">
           <div className="md-head">
             <div>
@@ -564,81 +539,6 @@ export default function Media() {
             </button>
           </div>
           <Calendar />
-        </div>
-      </div>
-
-      {/* 6 · Coverage */}
-      <div className="band md-paper">
-        <div className="wrap">
-          <p className="md-eyebrow">Coverage</p>
-          <h2 className="md-h2">Where we are written about.</h2>
-          <div className="md-cov">
-            {COVERAGE.map((c, i) =>
-              c.url ? (
-                <a
-                  className="md-cov-c"
-                  key={i}
-                  href={c.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="md-cov-o">{c.outlet}</span>
-                  <h3>{c.title}</h3>
-                  <div className="md-cov-f">
-                    <span className="md-mono">{c.date}</span>
-                    <i>↗</i>
-                  </div>
-                </a>
-              ) : (
-                <div className="md-cov-c off" key={i}>
-                  <span className="md-cov-o">{c.outlet}</span>
-                  <h3>{c.title}</h3>
-                  <div className="md-cov-f">
-                    <span className="md-mono">{c.date}</span>
-                  </div>
-                </div>
-              ),
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* 7 · Dual CTA */}
-      <div className="md-dual">
-        <div className="md-dual-l">
-          <p className="md-eyebrow md-eyebrow--dark">Apply</p>
-          <h2 className="md-dual-h">Building something exceptional in Kentucky?</h2>
-          <p className="md-p md-p--dark">
-            Applications are read by the investment team, not a form. Every founder
-            hears back either way.
-          </p>
-          <div className="md-btns">
-            <button className="btn md-btn-w" onClick={() => go("apply")}>
-              Apply for investment
-            </button>
-            <button className="btn md-btn-ow" onClick={() => go("apply")}>
-              See the criteria
-            </button>
-          </div>
-        </div>
-        <div className="md-dual-r">
-          <p className="md-eyebrow md-eyebrow--dark">Contribute</p>
-          <h2 className="md-dual-h">Got a story worth telling?</h2>
-          <p className="md-p md-p--dark">
-            We publish founder stories from across the Commonwealth. Pitch us, nominate
-            someone, or send a round we have missed.
-          </p>
-          <div className="md-btns">
-            <button className="btn cy" onClick={() => openSlide(<PitchForm kind="pitch" />)}>
-              Pitch a story
-            </button>
-            <button
-              className="btn md-btn-ow"
-              onClick={() => openSlide(<PitchForm kind="round" />)}
-            >
-              Submit a round
-            </button>
-          </div>
         </div>
       </div>
     </section>
