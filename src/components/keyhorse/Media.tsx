@@ -379,30 +379,39 @@ export default function Media() {
       {/* 1 · Hero */}
       <div className="band mx-hero mx-hero--media">
         <div className="wrap">
-          <p className="mx-hero-label">Media</p>
           <h1 className="mx-hero-title">
-            The living story of{" "}
-            <em className="mx-hero-cyan">innovation in Kentucky</em>
+            The living <em className="mx-hero-cyan">story of innovation</em> in Kentucky
           </h1>
         </div>
       </div>
 
       {/* Latest story */}
       <div className="band mx-latest">
-        <div className="wrap mx-latest-in">
-          <div>
-            <span className="mx-kick">Latest · {CAT_LABEL[catOf(latest)]}</span>
-            <h2 className="mx-lh">{latest.title}</h2>
-            <p className="mx-dek">{latest.standfirst}</p>
-            <div className="mx-latest-ft">
-              <button className="mx-link" onClick={() => openPost(latest.slug)}>
-                Read the story →
-              </button>
-              <span className="mx-mono">{latest.date} · 6 min read</span>
-            </div>
+        <div className="wrap">
+          <div className="mx-latest-divider">
+            <span className="mx-mono">Latest</span>
+            <i aria-hidden="true" />
+            <button className="mx-muted-link" onClick={() => go("articles")}>
+              Articles
+            </button>
           </div>
-          <button className="mx-latest-img" onClick={() => openPost(latest.slug)}>
-            <CoverImg eager src={latest.cover} alt={latest.person || latest.title} />
+
+          <button className="mx-featured" onClick={() => openPost(latest.slug)}>
+            <div className="mx-featured-text">
+              <h2 className="mx-featured-h">{latest.title}</h2>
+              <p className="mx-featured-dek">{latest.standfirst}</p>
+              <div className="mx-featured-ft">
+                <span className="mx-card-cat">
+                  {latest.category === "stories"
+                    ? SERIES_LABEL[latest.series]
+                    : CAT_LABEL[catOf(latest)]}
+                </span>
+                <span className="mx-mono">{fmtDate(latest.date)} · 6 min read</span>
+              </div>
+            </div>
+            <div className="mx-featured-img">
+              <CoverImg eager src={latest.cover} alt={latest.person || latest.title} />
+            </div>
           </button>
         </div>
       </div>
