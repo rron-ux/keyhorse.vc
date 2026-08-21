@@ -23,6 +23,34 @@ const SORTED = [...ARTICLES].sort((a, b) => ts(b.date) - ts(a.date));
 const PASTURE = PICS["kh-kentucky"]!.src;
 const LOGISTICS = logisticsAsset.url;
 
+/** Logo / graphic covers should letterbox, photos should fill. */
+export function CoverImg({
+  src,
+  alt,
+  eager,
+}: {
+  src: string;
+  alt: string;
+  eager?: boolean;
+}) {
+  const [fit, setFit] = useState<"cover" | "contain">(
+    /Group%20342|Group 342|logo|Thumbnail/i.test(src) ? "contain" : "cover",
+  );
+  return (
+    <img
+      className={fit === "contain" ? "is-graphic" : undefined}
+      loading={eager ? undefined : "lazy"}
+      src={src}
+      alt={alt}
+      onLoad={(e) => {
+        const el = e.currentTarget;
+        const r = el.naturalWidth / (el.naturalHeight || 1);
+        if (r >= 2 || r <= 0.62) setFit("contain");
+      }}
+    />
+  );
+}
+
 export function SectionLabel({ left, right }: { left: string; right: string }) {
   return (
     <div className="mx-lab">
