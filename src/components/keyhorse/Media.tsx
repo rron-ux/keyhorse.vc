@@ -3,6 +3,7 @@ import { ARTICLES, type Article, type Category } from "@/data/articles";
 import { COVERAGE, EVENTS, ROUNDS } from "@/data/media";
 import { PICS } from "@/lib/images";
 import logisticsAsset from "@/assets/logistics.jpg.asset.json";
+import reportAsset from "@/assets/bip-state-of-startups.jpg.asset.json";
 import { useSite } from "./shared";
 
 export const CAT_COLOR: Record<Category, string> = {
@@ -410,13 +411,19 @@ export default function Media() {
 
             <div className="mx-cov-list">
               {covShown.map((c, i) => (
-                <div className="mx-cov-row" key={c.outlet + i}>
+                <a
+                  className="mx-cov-row"
+                  key={c.outlet + i}
+                  href={c.url || undefined}
+                  target={c.url ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                >
                   <div>
                     <span className="mx-mono up">{c.outlet}</span>
                     <h3>{c.title}</h3>
                   </div>
                   <span className="mx-mono">{c.date}</span>
-                </div>
+                </a>
               ))}
               <div className="mx-cov-nav">
                 <span className="mx-mono">
