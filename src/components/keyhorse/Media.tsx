@@ -504,8 +504,10 @@ export default function Media() {
                   </div>
                   <div className="mx-card-body">
                     <div className="mx-card-meta">
-                      <span className="mx-card-cat">{CAT_LABEL[catOf(p)]}</span>
-                      <span className="mx-mono">{p.date}</span>
+                      <span className="mx-card-cat">
+                        {p.category === "stories" ? SERIES_LABEL[p.series] : CAT_LABEL[catOf(p)]}
+                      </span>
+                      <span className="mx-mono">{fmtDate(p.date)}</span>
                     </div>
                     <h3 className="mx-card-h">{p.title}</h3>
                   </div>
