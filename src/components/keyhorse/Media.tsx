@@ -5,6 +5,18 @@ import { PICS } from "@/lib/images";
 import logisticsAsset from "@/assets/logistics.jpg.asset.json";
 import { useSite } from "./shared";
 
+export const CAT_COLOR: Record<Category, string> = {
+  stories: "#00A8E1",
+  perspectives: "#00A8E1",
+  announcements: "#222222",
+};
+
+export const TAG_LABEL: Record<string, string> = {
+  founding: "Founding Stories",
+  behind: "Behind the Scenes",
+  cycle: "Investment Cycle",
+};
+
 const ts = (d: string) => Date.parse(d) || 0;
 const SORTED = [...ARTICLES].sort((a, b) => ts(b.date) - ts(a.date));
 
