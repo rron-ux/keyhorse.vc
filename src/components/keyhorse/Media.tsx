@@ -316,6 +316,10 @@ export default function Media() {
 
       {/* 3 · Stories */}
       <div className="band md-articles">
+        <div className="wrap" style={{ paddingBottom: 18 }}>
+          <p className="md-eyebrow">Stories</p>
+          <h2 className="md-h2">Founder interviews, operator conversations, and announcements.</h2>
+        </div>
         <div className="md-bar" ref={barRef}>
           <div className="wrap md-bar-in">
             <div className="md-pills">
