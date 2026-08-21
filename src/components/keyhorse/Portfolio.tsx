@@ -188,6 +188,14 @@ export default function Portfolio() {
   const [verts, setVerts] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
   const [q, setQ] = useState("");
+  const [modal, setModal] = useState<Row | null>(null);
+  useEffect(() => {
+    if (!modal) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setModal(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [modal]);
+
   const [open, setOpen] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const mounted = useRef(false);
@@ -366,11 +374,10 @@ export default function Portfolio() {
             const exited = r.status === "Exit";
             return (
               <div className={`pf-card${exited ? " ex" : ""}`} key={r.company}>
-                <a
+                <button
+                  type="button"
                   className="pf-link"
-                  href={r.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => setModal(r)}
                 >
                   <span className="pf-tile" aria-hidden="true">
                     {initials(r.company)}
@@ -382,7 +389,7 @@ export default function Portfolio() {
                     </span>
                     <span className="pf-one">{r.one_liner}</span>
                   </span>
-                </a>
+                </button>
                 {(r.vertical || r.city) && (
                   <button
                     type="button"
@@ -396,6 +403,72 @@ export default function Portfolio() {
             );
           })}
         </div>
+
+        {modal && (
+          <div
+            className="pfm-scrim"
+            role="dialog"
+            aria-modal="true"
+            aria-label={modal.company}
+            onClick={() => setModal(null)}
+          >
+            <div className="pfm" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="pfm-x"
+                onClick={() => setModal(null)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <div className="pfm-head">
+                <span className="pfm-logo" aria-hidden="true">
+                  {initials(modal.company)}
+                </span>
+                <div>
+                  <h3 className="pfm-name">{modal.company}</h3>
+                  <p className="pfm-one">{modal.one_liner}</p>
+                </div>
+              </div>
+              <dl className="pfm-meta">
+                <div>
+                  <dt>Investment</dt>
+                  <dd>{laneOf(modal.company)}</dd>
+                </div>
+                <div>
+                  <dt>Sector</dt>
+                  <dd>{modal.industry || "Untagged"}</dd>
+                </div>
+                <div>
+                  <dt>Vertical</dt>
+                  <dd>{modal.vertical || "—"}</dd>
+                </div>
+                <div>
+                  <dt>Location</dt>
+                  <dd>{modal.city || "—"}</dd>
+                </div>
+                <div>
+                  <dt>Stage</dt>
+                  <dd>{modal.stage || "—"}</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>{modal.status || "—"}</dd>
+                </div>
+              </dl>
+              {modal.website && (
+                <a
+                  className="pfm-site"
+                  href={modal.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit website
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
 
         <p className="pf-note">
           Coverage of a company does not indicate a current investment. Past

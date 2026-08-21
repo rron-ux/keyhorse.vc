@@ -1947,3 +1947,19 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 @media(max-width:1100px){.pf-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1100px){.pf-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:720px){.pf-grid{grid-template-columns:1fr}.pf-ctl input,.pf-ctl select{min-width:0;width:100%}.pf-ctl{width:100%}}
+
+/* Portfolio company modal */
+.pf-link{background:none;border:0;padding:0;text-align:left;cursor:pointer;width:100%}
+.pfm-scrim{position:fixed;inset:0;background:rgba(34,34,34,.55);display:flex;align-items:center;justify-content:center;padding:24px;z-index:120}
+.pfm{background:#fff;border:1px solid #E2E3E4;max-width:520px;width:100%;padding:28px;position:relative;max-height:86vh;overflow:auto}
+.pfm-x{position:absolute;top:10px;right:12px;background:none;border:0;font-size:22px;line-height:1;color:#65696D;cursor:pointer}
+.pfm-head{display:flex;gap:16px;align-items:flex-start}
+.pfm-logo{width:56px;height:56px;flex:0 0 56px;display:flex;align-items:center;justify-content:center;background:#F2F3F4;border:1px solid #E2E3E4;font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:16px;letter-spacing:-.02em;color:#222}
+.pfm-name{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:20px;letter-spacing:-.032em;color:#222;margin:0}
+.pfm-one{font-family:"Public Sans",sans-serif;font-weight:300;font-size:15px;line-height:1.55;color:#65696D;margin:6px 0 0}
+.pfm-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:22px 0 0;border-top:1px solid #E2E3E4;padding-top:18px}
+.pfm-meta dt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#909599}
+.pfm-meta dd{margin:4px 0 0;font-family:"Public Sans",sans-serif;font-size:14.5px;color:#222}
+.pfm-site{display:inline-block;margin-top:22px;background:#222;color:#F5F5F4;padding:11px 18px;font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:13px;text-decoration:none}
+.pfm-site:hover{background:#00A8E1}
+@media(max-width:520px){.pfm-meta{grid-template-columns:1fr}}
