@@ -454,10 +454,10 @@ export default function Media() {
         </div>
       </div>
 
-      {/* 3 · Blog */}
-      <div className="band mx-blog" id="blog">
+      {/* 3 · Articles */}
+      <div className="band mx-blog" id="articles">
         <div className="wrap">
-          <SectionLabel left="Blog" right="Everything we publish" />
+          <SectionLabel left="Articles" right="Everything we publish" />
           <h2 className="mx-h2">Reported from across the Commonwealth.</h2>
 
           <div className="mx-filter">
@@ -500,8 +500,8 @@ export default function Media() {
           )}
 
           <div className="mx-center">
-            <button className="mx-link" onClick={() => setChip("all")}>
-              All coverage →
+            <button className="mx-link" onClick={() => go("articles")}>
+              All Articles →
             </button>
           </div>
         </div>

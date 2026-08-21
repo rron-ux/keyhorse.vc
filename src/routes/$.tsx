@@ -8,6 +8,7 @@ const IDS: PageId[] = [
   "industries",
   "portfolio",
   "media",
+  "articles",
   "resources",
   "partners",
   "apply",
