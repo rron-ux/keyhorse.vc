@@ -34,19 +34,21 @@ export function CoverImg({
   eager?: boolean;
 }) {
   const [fit, setFit] = useState<"cover" | "contain">(
-    /Group%20342|Group 342|logo|Thumbnail/i.test(src) ? "contain" : "cover",
+    /Group%20342|Group 342|logo|q3-cycle|proximity/i.test(src) ? "contain" : "cover",
   );
+  const check = (el: HTMLImageElement | null) => {
+    if (!el || !el.complete || !el.naturalWidth) return;
+    const r = el.naturalWidth / (el.naturalHeight || 1);
+    if (r >= 1.95 || r <= 0.62) setFit("contain");
+  };
   return (
     <img
+      ref={check}
       className={fit === "contain" ? "is-graphic" : undefined}
       loading={eager ? undefined : "lazy"}
       src={src}
       alt={alt}
-      onLoad={(e) => {
-        const el = e.currentTarget;
-        const r = el.naturalWidth / (el.naturalHeight || 1);
-        if (r >= 2 || r <= 0.62) setFit("contain");
-      }}
+      onLoad={(e) => check(e.currentTarget)}
     />
   );
 }
