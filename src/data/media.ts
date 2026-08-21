@@ -32,6 +32,8 @@ const HL = "https://www.kentucky.com";
 const NKYT = "https://nkytribune.com";
 const AXIOS = "https://www.axios.com/local/louisville";
 const TC = "https://techcrunch.com";
+/** Rounds we broke ourselves — announced on the Keyhorse Capital Instagram. */
+const KH = "https://www.instagram.com/keyhorsecapital";
 
 export const ROUNDS: Round[] = [
   { date: "2026-07-22", company: "Illume", city: "Louisville", sector: "Health & Care", amount: "$2.4M", stage: "Seed", outlet: "Louisville Business First", outletUrl: LBF, slug: "founding-stories-ben-wolber-illume" },
@@ -48,22 +50,22 @@ export const ROUNDS: Round[] = [
   { date: "2026-02-05", company: "Ecoshell", city: "Bowling Green", sector: "Advanced Manufacturing & Automotive", amount: "$1.5M", stage: "Seed", outlet: "NKY Tribune", outletUrl: NKYT, slug: "founding-stories-andrew-bliss-of-ecoshell" },
   { date: "2026-01-22", company: "River Guide", city: "Louisville", sector: "Logistics & Trade", amount: "$2.2M", stage: "Seed", outlet: "Louisville Business First", outletUrl: LBF, slug: "founding-stories-kela-ivonye-of-river-guide" },
   { date: "2026-01-08", company: "Advanced Energy Materials", city: "Louisville", sector: "Energy, Materials & Climate", amount: "$4.8M", stage: "Series A", outlet: "TechCrunch", outletUrl: TC, slug: "founding-stories-vasanthi-sunkara-of-advanced-energy-materials" },
-  { date: "2025-12-11", company: "Bexion", city: "Covington", sector: "Health & Care", amount: "$12M", stage: "Series B", outlet: "NKY Tribune", outletUrl: NKYT },
+  { date: "2025-12-11", company: "Bexion", city: "Covington", sector: "Health & Care", amount: "$12M", stage: "Series B", outlet: "Keyhorse Capital", outletUrl: KH },
   { date: "2025-11-20", company: "Cloverleaf", city: "Covington", sector: "Software", amount: "$8M", stage: "Series A", outlet: "Axios Louisville", outletUrl: AXIOS },
-  { date: "2025-11-06", company: "Kanbol", city: "Lexington", sector: "Logistics & Trade", amount: "$1.1M", stage: "Pre-seed", outlet: "Lexington Herald-Leader", outletUrl: HL, slug: "founding-stories-miles-leach-of-kanbol" },
+  { date: "2025-11-06", company: "Kanbol", city: "Lexington", sector: "Logistics & Trade", amount: "$1.1M", stage: "Pre-seed", outlet: "Keyhorse Capital", outletUrl: KH, slug: "founding-stories-miles-leach-of-kanbol" },
   { date: "2025-10-16", company: "Revolution RE", city: "Louisville", sector: "Software", amount: "$3.4M", stage: "Seed", outlet: "Louisville Business First", outletUrl: LBF, slug: "founding-stories-elizabeth-braman-of-revolution-re" },
   { date: "2025-09-25", company: "The Nori Project", city: "Lexington", sector: "Health & Care", amount: "$750K", stage: "Pre-seed", outlet: "Lexington Herald-Leader", outletUrl: HL, slug: "founding-stories-dr-anora-mortin-of-the-nori-project" },
   { date: "2025-09-04", company: "Due Gooder", city: "Louisville", sector: "Software", amount: "$1.3M", stage: "Seed", outlet: "Axios Louisville", outletUrl: AXIOS, slug: "founding-stories-nate-royal-of-due-gooder" },
   { date: "2025-08-14", company: "BioGlitz", city: "Louisville", sector: "Consumer", amount: "$800K", stage: "Seed", outlet: "Louisville Business First", outletUrl: LBF, slug: "founding-stories-saba-gray-of-bioglitz" },
   { date: "2025-07-24", company: "PONTIS", city: "Lexington", sector: "Health & Care", amount: "$650K", stage: "Pre-seed", outlet: "Lexington Herald-Leader", outletUrl: HL, slug: "founding-stories-lekha-challappa-of-pontis-psycholinguistics" },
   { date: "2025-06-19", company: "Garnet Gazelle", city: "Louisville", sector: "Consumer", amount: "$1.0M", stage: "Seed", outlet: "Louisville Business First", outletUrl: LBF, slug: "founding-stories-zachary-hill-of-garnet-gazelle-aims-to-revolutionize-the-online-auction-industry" },
-  { date: "2025-05-29", company: "Bourbon Barrel Analytics", city: "Bardstown", sector: "Agriculture & Food", amount: "$2.6M", stage: "Seed", outlet: "Axios Louisville", outletUrl: AXIOS },
+  { date: "2025-05-29", company: "Bourbon Barrel Analytics", city: "Bardstown", sector: "Agriculture & Food", amount: "$2.6M", stage: "Seed", outlet: "Keyhorse Capital", outletUrl: KH },
   { date: "2025-04-17", company: "Blue Grass Robotics", city: "Georgetown", sector: "Advanced Manufacturing & Automotive", amount: "$5.2M", stage: "Series A", outlet: "TechCrunch", outletUrl: TC },
   { date: "2025-03-13", company: "Worldport Systems", city: "Louisville", sector: "Logistics & Trade", amount: "$3.9M", stage: "Seed", outlet: "Louisville Business First", outletUrl: LBF },
-  { date: "2025-02-20", company: "Ohio Valley Grid", city: "Owensboro", sector: "Energy, Materials & Climate", amount: "$2.1M", stage: "Seed", outlet: "NKY Tribune", outletUrl: NKYT },
+  { date: "2025-02-20", company: "Ohio Valley Grid", city: "Owensboro", sector: "Energy, Materials & Climate", amount: "$2.1M", stage: "Seed", outlet: "Keyhorse Capital", outletUrl: KH },
   { date: "2025-01-23", company: "Cumberland Care", city: "Somerset", sector: "Health & Care", amount: "$1.4M", stage: "Pre-seed", outlet: "Lexington Herald-Leader", outletUrl: HL },
   { date: "2024-12-05", company: "Derby Freight", city: "Louisville", sector: "Logistics & Trade", amount: "$2.9M", stage: "Seed", outlet: "Axios Louisville", outletUrl: AXIOS },
-  { date: "2024-10-24", company: "Fescue Ag", city: "Hopkinsville", sector: "Agriculture & Food", amount: "$1.7M", stage: "Seed", outlet: "Louisville Business First", outletUrl: LBF },
+  { date: "2024-10-24", company: "Fescue Ag", city: "Hopkinsville", sector: "Agriculture & Food", amount: "$1.7M", stage: "Seed", outlet: "Keyhorse Capital", outletUrl: KH },
   { date: "2024-09-12", company: "Kentucky Additive", city: "Lexington", sector: "Advanced Manufacturing & Automotive", amount: "$3.3M", stage: "Series A", outlet: "TechCrunch", outletUrl: TC },
   { date: "2024-07-18", company: "Falls City Health", city: "Louisville", sector: "Health & Care", amount: "$4.1M", stage: "Series A", outlet: "Louisville Business First", outletUrl: LBF },
 ];
