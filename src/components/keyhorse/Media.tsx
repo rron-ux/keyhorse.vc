@@ -389,6 +389,7 @@ export default function Media() {
       {/* 1 · Hero */}
       <div className="band mx-hero mx-hero--media">
         <div className="wrap">
+          <span className="mx-hero-label">Media</span>
           <h1 className="mx-hero-title">
             The living <em className="mx-hero-cyan">story of innovation</em> in Kentucky
           </h1>
