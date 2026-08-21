@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ARTICLES, type Article } from "@/data/articles";
+import { ARTICLES, type Article, type Category } from "@/data/articles";
 import { COVERAGE, EVENTS, ROUNDS } from "@/data/media";
 import { PICS } from "@/lib/images";
 import logisticsAsset from "@/assets/logistics.jpg.asset.json";
