@@ -58,6 +58,15 @@ const CAT_LABEL: Record<ChipId, string> = {
   video: "Video",
 };
 
+/** Normalise a category label so singular/plural forms compare equal. */
+const catSlug = (s: string) =>
+  s
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean)
+    .map((w) => w.replace(/ies$/, "y").replace(/s$/, ""))
+    .join("-");
+
 const fmtRound = (d: string) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", {
     day: "2-digit",
