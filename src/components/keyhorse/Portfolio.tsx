@@ -38,9 +38,10 @@ const initials = (name: string) => {
     .replace(/[^A-Za-z0-9 ]/g, " ")
     .split(/\s+/)
     .filter(Boolean);
-  if (!parts.length) return "—";
-  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return (parts[0][0] + parts[1][0]).toUpperCase();
+  const joined = parts.join(" ").replace(/ /g, "");
+  if (!parts.length || !joined) return "—";
+  if (parts.length === 1) return joined.slice(0, 2).toUpperCase();
+  return `${joined[0]}${(parts[1] ?? "")[0] ?? ""}`.toUpperCase();
 };
 
 export default function Portfolio() {
