@@ -8,6 +8,7 @@ export type PageId =
   | "industries"
   | "portfolio"
   | "media"
+  | "articles"
   | "resources"
   | "partners"
   | "apply"

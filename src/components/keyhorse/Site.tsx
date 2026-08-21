@@ -11,6 +11,7 @@ import About from "./About";
 import Industries from "./Industries";
 import Portfolio from "./Portfolio";
 import Media from "./Media";
+import Articles from "./Articles";
 import Resources from "./Resources";
 import Partners from "./Partners";
 import Apply from "./Apply";
@@ -23,6 +24,7 @@ const VIEWS: Record<Exclude<PageId, "post">, () => ReactNode> = {
   industries: Industries,
   portfolio: Portfolio,
   media: Media,
+  articles: Articles,
   resources: Resources,
   partners: Partners,
   apply: Apply,
