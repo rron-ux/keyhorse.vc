@@ -255,7 +255,6 @@ export default function Portfolio() {
       if (inds.length && !inds.includes(r.industry)) return false;
       if (verts.length && !verts.includes(r.vertical)) return false;
       if (stats.length && !stats.includes(r.status)) return false;
-      if (stages.length && !stages.includes(r.stage || "")) return false;
       if (needle) {
         const hay = `${r.company} ${r.legal_name || ""} ${r.vertical} ${
           r.city || ""
@@ -264,14 +263,13 @@ export default function Portfolio() {
       }
       return true;
     }).sort((a, b) => a.company.localeCompare(b.company));
-  }, [lanes, inds, verts, stats, stages, q]);
+  }, [lanes, inds, verts, stats, q]);
 
   const chips = [
     ...lanes.map((v) => ({ k: "Investment", v, drop: () => toggler(setLanes)(v) })),
     ...inds.map((v) => ({ k: "Sector", v, drop: () => toggler(setInds)(v) })),
     ...verts.map((v) => ({ k: "Vertical", v, drop: () => toggler(setVerts)(v) })),
     ...stats.map((v) => ({ k: "Status", v, drop: () => toggler(setStats)(v) })),
-    ...stages.map((v) => ({ k: "Stage", v, drop: () => toggler(setStages)(v) })),
   ];
 
   return (
@@ -324,15 +322,6 @@ export default function Portfolio() {
             open={open === "s"}
             setOpen={(v) => setOpen(v ? "s" : null)}
           />
-          <Dropdown
-            label="Stage"
-            options={STAGE_OPTIONS}
-            selected={stages}
-            onToggle={toggler(setStages)}
-            onClear={() => setStages([])}
-            open={open === "g"}
-            setOpen={(v) => setOpen(v ? "g" : null)}
-          />
           <input
             className="cx-search"
             value={q}
@@ -358,7 +347,6 @@ export default function Portfolio() {
                 setInds([]);
                 setVerts([]);
                 setStats([]);
-                setStages([]);
                 setQ("");
               }}
             >
