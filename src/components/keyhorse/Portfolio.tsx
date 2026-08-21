@@ -366,11 +366,10 @@ export default function Portfolio() {
             const exited = r.status === "Exit";
             return (
               <div className={`pf-card${exited ? " ex" : ""}`} key={r.company}>
-                <a
+                <button
+                  type="button"
                   className="pf-link"
-                  href={r.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => setOpen(r)}
                 >
                   <span className="pf-tile" aria-hidden="true">
                     {initials(r.company)}
@@ -382,7 +381,7 @@ export default function Portfolio() {
                     </span>
                     <span className="pf-one">{r.one_liner}</span>
                   </span>
-                </a>
+                </button>
                 {(r.vertical || r.city) && (
                   <button
                     type="button"
@@ -396,6 +395,72 @@ export default function Portfolio() {
             );
           })}
         </div>
+
+        {open && (
+          <div
+            className="pfm-scrim"
+            role="dialog"
+            aria-modal="true"
+            aria-label={open.company}
+            onClick={() => setOpen(null)}
+          >
+            <div className="pfm" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="pfm-x"
+                onClick={() => setOpen(null)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <div className="pfm-head">
+                <span className="pfm-logo" aria-hidden="true">
+                  {initials(open.company)}
+                </span>
+                <div>
+                  <h3 className="pfm-name">{open.company}</h3>
+                  <p className="pfm-one">{open.one_liner}</p>
+                </div>
+              </div>
+              <dl className="pfm-meta">
+                <div>
+                  <dt>Investment</dt>
+                  <dd>{laneOf(open.company)}</dd>
+                </div>
+                <div>
+                  <dt>Sector</dt>
+                  <dd>{open.industry || "Untagged"}</dd>
+                </div>
+                <div>
+                  <dt>Vertical</dt>
+                  <dd>{open.vertical || "—"}</dd>
+                </div>
+                <div>
+                  <dt>Location</dt>
+                  <dd>{open.city || "—"}</dd>
+                </div>
+                <div>
+                  <dt>Stage</dt>
+                  <dd>{open.stage || "—"}</dd>
+                </div>
+                <div>
+                  <dt>Status</dt>
+                  <dd>{open.status || "—"}</dd>
+                </div>
+              </dl>
+              {open.website && (
+                <a
+                  className="pfm-site"
+                  href={open.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit website
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+
 
         <p className="pf-note">
           Coverage of a company does not indicate a current investment. Past
