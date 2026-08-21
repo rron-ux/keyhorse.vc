@@ -40,7 +40,7 @@ export default function Record() {
                 ← Media
               </button>
               <h1 className="mx-h2" style={{ marginTop: 10 }}>
-                Every round raised in the Commonwealth.
+                Fundraising rounds across Kentucky
               </h1>
               <p className="mx-sub">
                 The full archive of disclosed rounds across Kentucky, filterable by year
