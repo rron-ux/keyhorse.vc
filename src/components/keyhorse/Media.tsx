@@ -293,10 +293,10 @@ export default function Media() {
         </div>
       </div>
 
-      {/* 3 · Stories */}
-      <div className="band">
+      {/* 3 · Blog */}
+      <div className="band" id="blog">
         <div className="wrap">
-          <SectionLabel left="Stories" right="Everything we publish" />
+          <SectionLabel left="Blog" right="Everything we publish" />
           <h2 className="mx-h2">Reported from across the Commonwealth.</h2>
 
           <div className="mx-filter">
