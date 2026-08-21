@@ -250,21 +250,6 @@ export default function About() {
             ))}
           </div>
 
-          <div className="abt-rank">
-            <h2>3rd most active venture fund in the Southeast by deal count.</h2>
-            <p>
-              164 deals between January 2018 and June 2025 — behind only Virginia
-              Venture Partners and Triangle Tweener Fund, and ahead of Gaingels,
-              Right Side Capital and Andreessen Horowitz. In Kentucky, 161 deals
-              against 43 for the next most active investor.
-            </p>
-            <p className="abt-src">
-              <a href={BIP_URL} target="_blank" rel="noopener noreferrer">
-                BIP Ventures
-              </a>
-              , State of Startups in the Southeast 2025 · PitchBook data
-            </p>
-          </div>
         </Rv>
       </div>
 
