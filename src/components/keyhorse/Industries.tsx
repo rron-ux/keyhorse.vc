@@ -138,8 +138,8 @@ export default function Industries() {
         <div className="wrap">
           <p className="lbl">Industries</p>
           <h1>
-            Five places where Kentucky has an{" "}
-            <em className="ser">unnatural advantage</em>.
+            Five places where Kentucky has a{" "}
+            <em className="ser">natural advantage</em>.
           </h1>
           <p className="lede">
             Infrastructure, customers, and a workforce that a competitor cannot
