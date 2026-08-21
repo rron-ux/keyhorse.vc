@@ -286,7 +286,7 @@ export default function Portfolio() {
         <img src={heroBluegrass} alt="" aria-hidden />
         <div className="wrap">
           <p className="cx-eyebrow">Portfolio</p>
-          <h1>Every company we have backed.</h1>
+          <h1>Founders we've backed.</h1>
           <p className="cx-sub">
             Kentucky entrepreneurs are building impactful companies within a
             growing community of resources designed to support the next
