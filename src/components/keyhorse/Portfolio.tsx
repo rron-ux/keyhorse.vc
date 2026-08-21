@@ -416,39 +416,71 @@ export default function Portfolio() {
           <p className="pf-empty">No companies match those filters.</p>
         )}
 
-        <div className="pf-grid">
-          {results.map((r) => {
-            const exited = r.status === "Exited";
-            return (
-              <div className={`pf-card${exited ? " ex" : ""}`} key={r.id}>
-                <button
-                  type="button"
-                  className="pf-link"
-                  onClick={() => setModal(r)}
-                >
-                  <Mark r={r} className="pf-tile" />
-                  <span className="pf-main">
-                  <span className="pf-name">
-                    {r.company}
-                    {exited && <Tag type="exited" label="Exited" />}
-                    {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
-                  </span>
-                    <span className="pf-one">{r.description}</span>
-                  </span>
-                </button>
-                {(r.vertical || r.city) && (
+        {view === "grid" ? (
+          <div className="pf-grid">
+            {results.map((r) => {
+              const exited = r.status === "Exited";
+              return (
+                <div className={`pf-card${exited ? " ex" : ""}`} key={r.id}>
                   <button
                     type="button"
-                    className="pf-vert"
-                    onClick={() => r.vertical && setVerts([r.vertical])}
+                    className="pf-link"
+                    onClick={() => setModal(r)}
                   >
-                    {[r.vertical, r.city].filter(Boolean).join(" · ")}
+                    <Mark r={r} className="pf-tile" />
+                    <span className="pf-main">
+                      <span className="pf-name">
+                        {r.company}
+                        {exited && <Tag type="exited" label="Exited" />}
+                        {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
+                      </span>
+                      <span className="pf-one">{r.description}</span>
+                    </span>
                   </button>
-                )}
-              </div>
-            );
-          })}
-        </div>
+                  {(r.vertical || r.city) && (
+                    <button
+                      type="button"
+                      className="pf-vert"
+                      onClick={() => r.vertical && setVerts([r.vertical])}
+                    >
+                      {[r.vertical, r.city].filter(Boolean).join(" · ")}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="pf-list">
+            {results.map((r) => {
+              const exited = r.status === "Exited";
+              return (
+                <button
+                  type="button"
+                  className={`pf-lrow${exited ? " ex" : ""}`}
+                  key={r.id}
+                  onClick={() => setModal(r)}
+                >
+                  <Mark r={r} className="pf-ltile" />
+                  <span className="pf-lmain">
+                    <span className="pf-lname">
+                      {r.company}
+                      {exited && <Tag type="exited" label="Exited" />}
+                      {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
+                    </span>
+                    <span className="pf-lone">{r.description}</span>
+                  </span>
+                  <span className="pf-lmeta">
+                    <span>{r.sector}</span>
+                    {r.vertical && <span>{r.vertical}</span>}
+                    <span>{r.stage}</span>
+                    {[r.city, r.state].filter(Boolean).join(", ")}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {modal && (
           <div
