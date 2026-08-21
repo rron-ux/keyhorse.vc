@@ -391,7 +391,7 @@ export default function Media() {
           <div className="mx-latest-divider">
             <span className="mx-mono">Latest</span>
             <i aria-hidden="true" />
-            <button className="mx-muted-link" onClick={() => go("articles")}>
+            <button className="mx-muted-link" onClick={() => goArticles(go)}>
               Articles
             </button>
           </div>
@@ -527,7 +527,7 @@ export default function Media() {
           )}
 
           <div className="mx-center">
-            <button className="mx-link" onClick={() => go("articles")}>
+            <button className="mx-link" onClick={() => goArticles(go)}>
               All Articles →
             </button>
           </div>
