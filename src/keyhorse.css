@@ -2150,9 +2150,9 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mx-latest .wrap{position:relative;z-index:2}
 
 /* blog section — subtle grid line background like media hero */
-.mx-blog{background:var(--bg);position:relative;overflow:hidden}
+.mx-blog{background:color-mix(in srgb,var(--cyan) 4%,var(--bg));position:relative;overflow:hidden}
 .mx-blog::before{content:"";position:absolute;inset:0;
-  background-image:linear-gradient(color-mix(in srgb,var(--line) 82%,var(--cyan)) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--line) 82%,var(--cyan)) 1px,transparent 1px);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:48px 48px;opacity:.28;pointer-events:none}
 .mx-blog .wrap{position:relative;z-index:2}
 
