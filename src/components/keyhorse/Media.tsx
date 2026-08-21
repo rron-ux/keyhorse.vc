@@ -447,7 +447,7 @@ export default function Media() {
             <button className="mx-link cy" onClick={() => go("record")}>
               All {ROUNDS.length} rounds — the full record →
             </button>
-            <button className="mx-muted-link" onClick={() => openSlide(<PitchForm />)}>
+            <button className="mx-link wh" onClick={() => openSlide(<PitchForm />)}>
               Submit a round{"\u00a0"}
             </button>
           </div>
