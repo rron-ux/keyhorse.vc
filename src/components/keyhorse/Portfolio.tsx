@@ -355,6 +355,35 @@ export default function Portfolio() {
             aria-label="Search companies"
             onChange={(e) => setQ(e.target.value)}
           />
+          <div className="pf-view" role="group" aria-label="Layout">
+            <button
+              type="button"
+              className={view === "grid" ? "on" : ""}
+              onClick={() => setView("grid")}
+              aria-label="Grid view"
+              aria-pressed={view === "grid"}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden>
+                <rect x="1" y="1" width="6" height="6" rx="1" />
+                <rect x="9" y="1" width="6" height="6" rx="1" />
+                <rect x="1" y="9" width="6" height="6" rx="1" />
+                <rect x="9" y="9" width="6" height="6" rx="1" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className={view === "list" ? "on" : ""}
+              onClick={() => setView("list")}
+              aria-label="List view"
+              aria-pressed={view === "list"}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden>
+                <rect x="1" y="2" width="14" height="3" rx="1" />
+                <rect x="1" y="7" width="14" height="3" rx="1" />
+                <rect x="1" y="12" width="14" height="3" rx="1" />
+              </svg>
+            </button>
+          </div>
           <span className="cx-count">
             {results.length} of {ROWS.length}
           </span>
