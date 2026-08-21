@@ -157,7 +157,13 @@ export default function About() {
   return (
     <section className="page on abt">
       {/* 1 · Hero */}
-      <div className="abt-sec">
+      <div className="abt-sec abt-sec--hero">
+        <img
+          className="abt-hero-logo"
+          src={logoAsset.url}
+          alt=""
+          aria-hidden="true"
+        />
         <div className="wrap">
           <div className="abt-hero2">
             <div>
