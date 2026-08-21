@@ -231,7 +231,6 @@ export default function Media() {
 
       {/* 2 · The Record */}
       <div className="mx-dark" id="record">
-        <img className="mx-dark-bg" src={PASTURE} alt="" aria-hidden="true" />
         <div className="wrap mx-dark-in">
           <SectionLabel left="The Record" right="Updated weekly" />
           <div className="mx-rechead">
