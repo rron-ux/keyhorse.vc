@@ -156,6 +156,10 @@ export const COVERAGE = [
     outlet: "BIP Ventures",
     title:
       "State of Startups in the Southeast 2025 names Keyhorse third most active VC fund in the region",
+    headline: "Keyhorse named the ",
+    mark: "third most active",
+    headlineEnd: " VC fund in the Southeast.",
+    source: "State of Startups",
     date: "Oct 2025",
     url: "https://www.bipventures.vc/state-of-startups/2025#states",
   },
