@@ -160,10 +160,10 @@ export const COVERAGE = [
     url: "https://www.bipventures.vc/state-of-startups/2025#states",
   },
   {
-    outlet: "[Outlet]",
-    title: "[Placeholder — coverage headline to be added]",
+    outlet: "Revolution",
+    title: "Revolution — Investment overview and portfolio materials",
     date: "TBC",
-    url: "",
+    url: "https://revolution.docsend.com/view/jbqah9ydus8djd9m",
   },
   {
     outlet: "[Outlet]",
