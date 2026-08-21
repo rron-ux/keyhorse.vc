@@ -457,8 +457,8 @@ main.pt-nav{padding-top:70px}
 .slide.on{transform:none}
 .slide .imgbox{aspect-ratio:16/10}
 .slide .bd{padding:28px 30px 36px}
-.slide .close{position:absolute;top:18px;right:20px;background:rgba(34,34,34,.9);border:0;
-  color:#fff;font-size:20px;cursor:pointer;line-height:1;width:34px;height:34px;z-index:5;
+.slide .close{position:fixed;top:18px;right:20px;background:rgba(34,34,34,.9);border:0;
+  color:#fff;font-size:20px;cursor:pointer;line-height:1;width:34px;height:34px;z-index:95;
   display:grid;place-items:center;border-radius:0;transition:background .2s}
 .slide .close:hover{background:var(--cyan)}
 .slide h3{margin-bottom:6px}
