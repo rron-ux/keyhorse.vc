@@ -37,7 +37,7 @@ export const INDUSTRY_ORDER = [
   "Real Estate",
 ];
 
-export const STAGE_OPTIONS = ["PreSeed", "Seed", "Series A", "Series B+", "IPO"];
+
 
 export const slug = (s: string) =>
   s
@@ -187,7 +187,6 @@ export default function Portfolio() {
   const [inds, setInds] = useState<string[]>([]);
   const [verts, setVerts] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
-  const [stages, setStages] = useState<string[]>([]);
   const [q, setQ] = useState("");
   const [open, setOpen] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -198,7 +197,6 @@ export default function Portfolio() {
     const p = new URLSearchParams(window.location.search);
     const iSlug = p.get("industry");
     const vSlug = p.get("vertical");
-    const sSlug = p.get("stage");
     if (iSlug) {
       const hit = INDUSTRY_ORDER.find((i) => slug(i) === iSlug);
       if (hit) setInds([hit]);
@@ -207,11 +205,7 @@ export default function Portfolio() {
       const hit = ROWS.find((r) => slug(r.vertical) === vSlug);
       if (hit) setVerts([hit.vertical]);
     }
-    if (sSlug) {
-      const hit = STAGE_OPTIONS.find((s) => slug(s) === sSlug);
-      if (hit) setStages([hit]);
-    }
-    if (iSlug || vSlug || sSlug) {
+    if (iSlug || vSlug) {
       requestAnimationFrame(() =>
         gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
       );
@@ -228,14 +222,13 @@ export default function Portfolio() {
     p.delete("stage");
     if (inds.length === 1) p.set("industry", slug(inds[0]!));
     if (verts.length === 1) p.set("vertical", slug(verts[0]!));
-    if (stages.length === 1) p.set("stage", slug(stages[0]!));
     const s = p.toString();
     window.history.replaceState(
       {},
       "",
       window.location.pathname + (s ? `?${s}` : ""),
     );
-  }, [inds, verts, stages]);
+  }, [inds, verts]);
 
   /* Verticals come from the records visible under the current industry choice. */
   const verticalOptions = useMemo(() => {
