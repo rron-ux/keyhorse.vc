@@ -1207,7 +1207,10 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .abt-tlink.w:hover{color:var(--cyan);border-bottom-color:var(--cyan)}
 
 /* 1 · Hero */
-.abt-hero2{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end}
+.abt-sec--hero{position:relative;overflow:hidden}
+.abt-hero-logo{position:absolute;right:-4vw;bottom:-6vh;width:clamp(520px,58vw,860px);
+  opacity:.06;pointer-events:none;z-index:0;filter:grayscale(100%)}
+.abt-hero2{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;position:relative;z-index:1}
 @media(max-width:1080px){.abt-hero2{grid-template-columns:1fr;gap:36px;align-items:start}}
 .abt-h1{font-family:var(--d);font-weight:600;font-size:clamp(30px,3.4vw,46px);
   letter-spacing:-.03em;line-height:1.06;color:var(--ink);max-width:16ch;margin:0}

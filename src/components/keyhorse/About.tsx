@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSite } from "./shared";
 import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
+import logoAsset from "@/assets/keyhorse-horizontal.png.asset.json";
 
 const FIGURES: [string, string][] = [
   ["$100M+", "invested in Kentucky"],
@@ -156,7 +157,13 @@ export default function About() {
   return (
     <section className="page on abt">
       {/* 1 · Hero */}
-      <div className="abt-sec">
+      <div className="abt-sec abt-sec--hero">
+        <img
+          className="abt-hero-logo"
+          src={logoAsset.url}
+          alt=""
+          aria-hidden="true"
+        />
         <div className="wrap">
           <div className="abt-hero2">
             <div>
