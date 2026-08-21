@@ -26,6 +26,23 @@ const CAT_LABEL: Record<ChipId, string> = {
   stories: "Stories",
 };
 
+const SERIES_LABEL: Record<Article["series"], string> = {
+  founding: "Founding Stories",
+  behind: "Behind the Scenes",
+  cycle: "Investment Cycle",
+};
+
+const fmtDate = (d: string) => {
+  const parsed = new Date(`${d}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) return d;
+  return parsed.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+};
+
 export default function Articles() {
   const { openPost } = useSite();
   const [chip, setChip] = useState<ChipId>("all");
