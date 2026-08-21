@@ -6,27 +6,38 @@ import { initials as monogram } from "./CompanyCard";
 
 type Row = {
   company: string;
+  legal_name?: string | null;
   industry: string;
   vertical: string;
   one_liner: string;
-  website: string;
+  business_model?: string | null;
+  city?: string | null;
+  stage?: string | null;
   status: string;
-  verified?: string;
+  website: string;
+  source?: string | null;
+  review?: string | null;
+  note?: string | null;
 };
 
 const ROWS = raw as Row[];
 
 /** Fixed industry order. */
 export const INDUSTRY_ORDER = [
-  "Health & Life Sciences",
-  "Software & AI",
-  "Consumer & Media",
-  "Business & Professional",
-  "Agriculture, Food & Beverage",
-  "Energy, Materials & Climate",
-  "Manufacturing & Industrials",
-  "Logistics & Mobility",
+  "Healthcare & Life Sciences",
+  "Industrials & Manufacturing",
+  "Software & Technology",
+  "Agriculture & Food",
+  "Media & Entertainment",
+  "Consumer",
+  "Energy & CleanTech",
+  "Business Services",
+  "Education",
+  "Financial Services",
+  "Real Estate",
 ];
+
+export const STAGE_OPTIONS = ["PreSeed", "Seed", "Series A", "Series B+", "IPO"];
 
 export const slug = (s: string) =>
   s
@@ -176,6 +187,7 @@ export default function Portfolio() {
   const [inds, setInds] = useState<string[]>([]);
   const [verts, setVerts] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
+  const [stages, setStages] = useState<string[]>([]);
   const [q, setQ] = useState("");
   const [open, setOpen] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -186,6 +198,7 @@ export default function Portfolio() {
     const p = new URLSearchParams(window.location.search);
     const iSlug = p.get("industry");
     const vSlug = p.get("vertical");
+    const sSlug = p.get("stage");
     if (iSlug) {
       const hit = INDUSTRY_ORDER.find((i) => slug(i) === iSlug);
       if (hit) setInds([hit]);
@@ -194,7 +207,11 @@ export default function Portfolio() {
       const hit = ROWS.find((r) => slug(r.vertical) === vSlug);
       if (hit) setVerts([hit.vertical]);
     }
-    if (iSlug || vSlug) {
+    if (sSlug) {
+      const hit = STAGE_OPTIONS.find((s) => slug(s) === sSlug);
+      if (hit) setStages([hit]);
+    }
+    if (iSlug || vSlug || sSlug) {
       requestAnimationFrame(() =>
         gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
       );
@@ -208,15 +225,17 @@ export default function Portfolio() {
     const p = new URLSearchParams(window.location.search);
     p.delete("industry");
     p.delete("vertical");
+    p.delete("stage");
     if (inds.length === 1) p.set("industry", slug(inds[0]!));
     if (verts.length === 1) p.set("vertical", slug(verts[0]!));
+    if (stages.length === 1) p.set("stage", slug(stages[0]!));
     const s = p.toString();
     window.history.replaceState(
       {},
       "",
       window.location.pathname + (s ? `?${s}` : ""),
     );
-  }, [inds, verts]);
+  }, [inds, verts, stages]);
 
   /* Verticals come from the records visible under the current industry choice. */
   const verticalOptions = useMemo(() => {
@@ -243,19 +262,23 @@ export default function Portfolio() {
       if (inds.length && !inds.includes(r.industry)) return false;
       if (verts.length && !verts.includes(r.vertical)) return false;
       if (stats.length && !stats.includes(r.status)) return false;
+      if (stages.length && !stages.includes(r.stage || "")) return false;
       if (needle) {
-        const hay = `${r.company} ${r.vertical} ${r.one_liner}`.toLowerCase();
+        const hay = `${r.company} ${r.legal_name || ""} ${r.vertical} ${
+          r.city || ""
+        } ${r.one_liner}`.toLowerCase();
         if (!hay.includes(needle)) return false;
       }
       return true;
     }).sort((a, b) => a.company.localeCompare(b.company));
-  }, [lanes, inds, verts, stats, q]);
+  }, [lanes, inds, verts, stats, stages, q]);
 
   const chips = [
     ...lanes.map((v) => ({ k: "Investment", v, drop: () => toggler(setLanes)(v) })),
     ...inds.map((v) => ({ k: "Industry", v, drop: () => toggler(setInds)(v) })),
     ...verts.map((v) => ({ k: "Vertical", v, drop: () => toggler(setVerts)(v) })),
     ...stats.map((v) => ({ k: "Status", v, drop: () => toggler(setStats)(v) })),
+    ...stages.map((v) => ({ k: "Stage", v, drop: () => toggler(setStages)(v) })),
   ];
 
   return (
@@ -308,6 +331,15 @@ export default function Portfolio() {
             open={open === "s"}
             setOpen={(v) => setOpen(v ? "s" : null)}
           />
+          <Dropdown
+            label="Stage"
+            options={STAGE_OPTIONS}
+            selected={stages}
+            onToggle={toggler(setStages)}
+            onClear={() => setStages([])}
+            open={open === "g"}
+            setOpen={(v) => setOpen(v ? "g" : null)}
+          />
           <input
             className="cx-search"
             value={q}
@@ -333,6 +365,7 @@ export default function Portfolio() {
                 setInds([]);
                 setVerts([]);
                 setStats([]);
+                setStages([]);
                 setQ("");
               }}
             >
@@ -369,13 +402,13 @@ export default function Portfolio() {
                     <span className="pf-one">{r.one_liner}</span>
                   </span>
                 </a>
-                {r.vertical && (
+                {(r.vertical || r.city) && (
                   <button
                     type="button"
                     className="pf-vert"
-                    onClick={() => setVerts([r.vertical])}
+                    onClick={() => r.vertical && setVerts([r.vertical])}
                   >
-                    {r.vertical}
+                    {[r.vertical, r.city].filter(Boolean).join(" · ")}
                   </button>
                 )}
               </div>
