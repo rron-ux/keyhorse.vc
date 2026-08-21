@@ -443,6 +443,11 @@ export default function Portfolio() {
           </div>
         ) : (
           <div className="pf-list">
+            <div className="pf-lhead" aria-hidden>
+              <span className="pf-lh-co">Company</span>
+              <span className="pf-lh-se">Sector</span>
+              <span className="pf-lh-ty">Investment</span>
+            </div>
             {results.map((r) => {
               const exited = r.status === "Exited";
               return (
@@ -453,19 +458,15 @@ export default function Portfolio() {
                   onClick={() => setModal(r)}
                 >
                   <Mark r={r} className="pf-ltile" />
-                  <span className="pf-lmain">
+                  <span className="pf-lco">
                     <span className="pf-lname">
                       {r.company}
                       {exited && <Tag type="exited" label="Exited" />}
-                      {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
                     </span>
-                    <span className="pf-lone">{r.description}</span>
                   </span>
-                  <span className="pf-lmeta">
-                    <span>{r.sector}</span>
-                    {r.vertical && <span>{r.vertical}</span>}
-                    <span>{r.stage}</span>
-                    {[r.city, r.state].filter(Boolean).join(", ")}
+                  <span className="pf-lsector">{r.sector}</span>
+                  <span className="pf-ltype">
+                    {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
                   </span>
                 </button>
               );
