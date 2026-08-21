@@ -10,6 +10,7 @@ import agricultureAsset from "@/assets/agriculture.jpg.asset.json";
 
 import heroCargo from "@/assets/hero-cargo.jpg";
 import heroFactory from "@/assets/hero-factory.jpg";
+import heroEnergy from "@/assets/hero-energy.jpg";
 import heroBluegrass from "@/assets/hero-bluegrass.jpg";
 import missionHorse from "@/assets/mission-horse-solo.jpg";
 import founderFeature from "@/assets/founder-feature.jpg";
@@ -46,19 +47,19 @@ export const FOUNDER_PORTRAITS: Pic[] = [
 export const HERO_FRAMES: Pic[] = [
   {
     src: heroCargo,
-    alt: "Freight yard and cargo terminal under late light",
+    alt: "Freight train with intermodal containers moving through a rail yard at dusk",
   },
   {
     src: heroFactory,
-    alt: "Factory floor mid-shift with machinery running",
+    alt: "Robotic welding arms working on an automotive assembly line",
   },
   {
     src: healthcareAsset.url,
     alt: "Clinicians at work in natural light",
   },
   {
-    src: energyAsset.url,
-    alt: "Wind turbines at an industrial energy site at dusk",
+    src: heroEnergy,
+    alt: "Solar farm and battery storage facility on rolling hills at dusk",
   },
   {
     src: heroBluegrass,
