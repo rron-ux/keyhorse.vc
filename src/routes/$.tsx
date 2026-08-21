@@ -38,6 +38,15 @@ function CatchAll() {
   const { _splat } = Route.useParams();
   const parts = (_splat || "").split("/");
   const raw = parts[0] === "companies" ? "portfolio" : parts[0];
+  useEffect(() => {
+    if (parts[0] === "companies" && typeof window !== "undefined") {
+      window.history.replaceState(
+        {},
+        "",
+        "/portfolio" + window.location.search + window.location.hash,
+      );
+    }
+  }, [parts]);
   const first = raw as PageId;
   if (first === "media" && parts[1] === "record") return <Site initialPage="record" />;
   if ((first === "media" || first === "post") && parts[1])
