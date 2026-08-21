@@ -92,13 +92,12 @@ const SERIES_LABEL: Record<Article["series"], string> = {
 };
 
 const fmtDate = (d: string) => {
-  const parsed = new Date(`${d}T00:00:00Z`);
+  const parsed = new Date(d);
   if (Number.isNaN(parsed.getTime())) return d;
   return parsed.toLocaleDateString("en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",
-    timeZone: "UTC",
   });
 };
 
