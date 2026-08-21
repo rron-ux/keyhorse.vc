@@ -4,10 +4,10 @@ import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
 import logoAsset from "@/assets/keyhorse-horizontal.png.asset.json";
 
 const FIGURES: [string, string][] = [
-  ["$100M+", "invested in Kentucky"],
-  ["$3.3B+", "follow-on raised"],
-  ["600+", "backed since 2001"],
-  ["209", "active today"],
+  ["600+", "companies funded across all sub funds, grants and investments"],
+  ["$100M+", "invested in Kentucky companies"],
+  ["$3.3B+", "follow-on capital raised by portfolio companies"],
+  ["800+", "jobs created by founders (active portfolio only)"],
 ];
 
 const FACTS: [string, string][] = [
