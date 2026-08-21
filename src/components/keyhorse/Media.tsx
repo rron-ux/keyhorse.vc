@@ -3,7 +3,7 @@ import { ARTICLES, type Article, type Category } from "@/data/articles";
 import { COVERAGE, EVENTS, ROUNDS } from "@/data/media";
 import { PICS } from "@/lib/images";
 import logisticsAsset from "@/assets/logistics.jpg.asset.json";
-import reportAsset from "@/assets/bip-state-of-startups.jpg.asset.json";
+import riseCover from "@/assets/rise-of-the-rest-invest-local.jpg";
 import { useSite } from "./shared";
 
 export const CAT_COLOR: Record<Category, string> = {
@@ -202,12 +202,46 @@ export default function Media() {
   const pages = Math.max(1, Math.ceil(posts.length / 6));
 
   const rounds = ROUNDS.slice(0, 5);
-  const mentions = COVERAGE.slice(1);
-  const featured = COVERAGE[0]!;
-  const per = 4;
+
+  const FEATURED = {
+    outlet: "Rise of the Rest / Revolution",
+    quoteStart: "Invest Local: ",
+    mark: "The State of Intra-State Venture Investing",
+    quoteEnd: "",
+    source: "2026 annual report",
+    date: "2026",
+    url: "https://revolution.docsend.com/view/jbqah9ydus8djd9m",
+  };
+
+  const BIP = {
+    outlet: "BIP Ventures",
+    title: "Keyhorse named third most active VC fund in the Southeast",
+    date: "Oct 2025",
+    url: "https://www.bipventures.vc/state-of-startups/2025#highlights",
+  };
+
+  const isReal = (c: { outlet: string; title: string; date: string; url: string }) =>
+    Boolean(c.url) &&
+    !/^\[|TBC/i.test(c.outlet) &&
+    !/^\[|TBC/i.test(c.title) &&
+    !/TBC/i.test(c.date) &&
+    c.url !== FEATURED.url &&
+    !/bipventures/i.test(c.url);
+
+  const mentions = [
+    BIP,
+    ...COVERAGE.filter((c) => isReal(c as never)).map((c) => ({
+      outlet: c.outlet,
+      title: c.title,
+      date: c.date,
+      url: c.url,
+    })),
+  ];
+  const per = 3;
   const covPages = Math.max(1, Math.ceil(mentions.length / per));
   const covIdx = Math.min(covPage, covPages - 1);
   const covShown = mentions.slice(covIdx * per, covIdx * per + per);
+
 
   return (
     <section className="page on md mx">
@@ -363,37 +397,37 @@ export default function Media() {
           <div className="mx-cov-in">
             <a
               className="mx-cov-feat"
-              href={featured.url || undefined}
-              target={featured.url ? "_blank" : undefined}
+              href={FEATURED.url}
+              target="_blank"
               rel="noopener noreferrer"
             >
               <div className="mx-cov-shot">
                 <img
-                  src={reportAsset.url}
-                  alt="State of Startups in the Southeast 2025 report"
+                  src={riseCover}
+                  alt="Rise of the Rest — Invest Local report cover"
                   loading="lazy"
-                  width={1280}
-                  height={960}
+                  width={1024}
+                  height={1024}
                 />
               </div>
               <div className="mx-cov-body">
-                <span className="mx-kick">Featured</span>
-                <b className="mx-cov-out">{featured.outlet}</b>
+                <span className="mx-cov-kick">Featured</span>
+                <b className="mx-cov-out">{FEATURED.outlet}</b>
                 <p className="mx-quote">
-                  {featured.headline}
-                  <mark>{featured.mark}</mark>
-                  {featured.headlineEnd}
+                  {FEATURED.quoteStart}
+                  <mark>{FEATURED.mark}</mark>
+                  {FEATURED.quoteEnd}
                 </p>
 
                 <div className="mx-cov-ft">
                   <span className="mx-mono">
-                    {featured.source} · 
-                    {featured.date}
+                    {FEATURED.source} · {FEATURED.date}
                   </span>
-                  {featured.url ? <span className="mx-link">Read ↗</span> : null}
+                  <span className="mx-link">Read ↗</span>
                 </div>
               </div>
             </a>
+
 
 
             <div className="mx-cov-list">
