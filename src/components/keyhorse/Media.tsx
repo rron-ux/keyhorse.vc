@@ -3,7 +3,8 @@ import { ARTICLES, type Article, type Category } from "@/data/articles";
 import { COVERAGE, EVENTS, ROUNDS } from "@/data/media";
 import { PICS } from "@/lib/images";
 import logisticsAsset from "@/assets/logistics.jpg.asset.json";
-import riseCover from "@/assets/rise-of-the-rest-invest-local.jpg";
+import riseCoverAsset from "@/assets/rise-of-the-rest-invest-local.png.asset.json";
+const riseCover = riseCoverAsset.url;
 import { useSite } from "./shared";
 
 export const CAT_COLOR: Record<Category, string> = {
