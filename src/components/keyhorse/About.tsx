@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { useSite } from "./shared";
 import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
-import logoAsset from "@/assets/keyhorse-horizontal.png.asset.json";
 
 const FIGURES: [string, string][] = [
-  ["600+", "companies funded across all sub funds, grants and investments"],
   ["$100M+", "invested in Kentucky companies"],
   ["$3.3B+", "follow-on capital raised by portfolio companies"],
-  ["800+", "jobs created by founders (active portfolio only)"],
+  ["600+", "companies funded across all sub-funds, grants and investments"],
+  ["800+", "jobs created by founders, active portfolio only"],
 ];
 
 const FACTS: [string, string][] = [
   ["Founded", "2001"],
   ["Structure", "Evergreen"],
   ["Stage", "Pre-seed → Series A+"],
-  ["Industry focus", "Agnostic"],
+  ["Focus", "Tech-enabled, industry agnostic"],
 ];
 
 type Person = {
@@ -152,37 +151,33 @@ function TeamModal({ p, i, onClose }: { p: Person; i: number; onClose: () => voi
 export default function About() {
   const { go } = useSite();
   const [open, setOpen] = useState<number | null>(null);
-  const closing = HERO_FRAMES[0]!;
+  const heroImg = HERO_FRAMES[0]!;
 
   return (
     <section className="page on abt">
       {/* 1 · Hero */}
-      <div className="abt-sec abt-sec--hero">
-        <img
-          className="abt-hero-logo"
-          src={logoAsset.url}
-          alt=""
-          aria-hidden="true"
-        />
+      <div className="abt-hero">
+        <img className="abt-hero-bg" src={heroImg.src} alt="" aria-hidden="true" />
+        <div className="abt-hero-grad" aria-hidden="true" />
         <div className="wrap">
+          <LabelRow left="About" right="Keyhorse Capital" />
           <div className="abt-hero2">
             <div>
-              <LabelRow left="About" right="Keyhorse Capital" />
-              <h1 className="abt-h1">Go the distance.</h1>
+              <h1 className="abt-h1">
+                A venture capital firm <strong>investing across Kentucky.</strong>
+              </h1>
               <p className="abt-dek">
-                Keyhorse Capital invests seed and early stage venture capital
-                focused on supporting a thriving community of entrepreneurs
-                willing to build and scale innovative companies and bring value
-                to Kentucky. We back exceptional founders across industries and
-                sectors, from a first cheque through growth.
+                Keyhorse Capital invests seed and early stage venture capital,
+                supporting a thriving community of entrepreneurs willing to build
+                and scale innovative companies in Kentucky.
               </p>
               <div className="abt-tlinks">
-                <button type="button" className="abt-tlink" onClick={() => go("apply")}>
+                <button type="button" className="abt-tlink w" onClick={() => go("apply")}>
                   Apply for investment →
                 </button>
                 <button
                   type="button"
-                  className="abt-tlink"
+                  className="abt-tlink w"
                   onClick={() => go("industries")}
                 >
                   The industries →
@@ -198,12 +193,7 @@ export default function About() {
               ))}
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* 2 · Numbers */}
-      <div className="abt-sec abt-sec--tight">
-        <div className="wrap">
           <div className="abt-nums">
             {FIGURES.map(([n, l]) => (
               <div className="abt-ncell" key={l}>
@@ -215,13 +205,12 @@ export default function About() {
         </div>
       </div>
 
-      {/* 3 · Thesis */}
-      <div className="abt-sec" id="thesis">
+      {/* 2 · Thesis */}
+      <div className="abt-thesis" id="thesis">
         <div className="wrap">
-          <LabelRow left="Thesis" right="What we invest in · Our approach" />
           <div className="abt-th2">
             <h2 className="abt-thh">
-              We invest in any tech-enabled company here.{" "}
+              We invest across industries and sectors.{" "}
               <strong>We concentrate where the state has an edge.</strong>
             </h2>
             <div>
@@ -233,27 +222,29 @@ export default function About() {
                 distance.
               </p>
               <p className="abt-thp">
-                We take on financial risk and venture with founders and their
-                companies in hopes they have a successful run building and scaling
-                new businesses in Kentucky. We work with investors, subject matter
-                experts and strategic partners to help founders gain early wins and
-                growth — and our growth fund weights toward the industries where the
-                Commonwealth holds an advantage that is hard to copy.
+                We take on financial risk and venture alongside founders building and
+                scaling in Kentucky, working with investors, subject matter experts
+                and strategic partners to help them gain early wins. Our growth fund
+                weights toward the industries where the state has a physical advantage
+                that is hard to copy — because that is where a company here beats the
+                same company somewhere else.
               </p>
-              <button
-                type="button"
-                className="abt-tlink"
-                onClick={() => go("industries")}
-              >
-                Where we weight →
-              </button>
+              <div className="abt-thfoot">
+                <button
+                  type="button"
+                  className="abt-tlink"
+                  onClick={() => go("industries")}
+                >
+                  Where we weight →
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 4 · Team */}
-      <div className="abt-sec" id="team">
+      {/* 3 · Team */}
+      <div className="abt-team" id="team">
         <div className="wrap">
           <LabelRow left="Team" right="Lexington · Louisville · Covington" />
           <div className="abt-team2">
@@ -275,29 +266,6 @@ export default function About() {
                 </button>
               );
             })}
-          </div>
-        </div>
-      </div>
-
-      {/* 5 · Closing */}
-      <div className="abt-close2" id="apply">
-        <img className="abt-close2-bg" src={closing.src} alt="" aria-hidden="true" />
-        <div className="wrap abt-close2-in">
-          <h2>
-            Are you a founder{" "}
-            <strong>seeking investment capital?</strong>
-          </h2>
-          <div className="abt-tlinks">
-            <button type="button" className="abt-tlink w" onClick={() => go("apply")}>
-              Apply →
-            </button>
-            <button
-              type="button"
-              className="abt-tlink w"
-              onClick={() => go("partners")}
-            >
-              Talk to us first →
-            </button>
           </div>
         </div>
       </div>
