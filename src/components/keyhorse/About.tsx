@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Rv, useSite } from "./shared";
 import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
+import { PILLARS } from "@/data/keyhorse";
+import { pic } from "@/lib/images";
 
 const BIP_URL = "https://www.bipventures.vc/state-of-startups/2025#states";
 
