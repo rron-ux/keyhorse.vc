@@ -388,16 +388,11 @@ export default function Media() {
                 <span className="mx-kick">Featured</span>
                 <b className="mx-cov-out">{featured.outlet}</b>
                 <p className="mx-quote">
-                  {"headline" in featured ? (
-                    <>
-                      {featured.headline}
-                      <mark>{featured.mark}</mark>
-                      {featured.headlineEnd}
-                    </>
-                  ) : (
-                    <mark>{featured.title}</mark>
-                  )}
+                  {featured.headline}
+                  <mark>{featured.mark}</mark>
+                  {featured.headlineEnd}
                 </p>
+
                 <div className="mx-cov-ft">
                   <span className="mx-mono">
                     {"source" in featured ? `${featured.source} · ` : ""}
