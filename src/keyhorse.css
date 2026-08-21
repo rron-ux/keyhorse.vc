@@ -1963,7 +1963,9 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .pfm{background:#fff;border:1px solid #E2E3E4;max-width:520px;width:100%;padding:28px;position:relative;max-height:86vh;overflow:auto}
 .pfm-x{position:absolute;top:10px;right:12px;background:none;border:0;font-size:22px;line-height:1;color:#65696D;cursor:pointer}
 .pfm-head{display:flex;gap:16px;align-items:flex-start}
-.pfm-logo{width:56px;height:56px;flex:0 0 56px;display:flex;align-items:center;justify-content:center;background:#F2F3F4;border:1px solid #E2E3E4;font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:16px;letter-spacing:-.02em;color:#222}
+.pfm-logo{width:56px;height:56px;flex:0 0 56px;display:flex;align-items:center;justify-content:center;background:#E3F5FC;padding:7px;overflow:hidden;font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:16px;letter-spacing:-.02em;color:#0076A6}
+.pfm-logo img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.pfm-name .pf-exit{margin-left:8px;vertical-align:middle}
 .pfm-name{font-family:"Instrument Sans",sans-serif;font-weight:600;font-size:20px;letter-spacing:-.032em;color:#222;margin:0}
 .pfm-one{font-family:"Public Sans",sans-serif;font-weight:300;font-size:15px;line-height:1.55;color:#65696D;margin:6px 0 0}
 .pfm-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:22px 0 0;border-top:1px solid #E2E3E4;padding-top:18px}
