@@ -81,39 +81,6 @@ function PitchForm({ kind }: { kind: "pitch" | "round" }) {
   );
 }
 
-function SubscribeForm() {
-  const [sent, setSent] = useState(false);
-  return (
-    <div className="md-form">
-      <p className="md-eyebrow">Newsletter</p>
-      <h3 className="md-form-h">One email a month.</h3>
-      <p className="md-p">
-        Founding Stories, Behind the Scenes and each investment cycle as it opens.
-      </p>
-      {sent ? (
-        <p className="md-p" style={{ marginTop: 14 }}>
-          You are on the list.
-        </p>
-      ) : (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSent(true);
-          }}
-        >
-          <label className="md-f">
-            <span>Email</span>
-            <input required type="email" maxLength={255} placeholder="you@company.com" />
-          </label>
-          <button className="btn" type="submit">
-            Subscribe
-          </button>
-        </form>
-      )}
-    </div>
-  );
-}
-
 /* ─────────────────────────── cards ─────────────────────────── */
 
 function ArticleCard({ a, onOpen }: { a: Article; onOpen: () => void }) {
