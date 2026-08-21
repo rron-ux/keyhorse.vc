@@ -174,10 +174,11 @@ export default function Media() {
   const [covPage, setCovPage] = useState(0);
 
   const latest = SORTED[0]!;
-  const posts = useMemo(
-    () => (chip === "all" ? SORTED : SORTED.filter((p) => catOf(p) === chip)),
-    [chip],
-  );
+  const posts = useMemo(() => {
+    if (chip === "all") return SORTED;
+    const want = catSlug(CHIPS.find(([v]) => v === chip)![1]);
+    return SORTED.filter((p) => catSlug(CAT_LABEL[catOf(p)]) === want);
+  }, [chip]);
   const shown = posts.slice(0, 6);
   const pages = Math.max(1, Math.ceil(posts.length / 6));
 
