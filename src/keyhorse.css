@@ -2126,10 +2126,10 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mx-herofoot .mx-mono{white-space:nowrap;padding-top:2px}
 
 /* media page hero — white, full-width headline */
-.mx-hero--media{background:var(--bg);color:var(--ink);padding:clamp(58px,6.4vw,92px) 0 clamp(32px,3.4vw,48px);
+.mx-hero--media{background:color-mix(in srgb,var(--cyan) 4%,var(--bg));color:var(--ink);padding:clamp(58px,6.4vw,92px) 0 clamp(32px,3.4vw,48px);
   position:relative;overflow:hidden}
 .mx-hero--media::before{content:"";position:absolute;inset:0;
-  background-image:linear-gradient(color-mix(in srgb,var(--line) 82%,var(--cyan)) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--line) 82%,var(--cyan)) 1px,transparent 1px);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:48px 48px;opacity:.35;pointer-events:none}
 .mx-hero--media .wrap{position:relative;z-index:2;text-align:center}
 .mx-hero--media .lbl{margin-bottom:18px}
