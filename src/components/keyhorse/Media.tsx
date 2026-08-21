@@ -96,14 +96,41 @@ const fmtRound = (d: string) =>
 
 /* ─────────── story submission ─────────── */
 
+const RF_SECTORS = [
+  "Logistics & trade",
+  "Advanced manufacturing",
+  "Aerospace & defense",
+  "Healthcare",
+  "Energy & materials",
+  "Agriculture & food",
+  "Software",
+  "Consumer",
+  "Fintech",
+  "Other",
+];
+
+const RF_STAGES = [
+  "Pre-seed",
+  "Seed",
+  "Series A",
+  "Series B",
+  "Series C+",
+  "Debt / venture debt",
+  "Grant / non-dilutive",
+  "Other",
+];
+
 function PitchForm() {
   const [sent, setSent] = useState(false);
   return (
     <div className="md-form">
-      <p className="md-eyebrow">Pitch a story</p>
-      <h3 className="md-form-h">Tell us what we should be covering.</h3>
+      <p className="md-eyebrow">Submit a round</p>
+      <h3 className="md-form-h">Add a round to the record.</h3>
       {sent ? (
-        <p className="md-p">Thank you — we read every one and will be in touch.</p>
+        <p className="md-p">
+          Thank you — we verify every submission before it appears on the record and will be
+          in touch if we need anything else.
+        </p>
       ) : (
         <form
           onSubmit={(e) => {
@@ -112,29 +139,98 @@ function PitchForm() {
           }}
         >
           <label className="md-f">
-            <span>Name</span>
+            <span>Your name *</span>
             <input required maxLength={100} placeholder="Your name" />
           </label>
           <label className="md-f">
-            <span>Company</span>
-            <input required maxLength={100} placeholder="Company name" />
-          </label>
-          <label className="md-f">
-            <span>Email</span>
+            <span>Email *</span>
             <input required type="email" maxLength={255} placeholder="you@company.com" />
           </label>
           <label className="md-f">
-            <span>The short version</span>
-            <textarea required maxLength={800} rows={4} placeholder="A few lines." />
+            <span>Company name *</span>
+            <input required maxLength={120} placeholder="Company raising the round" />
+          </label>
+          <div className="md-f2">
+            <label className="md-f">
+              <span>City *</span>
+              <input required maxLength={80} placeholder="Louisville" />
+            </label>
+            <label className="md-f">
+              <span>State</span>
+              <input maxLength={40} defaultValue="KY" />
+            </label>
+          </div>
+          <div className="md-f2">
+            <label className="md-f">
+              <span>Sector *</span>
+              <select required defaultValue="">
+                <option value="" disabled>
+                  Select
+                </option>
+                {RF_SECTORS.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </label>
+            <label className="md-f">
+              <span>Stage</span>
+              <select defaultValue="">
+                <option value="" disabled>
+                  Select
+                </option>
+                {RF_STAGES.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <div className="md-f2">
+            <label className="md-f">
+              <span>Round size closed *</span>
+              <input required maxLength={40} placeholder="$2.5M" />
+            </label>
+            <label className="md-f">
+              <span>Date closed *</span>
+              <input required type="month" />
+            </label>
+          </div>
+          <label className="md-f">
+            <span>Lead investor(s)</span>
+            <input maxLength={200} placeholder="Optional" />
+          </label>
+          <label className="md-f">
+            <span>Evidence — link (optional)</span>
+            <input type="url" maxLength={500} placeholder="https://press-release or filing" />
+          </label>
+          <label className="md-f">
+            <span>Evidence — upload (optional)</span>
+            <input type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx" />
+          </label>
+          <label className="md-f">
+            <span>Description *</span>
+            <textarea
+              required
+              maxLength={800}
+              rows={4}
+              placeholder="What the company does and what the round funds."
+            />
+          </label>
+          <label className="md-check">
+            <input required type="checkbox" />
+            <span>
+              I confirm this information is accurate and may be published on the Keyhorse
+              record. Do not submit confidential or embargoed information.
+            </span>
           </label>
           <button className="btn" type="submit" style={{ marginTop: 6 }}>
-            Send it
+            Submit round
           </button>
         </form>
       )}
     </div>
   );
 }
+
 
 /* ─────────── blurred calendar shape ─────────── */
 
@@ -351,7 +447,7 @@ export default function Media() {
             <button className="mx-link cy" onClick={() => go("record")}>
               All {ROUNDS.length} rounds — the full record →
             </button>
-            <button className="mx-muted-link" onClick={() => openSlide(<PitchForm />)}>
+            <button className="mx-link wh" onClick={() => openSlide(<PitchForm />)}>
               Submit a round{"\u00a0"}
             </button>
           </div>
