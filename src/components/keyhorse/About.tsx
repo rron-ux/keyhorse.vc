@@ -218,7 +218,7 @@ export default function About() {
       {/* 3 · Thesis */}
       <div className="abt-sec" id="thesis">
         <div className="wrap">
-          <LabelRow left="Thesis" right="Where we weight" />
+          <LabelRow left="Thesis" right="What we invest in · Our approach" />
           <div className="abt-th2">
             <h2 className="abt-thh">
               We invest in any tech-enabled company here.{" "}
@@ -226,15 +226,19 @@ export default function About() {
             </h2>
             <div>
               <p className="abt-thp">
-                Most of our portfolio sits outside any single sector thesis, and it
-                will stay that way. A good company building in Kentucky is a good
-                company, whatever it does.
+                We believe entrepreneurs pursuing big bets and scalable businesses
+                are vital to our community's health and success. We invest in early
+                and growth stage companies and technologies across industries and
+                sectors, supporting exceptional founders with a vision to go the
+                distance.
               </p>
               <p className="abt-thp">
-                But capital is mobile now and infrastructure is not, so the reason
-                to be somewhere has to be physical. Kentucky has a handful of those
-                reasons, and our growth fund weights toward them — because that is
-                where a company here beats the same company somewhere else.
+                We take on financial risk and venture with founders and their
+                companies in hopes they have a successful run building and scaling
+                new businesses in Kentucky. We work with investors, subject matter
+                experts and strategic partners to help founders gain early wins and
+                growth — and our growth fund weights toward the industries where the
+                Commonwealth holds an advantage that is hard to copy.
               </p>
               <button
                 type="button"
