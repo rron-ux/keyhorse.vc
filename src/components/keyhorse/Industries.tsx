@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { ISEC, POSTS } from "@/data/keyhorse";
-import { INDUSTRIES, slugify } from "@/data/company-meta";
+import { INDUSTRY_ORDER, slug as pslug } from "./Portfolio";
 import { Head, Rv, useSite } from "./shared";
 import { pic } from "@/lib/images";
 
@@ -114,7 +114,17 @@ const NARRATIVE: Record<string, ReactNode> = {
 };
 
 /** Source of truth: the Portfolio page's own industry filter values. */
-const FUNDED_SECTORS = INDUSTRIES.filter((i) => i && i !== "Other");
+const FUNDED_INDUSTRIES = INDUSTRY_ORDER;
+
+/** Pillar -> the Portfolio industry it maps onto. */
+const PILLAR_INDUSTRY: Record<string, string> = {
+  "Logistics & Trade": "Logistics & Mobility",
+  "Advanced Manufacturing & Automotive, Aerospace & Defense":
+    "Manufacturing & Industrials",
+  Healthcare: "Health & Life Sciences",
+  "Energy, Materials & Climate": "Energy, Materials & Climate",
+  "Agriculture, Food & Consumer": "Agriculture, Food & Beverage",
+};
 
 export default function Industries() {
   const { go } = useSite();
@@ -184,7 +194,7 @@ export default function Industries() {
                         onClick={() =>
                           go(
                             "portfolio",
-                            `?sector=${encodeURIComponent(meta.sector)}`,
+                            `?industry=${pslug(PILLAR_INDUSTRY[n] || "")}`,
                           )
                         }
                       >
@@ -208,7 +218,7 @@ export default function Industries() {
           <div className="ifund-g">
             <div className="ifund-l">
               <p className="ifund-lbl">Funded</p>
-              <h2>Every sector we have backed.</h2>
+              <h2>Every industry we have backed.</h2>
               <p className="ifund-body">
                 Five of these are where we concentrate. The rest is where the
                 portfolio actually lives. Pick one to see the companies.
@@ -238,15 +248,15 @@ export default function Industries() {
             </div>
 
             <div className="ifund-r">
-              <nav aria-label="Portfolio sectors" className="ifund-nav">
-                {FUNDED_SECTORS.map((s) => (
+              <nav aria-label="Portfolio industries" className="ifund-nav">
+                {FUNDED_INDUSTRIES.map((s) => (
                   <a
                     key={s}
                     className="ifund-s"
-                    href={`/portfolio?sector=${slugify(s)}`}
+                    href={`/portfolio?industry=${pslug(s)}`}
                     onClick={(e) => {
                       e.preventDefault();
-                      go("portfolio", `?sector=${slugify(s)}`);
+                      go("portfolio", `?industry=${pslug(s)}`);
                     }}
                   >
                     <span>{s}</span>
@@ -255,7 +265,7 @@ export default function Industries() {
                 ))}
               </nav>
               <p className="ifund-cap">
-                {FUNDED_SECTORS.length} sectors · 60+ verticals · 600+ companies funded
+                Eight industries · dozens of verticals
               </p>
             </div>
           </div>
