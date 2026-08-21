@@ -299,7 +299,7 @@ export default function Media() {
       {/* 2 · The Record */}
       <div className="mx-dark" id="record">
         <div className="wrap mx-dark-in">
-          <SectionLabel left="The Record" right="Updated weekly" />
+          <SectionLabel left="The Record" right="2026" />
           <div className="mx-rechead">
             <div>
               <h2 className="mx-h2">Every round raised in the Commonwealth.</h2>
@@ -309,7 +309,7 @@ export default function Media() {
             </div>
             <span className="mx-live">
               <i aria-hidden="true" />
-              Live · {ROUNDS.length} tracked
+              {"\n"}
             </span>
           </div>
 
@@ -353,7 +353,7 @@ export default function Media() {
               All {ROUNDS.length} rounds — the full record →
             </button>
             <button className="mx-muted-link" onClick={() => openSlide(<PitchForm />)}>
-              Submit a round we missed
+              Submit a round{"\u00a0"}
             </button>
           </div>
         </div>
