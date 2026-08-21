@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import { useSite } from "./shared";
 import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
-import logoAsset from "@/assets/keyhorse-horizontal.png.asset.json";
 
 const FIGURES: [string, string][] = [
-  ["600+", "companies funded across all sub funds, grants and investments"],
   ["$100M+", "invested in Kentucky companies"],
   ["$3.3B+", "follow-on capital raised by portfolio companies"],
-  ["800+", "jobs created by founders (active portfolio only)"],
+  ["600+", "companies funded across all sub-funds, grants and investments"],
+  ["800+", "jobs created by founders, active portfolio only"],
 ];
 
 const FACTS: [string, string][] = [
   ["Founded", "2001"],
   ["Structure", "Evergreen"],
   ["Stage", "Pre-seed → Series A+"],
-  ["Industry focus", "Agnostic"],
+  ["Focus", "Tech-enabled, industry agnostic"],
 ];
 
 type Person = {
