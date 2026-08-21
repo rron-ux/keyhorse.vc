@@ -214,19 +214,10 @@ export default function Media() {
       {/* 1 · Hero */}
       <div className="band mx-hero mx-hero--media">
         <div className="wrap">
-          <div className="mx-hero-row">
-            <span className="mx-hero-label">Media</span>
-            <h1 className="mx-hero-title">
-              The living story of <mark>innovation in Kentucky</mark>
-            </h1>
-            <div className="mx-hero-side">
-              <p>
-                Every round raised in the Commonwealth, the founders behind them, and what
-                is being built here — reported weekly.
-              </p>
-              <span className="mx-mono">Published from Lexington · Free to read</span>
-            </div>
-          </div>
+          <p className="mx-hero-label">Media</p>
+          <h1 className="mx-hero-title">
+            The living story of <em>innovation in Kentucky</em>
+          </h1>
         </div>
       </div>
 
