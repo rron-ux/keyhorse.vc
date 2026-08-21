@@ -2132,12 +2132,12 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
   background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:48px 48px;opacity:.35;pointer-events:none}
 .mx-hero--media .wrap{position:relative;z-index:2;text-align:center}
-.mx-hero--media .mx-hero-title{font-family:var(--d);font-weight:400;font-size:clamp(40px,6.2vw,78px);
-  letter-spacing:-.035em;line-height:1.05;color:var(--ink);margin:0;max-width:none}
+.mx-hero--media .mx-hero-title{font-family:var(--d);font-weight:400;font-size:clamp(34px,5.4vw,64px);
+  letter-spacing:-.035em;line-height:1.05;color:var(--ink);margin:0;max-width:none;white-space:nowrap}
 .mx-hero--media .mx-hero-title em{font-family:var(--sf);font-style:italic;font-weight:400;
   color:var(--cyan-tx)}
 @media(max-width:900px){
-  .mx-hero--media .mx-hero-title{font-size:clamp(32px,8vw,54px)}
+  .mx-hero--media .mx-hero-title{font-size:clamp(28px,6.8vw,48px);white-space:normal}
 }
 
 .mx-latest{padding:clamp(18px,2vw,28px) 0 clamp(48px,5vw,74px);
