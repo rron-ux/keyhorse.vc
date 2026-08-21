@@ -58,6 +58,15 @@ const CAT_LABEL: Record<ChipId, string> = {
   video: "Video",
 };
 
+/** Normalise a category label so singular/plural forms compare equal. */
+const catSlug = (s: string) =>
+  s
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean)
+    .map((w) => w.replace(/ies$/, "y").replace(/s$/, ""))
+    .join("-");
+
 const fmtRound = (d: string) =>
   new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", {
     day: "2-digit",
@@ -165,10 +174,11 @@ export default function Media() {
   const [covPage, setCovPage] = useState(0);
 
   const latest = SORTED[0]!;
-  const posts = useMemo(
-    () => (chip === "all" ? SORTED : SORTED.filter((p) => catOf(p) === chip)),
-    [chip],
-  );
+  const posts = useMemo(() => {
+    if (chip === "all") return SORTED;
+    const want = catSlug(CHIPS.find(([v]) => v === chip)![1]);
+    return SORTED.filter((p) => catSlug(CAT_LABEL[catOf(p)]) === want);
+  }, [chip]);
   const shown = posts.slice(0, 6);
   const pages = Math.max(1, Math.ceil(posts.length / 6));
 
@@ -283,10 +293,10 @@ export default function Media() {
         </div>
       </div>
 
-      {/* 3 · Stories */}
-      <div className="band">
+      {/* 3 · Blog */}
+      <div className="band" id="blog">
         <div className="wrap">
-          <SectionLabel left="Stories" right="Everything we publish" />
+          <SectionLabel left="Blog" right="Everything we publish" />
           <h2 className="mx-h2">Reported from across the Commonwealth.</h2>
 
           <div className="mx-filter">
