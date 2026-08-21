@@ -2258,7 +2258,9 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 @media(max-width:1080px){
   .mx-grid{grid-template-columns:repeat(2,1fr)}
   .mx-latest-in{grid-template-columns:1fr;gap:30px}
-  .mx-cov-in{grid-template-columns:1fr;gap:30px}
+  .mx-cov-in{grid-template-columns:1fr;gap:32px}
+  .mx-cov-feat{grid-template-columns:130px 1fr}
+
   .mx-soc{grid-template-columns:repeat(2,1fr)}
   .mx-calwrap{grid-template-columns:1fr}
   .mx-panels{grid-template-columns:1fr}
