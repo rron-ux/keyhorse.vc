@@ -2095,7 +2095,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mx-latest-img:hover img{opacity:.86;transform:scale(1.02)}
 
 /* dark record band */
-.mx-dark{position:relative;background:var(--coal);color:#F5F5F4;overflow:hidden;
+.mx-dark{position:relative;background:#262B31;color:#F5F5F4;overflow:hidden;
   padding:clamp(54px,5.6vw,84px) 0}
 .mx-dark--head{padding-top:clamp(70px,6.5vw,104px);min-height:70vh}
 .mx-dark-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.13}
