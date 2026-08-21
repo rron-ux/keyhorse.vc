@@ -13,9 +13,7 @@ const FACTS: [string, string][] = [
   ["Founded", "2001"],
   ["Structure", "Evergreen"],
   ["Stage", "Pre-seed → Series A+"],
-  ["Geography", "Kentucky only"],
-  ["Funds", "Three"],
-  ["Affiliation", "KSTC"],
+  ["Industry focus", "Agnostic"],
 ];
 
 type Person = {
@@ -271,21 +269,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* 5 · Affiliation */}
-      <div className="abt-sec" id="affiliation">
-        <div className="wrap">
-          <LabelRow left="Affiliation" right="KSTC" />
-          <div className="abt-aff2">
-            <p>
-              Keyhorse Capital is the venture arm of the Kentucky Science and
-              Technology Corporation, working alongside the Cabinet for Economic
-              Development and the KY Innovation network.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* 6 · Closing */}
+      {/* 5 · Closing */}
       <div className="abt-close2" id="apply">
         <img className="abt-close2-bg" src={closing.src} alt="" aria-hidden="true" />
         <div className="wrap abt-close2-in">
