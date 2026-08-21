@@ -395,7 +395,7 @@ export default function Media() {
 
                 <div className="mx-cov-ft">
                   <span className="mx-mono">
-                    {"source" in featured ? `${featured.source} · ` : ""}
+                    {featured.source} · 
                     {featured.date}
                   </span>
                   {featured.url ? <span className="mx-link">Read ↗</span> : null}
