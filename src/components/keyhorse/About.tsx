@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Rv, useSite } from "./shared";
 import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
+import { PILLARS } from "@/data/keyhorse";
+import { pic } from "@/lib/images";
 
 const BIP_URL = "https://www.bipventures.vc/state-of-startups/2025#states";
 
@@ -302,13 +304,27 @@ export default function About() {
             </div>
             <div>
               <p className="lbl">Where we weight</p>
-              <div className="abt-weight">
-                {WEIGHT.map(([n, t, d]) => (
-                  <div className="abt-wrow" key={n}>
-                    <span className="abt-wn">{n}</span>
-                    <div>
-                      <b>{t}</b>
-                      <p>{d}</p>
+              <div className="abt-vacc">
+                {PILLARS.map((p) => (
+                  <div
+                    className="abt-vpane"
+                    key={p.n}
+                    style={{ ["--pc" as string]: p.c }}
+                  >
+                    <img
+                      loading="lazy"
+                      src={pic(p.seed).src}
+                      alt={pic(p.seed).alt}
+                    />
+                    <span className="abt-vwash" />
+                    <span className="abt-vrule" />
+                    <div className="abt-vbd">
+                      <div className="abt-vn">{p.n}</div>
+                      <div className="abt-vnm">{p.nm}</div>
+                      <div className="abt-vrev">
+                        <p className="abt-vd">{p.d}</p>
+                        <div className="abt-vco">{p.co}</div>
+                      </div>
                     </div>
                   </div>
                 ))}
