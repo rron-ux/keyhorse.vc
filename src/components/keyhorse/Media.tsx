@@ -707,10 +707,7 @@ export default function Media() {
           <div className="mx-panel-in">
             <span className="mx-kick">For founders</span>
             <h2>Building something exceptional in Kentucky?</h2>
-            <p>
-              We invest across stages in companies building in the Commonwealth — from
-              first cheque to follow-on, alongside the programmes that get you there.
-            </p>
+            <p>We invest across stages in companies building in the Commonwealth.</p>
             <button className="mx-link cy" onClick={() => go("apply")}>
               See the criteria →
             </button>
