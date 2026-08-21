@@ -187,6 +187,7 @@ export default function Portfolio() {
   const [inds, setInds] = useState<string[]>([]);
   const [verts, setVerts] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
+  const [stages, setStages] = useState<string[]>([]);
   const [q, setQ] = useState("");
   const [open, setOpen] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
