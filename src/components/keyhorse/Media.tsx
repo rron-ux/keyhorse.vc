@@ -445,7 +445,7 @@ export default function Media() {
 
           <div className="mx-recfoot">
             <button className="mx-link cy" onClick={() => go("record")}>
-              All {ROUNDS.length} rounds — the full record →
+              Access the full record here
             </button>
             <button className="mx-link wh" onClick={() => openSlide(<PitchForm />)}>
               Submit a round{"\u00a0"}
