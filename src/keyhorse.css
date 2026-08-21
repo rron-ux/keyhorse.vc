@@ -2058,6 +2058,8 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
   border-bottom:1px solid var(--line);transition:color .2s,border-color .2s}
 .mx-link:hover{color:#0079A3;border-color:#0079A3}
 .mx-link.cy{color:var(--cyan);border-color:rgba(0,168,225,.4)}
+.mx-link.wh{color:#F5F5F4;border-color:rgba(245,245,244,.38)}
+.mx-link.wh:hover{color:var(--cyan);border-color:var(--cyan)}
 .mx-link.cy:hover{color:#fff;border-color:#fff}
 .mx-muted-link{background:none;border:0;padding:0;cursor:pointer;font-family:var(--b);
   font-size:13.5px;color:var(--faint)}
