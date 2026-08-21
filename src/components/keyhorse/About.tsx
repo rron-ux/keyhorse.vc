@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSite } from "./shared";
 import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
+import logoAsset from "@/assets/keyhorse-horizontal.png.asset.json";
 
 const FIGURES: [string, string][] = [
   ["$100M+", "invested in Kentucky"],
