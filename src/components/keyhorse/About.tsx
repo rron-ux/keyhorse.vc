@@ -1,84 +1,21 @@
 import { useEffect, useState } from "react";
-import { Rv, useSite } from "./shared";
+import { useSite } from "./shared";
 import { FOUNDER_PORTRAITS, HERO_FRAMES } from "@/lib/images";
-import { PILLARS } from "@/data/keyhorse";
-import { pic } from "@/lib/images";
-
-const BIP_URL = "https://www.bipventures.vc/state-of-startups/2025#states";
 
 const FIGURES: [string, string][] = [
-  ["$100M+", "invested in Kentucky companies"],
-  ["$3.3B+", "follow-on capital raised"],
-  ["600+", "companies backed since 2001"],
-  ["209", "active in the portfolio today"],
+  ["$100M+", "invested in Kentucky"],
+  ["$3.3B+", "follow-on raised"],
+  ["600+", "backed since 2001"],
+  ["209", "active today"],
 ];
 
-const DIFF: [string, string, string][] = [
-  [
-    "01",
-    "We see more of them",
-    "We invest more often than anyone else in the state. Volume is why we know what a normal round here actually looks like, and why we can tell you quickly.",
-  ],
-  [
-    "02",
-    "No fund clock",
-    "Our structure is evergreen. We are not working to a horizon that forces a sale on a schedule which suits us rather than you.",
-  ],
-  [
-    "03",
-    "We can keep going",
-    "Three funds spanning a first cheque through Series A and beyond. A company that works does not get handed off at the next round.",
-  ],
-  [
-    "04",
-    "We are already here",
-    "In the state, not visiting it. Customers, co-investors and senior hires are a local call rather than an introduction to an introduction.",
-  ],
-  [
-    "05",
-    "You get a real answer",
-    "Criteria are published before the form. Every applicant hears back, and a no comes with the reason behind it.",
-  ],
-];
-
-const WEIGHT: [string, string, string][] = [
-  [
-    "01",
-    "Freight and trade",
-    "Three major air cargo hubs and a one-day drive to two-thirds of the country.",
-  ],
-  [
-    "02",
-    "Manufacturing and industry",
-    "Six thousand facilities and a quarter of a million people working in them.",
-  ],
-  [
-    "03",
-    "Health and care",
-    "A Fortune 50 payer headquartered in Louisville against a rural care gap.",
-  ],
-  [
-    "04",
-    "Energy and materials",
-    "Low industrial power costs and the largest primary aluminium capacity in the country.",
-  ],
-  [
-    "05",
-    "Agriculture and food",
-    "Sixty-nine thousand farms and a bourbon supply chain measured in billions.",
-  ],
-];
-
-const PRESS: { outlet: string; headline: string; date: string; url: string }[] = [
-  {
-    outlet: "BIP Ventures",
-    headline: "State of Startups in the Southeast 2025",
-    date: "Oct 2025",
-    url: BIP_URL,
-  },
-  { outlet: "[Outlet]", headline: "[Headline]", date: "[Date]", url: "#" },
-  { outlet: "[Outlet]", headline: "[Headline]", date: "[Date]", url: "#" },
-  { outlet: "[Outlet]", headline: "[Headline]", date: "[Date]", url: "#" },
+const FACTS: [string, string][] = [
+  ["Founded", "2001"],
+  ["Structure", "Evergreen"],
+  ["Stage", "Pre-seed → Series A+"],
+  ["Geography", "Kentucky only"],
+  ["Funds", "Three"],
+  ["Affiliation", "KSTC"],
 ];
 
 type Person = {
@@ -148,11 +85,15 @@ const PEOPLE: Person[] = [
   },
 ];
 
-const FUNDS: [string, string, string][] = [
-  ["Discovery Fund", "Programmatic · Pre-seed", "Through partner programs"],
-  ["Kentucky Enterprise Fund", "Direct · Pre-seed and seed", "Direct application"],
-  ["KSBCI", "Direct · Growth", "Seed through Series A and beyond"],
-];
+function LabelRow({ left, right }: { left: string; right?: string }) {
+  return (
+    <div className="abt-lrow">
+      <span className="abt-lleft">{left}</span>
+      <span className="abt-lrule" />
+      {right ? <span className="abt-lright">{right}</span> : null}
+    </div>
+  );
+}
 
 function TeamModal({ p, i, onClose }: { p: Person; i: number; onClose: () => void }) {
   useEffect(() => {
@@ -212,238 +153,159 @@ function TeamModal({ p, i, onClose }: { p: Person; i: number; onClose: () => voi
 export default function About() {
   const { go } = useSite();
   const [open, setOpen] = useState<number | null>(null);
-  const hero = HERO_FRAMES[0]!;
+  const closing = HERO_FRAMES[0]!;
 
   return (
     <section className="page on abt">
-      {/* Hero */}
-      <div className="ihero abt-hero">
-        <img className="bgimg" src={hero.src} alt={hero.alt} />
+      {/* 1 · Hero */}
+      <div className="abt-sec">
         <div className="wrap">
-          <p className="lbl">About</p>
-          <h1>A venture capital firm investing across Kentucky.</h1>
-          <p className="lede">
-            We back tech-enabled companies in any sector, from a first cheque
-            through Series A and beyond. We invest more often than anyone else in
-            the state, and we weight toward the industries where Kentucky has an
-            advantage that is hard to copy.
-          </p>
-          <div className="abt-cta">
-            <button className="btn cy" onClick={() => go("apply")}>
-              Apply for investment
-            </button>
-            <button className="btn apg-o" onClick={() => go("industries")}>
-              The industries
-            </button>
+          <div className="abt-hero2">
+            <div>
+              <LabelRow left="About" right="Keyhorse Capital" />
+              <h1 className="abt-h1">
+                A venture capital firm investing across Kentucky.
+              </h1>
+              <p className="abt-dek">
+                We back tech-enabled companies in any sector, from a first cheque
+                through Series A and beyond. We invest more often than anyone else
+                in the state, and we weight toward the industries where Kentucky
+                has an advantage that is hard to copy.
+              </p>
+              <div className="abt-tlinks">
+                <button type="button" className="abt-tlink" onClick={() => go("apply")}>
+                  Apply for investment →
+                </button>
+                <button
+                  type="button"
+                  className="abt-tlink"
+                  onClick={() => go("industries")}
+                >
+                  The industries →
+                </button>
+              </div>
+            </div>
+            <div className="abt-facts">
+              {FACTS.map(([k, v]) => (
+                <div className="abt-fact" key={k}>
+                  <span className="abt-fk">{k}</span>
+                  <span className="abt-fv">{v}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+      </div>
 
-        {/* Figures integrated into hero */}
-        <div className="wrap abt-hero-figs">
-          <div className="abt-fgrid">
+      {/* 2 · Numbers */}
+      <div className="abt-sec abt-sec--tight">
+        <div className="wrap">
+          <div className="abt-nums">
             {FIGURES.map(([n, l]) => (
-              <div className="abt-fcell" key={l}>
-                <div className="abt-fn">{n}</div>
-                <div className="abt-fl">{l}</div>
+              <div className="abt-ncell" key={l}>
+                <div className="abt-nv">{n}</div>
+                <div className="abt-nl">{l}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Thesis */}
-      <div className="band abt-thesis-band" id="thesis">
-        <Rv>
-          <div className="abt-thesis">
+      {/* 3 · Thesis */}
+      <div className="abt-sec" id="thesis">
+        <div className="wrap">
+          <LabelRow left="Thesis" right="Where we weight" />
+          <div className="abt-th2">
+            <h2 className="abt-thh">
+              We invest in any tech-enabled company here.{" "}
+              <strong>We concentrate where the state has an edge.</strong>
+            </h2>
             <div>
-              <p className="lbl">Our thesis</p>
-              <h2>
-                We invest in any tech-enabled company here.{" "}
-                <em className="abt-ser">We concentrate where the state has an edge.</em>
-              </h2>
-              <p className="abt-body">
+              <p className="abt-thp">
                 Most of our portfolio sits outside any single sector thesis, and it
                 will stay that way. A good company building in Kentucky is a good
                 company, whatever it does.
               </p>
-              <p className="abt-body">
+              <p className="abt-thp">
                 But capital is mobile now and infrastructure is not, so the reason
                 to be somewhere has to be physical. Kentucky has a handful of those
-                reasons, and we weight toward them — because that is where a company
-                here beats the same company somewhere else.
+                reasons, and our growth fund weights toward them — because that is
+                where a company here beats the same company somewhere else.
               </p>
-              <div className="abt-cta">
-                <button className="btn g" onClick={() => go("industries")}>
-                  The industries
-                </button>
-                <button className="btn g" onClick={() => go("portfolio")}>
-                  Companies
-                </button>
-              </div>
-            </div>
-            <div>
-              <p className="lbl">Where we weight</p>
-              <div className="abt-vacc">
-                {PILLARS.map((p) => (
-                  <div
-                    className="abt-vpane"
-                    key={p.n}
-                    style={{ ["--pc" as string]: p.c }}
-                  >
-                    <img
-                      loading="lazy"
-                      src={pic(p.seed).src}
-                      alt={pic(p.seed).alt}
-                    />
-                    <span className="abt-vwash" />
-                    <span className="abt-vrule" />
-                    <div className="abt-vbd">
-                      <div className="abt-vn">{p.n}</div>
-                      <div className="abt-vnm">{p.nm}</div>
-                      <div className="abt-vrev">
-                        <p className="abt-vd">{p.d}</p>
-                        <div className="abt-vco">{p.co}</div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <button
+                type="button"
+                className="abt-tlink"
+                onClick={() => go("industries")}
+              >
+                Where we weight →
+              </button>
             </div>
           </div>
-        </Rv>
+        </div>
       </div>
 
-      {/* Team */}
-      <div className="band" id="team">
-        <Rv>
-          <p className="lbl">Team</p>
-          <div className="abt-team">
+      {/* 4 · Team */}
+      <div className="abt-sec" id="team">
+        <div className="wrap">
+          <LabelRow left="Team" right="Lexington · Louisville · Covington" />
+          <div className="abt-team2">
             {PEOPLE.map((p, i) => {
               const img = FOUNDER_PORTRAITS[i % FOUNDER_PORTRAITS.length]!;
               return (
                 <button
                   type="button"
-                  className="abt-tcard"
+                  className="abt-pcard"
                   key={p.name}
                   onClick={() => setOpen(i)}
                 >
-                  <span className="abt-timg">
+                  <span className="abt-pimg">
                     <img src={img.src} alt={p.name} loading="lazy" />
-                    <span className="abt-tover">View profile →</span>
-                    <span className="abt-trule" />
                   </span>
-                  <span className="abt-tn">{p.name}</span>
-                  <span className="abt-tr">{p.role}</span>
+                  <span className="abt-pn">{p.name}</span>
+                  <span className="abt-pr">{p.role}</span>
+                  <span className="abt-pv">View profile →</span>
                 </button>
               );
             })}
           </div>
-        </Rv>
+        </div>
       </div>
 
-      {/* How we differ */}
-      <div className="band abt-diff-band" id="how-we-differ">
-        <Rv>
-          <p className="lbl">How we differ</p>
-          <div className="abt-diff">
-            {DIFF.map(([n, t, d]) => (
-              <article className="abt-dcell" key={n}>
-                <span className="abt-drule" />
-                <span className="abt-dn">{n}</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
-              </article>
-            ))}
-          </div>
-        </Rv>
-      </div>
-
-      {/* The funds */}
-      <div className="band abt-thesis-band" id="funds">
-        <Rv>
-          <div className="abt-fhead">
-            <p className="lbl" style={{ margin: 0 }}>
-              The funds
-            </p>
-            <button className="btn cy" onClick={() => go("apply")}>
-              Apply
-            </button>
-          </div>
-          <div className="abt-funds">
-            {FUNDS.map(([n, s, d]) => (
-              <button
-                type="button"
-                className="abt-frow"
-                key={n}
-                onClick={() => go("apply")}
-              >
-                <b>{n}</b>
-                <span className="abt-fs">{s}</span>
-                <span className="abt-fd">{d}</span>
-                <span className="abt-fa">→</span>
-              </button>
-            ))}
-          </div>
-        </Rv>
-      </div>
-
-      {/* Affiliation */}
-      <div className="band abt-aff-band">
-        <Rv>
-          <div className="abt-aff">
-            <p className="lbl" style={{ margin: 0 }}>
-              Affiliation
-            </p>
+      {/* 5 · Affiliation */}
+      <div className="abt-sec" id="affiliation">
+        <div className="wrap">
+          <LabelRow left="Affiliation" right="KSTC" />
+          <div className="abt-aff2">
             <p>
               Keyhorse Capital is the venture arm of the Kentucky Science and
-              Technology Corporation, and works alongside the Cabinet for Economic
-              Development and the KYInnovation network.
+              Technology Corporation, working alongside the Cabinet for Economic
+              Development and the KY Innovation network.
             </p>
           </div>
-        </Rv>
+        </div>
       </div>
 
-      {/* Coverage */}
-      <div className="band abt-press-band" id="coverage">
-        <Rv>
-          <p className="lbl">Coverage</p>
-          <div className="abt-press">
-            {PRESS.map((r, i) => (
-              <a
-                className="abt-prow"
-                key={`${r.outlet}-${i}`}
-                href={r.url}
-                target={r.url === "#" ? undefined : "_blank"}
-                rel="noopener noreferrer"
-              >
-                <span className="abt-po">{r.outlet}</span>
-                <span className="abt-ph">{r.headline}</span>
-                <span className="abt-pd">{r.date}</span>
-                <span className="abt-pa">↗</span>
-              </a>
-            ))}
-          </div>
-        </Rv>
-      </div>
-
-      {/* Apply */}
-      <div className="band abt-close" id="apply">
-        <span className="abt-orb" />
-        <Rv>
-          <h2>Building something exceptional in Kentucky?</h2>
-          <p>
-            Applications are read by the investment team, not a form. Every founder
-            hears back either way.
-          </p>
-          <div className="abt-cta">
-            <button className="btn abt-w" onClick={() => go("apply")}>
-              Apply
+      {/* 6 · Closing */}
+      <div className="abt-close2" id="apply">
+        <img className="abt-close2-bg" src={closing.src} alt="" aria-hidden="true" />
+        <div className="wrap abt-close2-in">
+          <h2>
+            Building something exceptional{" "}
+            <strong>in Kentucky?</strong>
+          </h2>
+          <div className="abt-tlinks">
+            <button type="button" className="abt-tlink w" onClick={() => go("apply")}>
+              Apply →
             </button>
-            <button className="btn abt-ow" onClick={() => go("partners")}>
-              Talk to us first
+            <button
+              type="button"
+              className="abt-tlink w"
+              onClick={() => go("partners")}
+            >
+              Talk to us first →
             </button>
           </div>
-        </Rv>
+        </div>
       </div>
 
       {open !== null ? (
