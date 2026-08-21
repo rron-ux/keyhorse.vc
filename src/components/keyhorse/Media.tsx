@@ -368,26 +368,45 @@ export default function Media() {
         <div className="wrap">
           <SectionLabel left="Coverage" right="Where we are mentioned" />
           <div className="mx-cov-in">
-            <div className="mx-cov-feat">
-              <span className="mx-kick">Featured</span>
-              <b className="mx-cov-out">{featured.outlet}</b>
-              <p className="mx-quote">
-                <mark>{featured.title}</mark>
-              </p>
-              <div className="mx-cov-ft">
-                <span className="mx-mono">{featured.date}</span>
-                {featured.url ? (
-                  <a
-                    className="mx-link"
-                    href={featured.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Read ↗
-                  </a>
-                ) : null}
+            <a
+              className="mx-cov-feat"
+              href={featured.url || undefined}
+              target={featured.url ? "_blank" : undefined}
+              rel="noopener noreferrer"
+            >
+              <div className="mx-cov-shot">
+                <img
+                  src={reportAsset.url}
+                  alt="State of Startups in the Southeast 2025 report"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                />
               </div>
-            </div>
+              <div className="mx-cov-body">
+                <span className="mx-kick">Featured</span>
+                <b className="mx-cov-out">{featured.outlet}</b>
+                <p className="mx-quote">
+                  {"headline" in featured ? (
+                    <>
+                      {featured.headline}
+                      <mark>{featured.mark}</mark>
+                      {featured.headlineEnd}
+                    </>
+                  ) : (
+                    <mark>{featured.title}</mark>
+                  )}
+                </p>
+                <div className="mx-cov-ft">
+                  <span className="mx-mono">
+                    {"source" in featured ? `${featured.source} · ` : ""}
+                    {featured.date}
+                  </span>
+                  {featured.url ? <span className="mx-link">Read ↗</span> : null}
+                </div>
+              </div>
+            </a>
+
 
             <div className="mx-cov-list">
               {covShown.map((c, i) => (
