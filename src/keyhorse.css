@@ -1686,8 +1686,10 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .cx-head .wrap{position:relative;z-index:2}
 .cx-eyebrow{font-family:var(--d);font-weight:600;font-size:10px;letter-spacing:.18em;
  text-transform:uppercase;color:#7FD6F5;margin:0 0 14px}
-.cx-head h1{font-family:var(--d);font-weight:600;font-size:clamp(30px,4.2vw,54px);
- letter-spacing:-.046em;color:#fff;margin:0;line-height:1.02}
+.cx-head h1{font-family:var(--d);font-weight:600;font-size:clamp(38px,5.2vw,64px);
+ letter-spacing:-.048em;color:#fff;margin:0 0 18px;line-height:1.02}
+.cx-sub{font-family:var(--b);font-weight:300;font-size:16px;line-height:1.58;
+ color:rgba(245,245,244,.78);max-width:68ch;margin:0}
 
 /* marquee */
 .cx-marquee{background:#2E343B;overflow:hidden;padding:0 0 40px;
