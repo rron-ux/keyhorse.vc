@@ -225,8 +225,10 @@ export default function Portfolio() {
     const p = new URLSearchParams(window.location.search);
     p.delete("industry");
     p.delete("vertical");
+    p.delete("stage");
     if (inds.length === 1) p.set("industry", slug(inds[0]!));
     if (verts.length === 1) p.set("vertical", slug(verts[0]!));
+    if (stages.length === 1) p.set("stage", slug(stages[0]!));
     const s = p.toString();
     window.history.replaceState(
       {},
