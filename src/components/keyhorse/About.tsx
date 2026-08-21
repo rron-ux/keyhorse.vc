@@ -168,14 +168,13 @@ export default function About() {
           <div className="abt-hero2">
             <div>
               <LabelRow left="About" right="Keyhorse Capital" />
-              <h1 className="abt-h1">
-                A venture capital firm investing across Kentucky.
-              </h1>
+              <h1 className="abt-h1">Go the distance.</h1>
               <p className="abt-dek">
-                We back tech-enabled companies in any sector, from a first cheque
-                through Series A and beyond. We invest more often than anyone else
-                in the state, and we weight toward the industries where Kentucky
-                has an advantage that is hard to copy.
+                Keyhorse Capital invests seed and early stage venture capital
+                focused on supporting a thriving community of entrepreneurs
+                willing to build and scale innovative companies and bring value
+                to Kentucky. We back exceptional founders across industries and
+                sectors, from a first cheque through growth.
               </p>
               <div className="abt-tlinks">
                 <button type="button" className="abt-tlink" onClick={() => go("apply")}>
