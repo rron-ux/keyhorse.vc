@@ -592,20 +592,30 @@ export default function Media() {
 
       {/* 5 · Newsletter */}
       <div className="mx-news">
-        <div className="wrap mx-news-in">
-          <div className="mx-news-l">
-            <span className="mx-mono">Newsletter</span>
-            <p>Every round, every story, once a week.</p>
+        <div className="wrap">
+          <div className="mx-res">
+            <div className="mx-res-body" aria-hidden="true">
+              <div className="mx-news-in">
+                <div className="mx-news-l">
+                  <span className="mx-mono">Newsletter</span>
+                  <p>Every round, every story, once a week.</p>
+                </div>
+                <form className="mx-news-f" onSubmit={(e) => e.preventDefault()}>
+                  <input
+                    required
+                    type="email"
+                    aria-label="Email address"
+                    placeholder="you@company.com"
+                  />
+                  <button type="submit">Subscribe</button>
+                </form>
+              </div>
+            </div>
+            <div className="mx-res-over">
+              <span className="mx-mono cy">Section reserved</span>
+              <p>Newsletter signup to be added</p>
+            </div>
           </div>
-          <form className="mx-news-f" onSubmit={(e) => e.preventDefault()}>
-            <input
-              required
-              type="email"
-              aria-label="Email address"
-              placeholder="you@company.com"
-            />
-            <button type="submit">Subscribe</button>
-          </form>
         </div>
       </div>
 
