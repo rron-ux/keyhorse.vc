@@ -235,7 +235,7 @@ export default function Portfolio() {
       "",
       window.location.pathname + (s ? `?${s}` : ""),
     );
-  }, [inds, verts]);
+  }, [inds, verts, stages]);
 
   /* Verticals come from the records visible under the current industry choice. */
   const verticalOptions = useMemo(() => {
