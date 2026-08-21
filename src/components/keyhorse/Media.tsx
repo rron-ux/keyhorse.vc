@@ -208,7 +208,7 @@ export default function Media() {
     quoteStart: "Invest Local: ",
     mark: "The State of Intra-State Venture Investing",
     quoteEnd: "",
-    source: "2026 annual report",
+    source: "Annual Report",
     date: "2026",
     url: "https://revolution.docsend.com/view/jbqah9ydus8djd9m",
   };
