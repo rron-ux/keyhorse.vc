@@ -26,6 +26,22 @@ const CAT_LABEL: Record<ChipId, string> = {
   stories: "Stories",
 };
 
+const SERIES_LABEL: Record<Article["series"], string> = {
+  founding: "Founding Stories",
+  behind: "Behind the Scenes",
+  cycle: "Investment Cycle",
+};
+
+const fmtDate = (d: string) => {
+  const parsed = new Date(d);
+  if (Number.isNaN(parsed.getTime())) return d;
+  return parsed.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+};
+
 export default function Articles() {
   const { openPost } = useSite();
   const [chip, setChip] = useState<ChipId>("all");
@@ -66,8 +82,10 @@ export default function Articles() {
                 </div>
                 <div className="mx-card-body">
                   <div className="mx-card-meta">
-                    <span className="mx-card-cat">{CAT_LABEL[catOf(p)]}</span>
-                    <span className="mx-mono">{p.date}</span>
+                  <span className="mx-card-cat">
+                    {p.category === "stories" ? SERIES_LABEL[p.series] : CAT_LABEL[catOf(p)]}
+                  </span>
+                  <span className="mx-mono">{fmtDate(p.date)}</span>
                   </div>
                   <h3 className="mx-card-h">{p.title}</h3>
                 </div>
