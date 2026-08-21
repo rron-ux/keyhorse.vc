@@ -19,6 +19,16 @@ export const TAG_LABEL: Record<string, string> = {
   cycle: "Investment Cycle",
 };
 
+export const MEDIA_RETURN_KEY = "kh:media:return";
+
+/** Remember where the user was on /media before opening /articles. */
+export function goArticles(go: (id: "articles") => void) {
+  try {
+    sessionStorage.setItem(MEDIA_RETURN_KEY, String(window.scrollY));
+  } catch { /* ignore */ }
+  go("articles");
+}
+
 const ts = (d: string) => Date.parse(d) || 0;
 const SORTED = [...ARTICLES].sort((a, b) => ts(b.date) - ts(a.date));
 

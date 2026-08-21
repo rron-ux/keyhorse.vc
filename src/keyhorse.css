@@ -2385,3 +2385,19 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 @media(max-width:600px){
   .mx-cov-feat{grid-template-columns:1fr}
 }
+
+/* Articles → back to Media */
+.mx-back {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #65696d;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+.mx-back:hover { color: var(--cyan, #00a8e1); }
