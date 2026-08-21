@@ -2096,7 +2096,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 @media(max-width:900px){
   .mx-hero--media .mx-hero-title{font-size:clamp(34px,9vw,56px)}
 }
-.mx-latest{padding:clamp(34px,3.6vw,52px) 0 clamp(48px,5vw,74px)}
+.mx-latest{padding:clamp(18px,2vw,28px) 0 clamp(48px,5vw,74px)}
 .mx-latest-in{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
 .mx-lh{font-family:var(--d);font-weight:400;font-size:clamp(26px,2.9vw,42px);
   letter-spacing:-.032em;line-height:1.1;color:var(--ink);margin:0}
