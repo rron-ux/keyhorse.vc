@@ -432,20 +432,11 @@ export default function Portfolio() {
                       <span className="pf-name">
                         {r.company}
                         {exited && <Tag type="exited" label="Exited" />}
-                        {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
                       </span>
-                      <span className="pf-one">{r.description}</span>
+                      <span className="pf-sector">{r.sector}</span>
+                      {r.type && <Tag type={r.type.toLowerCase()} label={r.type} />}
                     </span>
                   </button>
-                  {(r.vertical || r.city) && (
-                    <button
-                      type="button"
-                      className="pf-vert"
-                      onClick={() => r.vertical && setVerts([r.vertical])}
-                    >
-                      {[r.vertical, r.city].filter(Boolean).join(" · ")}
-                    </button>
-                  )}
                 </div>
               );
             })}
