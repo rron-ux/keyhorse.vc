@@ -2089,12 +2089,12 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .mx-hero--media .wrap{position:relative;z-index:2}
 .mx-hero--media .mx-hero-label{font-family:var(--d);font-size:10px;font-weight:600;letter-spacing:.18em;
   text-transform:uppercase;color:var(--faint);margin:0 0 18px}
-.mx-hero--media .mx-hero-title{font-family:var(--d);font-weight:600;font-size:clamp(36px,5.6vw,68px);
+.mx-hero--media .mx-hero-title{font-family:var(--d);font-weight:600;font-size:clamp(44px,6.8vw,86px);
   letter-spacing:-.04em;line-height:1.02;color:var(--ink);margin:0;max-width:none;white-space:nowrap}
-.mx-hero--media .mx-hero-title em{font-family:var(--sf);font-style:italic;font-weight:400}
+.mx-hero--media .mx-hero-title em{font-family:var(--sf);font-style:italic;font-weight:400;font-size:100%}
 .mx-hero--media .mx-hero-cyan{color:var(--cyan-tx)}
 @media(max-width:900px){
-  .mx-hero--media .mx-hero-title{font-size:clamp(34px,9vw,56px)}
+  .mx-hero--media .mx-hero-title{font-size:clamp(34px,9vw,60px)}
 }
 .mx-latest{padding:clamp(18px,2vw,28px) 0 clamp(48px,5vw,74px)}
 
