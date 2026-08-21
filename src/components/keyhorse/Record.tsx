@@ -1,165 +1,132 @@
 import { useMemo, useState } from "react";
 import { ROUNDS, ROUND_SECTORS, ROUND_YEARS } from "@/data/media";
-import { colorFor, useSite } from "./shared";
+import { PICS } from "@/lib/images";
+import { useSite } from "./shared";
+import { SectionLabel } from "./Media";
 
-const PER_PAGE = 20;
+const PASTURE = PICS["kh-kentucky"]!.src;
+
+const fmt = (d: string) =>
+  new Date(`${d}T00:00:00Z`).toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
 
 export default function Record() {
   const { go, openPost } = useSite();
   const [year, setYear] = useState("all");
   const [sector, setSector] = useState("all");
-  const [page, setPage] = useState(1);
+  const [q, setQ] = useState("");
 
-  const rows = useMemo(
-    () =>
-      ROUNDS.filter(
-        (r) =>
-          (year === "all" || r.date.startsWith(year)) &&
-          (sector === "all" || r.sector === sector),
-      ),
-    [year, sector],
-  );
-  const pages = Math.max(1, Math.ceil(rows.length / PER_PAGE));
-  const current = Math.min(page, pages);
-  const shown = rows.slice((current - 1) * PER_PAGE, current * PER_PAGE);
+  const rows = useMemo(() => {
+    const t = q.trim().toLowerCase();
+    return ROUNDS.filter(
+      (r) =>
+        (year === "all" || r.date.startsWith(year)) &&
+        (sector === "all" || r.sector === sector) &&
+        (!t ||
+          `${r.company} ${r.city} ${r.sector} ${r.outlet} ${r.stage}`
+            .toLowerCase()
+            .includes(t)),
+    );
+  }, [year, sector, q]);
 
   return (
-    <section className="page on md">
-      <div className="md-hero md-hero--slim">
-        <span className="md-hero-orb" aria-hidden="true" />
-        <div className="wrap md-hero-in">
-          <button className="md-back" onClick={() => go("media")}>
-            ← Media
-          </button>
-          <p className="md-eyebrow md-eyebrow--dark">The record</p>
-          <h1 className="md-hero-h">Every round raised in Kentucky.</h1>
-          <p className="md-hero-p">
-            The full archive of disclosed rounds across the Commonwealth, filterable by
-            year and sector.
-          </p>
-        </div>
-      </div>
-
-      <div className="band">
-        <div className="wrap">
-          <div className="md-bar-in md-recbar">
-            <div className="md-pills">
-              <button
-                className="md-pill"
-                aria-pressed={year === "all"}
-                onClick={() => {
-                  setYear("all");
-                  setPage(1);
-                }}
-              >
-                All years
+    <section className="page on md mx">
+      <div className="mx-dark mx-dark--head">
+        <img className="mx-dark-bg" src={PASTURE} alt="" aria-hidden="true" />
+        <div className="wrap mx-dark-in">
+          <SectionLabel left="The Record" right="Keyhorse Capital" />
+          <div className="mx-rechead">
+            <div>
+              <button className="mx-muted-link" onClick={() => go("media")}>
+                ← Media
               </button>
-              {ROUND_YEARS.map((y) => (
-                <button
-                  key={y}
-                  className="md-pill"
-                  aria-pressed={year === y}
-                  onClick={() => {
-                    setYear(y);
-                    setPage(1);
-                  }}
-                >
-                  {y}
-                </button>
-              ))}
+              <h1 className="mx-h2" style={{ marginTop: 10 }}>
+                Every round raised in the Commonwealth.
+              </h1>
+              <p className="mx-sub">
+                The full archive of disclosed rounds across Kentucky, filterable by year
+                and sector.
+              </p>
             </div>
-            <span className="md-count">
-              {rows.length} rounds · page {current} of {pages}
+            <span className="mx-live">
+              <i aria-hidden="true" />
+              Live · {ROUNDS.length} tracked
             </span>
           </div>
 
-          <div className="md-pills" style={{ marginTop: 12, marginBottom: 26 }}>
-            <button
-              className="md-pill"
-              aria-pressed={sector === "all"}
-              onClick={() => {
-                setSector("all");
-                setPage(1);
-              }}
+          <div className="mx-recfilters">
+            <select value={year} onChange={(e) => setYear(e.target.value)} aria-label="Year">
+              <option value="all">All years</option>
+              {ROUND_YEARS.map((y) => (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              ))}
+            </select>
+            <select
+              value={sector}
+              onChange={(e) => setSector(e.target.value)}
+              aria-label="Sector"
             >
-              All sectors
-            </button>
-            {ROUND_SECTORS.map((s) => (
-              <button
-                key={s}
-                className="md-pill"
-                aria-pressed={sector === s}
-                onClick={() => {
-                  setSector(s);
-                  setPage(1);
-                }}
-              >
-                {s}
-              </button>
-            ))}
+              <option value="all">All sectors</option>
+              {ROUND_SECTORS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search company, city, outlet"
+              aria-label="Search rounds"
+            />
+            <span className="mx-mono">{rows.length} rounds</span>
           </div>
 
-          <div className="md-rows md-rows--light">
-            {shown.map((r) => (
-              <div
-                className="md-row"
-                key={r.company + r.date}
-                style={{ ["--fc" as string]: colorFor(r.company) }}
-              >
-                <div className="md-row-dt">
-                  {new Date(`${r.date}T00:00:00Z`).toLocaleDateString("en-US", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    timeZone: "UTC",
-                  })}
-                </div>
-                <div className="md-row-co">
-                  {r.slug ? (
-                    <button onClick={() => openPost(r.slug!)}>{r.company}</button>
-                  ) : (
-                    r.company
-                  )}
-                  <small>{r.city}, Kentucky</small>
-                </div>
-                <div className="md-row-sec">{r.sector}</div>
-                <div className="md-row-amt">{r.amount}</div>
-                <div className="md-row-out">
-                  <a href={r.outletUrl} target="_blank" rel="noopener noreferrer">
-                    {r.outlet} ↗
-                  </a>
-                </div>
-                <div className="md-row-ar">→</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="md-pager">
-            <button
-              className="md-pg"
-              disabled={current === 1}
-              onClick={() => setPage(current - 1)}
-            >
-              ← Previous
-            </button>
-            {Array.from({ length: pages }, (_, i) => i + 1).map((n) => (
-              <button
-                key={n}
-                className="md-pg num"
-                aria-current={n === current ? "true" : "false"}
-                onClick={() => setPage(n)}
-              >
-                {n}
-              </button>
-            ))}
-            <button
-              className="md-pg"
-              disabled={current === pages}
-              onClick={() => setPage(current + 1)}
-            >
-              Next →
-            </button>
-          </div>
+          <table className="mx-tbl">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Sector</th>
+                <th className="r">Raised</th>
+                <th className="r">Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr key={r.company + r.date}>
+                  <td className="mx-mono">{fmt(r.date)}</td>
+                  <td className="co">
+                    {r.slug ? (
+                      <button onClick={() => openPost(r.slug!)}>{r.company}</button>
+                    ) : (
+                      r.company
+                    )}
+                  </td>
+                  <td>{r.city}, KY</td>
+                  <td>{r.sector}</td>
+                  <td className="r amt">{r.amount}</td>
+                  <td className="r">
+                    <a href={r.outletUrl} target="_blank" rel="noopener noreferrer">
+                      {r.outlet} ↗
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {rows.length === 0 ? (
+            <p className="mx-sub" style={{ marginTop: 22 }}>
+              No rounds match those filters.
+            </p>
+          ) : null}
         </div>
       </div>
     </section>
