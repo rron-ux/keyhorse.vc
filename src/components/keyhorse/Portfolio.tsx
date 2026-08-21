@@ -135,9 +135,9 @@ export default function Portfolio() {
   return (
     <section className="page on pf">
       <Head
-        lbl="Portfolio"
-        h="Every company we have backed."
-        p="Grouped by industry. Filter by vertical, or search by name. Companies that have exited are marked."
+        label="Portfolio"
+        title="Every company we have backed."
+        lede="Grouped by industry. Filter by vertical, or search by name. Companies that have exited are marked."
       />
 
       <div className="pf-bar">
