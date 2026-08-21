@@ -485,11 +485,13 @@ export default function Media() {
                   <div className="mx-card-img">
                     <CoverImg src={p.cover} alt={p.person || p.title} />
                   </div>
-                  <div className="mx-card-meta">
-                    <span className="mx-card-cat">{CAT_LABEL[catOf(p)]}</span>
-                    <span className="mx-mono">{p.date}</span>
+                  <div className="mx-card-body">
+                    <div className="mx-card-meta">
+                      <span className="mx-card-cat">{CAT_LABEL[catOf(p)]}</span>
+                      <span className="mx-mono">{p.date}</span>
+                    </div>
+                    <h3 className="mx-card-h">{p.title}</h3>
                   </div>
-                  <h3 className="mx-card-h">{p.title}</h3>
                 </button>
               ))}
             </div>
