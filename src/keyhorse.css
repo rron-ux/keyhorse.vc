@@ -1225,12 +1225,35 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .abt-thesis h2{margin:0 0 18px;max-width:22ch}
 .abt-ser{font-family:var(--sf);font-style:italic;font-weight:400;color:var(--cyan);
   letter-spacing:-.02em}
-.abt-weight{border-top:1px solid var(--line)}
-.abt-wrow{display:grid;grid-template-columns:36px 1fr;gap:14px;padding:16px 4px;
-  border-bottom:1px solid var(--line)}
-.abt-wn{font-family:var(--m);font-size:11px;color:var(--cyan)}
-.abt-wrow b{font-family:var(--d);font-weight:600;font-size:15px;letter-spacing:-.022em;color:var(--ink)}
-.abt-wrow p{margin:5px 0 0;color:var(--kh-muted);font-size:14px;line-height:1.5}
+.abt-vacc{display:flex;flex-direction:column;gap:5px}
+.abt-vpane{position:relative;height:68px;overflow:hidden;cursor:pointer;background:#14171A;
+  transition:height .5s cubic-bezier(.22,.61,.36,1)}
+.abt-vpane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) contrast(1.05);transition:filter .5s ease,transform .8s ease}
+.abt-vpane .abt-vwash{position:absolute;inset:0;background:var(--pc);opacity:.5;
+  mix-blend-mode:color;transition:opacity .5s ease}
+.abt-vpane::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(12,14,17,.9),rgba(12,14,17,.15) 62%)}
+.abt-vpane .abt-vrule{position:absolute;top:0;left:0;right:0;height:3px;background:var(--pc);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s ease;z-index:3}
+.abt-vpane .abt-vbd{position:absolute;left:0;right:0;bottom:0;padding:16px 18px 18px;z-index:3;color:#fff}
+.abt-vpane .abt-vn{font-family:var(--m);font-size:10px;color:var(--pc);margin-bottom:6px}
+.abt-vpane .abt-vnm{font-family:var(--d);font-weight:600;font-size:15px;letter-spacing:-.025em;
+  line-height:1.15;color:#fff}
+.abt-vpane .abt-vrev{max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .5s ease,opacity .4s ease}
+.abt-vpane .abt-vd{font-size:13px;color:rgba(245,245,244,.82);margin:8px 0 0;max-width:42ch;line-height:1.45}
+.abt-vpane .abt-vco{font-family:var(--m);font-size:10.5px;color:var(--pc);margin-top:8px}
+.abt-vpane:hover{height:170px}
+.abt-vpane:hover img{filter:none;transform:scale(1.04)}
+.abt-vpane:hover .abt-vwash{opacity:0}
+.abt-vpane:hover .abt-vrule{transform:scaleX(1)}
+.abt-vpane:hover .abt-vrev{max-height:140px;opacity:1}
+@media(max-width:900px){
+  .abt-vpane{height:88px}
+  .abt-vpane:hover{height:180px}
+  .abt-vpane .abt-vrev{max-height:120px;opacity:1}
+}
 
 /* Press */
 .abt-press-band{background:#FAFAFB}
