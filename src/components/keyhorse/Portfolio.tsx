@@ -331,6 +331,15 @@ export default function Portfolio() {
             open={open === "s"}
             setOpen={(v) => setOpen(v ? "s" : null)}
           />
+          <Dropdown
+            label="Stage"
+            options={STAGE_OPTIONS}
+            selected={stages}
+            onToggle={toggler(setStages)}
+            onClear={() => setStages([])}
+            open={open === "g"}
+            setOpen={(v) => setOpen(v ? "g" : null)}
+          />
           <input
             className="cx-search"
             value={q}
