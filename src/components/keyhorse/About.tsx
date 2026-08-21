@@ -284,8 +284,8 @@ export default function About() {
         <img className="abt-close2-bg" src={closing.src} alt="" aria-hidden="true" />
         <div className="wrap abt-close2-in">
           <h2>
-            Building something exceptional{" "}
-            <strong>in Kentucky?</strong>
+            Are you a founder{" "}
+            <strong>seeking investment capital?</strong>
           </h2>
           <div className="abt-tlinks">
             <button type="button" className="abt-tlink w" onClick={() => go("apply")}>
