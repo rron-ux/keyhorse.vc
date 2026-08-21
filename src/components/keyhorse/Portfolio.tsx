@@ -198,6 +198,7 @@ export default function Portfolio() {
   const [stages, setStages] = useState<string[]>([]);
   const [stats, setStats] = useState<string[]>([]);
   const [q, setQ] = useState("");
+  const [view, setView] = useState<"grid" | "list">("grid");
   const [modal, setModal] = useState<Row | null>(null);
   useEffect(() => {
     if (!modal) return;
