@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import heroBluegrass from "@/assets/hero-bluegrass.jpg";
 import raw from "@/data/companies.json";
-import { COMPANIES, MARQUEE, TYPE_COLOR, TYPE_TEXT } from "@/data/company-meta";
+import { COMPANIES, MARQUEE } from "@/data/company-meta";
 import { initials as monogram } from "./CompanyCard";
 
 type Row = {
@@ -78,7 +78,6 @@ function Marquee() {
           <span
             key={`${c.domain}-${i}`}
             className="cx-mcard"
-            style={{ ["--tc" as string]: TYPE_COLOR[c.type] }}
           >
             <span className="cx-mshot">
               {c.portrait ? (
@@ -90,7 +89,6 @@ function Marquee() {
               ) : (
                 <span
                   className="cx-mono-fallback"
-                  style={{ color: TYPE_TEXT[c.type] }}
                   aria-hidden
                 >
                   {monogram(c.display_name)}
@@ -98,7 +96,6 @@ function Marquee() {
               )}
             </span>
             <span className="cx-mname">{c.display_name}</span>
-            <span className="cx-mtype">{c.type.toUpperCase()}</span>
           </span>
         ))}
       </div>

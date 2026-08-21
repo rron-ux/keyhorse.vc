@@ -646,9 +646,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 .people .mq:hover .mqtrack{animation-play-state:paused}
 .people .pp{margin:0;flex:0 0 190px;position:relative}
 .people .pp img{width:190px;height:242px;object-fit:cover;object-position:50% 22%;
-  background:#1B1F23;filter:grayscale(1);
-  transition:filter .35s ease}
-.people .pp:hover img{filter:none}
+  background:#1B1F23}
 .people .pp figcaption{font-family:var(--d);font-size:12.5px;font-weight:600;
   letter-spacing:-.01em;color:rgba(245,245,244,.72);margin-top:8px}
 
@@ -1702,18 +1700,12 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
  text-align:left;cursor:pointer;font:inherit}
 .cx-mshot{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#3A4148}
 .cx-mshot img{width:100%;height:100%;object-fit:cover;object-position:center 24%;
- filter:grayscale(1);transition:filter .5s ease,transform .5s ease}
-.cx-mshot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
- background:var(--tc);transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
-.cx-mcard:hover .cx-mshot img{filter:none;transform:scale(1.07)}
-.cx-mcard:hover .cx-mshot::after{transform:scaleX(1)}
+ transition:transform .5s ease}
+.cx-mcard:hover .cx-mshot img{transform:scale(1.07)}
 .cx-mname{display:block;margin-top:9px;font-family:var(--d);font-weight:600;font-size:12.5px;
  letter-spacing:-.024em;color:#F5F5F4}
-.cx-mtype{display:block;margin-top:3px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;
- letter-spacing:.12em;color:#A2A6A9;transition:color .3s ease}
-.cx-mcard:hover .cx-mtype{color:var(--tc)}
 .cx-mono-fallback{display:flex;align-items:center;justify-content:center;width:100%;height:100%;
- background:#EDEEEF;font-family:var(--d);font-weight:600;font-size:15px;letter-spacing:-.02em}
+ background:#EDEEEF;font-family:var(--d);font-weight:600;font-size:15px;letter-spacing:-.02em;color:#222}
 @media(prefers-reduced-motion:reduce){.cx-track{animation:none}}
 
 /* filter bar */
