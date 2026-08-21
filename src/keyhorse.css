@@ -1942,13 +1942,13 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 
 .pf-main{display:block}
 .pf-name{display:flex;align-items:center;gap:8px;font-family:var(--d);font-size:17px;font-weight:600;
-  letter-spacing:-.026em;color:var(--ink);line-height:1.2;flex-wrap:wrap}
-.pf-exit{font-family:var(--m);font-style:normal;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  color:#fff;background:#C9A227;padding:2px 6px}
-.pf-type{font-family:var(--m);font-style:normal;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
-  padding:2px 6px}
-.pf-type.dir{color:var(--coal);border:1px solid var(--coal);background:#fff}
-.pf-type.pg{color:#fff;background:var(--cyan);border:1px solid var(--cyan)}
+  letter-spacing:-.026em;color:var(--ink);line-height:1.25;flex-wrap:wrap}
+.pf-tag{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:#fff;
+  padding:3px 6px;font-family:var(--m);font-size:10px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);line-height:1;vertical-align:middle;flex:none}
+.pf-tag-dot{width:6px;height:6px;background:var(--coal);flex:none}
+.pf-tag[data-type="programmatic"] .pf-tag-dot{background:var(--cyan)}
+.pf-tag[data-type="exited"] .pf-tag-dot{background:#C9A227}
 .pf-one{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;font-size:14.5px;color:var(--kh-muted);line-height:1.5;margin-top:4px}
 .pf-vert{display:inline-block;margin:8px 0 0 56px;background:none;border:0;padding:0;cursor:pointer;
   font-family:var(--m);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}

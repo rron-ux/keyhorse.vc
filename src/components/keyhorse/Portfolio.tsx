@@ -56,6 +56,16 @@ const initials = (name: string) => {
   return `${joined[0]}${(parts[1] ?? "")[0] ?? ""}`.toUpperCase();
 };
 
+/** Inline investment-type tag: colored pip + mono label in a hairline box. */
+function Tag({ type, label }: { type: string; label: string }) {
+  return (
+    <span className="pf-tag" data-type={type}>
+      <span className="pf-tag-dot" aria-hidden />
+      <span className="pf-tag-label">{label}</span>
+    </span>
+  );
+}
+
 /** Square pale-cyan tile: logo file when present, initials otherwise. */
 function Mark({ r, className }: { r: Row; className: string }) {
   const [failed, setFailed] = useState(false);
