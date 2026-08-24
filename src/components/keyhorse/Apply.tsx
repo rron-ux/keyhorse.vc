@@ -1,83 +1,71 @@
 import { Rv, useSite } from "./shared";
 import { pic } from "@/lib/images";
 
-const WAYS = [
+const ROUTES = [
   {
-    n: "01",
-    kicker: "Programmatic",
-    color: "#7B4FD0",
-    title: "Through a partner program",
-    body: "We invest into cohort companies through accelerators, incubators and pitch competitions across the state. If you are in one of those programs, you are already in front of us — no separate application needed.",
-    foot: ["Discovery Fund", "Pre-seed", "via partner programs"],
+    cls: "prog",
+    k: "Programmatic capital",
+    t: ["Through a ", "partner program"],
+    body: "We invest into cohort companies through accelerators and pitch competitions across Kentucky. The program selects the company; we certify eligibility and put capital behind their judgement.",
+    foot: "Discovery Fund · no separate application",
+    cta: "See the partners →",
+    action: "partners" as const,
+    seed: "kh-kentucky",
   },
   {
-    n: "02",
-    kicker: "Direct",
-    color: "#00A8E1",
-    title: "Straight to us",
-    body: "You apply directly and we run our own process. This is the route for most companies, and the only route once you are past the earliest stage.",
-    foot: [
-      "Kentucky Enterprise Fund",
-      "Growth Fund",
-      "Pre-seed and seed",
-      "seed through Series A and beyond",
-    ],
+    cls: "dir",
+    k: "Direct investment",
+    t: ["Straight ", "to us"],
+    body: "You apply, we run our own diligence and decide. This is the route for most companies, and the only route once you are past the earliest stage. We can lead, co-lead or follow, and we can set terms.",
+    foot: "Kentucky Enterprise Fund · Growth Fund",
+    cta: "Start an application →",
+    action: "apply" as const,
+    seed: "kh-log",
   },
 ];
 
 const FUNDS = [
   {
-    n: "01",
+    dark: true,
+    k: "Programmatic",
     name: "Discovery Fund",
-    color: "#7B4FD0",
-    tags: ["Programmatic"],
     stage: "Pre-seed",
-    d: "Our earliest capital, invested into companies inside partner accelerator, incubator and pitch-competition cohorts.",
     cr: [
-      "enrolled in a partner program",
-      "tech-enabled and Kentucky-based",
-      "earliest stage, pre-revenue is fine",
+      "Companies in an established partner's accelerator or pitch competition",
+      "Convertible note, single holder",
+      "The program partner selects; Keyhorse certifies eligibility",
+      "Not a priced or diligence-based investment",
     ],
   },
   {
-    n: "02",
+    dark: false,
+    k: "Direct",
     name: "Kentucky Enterprise Fund",
-    color: "#00A8E1",
-    tags: ["Direct"],
-    stage: "Pre-seed / Seed",
-    d: "Direct investment into validated tech-enabled startups building in Kentucky.",
+    stage: "Pre-seed and seed",
     cr: [
-      "validated prototype or MVP",
-      "evidence of real demand",
-      "a credible path to revenue",
-      "Kentucky headquarters, or relocating",
+      "Revenue or comparable validation",
+      "Usually alongside angels and one or two institutions",
+      "Can lead, co-lead or follow; can set terms",
+      "Comfortable being an early cheque",
+      "SAFEs, convertible notes, priced rounds, revenue share",
     ],
   },
   {
-    n: "03",
+    dark: false,
+    k: "Direct",
     name: "Growth Fund",
-    color: "#1F8B57",
-    tags: ["Direct", "Growth"],
-    stage: "Seed / Series A+",
-    d: "Larger positions in companies with revenue and repeatable traction, with reserves held for follow-on.",
+    stage: "Seed through Series A and beyond",
     cr: [
-      "revenue and repeatable traction",
-      "customers beyond a local market",
-      "an institutional round forming",
-      "employment potential in the state",
+      "Syndicated rounds with institutional co-investors",
+      "Can lead, co-lead or follow; can set terms",
+      "Typically $100K+ recurring revenue or equivalent traction",
+      "Preference for Kentucky-advantaged industries",
+      "SAFEs, convertible notes, priced rounds",
     ],
   },
 ];
 
-const REQ = [
-  ["01", "Tech-enabled", "A technology product, or a business model that depends on one."],
-  ["02", "Kentucky-based", "Headquartered here, or committed to relocating."],
-  ["03", "Something built", "A validated prototype, an MVP, or traction toward product-market fit."],
-  ["04", "A route to revenue", "Demonstrated ability to generate it, or a clear line to it."],
-  ["05", "Customers beyond here", "A market larger than the immediate region."],
-  ["06", "Jobs that stay", "Potential to create employment in the Commonwealth."],
-];
-
+/* Original seven-step process — kept as-is. */
 const PROCESS = [
   ["01", "Apply", "Submit the form. Every applicant hears back, either way."],
   ["02", "Screening", "Reviewed against the published criteria and fit with a specific fund."],
@@ -88,179 +76,213 @@ const PROCESS = [
   ["07", "Decision", "Terms and documentation, or a clear no with the reason."],
 ];
 
-const READY = [
-  ["Deck", "ten slides is plenty"],
-  ["Metrics", "whatever you actually track"],
-  ["Cap table", "current, with any outstanding instruments"],
-  ["The round", "size, stage, and who else is in it"],
+const TRACTION = [
+  ["XLerateHealth", "Louisville"],
+  ["Awesome Inc", "Lexington"],
+  ["SparkHaus", "Covington"],
+  ["Story Louisville", "Louisville"],
+  ["Kentucky Innovation Network", "Statewide"],
+  ["Render", "Louisville"],
 ];
 
+const COMPETITIONS = [
+  ["5 Across", "Awesome Inc"],
+  ["Vogt Awards", "Louisville"],
+  ["Cardinal Challenge", "UofL"],
+  ["Venture Challenge", "University of Kentucky"],
+  ["Idea State U", "Statewide"],
+  ["Startup Weekend", "Multiple cities"],
+];
+
+function Lab({ t, r }: { t: string; r: string }) {
+  return (
+    <div className="pit-lab">
+      <span className="t">{t}</span>
+      <span className="line" />
+      <span>{r}</span>
+    </div>
+  );
+}
+
+function PartnerPanel() {
+  return (
+    <div className="pit-panel">
+      <span className="pit-k">Programmatic capital</span>
+      <h3>Partner programs</h3>
+      <p className="pit-sub">
+        We invest into companies coming through these programs. Selection is made by
+        the program, not by us — we certify eligibility and fund the cohort.
+      </p>
+
+      <h4>Traction programs</h4>
+      <div className="pit-plist">
+        {TRACTION.map(([n, l]) => (
+          <div key={n}>
+            {n}
+            <span>{l}</span>
+          </div>
+        ))}
+      </div>
+
+      <h4>Competition partners</h4>
+      <div className="pit-plist">
+        {COMPETITIONS.map(([n, l]) => (
+          <div key={n}>
+            {n}
+            <span>{l}</span>
+          </div>
+        ))}
+      </div>
+
+      <p className="pit-pfoot">
+        Running a program you think should be on this list? Get in touch.
+      </p>
+    </div>
+  );
+}
+
 export default function Apply() {
-  const { go, jump } = useSite();
+  const { go, jump, openSlide } = useSite();
   const hero = pic("kh-mfg");
 
   return (
-    <section className="page on apg">
+    <section className="page on pit">
       {/* Hero */}
-      <div className="ihero apg-hero">
+      <div className="ihero pit-hero">
         <img className="bgimg" src={hero.src} alt={hero.alt} />
         <div className="wrap">
-          <p className="lbl">Apply</p>
-          <h1>A venture capital firm investing in Kentucky.</h1>
+          <Lab t="Pitch" r="Keyhorse Capital" />
+          <h1>
+            Two ways in. <b>One bar.</b>
+          </h1>
           <p className="lede">
-            We back tech-enabled companies from a first cheque through Series A and
-            beyond. Two ways in, three funds, and criteria published before the form
-            rather than after it.
+            Programmatic capital reaches you through the programs already working
+            across the state. Direct investment starts with an application on this
+            site. What we look for does not change between them.
           </p>
-          <div className="apg-cta">
-            <button className="btn cy" onClick={() => jump("criteria-apply")}>
-              Start an application
-            </button>
-            <button className="btn apg-o" onClick={() => jump("criteria-apply")}>
-              See the criteria
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* Two ways in */}
+      {/* 1 — Two routes */}
       <div className="band">
-        <Rv>
-          <p className="lbl">Two ways in</p>
-          <div className="apg-ways">
-            {WAYS.map((w) => (
-              <article
-                className="apg-way"
-                key={w.n}
-                style={{ ["--wc" as string]: w.color }}
-              >
-                <span className="apg-wrule" />
-                <p className="apg-wk">
-                  {w.n} · {w.kicker}
-                </p>
-                <h3>{w.title}</h3>
-                <p className="apg-body">{w.body}</p>
-                <div className="apg-wfoot">
-                  {w.foot.map((f) => (
-                    <span key={f}>{f}</span>
-                  ))}
-                </div>
-              </article>
-            ))}
-          </div>
-        </Rv>
+        <div className="wrap">
+          <Rv>
+            <Lab t="How capital reaches you" r="Two routes" />
+            <div className="pit-rgrid">
+              {ROUTES.map((r) => (
+                <article className={`pit-rcard ${r.cls}`} key={r.k}>
+                  <img className="pit-rbg" src={pic(r.seed).src} alt="" aria-hidden="true" />
+                  <div className="pit-rin">
+                    <span className="pit-k">{r.k}</span>
+                    <h3>
+                      {r.t[0]}
+                      <b>{r.t[1]}</b>
+                    </h3>
+                    <p>{r.body}</p>
+                    <div className="pit-rfoot">
+                      <span className="pit-f">{r.foot}</span>
+                      <button
+                        className="pit-link"
+                        onClick={() =>
+                          r.action === "partners"
+                            ? openSlide(<PartnerPanel />)
+                            : jump("criteria-apply")
+                        }
+                      >
+                        {r.cta}
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </Rv>
+        </div>
       </div>
 
-      {/* The funds */}
-      <div className="band" id="criteria-apply">
-        <Rv>
-          <p className="lbl">The funds</p>
-          <div className="apg-funds">
-            {FUNDS.map((f) => (
-              <div
-                className="apg-fund"
-                key={f.n}
-                style={{ ["--fc" as string]: f.color }}
-              >
-                <div className="apg-fn">{f.n}</div>
-                <div className="apg-fname">
+      {/* 2 — The funds */}
+      <div className="band">
+        <div className="wrap">
+          <Rv>
+            <Lab t="The funds" r="Three vehicles" />
+            <h2>What each fund is for.</h2>
+            <p className="pit-dek">
+              What shifts between them is how far along you need to be, not what we
+              are looking at.
+            </p>
+            <div className="pit-fgrid">
+              {FUNDS.map((f) => (
+                <div className={`pit-fcard${f.dark ? " dk" : ""}`} key={f.name}>
+                  <span className="pit-k">{f.k}</span>
                   <h3>{f.name}</h3>
-                  <div className="apg-tags">
-                    {f.tags.map((t) => (
-                      <span className="apg-tag" key={t}>
-                        {t}
-                      </span>
+                  <div className="pit-st">{f.stage}</div>
+                  <ul>
+                    {f.cr.map((c) => (
+                      <li key={c}>{c}</li>
                     ))}
-                  </div>
-                  <p className="apg-stage">{f.stage}</p>
+                  </ul>
                 </div>
-                <p className="apg-fd">{f.d}</p>
-                <ul className="apg-fcr">
-                  {f.cr.map((c) => (
-                    <li key={c}>{c}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </Rv>
-      </div>
-
-      {/* Every fund requires */}
-      <div className="band apg-req">
-        <Rv>
-          <p className="lbl">Every fund requires</p>
-          <div className="apg-reqg">
-            {REQ.map(([n, t, d]) => (
-              <div className="apg-cell" key={n}>
-                <span className="apg-cn">{n}</span>
-                <b>{t}</b>
-                <p>{d}</p>
-              </div>
-            ))}
-          </div>
-        </Rv>
-      </div>
-
-      {/* Process */}
-      <div className="band">
-        <Rv>
-          <p className="lbl">Process</p>
-          <div className="apg-steps">
-            {PROCESS.map(([n, t, d]) => (
-              <div className="apg-step" key={n}>
-                <span className="apg-sn">{n}</span>
-                <b>{t}</b>
-                <p>{d}</p>
-              </div>
-            ))}
-          </div>
-          <p className="apg-note">
-            We do not publish timelines. Pace depends on the round, the fund, and how
-            ready the data room is.
-          </p>
-        </Rv>
-      </div>
-
-      {/* Closing */}
-      <div className="inot apg-close">
-        <Rv>
-          <div className="inot-g">
-            <div>
-              <h2>Ready when you are.</h2>
-              <p>
-                Applications are read by the investment team, not a form. Every
-                founder hears back either way, with a reason.
-              </p>
-              <div className="apg-cta" style={{ marginTop: 22 }}>
-                <button
-                  className="btn inot-p"
-                  style={{ padding: "15px 30px" }}
-                  onClick={() => jump("criteria-apply")}
-                >
-                  Start an application
-                </button>
-                <button className="btn inot-s" onClick={() => go("partners")}>
-                  Talk to us first
-                </button>
-              </div>
+              ))}
             </div>
-            <div>
-              <p className="lbl">Have these ready</p>
-              <div className="apg-ready">
-                {READY.map(([t, d]) => (
-                  <div className="apg-rrow" key={t}>
-                    <span className="apg-arw" aria-hidden="true">
-                      →
-                    </span>
-                    <b>{t}</b>
-                    <span className="apg-rd">— {d}</span>
-                  </div>
-                ))}
-              </div>
+            <p className="pit-fnote">
+              We invest across industries. Traction differs by sector, so we read
+              conviction in context rather than against predefined metrics.
+            </p>
+          </Rv>
+        </div>
+      </div>
+
+      {/* 3 — Process (original seven-step list) */}
+      <div className="pit-proc">
+        <div className="wrap">
+          <Rv>
+            <Lab t="The process" r="Application to decision" />
+            <h2>What happens after you send it.</h2>
+            <div className="apg-steps">
+              {PROCESS.map(([n, t, d]) => (
+                <div className="apg-step" key={n}>
+                  <span className="apg-sn">{n}</span>
+                  <b>{t}</b>
+                  <p>{d}</p>
+                </div>
+              ))}
             </div>
-          </div>
-        </Rv>
+            <p className="pit-pace">
+              We do not publish timelines. Pace depends on the round, the fund, and
+              how ready your data room is — quoting an average would only be true for
+              the companies it happened to be true for.
+            </p>
+          </Rv>
+        </div>
+      </div>
+
+      {/* 4 — Closing */}
+      <div className="band" id="criteria-apply">
+        <div className="wrap">
+          <Rv>
+            <Lab t="Get started" r="Pick your route" />
+            <div className="pit-cgrid">
+              <button className="pit-cbox solid" onClick={() => go("partners")}>
+                <span className="pit-k">Direct investment</span>
+                <h3>Submit an application</h3>
+                <p>
+                  Have your deck, metrics, cap table and round details ready. Roughly
+                  twenty minutes. Every applicant hears back.
+                </p>
+                <span className="pit-go">Start an application →</span>
+              </button>
+              <button className="pit-cbox" onClick={() => openSlide(<PartnerPanel />)}>
+                <span className="pit-k">Programmatic capital</span>
+                <h3>Find a partner program</h3>
+                <p>
+                  Already in an accelerator or pitch competition? You may be in front
+                  of us already. See which programs we invest through.
+                </p>
+                <span className="pit-go">View partner programs →</span>
+              </button>
+            </div>
+          </Rv>
+        </div>
       </div>
     </section>
   );
