@@ -271,7 +271,7 @@ function PartnerPanel() {
 }
 
 export default function Apply() {
-  const { go, jump, openSlide } = useSite();
+  const { openSlide } = useSite();
 
   return (
     <section className="page on pit">
