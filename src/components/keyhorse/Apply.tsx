@@ -297,7 +297,7 @@ export default function Apply() {
                         onClick={() =>
                           r.action === "partners"
                             ? openSlide(<PartnerPanel />)
-                            : jump("criteria-apply")
+                            : openSlide(<ApplicationPanel />)
                         }
                       >
                         {r.cta}
@@ -373,7 +373,10 @@ export default function Apply() {
           <Rv>
             <Lab t="Get started" r="Pick your route" />
             <div className="pit-cgrid">
-              <button className="pit-cbox solid" onClick={() => go("partners")}>
+              <button
+                className="pit-cbox solid"
+                onClick={() => openSlide(<ApplicationPanel />)}
+              >
                 <span className="pit-k">Direct investment</span>
                 <h3>Submit an application</h3>
                 <p>
