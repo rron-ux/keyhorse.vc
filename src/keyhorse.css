@@ -2417,6 +2417,7 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
 
 /* stories grid — borderless, image-led */
 .mxb .mx-blog{padding:clamp(60px,7vw,88px) 0 0}
+#articles.mxb .mx-blog{padding:clamp(42px,5vw,64px) 0 0}
 .mxb .mx-grid{background:none;border:0;grid-template-columns:repeat(3,1fr);gap:40px 34px}
 .mxb .mx-card{background:none;border:0;box-shadow:none}
 .mxb .mx-card:hover{box-shadow:none}
