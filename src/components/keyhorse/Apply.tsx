@@ -1,4 +1,136 @@
+import { useState } from "react";
 import { Rv, useSite } from "./shared";
+
+const AP_SECTORS = [
+  "Logistics & trade",
+  "Advanced manufacturing",
+  "Aerospace & defense",
+  "Healthcare",
+  "Energy & materials",
+  "Agriculture & food",
+  "Software",
+  "Consumer",
+  "Fintech",
+  "Other",
+];
+
+const AP_STAGES = [
+  "Pre-seed",
+  "Seed",
+  "Series A",
+  "Series B",
+  "Series C+",
+  "Not raising yet",
+];
+
+function ApplicationPanel() {
+  const [sent, setSent] = useState(false);
+  return (
+    <div className="md-form">
+      <p className="md-eyebrow">Direct investment</p>
+      <h3 className="md-form-h">Submit an application.</h3>
+      {sent ? (
+        <p className="md-p">
+          Thank you — your application is with the investment team. Every applicant hears
+          back, either way.
+        </p>
+      ) : (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setSent(true);
+          }}
+        >
+          <div className="md-f2">
+            <label className="md-f">
+              <span>Your name *</span>
+              <input required maxLength={100} placeholder="Your name" />
+            </label>
+            <label className="md-f">
+              <span>Email *</span>
+              <input required type="email" maxLength={255} placeholder="you@company.com" />
+            </label>
+          </div>
+          <label className="md-f">
+            <span>Company name *</span>
+            <input required maxLength={120} placeholder="Company" />
+          </label>
+          <div className="md-f2">
+            <label className="md-f">
+              <span>City *</span>
+              <input required maxLength={80} placeholder="Louisville" />
+            </label>
+            <label className="md-f">
+              <span>State</span>
+              <input maxLength={40} defaultValue="KY" />
+            </label>
+          </div>
+          <div className="md-f2">
+            <label className="md-f">
+              <span>Sector *</span>
+              <select required defaultValue="">
+                <option value="" disabled>
+                  Select
+                </option>
+                {AP_SECTORS.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </label>
+            <label className="md-f">
+              <span>Stage *</span>
+              <select required defaultValue="">
+                <option value="" disabled>
+                  Select
+                </option>
+                {AP_STAGES.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <div className="md-f2">
+            <label className="md-f">
+              <span>Round size you are raising</span>
+              <input maxLength={40} placeholder="$1.5M" />
+            </label>
+            <label className="md-f">
+              <span>Trailing 12-month revenue</span>
+              <input maxLength={40} placeholder="$250K" />
+            </label>
+          </div>
+          <label className="md-f">
+            <span>Deck link *</span>
+            <input required type="url" maxLength={500} placeholder="https://…" />
+          </label>
+          <label className="md-f">
+            <span>Deck upload (optional)</span>
+            <input type="file" accept=".pdf,.ppt,.pptx,.key,.doc,.docx" />
+          </label>
+          <label className="md-f">
+            <span>What are you building? *</span>
+            <textarea
+              required
+              maxLength={900}
+              rows={4}
+              placeholder="What the company does, who buys it, and what this round funds."
+            />
+          </label>
+          <label className="md-check">
+            <input required type="checkbox" />
+            <span>
+              I confirm this information is accurate and may be shared internally at
+              Keyhorse for evaluation. Do not submit confidential or embargoed material.
+            </span>
+          </label>
+          <button className="btn" type="submit" style={{ marginTop: 6 }}>
+            Submit application
+          </button>
+        </form>
+      )}
+    </div>
+  );
+}
 
 const ROUTES = [
   {
@@ -139,7 +271,7 @@ function PartnerPanel() {
 }
 
 export default function Apply() {
-  const { go, jump, openSlide } = useSite();
+  const { openSlide } = useSite();
 
   return (
     <section className="page on pit">
@@ -165,7 +297,7 @@ export default function Apply() {
                         onClick={() =>
                           r.action === "partners"
                             ? openSlide(<PartnerPanel />)
-                            : jump("criteria-apply")
+                            : openSlide(<ApplicationPanel />)
                         }
                       >
                         {r.cta}
@@ -241,7 +373,10 @@ export default function Apply() {
           <Rv>
             <Lab t="Get started" r="Pick your route" />
             <div className="pit-cgrid">
-              <button className="pit-cbox solid" onClick={() => go("partners")}>
+              <button
+                className="pit-cbox solid"
+                onClick={() => openSlide(<ApplicationPanel />)}
+              >
                 <span className="pit-k">Direct investment</span>
                 <h3>Submit an application</h3>
                 <p>
