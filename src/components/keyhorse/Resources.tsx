@@ -1,165 +1,116 @@
-import { useEffect, useMemo, useState } from "react";
-import { EXT, RESCATS, RESOURCES } from "@/data/keyhorse";
-import { Box, Chips, Head, PageHead, Rv, useSite } from "./shared";
+import { useMemo, useState } from "react";
 
-const FILTERS = [
-  ["all", "All"],
-  ["Framework", "Frameworks"],
-  ["Video", "Video"],
-  ["Session", "Sessions"],
-  ["Tool", "Tools"],
-  ["Report", "Reports"],
-] as const;
+type Item = {
+  group: string;
+  title: string;
+  desc: string;
+  format: string;
+  date: string;
+};
 
-function Countdown() {
-  const target = useMemo(() => Date.now() + 18 * 864e5, []);
-  const [now, setNow] = useState(() => Date.now());
+const ITEMS: Item[] = [
+  { group: "Frameworks", title: "Investment Process Checklist", desc: "Every diligence item and task, stage by stage.", format: "PDF", date: "Jan 2026" },
+  { group: "Frameworks", title: "Term sheet primer", desc: "Plain-English walkthrough of the terms you will see from us.", format: "PDF", date: "Jan 2026" },
+  { group: "Frameworks", title: "Investment scorecard", desc: "The scorecard we actually use when we assess a company.", format: "PDF", date: "Nov 2025" },
+  { group: "Reports", title: "Kentucky Venture Report", desc: "The annual record of every round, fund and program in the state.", format: "PDF", date: "Feb 2026" },
+  { group: "Reports", title: "Kentucky ecosystem map", desc: "Accelerators, universities, support organisations and co-investors.", format: "Notion", date: "Mar 2026" },
+  { group: "Tools", title: "Cap table template", desc: "A clean starting point with common scenarios modelled.", format: "XLSX", date: "Sep 2025" },
+  { group: "Tools", title: "Data room checklist", desc: "What to have ready before diligence starts.", format: "PDF", date: "Sep 2025" },
+  { group: "Tools", title: "Financial model template", desc: "Three statements, driver-based, built for a seed raise.", format: "XLSX", date: "Oct 2025" },
+  { group: "Video", title: "Raising your first round — full session", desc: "Recording, slides and takeaways.", format: "Video", date: "Apr 2026" },
+  { group: "Video", title: "Founder features", desc: "Long-form profiles of companies building here.", format: "Video", date: "Ongoing" },
+  { group: "Sessions", title: "Venture Sessions calendar", desc: "Where we will be next, and how to register.", format: "Link", date: "Ongoing" },
+  { group: "Ecosystem", title: "StartupKY Navigator", desc: "The statewide map of programs, funders and support organisations. Built by us, open to everyone.", format: "Notion", date: "Ongoing" },
+  { group: "Ecosystem", title: "InnovateKentucky", desc: "The KY Innovation network — regional hubs, programs and state resources.", format: "Link", date: "Ongoing" },
+  { group: "Ecosystem", title: "Regional front doors", desc: "Amplify · Awesome Inc · Blue North · CREATE · Sprocket · SOAR.", format: "Link", date: "Ongoing" },
+  { group: "Ecosystem", title: "Angel & investor networks", desc: "Bluegrass Angels · Kentucky Angels · Louisville Angel Network · Tri-State · Appalachian Investors Alliance.", format: "Link", date: "Ongoing" },
+];
 
-  useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const ms = Math.max(0, target - now);
-  const cells: [number, string][] = [
-    [Math.floor(ms / 864e5), "days"],
-    [Math.floor(ms / 36e5) % 24, "hrs"],
-    [Math.floor(ms / 6e4) % 60, "min"],
-    [Math.floor(ms / 1e3) % 60, "sec"],
-  ];
-
-  return (
-    <div className="cd">
-      {cells.map(([v, l]) => (
-        <div key={l}>
-          <div className="v">{String(v).padStart(2, "0")}</div>
-          <div className="l">{l}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
+const GROUPS = ["Frameworks", "Reports", "Tools", "Video", "Sessions", "Ecosystem"] as const;
+const CHIPS = ["All", ...GROUPS] as const;
 
 export default function Resources() {
-  const { jump } = useSite();
-  const [f, setF] = useState<(typeof FILTERS)[number][0]>("all");
+  const [chip, setChip] = useState<string>("All");
+  const [q, setQ] = useState("");
+
+  const grouped = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    const filtered = ITEMS.filter(
+      (i) =>
+        (chip === "All" || i.group === chip) &&
+        (!needle ||
+          i.title.toLowerCase().includes(needle) ||
+          i.desc.toLowerCase().includes(needle)),
+    );
+    return GROUPS.map((g) => [g, filtered.filter((i) => i.group === g)] as const).filter(
+      ([, list]) => list.length > 0,
+    );
+  }, [chip, q]);
 
   return (
     <section className="page on">
-      <PageHead
-        seed="kh-res"
-        title="Resources"
-        lede="Frameworks, recordings, tools and sessions. Open to any Kentucky founder, not just the portfolio."
-      />
+      <div className="wrap rsc">
+        <div className="rsc-lab">
+          <span className="t">Resources</span>
+          <span className="line" />
+          <span>Keyhorse Capital</span>
+        </div>
+        <h1 className="rsc-h1">The library.</h1>
+        <p className="rsc-sub">
+          Frameworks, templates, recordings and reports, including the checklists we use
+          ourselves. Free, no form, and open to any Kentucky founder rather than only the
+          portfolio.
+        </p>
 
-      <div className="band">
-        <Rv>
-          <p className="lbl">Next session</p>
-          <div className="nextev">
-            <Box seed="kh-event" w={1200} h={675} />
-            <div className="bd">
-              <div
-                className="k"
-                style={{
-                  fontFamily: "var(--d)",
-                  fontSize: 10,
-                  fontWeight: 600,
-                  letterSpacing: ".16em",
-                  textTransform: "uppercase",
-                  color: "var(--cyan-tx)",
-                  marginBottom: 12,
-                }}
-              >
-                Venture Session · Louisville
-              </div>
-              <h3 style={{ fontSize: "clamp(21px,2.3vw,30px)" }}>
-                Raising your first institutional round
-              </h3>
-              <p
-                style={{ color: "var(--kh-muted)", fontSize: 14.5, marginTop: 12 }}
-              >
-                Free and open to any founder. Recording published here afterwards.
-              </p>
-              <Countdown />
-              <div
-                style={{ display: "flex", gap: 10, marginTop: 16, flexWrap: "wrap" }}
-              >
-                <button className="btn cy">Register</button>
-                <button className="btn g">Add to calendar</button>
-              </div>
-            </div>
-          </div>
-        </Rv>
-      </div>
-
-      <div className="band band--tint">
-        <Rv>
-          <Head label="Categories" title="What is in here." />
-          <div className="rescats">
-            {RESCATS.map(([n, t, d]) => (
-              <div className="rcat" key={n} onClick={() => jump("res")}>
-                <div className="n">{n}</div>
-                <b>{t}</b>
-                <p>{d}</p>
-              </div>
+        <div className="rsc-bar">
+          <div className="rsc-chips">
+            {CHIPS.map((c) => (
+              <button key={c} aria-pressed={chip === c} onClick={() => setChip(c)}>
+                {c}
+              </button>
             ))}
           </div>
-        </Rv>
-      </div>
+          <input
+            className="rsc-search"
+            type="search"
+            placeholder="Search"
+            aria-label="Search the library"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+        </div>
 
-      <div className="band band--ink">
-        <Rv>
-          <div className="head">
-            <div>
-              <p className="lbl">Ecosystem</p>
-              <h2 className="w">The rest of the Commonwealth’s front doors.</h2>
-              <p className="lede" style={{ marginTop: 12 }}>
-                We are one part of this. These are the others, and they are worth
-                your time before ours.
-              </p>
-            </div>
-          </div>
-          <div className="rows" style={{ borderColor: "#383838" }}>
-            {EXT.map(([nm, ty, d, url]) => (
-              <div className="ext" key={nm} style={{ borderColor: "#383838" }}>
-                <div>
-                  <div className="nm" style={{ color: "#fff" }}>
-                    {nm}
-                    <span>{ty}</span>
-                  </div>
-                  <div className="d">{d}</div>
-                </div>
-                <button
-                  className="btn g"
-                  style={{ borderColor: "#4A4A4A", color: "#F5F5F4" }}
-                >
-                  {url ? "Open" : "See all"}
+        {grouped.length ? (
+          grouped.map(([g, list]) => (
+            <div key={g}>
+              <div className="rsc-gh">
+                <span className="gt">{g}</span>
+                <span className="gl" />
+              </div>
+              {list.map((i) => (
+                <button className="rsc-row" key={i.title} type="button">
+                  <span className="cell">
+                    <span className="ti">{i.title}</span>
+                    <span className="ds">{i.desc}</span>
+                  </span>
+                  <span className="fm">{i.format}</span>
+                  <span className="yr">{i.date}</span>
+                  <span className="op">Open →</span>
                 </button>
-              </div>
-            ))}
-          </div>
-        </Rv>
-      </div>
+              ))}
+            </div>
+          ))
+        ) : (
+          <p className="rsc-empty">Nothing here yet for that search.</p>
+        )}
 
-      <div className="band">
-        <Rv id="res">
-          <Head label="Library" title="Everything, listed." />
-          <Chips items={FILTERS} value={f} onChange={setF} />
-          <div className="rows">
-            {RESOURCES.filter((r) => f === "all" || r[0] === f).map(
-              ([ty, n, d]) => (
-                <div className="res" key={n}>
-                  <div className="ty">{ty}</div>
-                  <div>
-                    <div className="nm">{n}</div>
-                    <div className="d">{d}</div>
-                  </div>
-                  <button className="btn g">Open</button>
-                </div>
-              ),
-            )}
-          </div>
-        </Rv>
+        <div className="rsc-foot">
+          <p>
+            Something missing, or a template you would find useful? Most of what is here
+            started as a request from a founder.
+          </p>
+          <span>Suggest a resource →</span>
+        </div>
       </div>
     </section>
   );
