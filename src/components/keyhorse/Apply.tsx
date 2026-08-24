@@ -143,22 +143,18 @@ function PartnerPanel() {
 
 export default function Apply() {
   const { go, jump, openSlide } = useSite();
-  const hero = pic("kh-mfg");
 
   return (
     <section className="page on pit">
-      {/* Hero */}
-      <div className="ihero pit-hero">
-        <img className="bgimg" src={hero.src} alt={hero.alt} />
+      {/* Brief pitch header */}
+      <div className="pit-head">
         <div className="wrap">
           <Lab t="Pitch" r="Keyhorse Capital" />
           <h1>
             Two ways in. <b>One bar.</b>
           </h1>
           <p className="lede">
-            Programmatic capital reaches you through the programs already working
-            across the state. Direct investment starts with an application on this
-            site. What we look for does not change between them.
+            Programmatic capital or direct investment — what we look for does not change between them.
           </p>
         </div>
       </div>
