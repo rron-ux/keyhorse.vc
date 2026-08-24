@@ -1,5 +1,4 @@
 import { Rv, useSite } from "./shared";
-import { pic } from "@/lib/images";
 
 const ROUTES = [
   {
@@ -10,7 +9,6 @@ const ROUTES = [
     foot: "Discovery Fund · no separate application",
     cta: "See the partners →",
     action: "partners" as const,
-    seed: "kh-kentucky",
   },
   {
     cls: "dir",
@@ -20,7 +18,6 @@ const ROUTES = [
     foot: "Kentucky Enterprise Fund · Growth Fund",
     cta: "Start an application →",
     action: "apply" as const,
-    seed: "kh-log",
   },
 ];
 
