@@ -496,7 +496,7 @@ export default function Media() {
       <div className="band mx-blog" id="articles">
         <div className="wrap">
           <SectionLabel left="Articles" right="Everything we publish" />
-          <h2 className="mx-h2">Reported from across the Commonwealth.</h2>
+          <h2 className="mx-h2">{"\n"}</h2>
 
           <div className="mx-filter">
             <div className="mx-chips">
