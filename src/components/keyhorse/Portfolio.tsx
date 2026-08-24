@@ -216,6 +216,7 @@ export default function Portfolio() {
     const p = new URLSearchParams(window.location.search);
     const iSlug = p.get("sector") || p.get("industry");
     const vSlug = p.get("vertical");
+    const cName = p.get("company");
     if (iSlug) {
       const hit = INDUSTRY_ORDER.find((i) => slug(i) === iSlug);
       if (hit) setInds([hit]);
@@ -224,13 +225,26 @@ export default function Portfolio() {
       const hit = ROWS.find((r) => slug(r.vertical) === vSlug);
       if (hit) setVerts([hit.vertical]);
     }
-    if (iSlug || vSlug) {
+    if (cName) {
+      const cs = slug(cName);
+      const hit =
+        ROWS.find((r) => slug(r.company) === cs) ||
+        ROWS.find(
+          (r) => slug(r.company).includes(cs) || cs.includes(slug(r.company)),
+        );
+      if (hit) {
+        setQ(hit.company);
+        setModal(hit);
+      }
+    }
+    if (iSlug || vSlug || cName) {
       requestAnimationFrame(() =>
         gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
       );
     }
     mounted.current = true;
   }, []);
+
 
   /* Keep the URL in sync without polluting history. */
   useEffect(() => {

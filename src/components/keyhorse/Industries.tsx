@@ -118,12 +118,12 @@ const FUNDED_INDUSTRIES = INDUSTRY_ORDER;
 
 /** Pillar -> the Portfolio industry it maps onto. */
 const PILLAR_INDUSTRY: Record<string, string> = {
-  "Logistics & Trade": "Logistics & Mobility",
+  "Logistics & Trade": "Industrials & Manufacturing",
   "Advanced Manufacturing & Automotive, Aerospace & Defense":
-    "Manufacturing & Industrials",
-  Healthcare: "Health & Life Sciences",
-  "Energy, Materials & Climate": "Energy, Materials & Climate",
-  "Agriculture, Food & Consumer": "Agriculture, Food & Beverage",
+    "Industrials & Manufacturing",
+  Healthcare: "Healthcare & Life Sciences",
+  "Energy, Materials & Climate": "Energy & CleanTech",
+  "Agriculture, Food & Consumer": "Agriculture & Food",
 };
 
 export default function Industries() {
