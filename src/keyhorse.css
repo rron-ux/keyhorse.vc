@@ -2558,3 +2558,26 @@ footer{background:var(--coal);color:#F5F5F4;padding:52px 0 34px}
   color:var(--faint);white-space:nowrap}
 .pit-pfoot{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);
   font-size:15px;line-height:1.6;color:var(--faint)}
+
+/* ============ Editorial type harmonization (site-wide) ============
+   Display: Instrument Sans 700, very tight tracking, tight leading.
+   Body: Public Sans 300, generous leading.
+   Micro labels: IBM Plex Mono, uppercase, .2em tracking. */
+.mx-h1,.mx-h2,.mx-hero-title,.mx-featured-h,.mx-card-h,.mxb-latest-h,
+.msn .big,.mission .big,.m2h,.icard .nm,.rcat b,.hcard .nm,.ext .nm,.fr .co,
+.feat h3,.card h3,.mcard h3,.abt-h,.pit h2,.pf-name,.mx-cov-out,
+.audtab,.rrow .rn,.cd .v,.jopt b,.mx-news-l p{
+  font-family:var(--d);font-weight:700;letter-spacing:-.045em;line-height:1}
+.mx-hero-title,.mx-h1{letter-spacing:-.055em;line-height:.94}
+.mx-hero-title em,.msn .big em,.mission .big em{font-weight:700}
+.mx-card-h,.icard .nm,.fr .co,.hcard .nm,.ext .nm,.pf-name{line-height:1.06}
+
+.lede,.mx-dek,.mx-featured-dek,.m2sf,.m2copy,.abt-copy p,.pit p,
+.isec p,.msoc p,.card p,.mcard p{font-weight:300;line-height:1.6}
+
+.mx-mono,.mx-kick,.mx-lab span,.mx-cov-kick,.mx-card-cat,.mx-dow,
+.mx-tbl th,.lbl,.audq,.fpl,.fh,.tagpill,.evtag,.apg-tag,
+.md-eyebrow,.cx-eyebrow,.cx-lhead,.cx-covl,.pcat .ct,.f3 .k,
+.feat .k,.card .k,.ffeat .k,.mcard .k,.slide .role,.reqbar b,
+.icard .call b,.isec .call b,.isec .why b,.fn .fc b{
+  font-family:var(--m);font-weight:400;letter-spacing:.2em;text-transform:uppercase}
