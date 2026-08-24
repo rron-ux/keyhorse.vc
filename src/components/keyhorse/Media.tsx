@@ -395,8 +395,7 @@ export default function Media() {
           </h1>
           <div className="mxb-sub">
             <p>
-              Every round raised in the Commonwealth, the founders behind them, and what is
-              being built here — reported as it happens.
+              
             </p>
             <span className="mx-mono">Published from Lexington · Free to read</span>
           </div>
