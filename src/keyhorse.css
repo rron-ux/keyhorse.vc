@@ -455,6 +455,9 @@ main.pt-nav{padding-top:70px}
   border-left:1px solid var(--line);z-index:90;transform:translateX(102%);
   transition:transform .34s cubic-bezier(.4,0,.2,1);overflow-y:auto}
 .slide.on{transform:none}
+.slide:has(.pit-panel){right:auto;left:50%;top:50%;height:auto;max-height:90vh;max-width:min(560px,92vw);
+  width:100%;border:1px solid var(--line);transform:translate(40%,-50%);box-shadow:0 24px 70px rgba(0,0,0,.18)}
+.slide.on:has(.pit-panel){transform:translate(-50%,-50%)}
 .slide .imgbox{aspect-ratio:16/10}
 .slide .bd{padding:28px 30px 36px}
 .slide .close{position:fixed;top:18px;right:20px;background:rgba(34,34,34,.9);border:0;
