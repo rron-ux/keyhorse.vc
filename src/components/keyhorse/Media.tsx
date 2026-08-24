@@ -541,10 +541,11 @@ export default function Media() {
           )}
 
           <div className="mx-center">
-            <button className="mx-link" onClick={() => goArticles(go)}>
-              All Articles →
+            <button className="mxb-link" onClick={() => goArticles(go)}>
+              All coverage →
             </button>
           </div>
+
         </div>
       </div>
 
