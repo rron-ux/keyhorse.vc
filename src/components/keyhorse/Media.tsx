@@ -385,47 +385,50 @@ export default function Media() {
 
 
   return (
-    <section className="page on md mx">
+    <section className="page on md mx mxb">
       {/* 1 · Hero */}
       <div className="band mx-hero mx-hero--media">
         <div className="wrap">
-          <p className="lbl">Media</p>
+          <SectionLabel left="Media" right="Keyhorse Capital" />
           <h1 className="mx-hero-title">
-            The living <em className="mx-hero-cyan">story of innovation</em> in Kentucky
+            The living story of <mark>innovation in Kentucky</mark>
           </h1>
-        </div>
-      </div>
-
-      {/* Latest story */}
-      <div className="band mx-latest">
-        <div className="wrap">
-          <div className="mx-latest-divider">
-            <span className="mx-mono">Latest</span>
-            <i aria-hidden="true" />
-            <button className="mx-muted-link" onClick={() => goArticles(go)}>
-              Articles
-            </button>
+          <div className="mxb-sub">
+            <p>
+              Every round raised in the Commonwealth, the founders behind them, and what is
+              being built here — reported as it happens.
+            </p>
+            <span className="mx-mono">Published from Lexington · Free to read</span>
           </div>
 
-          <button className="mx-featured" onClick={() => openPost(latest.slug)}>
-            <div className="mx-featured-text">
-              <h2 className="mx-featured-h">{latest.title}</h2>
-              <p className="mx-featured-dek">{latest.standfirst}</p>
-              <div className="mx-featured-ft">
-                <span className="mx-card-cat">
-                  {latest.category === "stories"
-                    ? SERIES_LABEL[latest.series]
-                    : CAT_LABEL[catOf(latest)]}
-                </span>
+          <div className="mxb-latest">
+            <div className="mxb-latest-txt">
+              <span className="mx-card-cat">
+                Latest ·{" "}
+                {latest.category === "stories"
+                  ? SERIES_LABEL[latest.series]
+                  : CAT_LABEL[catOf(latest)]}
+              </span>
+              <h2 className="mxb-latest-h">{latest.title}</h2>
+              <p className="mxb-latest-p">{latest.standfirst}</p>
+              <div className="mxb-latest-ft">
+                <button className="mxb-link" onClick={() => openPost(latest.slug)}>
+                  Read the story →
+                </button>
                 <span className="mx-mono">{fmtDate(latest.date)} · 6 min read</span>
               </div>
             </div>
-            <div className="mx-featured-img">
+            <button
+              className="mxb-latest-img"
+              onClick={() => openPost(latest.slug)}
+              aria-label={latest.title}
+            >
               <CoverImg eager src={latest.cover} alt={latest.person || latest.title} />
-            </div>
-          </button>
+            </button>
+          </div>
         </div>
       </div>
+
 
       {/* 2 · The Record */}
       <div className="mx-dark" id="record">
@@ -538,10 +541,11 @@ export default function Media() {
           )}
 
           <div className="mx-center">
-            <button className="mx-link" onClick={() => goArticles(go)}>
-              All Articles →
+            <button className="mxb-link" onClick={() => goArticles(go)}>
+              All coverage →
             </button>
           </div>
+
         </div>
       </div>
 
