@@ -1,5 +1,4 @@
 import { Rv, useSite } from "./shared";
-import { pic } from "@/lib/images";
 
 const ROUTES = [
   {
@@ -10,7 +9,6 @@ const ROUTES = [
     foot: "Discovery Fund · no separate application",
     cta: "See the partners →",
     action: "partners" as const,
-    seed: "kh-kentucky",
   },
   {
     cls: "dir",
@@ -20,7 +18,6 @@ const ROUTES = [
     foot: "Kentucky Enterprise Fund · Growth Fund",
     cta: "Start an application →",
     action: "apply" as const,
-    seed: "kh-log",
   },
 ];
 
@@ -146,19 +143,6 @@ export default function Apply() {
 
   return (
     <section className="page on pit">
-      {/* Brief pitch header */}
-      <div className="pit-head">
-        <div className="wrap">
-          <Lab t="Pitch" r="Keyhorse Capital" />
-          <h1>
-            Two ways in. <b>One bar.</b>
-          </h1>
-          <p className="lede">
-            Programmatic capital or direct investment — what we look for does not change between them.
-          </p>
-        </div>
-      </div>
-
       {/* 1 — Two routes */}
       <div className="band">
         <div className="wrap">
@@ -167,7 +151,6 @@ export default function Apply() {
             <div className="pit-rgrid">
               {ROUTES.map((r) => (
                 <article className={`pit-rcard ${r.cls}`} key={r.k}>
-                  <img className="pit-rbg" src={pic(r.seed).src} alt="" aria-hidden="true" />
                   <div className="pit-rin">
                     <span className="pit-k">{r.k}</span>
                     <h3>
